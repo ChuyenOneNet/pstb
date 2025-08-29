@@ -1,0 +1,3 @@
+// class GetBookingModel{
+//   int status
+// }

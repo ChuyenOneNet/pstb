@@ -1,0 +1,85 @@
+plugins {
+    id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.pstb"
+    compileSdk = 35
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.pstb"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = 24
+        targetSdk = 35
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
+    //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.firebase:firebase-messaging:23.0.4'
+//    implementation 'com.facebook.android:facebook-login:latest.release'
+
+    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation 'com.madgag.spongycastle:core:1.58.0.0'
+    implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
+    implementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    implementation 'log4j:log4j:1.2.17'
+    implementation 'de.mindpipe.android:android-logging-log4j:1.0.3'
+    implementation "com.google.android.gms:play-services-auth:17.0.0"
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:20.0.1'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:18.0.1'
+    implementation 'com.google.android.gms:play-services-base:18.0.1'
+    implementation 'com.google.android.gms:play-services-identity:18.0.1'
+    implementation 'org.jboss.aerogear:aerogear-android-core:2.1.0'
+    implementation 'com.nimbusds:nimbus-jose-jwt:9.25.6'
+    api('org.jboss.aerogear:aerogear-android-pipe:4.0.0') {
+        exclude group: 'com.android.support', module: "support-v4"
+    }
+    androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation 'junit:junit:4.12'
+    api 'org.jboss.aerogear:aerogear-android-core:4.0.0'
+    api 'com.google.code.gson:gson:2.8.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    //implementation 'com.budiyev.android:code-scanner:2.1.0'
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.0'
+    implementation 'androidx.security:security-crypto:1.0.0-rc02'
+    implementation 'androidx.multidex:multidex:2.0.1'
+}
