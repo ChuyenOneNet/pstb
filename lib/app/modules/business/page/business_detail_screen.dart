@@ -164,7 +164,7 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                                 final data = entry.value;
                                 return [
                                   Text('${index + 1}'), // STT
-                                  Text(data.maDichVu ?? ""),
+                                  Text(data.tenDichVu ?? ""),
                                   Text(data.ketLuan ?? ""),
                                   GestureDetector(
                                     onTap: () {

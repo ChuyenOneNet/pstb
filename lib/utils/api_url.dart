@@ -9,7 +9,10 @@ class ApiUrl {
   static String baseUrl = "http://192.168.1.57:5245";
   ////static String baseUrl = "http://116.97.240.210:55";
   static String baseUrlDocs = "http://192.168.1.11:8190";
-  static String baseUrlVDUH = "https://tracuuketqua.vduh.org";
+  // static String baseUrlVDUH =
+  //     //"https://116.97.240.210:6443";
+  //     "https://192.168.1.25:6443";
+  //"https://tracuuketqua.vduh.org";
   static const String config = '/api/config';
   static const String token = "/api/account/login/";
   static String tokenV2 = "/api/account/login/v2";

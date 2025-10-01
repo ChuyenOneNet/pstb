@@ -59,7 +59,7 @@ class BookingHistoryItem extends StatelessWidget {
                   // Xử lý xem kết quả
                   Modular.to
                       .pushNamed(AppRoutes.detailBusinessPage, arguments: {
-                    'idBusiness': business.dangKyId,
+                    'idBusiness': business.id,
                   });
                 },
                 child: Container(

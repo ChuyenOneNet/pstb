@@ -12,7 +12,7 @@ BusinessModel _$BusinessModelFromJson(Map<String, dynamic> json) =>
       key: json['key'] as String?,
       dangKyId: json['dangKyId'] as String?,
       benhNhanId: json['benhNhanId'] as String?,
-      xuTriType: (json['xuTriType'] as num).toInt(),
+      xuTriType: (json['xuTriType'] as num?)?.toInt(),
       xuTriContent: json['xuTriContent'] as String?,
       thoiGianVao: json['thoiGianVao'] as String?,
       vao: json['vao'] as String?,
@@ -22,7 +22,7 @@ BusinessModel _$BusinessModelFromJson(Map<String, dynamic> json) =>
       moTaIcd: json['moTaIcd'] as String?,
       chanDoanPhanBiet: json['chanDoanPhanBiet'] as String?,
       benhKemTheo: json['benhKemTheo'] as String?,
-      loai: (json['loai'] as num).toInt(),
+      loai: (json['loai'] as num?)?.toInt(),
       sinhHieuChamSocDto: json['sinhHieuChamSocDto'],
     );
 

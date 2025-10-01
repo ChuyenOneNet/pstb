@@ -49,11 +49,12 @@ class _BookingPatientScreenState extends State<BookingPatientScreen> {
   String patientType = 'Cá nhân';
   String gender = 'Nam';
   Job? selectedJob;
-  Nationality selectedNationality = Nationality(id: 'vi', name: 'Việt Nam');
+  Nationality selectedNationality =
+      Nationality(id: 'c341e4b6-3426-4e40-ac06-6c0212f180b9', name: 'Việt Nam');
   Ethnic selectedEthnic = Ethnic(id: '1', name: 'Kinh');
   Address? selectedAddressModel;
   Address? selectedIdIssuePlace;
-
+  Address? selectedCity;
   @override
   void initState() {
     super.initState();
@@ -335,6 +336,9 @@ class _BookingPatientScreenState extends State<BookingPatientScreen> {
                   selectedEthnic: selectedEthnic,
                   onEthnicChanged: (value) =>
                       setState(() => selectedEthnic = value ?? selectedEthnic),
+                  selectedCity: selectedCity,
+                  onCityChanged: (value) =>
+                      setState(() => selectedCity = value ?? selectedCity),
                 ),
                 const SizedBox(height: 14),
                 ParentInfoForm(

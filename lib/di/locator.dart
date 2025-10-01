@@ -25,9 +25,10 @@ Future<void> setupLocator() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   serviceLocator.registerLazySingleton(
       () => SharedPreferencesManager(sharedPreferences: sharedPreferences));
-
-  final Dio dio =
-      await setupDio(baseUrl: "http://116.97.240.210:9710", isHaveToken: true);
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final vduhUrl =
+      await prefs.getString("vduhUrl") ?? "https://116.97.240.210:6443";
+  final Dio dio = await setupDio(baseUrl: vduhUrl, isHaveToken: true);
   final dbPath = await getDatabasesPath();
   final path = join(dbPath, 'request_history.db');
 

@@ -49,37 +49,34 @@ abstract class BusinessStoreBase with Store {
       final response = await _apiBaseHelper.postBase(
           ApiUrl.getUserBusiness,
           jsonEncode({
-            "UserName":
-                //"2500148538",
-                maYte,
-            "Password":
-                //"4OxB7"
-                password,
+            "UserName": maYte,
+            "Password": password,
           }));
       userBusiness = UserBusinessModel.fromJson(response);
-      print("business: $userBusiness");
+      print("✅ business: $userBusiness");
+
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('maYte', maYte);
       await prefs.setString('passwordBusiness', password);
       await loadHistoryRecord();
 
       Modular.to.pushReplacementNamed(AppRoutes.businessPage);
-    } on NetworkException {
+    } on NetworkException catch (e, stack) {
       Fluttertoast.showToast(msg: 'Lỗi đăng nhập, vui lòng thử lại');
-    } catch (e) {
+      print("❌ NetworkException in getUserBusiness: $e");
+      print("📌 StackTrace: $stack");
+    } catch (e, stack) {
       Fluttertoast.showToast(msg: 'Lỗi đăng nhập, vui lòng thử lại');
+      print("❌ Error in getUserBusiness: $e");
+      print("📌 StackTrace: $stack");
     }
   }
 
   @action
   Future loadHistoryRecord({DateTime? fromDate, DateTime? toDate}) async {
-    //EasyLoading.show();
     loading = true;
-
     try {
-      //TODO load with API
-
-      print("id: ${userBusiness.id}");
+      print("🔎 id: ${userBusiness.id}");
       final response = await _apiBaseHelper.postBase(
         ApiUrl.getBusinessHistory,
         (fromDate != null && toDate != null)
@@ -93,34 +90,25 @@ abstract class BusinessStoreBase with Store {
               }),
       );
 
-      // Kiểm tra & ép kiểu
       final List<BusinessModel> _listBusiness = (response as List<dynamic>)
           .map((e) => BusinessModel.fromJson(e as Map<String, dynamic>))
           .toList();
 
-      for (var business in _listBusiness) {
-        listBusiness.add(business);
-      }
       listBusiness = ObservableList.of(_listBusiness.reversed.toList());
-    } catch (e) {
-      loading = false;
+    } catch (e, stack) {
       Fluttertoast.showToast(
         msg: 'Lỗi khi tải lịch sử khám bệnh',
         backgroundColor: AppColors.error500,
       );
-      print(e);
+      print("❌ Error in loadHistoryRecord: $e");
+      print("📌 StackTrace: $stack");
     }
     loading = false;
-    //EasyLoading.dismiss();
-    // await FireBaseRemoteConfigService.getConfig();
-    // initApp();
   }
 
   @action
   Future<void> loadBusinessDetail(String id) async {
     isLoadingDetail = true;
-    //EasyLoading.show();
-
     try {
       final response = await _apiBaseHelper.getBase(
         ApiUrl.getBusinessDetail,
@@ -133,17 +121,16 @@ abstract class BusinessStoreBase with Store {
       } else {
         businessDetail = null;
       }
-    } catch (e) {
+    } catch (e, stack) {
       Fluttertoast.showToast(
         msg: 'Lỗi khi tải chi tiết hồ sơ',
         backgroundColor: AppColors.error500,
       );
       businessDetail = null;
-      print("Error in loadBusinessDetail: $e");
+      print("❌ Error in loadBusinessDetail: $e");
+      print("📌 StackTrace: $stack");
     }
-
     isLoadingDetail = false;
-    //EasyLoading.dismiss();
   }
 
   @action
@@ -153,16 +140,16 @@ abstract class BusinessStoreBase with Store {
         ApiUrl.getVienPhiPdf,
         {'medicalFeeId': maGiaoDich},
       );
-
       return response as String;
-    } catch (e, _) {
+    } catch (e, stack) {
       Fluttertoast.showToast(
         msg: 'Lỗi khi xem pdf viện phí',
         backgroundColor: AppColors.error500,
       );
-      // debugPrint('Lỗi khi lấy PDF hóa đơn: $e');
+      print("❌ Error in fetchVienPhiPdfBase64: $e");
+      print("📌 StackTrace: $stack");
+      return null;
     }
-    return null;
   }
 
   @action
@@ -171,7 +158,7 @@ abstract class BusinessStoreBase with Store {
   }) async {
     try {
       final response = await _apiBaseHelper.postBase(
-        ApiUrl.resetPasswordBusiness, // 👉 sửa lại theo URL thực tế nếu khác
+        ApiUrl.resetPasswordBusiness,
         jsonEncode({
           "UserName": userName,
         }),
@@ -184,12 +171,13 @@ abstract class BusinessStoreBase with Store {
         Fluttertoast.showToast(msg: 'Đặt lại mật khẩu thất bại');
         return false;
       }
-    } catch (e) {
+    } catch (e, stack) {
       Fluttertoast.showToast(
         msg: 'Lỗi khi đặt lại mật khẩu',
         backgroundColor: AppColors.error500,
       );
-      print('Reset password error: $e');
+      print("❌ Error in resetPassword: $e");
+      print("📌 StackTrace: $stack");
       return false;
     }
   }
@@ -210,7 +198,6 @@ abstract class BusinessStoreBase with Store {
         }),
       );
 
-      // Xử lý kết quả trả về tùy vào API
       if (response != null) {
         Fluttertoast.showToast(
           msg: response,
@@ -219,23 +206,26 @@ abstract class BusinessStoreBase with Store {
         return true;
       } else {
         Fluttertoast.showToast(
-          msg: response['message'] ?? 'Đổi mật khẩu thất bại',
+          msg: 'Đổi mật khẩu thất bại',
           backgroundColor: AppColors.error500,
         );
         return false;
       }
-    } on NetworkException {
+    } on NetworkException catch (e, stack) {
       Fluttertoast.showToast(
         msg: 'Lỗi kết nối mạng',
         backgroundColor: AppColors.error500,
       );
+      print("❌ NetworkException in changePassword: $e");
+      print("📌 StackTrace: $stack");
       return false;
-    } catch (e) {
+    } catch (e, stack) {
       Fluttertoast.showToast(
         msg: 'Đã xảy ra lỗi khi đổi mật khẩu',
         backgroundColor: AppColors.error500,
       );
-      print('Error changePassword: $e');
+      print("❌ Error in changePassword: $e");
+      print("📌 StackTrace: $stack");
       return false;
     }
   }

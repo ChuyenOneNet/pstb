@@ -33,7 +33,7 @@ class BaseResponse<T> {
   genericArgumentFactories: true,
 )
 class BaseListResponse<T> {
-  @JsonKey(name: 'result')
+  @JsonKey(name: 'data')
   final List<T>? data;
 
   @JsonKey(name: 'Total')
@@ -42,7 +42,7 @@ class BaseListResponse<T> {
   @JsonKey(name: 'IsError')
   final bool? isError;
 
-  @JsonKey(name: 'Message')
+  @JsonKey(name: 'message')
   final String? message;
 
   BaseListResponse({

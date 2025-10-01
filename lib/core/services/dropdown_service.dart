@@ -13,30 +13,28 @@ part 'dropdown_service.g.dart';
 abstract class DropdownService {
   factory DropdownService(Dio dio, {String baseUrl}) = _DropdownService;
 
-  @GET("/api/app/country-catalog")
+  @POST("/api/Location/country")
   Future<BaseListResponse<Nationality>> getNationalities(
-    @Query("keyword") String keyword,
+    @Body() Map<String, dynamic> body,
   );
 
-  @GET("/api/app/job-catalog")
+  @GET("/api/job-catalog")
   Future<BaseListResponse<Job>> getJobs(
     @Query("keyword") String keyword,
   );
 
-  @GET("/api/app/nation-catalog")
+  @GET("/api/nation-catalog")
   Future<BaseListResponse<Ethnic>> getEthnics(
     @Query("keyword") String keyword,
   );
 
-  @GET("/api/app/province-catalog")
+  @POST("/api/Location/commune-ward")
   Future<BaseListResponse<Address>> fetchAddresses(
-    @Query("keyword") String keyword,
-    @Query("type") int type,
+    @Body() Map<String, dynamic> body,
   );
 
-  @GET("/api/app/province-catalog")
+  @POST("/api/Location/province")
   Future<BaseListResponse<Address>> fetchCity(
-    @Query("keyword") String keyword,
-    @Query("type") int type,
+    @Body() Map<String, dynamic> body,
   );
 }

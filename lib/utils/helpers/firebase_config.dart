@@ -3,12 +3,14 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:pstb/utils/constants.dart';
 import 'package:pstb/utils/sessions/session_prefs.dart';
 import 'package:pstb/version_util.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FireBaseConfigModel {
   String? baseUrl;
   String? nameUnit;
   String? codeUnit;
   int? idUnit;
+  String? vduhUrl;
 
   FireBaseConfigModel(
       {this.baseUrl, this.nameUnit, this.codeUnit, this.idUnit});
@@ -18,6 +20,7 @@ class FireBaseConfigModel {
     nameUnit = json['nameUnit'];
     codeUnit = json['codeUnit'];
     idUnit = json['idUnit'];
+    vduhUrl = json['vduhUrl'];
   }
 
   Map<String, dynamic> toJson() {
@@ -26,6 +29,7 @@ class FireBaseConfigModel {
     data['nameUnit'] = nameUnit;
     data['codeUnit'] = codeUnit;
     data['idUnit'] = idUnit;
+    data['vduhUrl'] = vduhUrl;
     return data;
   }
 }
@@ -33,6 +37,7 @@ class FireBaseConfigModel {
 class FireBaseRemoteConfigService {
   static Future<FireBaseConfigModel> getConfig() async {
     try {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
       var version = await getCurrentVersion();
       print("version:" + version.toString());
       final remoteConfig = FirebaseRemoteConfig.instance;
@@ -49,6 +54,9 @@ class FireBaseRemoteConfigService {
       final cfgModel = FireBaseConfigModel.fromJson(jsonDecode(jsonConfig));
       final idUnit = cfgModel.idUnit ?? 0;
       await SessionPrefs.setMedicalUnitId(idUnit);
+      await prefs.setString(
+          "vduhUrl", cfgModel.vduhUrl ?? "https://116.97.240.210:6443/");
+      print('vduhUrl: ${cfgModel.vduhUrl}');
       return cfgModel;
     } catch (e) {
       print(e);

@@ -8,7 +8,7 @@ class BusinessModel {
   final String? key;
   final String? dangKyId;
   final String? benhNhanId;
-  final int xuTriType;
+  final int? xuTriType; // 🔄 nullable
   final String? xuTriContent;
   final String? thoiGianVao;
   final String? vao;
@@ -18,7 +18,7 @@ class BusinessModel {
   final String? moTaIcd;
   final String? chanDoanPhanBiet;
   final String? benhKemTheo;
-  final int loai;
+  final int? loai; // 🔄 nullable
   final dynamic sinhHieuChamSocDto;
 
   BusinessModel({
@@ -26,7 +26,7 @@ class BusinessModel {
     this.key,
     this.dangKyId,
     this.benhNhanId,
-    required this.xuTriType,
+    this.xuTriType,
     this.xuTriContent,
     this.thoiGianVao,
     this.vao,
@@ -36,7 +36,7 @@ class BusinessModel {
     this.moTaIcd,
     this.chanDoanPhanBiet,
     this.benhKemTheo,
-    required this.loai,
+    this.loai,
     this.sinhHieuChamSocDto,
   });
 

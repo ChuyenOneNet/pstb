@@ -19,20 +19,21 @@ class _DropdownService implements DropdownService {
   String? baseUrl;
 
   @override
-  Future<BaseListResponse<Nationality>> getNationalities(keyword) async {
+  Future<BaseListResponse<Nationality>> getNationalities(body) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'keyword': keyword};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
+    _data.addAll(body);
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseListResponse<Nationality>>(Options(
-      method: 'GET',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/app/country-catalog',
+              '/api/Location/country',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -58,7 +59,7 @@ class _DropdownService implements DropdownService {
     )
             .compose(
               _dio.options,
-              '/api/app/job-catalog',
+              '/api/job-catalog',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -84,7 +85,7 @@ class _DropdownService implements DropdownService {
     )
             .compose(
               _dio.options,
-              '/api/app/nation-catalog',
+              '/api/nation-catalog',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -97,26 +98,21 @@ class _DropdownService implements DropdownService {
   }
 
   @override
-  Future<BaseListResponse<Address>> fetchAddresses(
-    keyword,
-    type,
-  ) async {
+  Future<BaseListResponse<Address>> fetchAddresses(body) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'keyword': keyword,
-      r'type': type,
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
+    _data.addAll(body);
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseListResponse<Address>>(Options(
-      method: 'GET',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/app/province-catalog',
+              '/api/Location/commune-ward',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -129,26 +125,21 @@ class _DropdownService implements DropdownService {
   }
 
   @override
-  Future<BaseListResponse<Address>> fetchCity(
-    keyword,
-    type,
-  ) async {
+  Future<BaseListResponse<Address>> fetchCity(body) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'keyword': keyword,
-      r'type': type,
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
+    _data.addAll(body);
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseListResponse<Address>>(Options(
-      method: 'GET',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/app/province-catalog',
+              '/api/Location/province',
               queryParameters: queryParameters,
               data: _data,
             )

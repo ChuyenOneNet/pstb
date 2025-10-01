@@ -102,13 +102,13 @@ class FirstShortcutCustomer extends StatelessWidget {
             title: 'Hồ sơ sức khoẻ',
             onTap: () {
               if (controller.isLogin) {
-                // Modular.to.pushNamed(
-                //   AppRoutes.businessModule,
-                // );
+                Modular.to.pushNamed(
+                  AppRoutes.businessModule,
+                );
                 // controller.navigateToPage(
                 //     routerName: AppRoutes.businessModule, arguments: false);
-                controller.navigateToPage(
-                    routerName: AppRoutes.ehrModule, arguments: false);
+                // controller.navigateToPage(
+                //     routerName: AppRoutes.ehrModule, arguments: false);
               } else {
                 Modular.to.pushNamed(AppRoutes.authGuardPage, arguments: {
                   "isNotFromBottomNav": true,

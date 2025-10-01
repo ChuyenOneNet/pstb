@@ -27,10 +27,10 @@ class AddressCubit extends Cubit<AddressState> {
 
   AddressCubit() : super(AddressInitial());
 
-  Future<void> fetchAddresses(String filter, int type) async {
+  Future<void> fetchAddresses(Map<String, dynamic> body) async {
     emit(AddressLoading());
     try {
-      final list = await repo.getAddresses(filter, type);
+      final list = await repo.getAddresses(body);
       print(list);
       // final allAddresses = [
       //   Address(id: '1', name: 'Quận Ba Đình, Hà Nội'),

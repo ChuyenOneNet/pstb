@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../cubits/address_cubit.dart';
+import '../../../../cubits/city_cubit.dart';
 import '../../../../cubits/job_cubit.dart';
 import '../../../../models/address_model.dart';
 import '../../../../models/job_model.dart';
@@ -136,24 +137,24 @@ class PersonalInfoForm extends StatelessWidget {
         const SizedBox(height: 14),
 
         // ID Issue Place Dropdown
-        BlocProvider<AddressCubit>(
-          create: (context) => AddressCubit()..fetchAddresses('', 1),
-          child: BlocBuilder<AddressCubit, AddressState>(
+        BlocProvider<CityCubit>(
+          create: (context) => CityCubit()..fetchCity({}),
+          child: BlocBuilder<CityCubit, CityState>(
             builder: (context, state) {
-              return ApiDropdown<Address, AddressCubit, AddressState>(
+              return ApiDropdown<Address, CityCubit, CityState>(
                 selected: selectedIdIssuePlace,
                 onChanged: onIdIssuePlaceChanged,
                 itemAsString: (item) => item.name,
-                isLoading: (state) => state is AddressLoading,
-                isError: (state) => state is AddressError,
+                isLoading: (state) => state is CityLoading,
+                isError: (state) => state is CityError,
                 getErrorMessage: (state) =>
-                    state is AddressError ? state.message : '',
-                getItems: (state) => state is AddressLoaded ? state.list : [],
+                    state is CityError ? state.message : '',
+                getItems: (state) => state is CityLoaded ? state.list : [],
                 hintText: "Nơi cấp CCCD",
                 onSearch: (filter) async {
-                  await context.read<AddressCubit>().fetchAddresses(filter, 1);
-                  final st = context.read<AddressCubit>().state;
-                  if (st is AddressLoaded) return st.list;
+                  await context.read<CityCubit>().fetchCity({});
+                  final st = context.read<CityCubit>().state;
+                  if (st is CityLoaded) return st.list;
                   return [];
                 },
               );

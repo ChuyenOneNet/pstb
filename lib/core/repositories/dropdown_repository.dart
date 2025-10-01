@@ -8,7 +8,8 @@ abstract class DropdownRepository {
   Future<List<Nationality>> fetchNationalities(String filter);
   Future<List<Job>> fetchJobs(String filter);
   Future<List<Ethnic>> fetchEthnics(String filter);
-  Future<List<Address>> getAddresses(String filter, int type);
+  Future<List<Address>> getAddresses(Map<String, dynamic> body);
+  Future<List<Address>> getCity(Map<String, dynamic> body);
 }
 
 class DropdownRepositoryImpl implements DropdownRepository {
@@ -18,7 +19,7 @@ class DropdownRepositoryImpl implements DropdownRepository {
 
   @override
   Future<List<Nationality>> fetchNationalities(String filter) async {
-    final response = await service.getNationalities(filter);
+    final response = await service.getNationalities({});
     if (response.data != null) {
       return response.data!;
     }
@@ -44,8 +45,18 @@ class DropdownRepositoryImpl implements DropdownRepository {
   }
 
   @override
-  Future<List<Address>> getAddresses(String filter, int type) async {
-    final response = await service.fetchAddresses(filter, type);
+  Future<List<Address>> getAddresses(Map<String, dynamic> body) async {
+    final response = await service.fetchAddresses(body);
+
+    if (response.data != null) {
+      return response.data!;
+    }
+    throw Exception("Failed to load ethnics");
+  }
+
+  @override
+  Future<List<Address>> getCity(Map<String, dynamic> body) async {
+    final response = await service.fetchCity(body);
 
     if (response.data != null) {
       return response.data!;

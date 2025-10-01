@@ -43,10 +43,10 @@ BaseListResponse<T> _$BaseListResponseFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     BaseListResponse<T>(
-      data: (json['result'] as List<dynamic>?)?.map(fromJsonT).toList(),
+      data: (json['data'] as List<dynamic>?)?.map(fromJsonT).toList(),
       total: (json['Total'] as num?)?.toInt(),
       isError: json['IsError'] as bool?,
-      message: json['Message'] as String?,
+      message: json['message'] as String?,
     );
 
 Map<String, dynamic> _$BaseListResponseToJson<T>(
@@ -54,8 +54,8 @@ Map<String, dynamic> _$BaseListResponseToJson<T>(
   Object? Function(T value) toJsonT,
 ) =>
     <String, dynamic>{
-      'result': instance.data?.map(toJsonT).toList(),
+      'data': instance.data?.map(toJsonT).toList(),
       'Total': instance.total,
       'IsError': instance.isError,
-      'Message': instance.message,
+      'message': instance.message,
     };
