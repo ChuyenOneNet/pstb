@@ -10,8 +10,8 @@ part 'booking_service.g.dart';
 abstract class BookingService {
   factory BookingService(Dio dio, {String baseUrl}) = _BookingService;
 
-  @POST("/api/app/register-medical")
-  Future<BaseResponse<CreateRequestModel>> createRequest(
+  @POST("/api/Register/register-medical")
+  Future<CreateRequestModel?> createRequest(
     @Body() CreateRequestModel model,
   );
 }

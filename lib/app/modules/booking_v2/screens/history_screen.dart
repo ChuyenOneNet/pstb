@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:pstb/app/modules/booking_v2/screens/request_history_detail_screen.dart';
 import '../../../../utils/colors.dart';
 import '../sqlite_dao/request_history_dao.dart';
 import '../model/request_history.dart';
@@ -47,73 +48,90 @@ class RequestHistoryScreen extends StatelessWidget {
   }
 
   Widget _buildHistoryItem(BuildContext context, RequestHistory h) {
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 3,
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    h.patientName,
-                    style: const TextStyle(
+    return InkWell(
+      borderRadius: BorderRadius.circular(12),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => RequestHistoryDetailScreen(history: h),
+          ),
+        );
+      },
+      child: Card(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 3,
+        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      h.patientName,
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.primary),
+                        color: AppColors.primary,
+                      ),
+                    ),
                   ),
-                ),
-                InkWell(
-                  onTap: () => _openPdf(context, h.pdfPath ?? ''),
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: AppColors.primary,
+                  if (h.pdfPath.isNotEmpty)
+                    InkWell(
                       borderRadius: BorderRadius.circular(8),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.primary.withOpacity(0.2),
-                          blurRadius: 6,
-                          offset: const Offset(0, 3),
+                      onTap: () {
+                        // chặn lan sự kiện tap lên cha
+                        _openPdf(context, h.pdfPath);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 6, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: AppColors.primary,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withOpacity(0.2),
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                          border: Border.all(
+                              color: AppColors.primary.withOpacity(0.4)),
                         ),
-                      ],
-                      border:
-                          Border.all(color: AppColors.primary.withOpacity(0.4)),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Icon(Icons.visibility, color: Colors.white),
-                        SizedBox(width: 8),
-                        Text(
-                          'Xem phiếu khám',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: const [
+                            Icon(Icons.visibility,
+                                color: Colors.white, size: 18),
+                            SizedBox(width: 6),
+                            Text(
+                              'Xem phiếu khám',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 6),
-            _buildInfoRow(Icons.phone, "SĐT", h.userPhone),
-            _buildInfoRow(
-                Icons.medical_services, "Loại khám", h.examTypeName ?? '—'),
-            _buildInfoRow(Icons.meeting_room, "Phòng", h.roomName ?? '—'),
-            _buildInfoRow(Icons.calendar_today, "Ngày hẹn khám",
-                formatNgayKham(h.createdAt) ?? '—'),
-          ],
+                ],
+              ),
+              const SizedBox(height: 6),
+              _buildInfoRow(Icons.phone, "SĐT", h.userPhone),
+              _buildInfoRow(
+                  Icons.medical_services, "Loại khám", h.examTypeName ?? '—'),
+              _buildInfoRow(Icons.meeting_room, "Phòng", h.roomName ?? '—'),
+              _buildInfoRow(Icons.calendar_today, "Ngày hẹn khám",
+                  formatNgayKham(h.createdAt) ?? '—'),
+            ],
+          ),
         ),
       ),
     );

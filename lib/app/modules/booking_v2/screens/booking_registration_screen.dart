@@ -2,30 +2,20 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-
+import 'package:pstb/cubits/treatment_catalog_department_cubit.dart';
+import 'package:pstb/models/treatment_catalog_department_model.dart';
+import 'package:intl/intl.dart';
 import '../../../../constant/config.dart';
+import '../../../../cubits/treatment_catalog_cubit.dart';
 import '../../../../models/clinic_room.dart';
+import '../../../../models/treatment_catalog_model.dart';
 import '../../../../utils/colors.dart';
 import '../../../../utils/shared_preferences_manager.dart';
+import '../../../../widgets/dropdown/api_dropdown.dart';
 import '../../../../widgets/dropdown/custom_dropdown_search.dart';
 import '../../../../widgets/text_field/input_text_field.dart';
 import '../cubit/create_request_cubit.dart';
 import '../model/create_request_model.dart';
-
-class ExamType {
-  final String id; // 0: khám thường, 1: dịch vụ 500, 2: dịch vụ 300
-  final String name;
-  final String servicePrice;
-
-  const ExamType({
-    required this.id,
-    required this.name,
-    required this.servicePrice,
-  });
-
-  @override
-  String toString() => name;
-}
 
 class BookingRegistrationScreen extends StatefulWidget {
   final Map<String, dynamic> patientInfo;
@@ -40,25 +30,13 @@ class BookingRegistrationScreen extends StatefulWidget {
 
 class _BookingRegistrationScreenState extends State<BookingRegistrationScreen> {
   final _formKey = GlobalKey<FormState>();
-
+  final f = NumberFormat('#,###', 'vi_VN');
   DateTime? scheduledAt;
-
-  // Khai báo các loại khám
-  static const List<ExamType> examTypeItems = [
-    ExamType(id: "01010001", name: 'Khám thường', servicePrice: ''),
-    ExamType(
-        id: "01010004",
-        name: 'Khám bệnh [theo yêu cầu 2] (500K)',
-        servicePrice: '500.000'),
-    ExamType(
-        id: "01010005",
-        name: 'Khám bệnh [theo yêu cầu 3] (300K)',
-        servicePrice: '300.000'),
-  ];
-
-  ExamType selectedExamType = examTypeItems[0]; // mặc định là khám thường
+  TreatmentCatalogModel? selectedTreatmentCatalog;
+  TreatmentCatalogDepartmentModel?
+      selectedTreatmentCatalogDepartment; // mặc định là khám thường
   String subjectType = 'Không BHYT'; // BHYT mặc định là "Không BHYT"
-  ClinicRoom? selectedRoom; // chọn phòng khám kiểu ClinicRoom
+  //ClinicRoom? selectedRoom; // chọn phòng khám kiểu ClinicRoom
   final TextEditingController reasonCtrl = TextEditingController();
   String priority = 'Bình thường'; // mặc định
   String arrivalMethod = 'Tự đến'; // mặc định
@@ -89,7 +67,11 @@ class _BookingRegistrationScreenState extends State<BookingRegistrationScreen> {
       _showWarning('Còn thiếu trường thông tin bắt buộc');
       return;
     }
-    if (selectedRoom == null) {
+    if (selectedTreatmentCatalog == null) {
+      _showWarning('Vui lòng chọn loại khám');
+      return;
+    }
+    if (selectedTreatmentCatalogDepartment == null) {
       _showWarning('Vui lòng chọn phòng khám');
       return;
     }
@@ -101,34 +83,39 @@ class _BookingRegistrationScreenState extends State<BookingRegistrationScreen> {
         '${scheduledAt!.hour.toString().padLeft(2, '0')}:${scheduledAt!.minute.toString().padLeft(2, '0')} '
         '${scheduledAt!.day.toString().padLeft(2, '0')}/${scheduledAt!.month.toString().padLeft(2, '0')}/${scheduledAt!.year}';
     final model = CreateRequestModel(
-      // --- Dữ liệu từ màn 1 ---
-      name: widget.patientInfo['name'] ?? '',
-      cccd: widget.patientInfo['cccd'] ?? '',
-      age: int.tryParse(widget.patientInfo['age']?.toString() ?? '5') ?? 5,
-      gender: widget.patientInfo['gender'] == "Nam" ? 0 : 1,
-      birthDate: widget.patientInfo['birthDate'] ?? '',
-      job: widget.patientInfo['job'] ?? '',
-      address: widget.patientInfo['address'] ?? '',
-      addressDetail: widget.patientInfo['addressDetail'],
-      phone: widget.patientInfo['phone'] ?? '',
-      fatherName: widget.patientInfo['fatherName'] ?? '',
-      motherName: widget.patientInfo['motherName'] ?? '',
-      idIssueDate: widget.patientInfo['idIssueDate'] ?? '',
-      idIssuePlace: widget.patientInfo['idIssuePlace'],
-      nationalId: widget.patientInfo['nationalId'] ?? '',
-      ethnic: widget.patientInfo['ethnic'] ?? '',
-
-      // --- Dữ liệu từ màn 2 ---
-      examTypeName: selectedExamType.name,
-      examTypeId: selectedExamType.id.toString(),
-      clinicRoomCode: selectedRoom?.code,
-      clinicRoomName: selectedRoom?.name,
-      reason: reasonCtrl.text.trim(),
-      priority: priority,
-      arrivalMethod: arrivalMethod,
-      scheduledAt:
-          scheduledAt?.toIso8601String() ?? DateTime.now().toIso8601String(),
-    );
+        // --- Dữ liệu từ màn 1 ---
+        name: widget.patientInfo['name'] ?? '',
+        cccd: widget.patientInfo['cccd'] ?? '',
+        age: int.tryParse(widget.patientInfo['age']?.toString() ?? '5') ?? 5,
+        gender: widget.patientInfo['gender'] == "Nam" ? 1 : 0,
+        birthDate: widget.patientInfo['birthDate'] ?? '',
+        jobName: widget.patientInfo['jobName'] ?? '',
+        job: widget.patientInfo['job'] ?? '',
+        addressDetail: widget.patientInfo['addressDetail'],
+        phone: widget.patientInfo['phone'] ?? '',
+        fatherName: widget.patientInfo['fatherName'] ?? '',
+        motherName: widget.patientInfo['motherName'] ?? '',
+        idIssueDate: widget.patientInfo['idIssueDate'] ?? '',
+        idIssuePlace: widget.patientInfo['idIssuePlace'],
+        nationalId: widget.patientInfo['nationalId'] ?? '',
+        ethnic: widget.patientInfo['ethnic'] ?? '',
+        provinceId: widget.patientInfo['provinceId'] ?? '',
+        communeWardId: widget.patientInfo['communeWardId'] ?? '',
+        nationalName: widget.patientInfo['nationalName'] ?? '',
+        ethnicName: widget.patientInfo['ethnicName'] ?? '',
+        provinceName: widget.patientInfo['provinceName'] ?? '',
+        communeWardName: widget.patientInfo['communeWardName'] ?? '',
+        // --- Dữ liệu từ màn 2 ---
+        examTypeName: selectedTreatmentCatalog?.name,
+        examTypeId: selectedTreatmentCatalog?.id.toString() ?? "",
+        clinicRoomCode: selectedTreatmentCatalogDepartment?.code,
+        clinicRoomName: selectedTreatmentCatalogDepartment?.name,
+        reason: reasonCtrl.text.trim(),
+        priority: priority,
+        arrivalMethod: arrivalMethod,
+        scheduledAt:
+            scheduledAt?.toIso8601String() ?? DateTime.now().toIso8601String(),
+        price: (selectedTreatmentCatalog?.price ?? -1).toString());
 
     final userPhone = GetIt.instance<SharedPreferencesManager>()
         .getString(AppConfig.SL_USERNAME);
@@ -275,12 +262,6 @@ class _BookingRegistrationScreenState extends State<BookingRegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     // Lọc phòng theo loại khám (requestType)
-    final clinicRoomsForExamType = allClinicRooms
-        .where((room) =>
-            room.active == 1 &&
-            ((selectedExamType.id == "01010001" && room.requestType == 0) ||
-                (selectedExamType.id != "01010001" && room.requestType == 1)))
-        .toList();
 
     const subjectTypeItems = ['Có BHYT', 'Không BHYT'];
     const priorityItems = ['Bình thường', 'Cấp cứu'];
@@ -313,8 +294,11 @@ class _BookingRegistrationScreenState extends State<BookingRegistrationScreen> {
             context,
             success: false,
             title: 'Có lỗi xảy ra!',
-            description: state.message,
+            description: "Tạo yêu cầu khám không thành công",
           );
+          setState(() {
+            isCanCreate = true;
+          });
         }
       },
       child: Scaffold(
@@ -339,25 +323,104 @@ class _BookingRegistrationScreenState extends State<BookingRegistrationScreen> {
             child: ListView(
               padding: const EdgeInsets.all(16),
               children: [
-                // Loại khám
-                const Text(
-                  'Loại khám *',
+                Text(
+                  "Loại khám *",
                   style: TextStyle(fontSize: 16),
                 ),
-                const SizedBox(height: 6),
-                CustomDropdown<ExamType>(
-                  label: 'Loại khám',
-                  items: examTypeItems,
-                  selectedItem: selectedExamType,
-                  itemLabel: (e) => e.name,
-                  onChanged: (v) {
-                    if (v == null) return;
-                    setState(() {
-                      selectedExamType = v;
-                      selectedRoom = null;
-                    });
-                  },
+                SizedBox(
+                  height: 4,
                 ),
+                // Loại khám
+                BlocProvider<TreatmentCatalogCubit>(
+                  create: (_) =>
+                      TreatmentCatalogCubit()..fetchTreatmentCatalogs(),
+                  child:
+                      BlocBuilder<TreatmentCatalogCubit, TreatmentCatalogState>(
+                    builder: (context, state) {
+                      return ApiDropdown<TreatmentCatalogModel,
+                          TreatmentCatalogCubit, TreatmentCatalogState>(
+                        selected: selectedTreatmentCatalog,
+                        onChanged: (item) {
+                          setState(() {
+                            selectedTreatmentCatalog = item;
+                          });
+                        },
+                        itemAsString: (item) =>
+                            "${item.name ?? ''} - ${item.price != null ? "${f.format(item.price ?? -1)} đ" : "Chưa có giá"} - ${item.patientClassificationName ?? ''}",
+                        isLoading: (state) => state is TreatmentCatalogLoading,
+                        isError: (state) => state is TreatmentCatalogError,
+                        getErrorMessage: (state) =>
+                            state is TreatmentCatalogError ? state.message : '',
+                        getItems: (state) =>
+                            state is TreatmentCatalogLoaded ? state.list : [],
+                        hintText: "Loại khám *",
+                        onSearch: (filter) async {
+                          await context
+                              .read<TreatmentCatalogCubit>()
+                              .fetchTreatmentCatalogs();
+                          final st =
+                              context.read<TreatmentCatalogCubit>().state;
+                          if (st is TreatmentCatalogLoaded) return st.list;
+                          return [];
+                        },
+                      );
+                    },
+                  ),
+                ),
+                if (selectedTreatmentCatalog != null) ...[
+                  const SizedBox(height: 14),
+                  Text(
+                    "Phòng khám *",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  BlocProvider<TreatmentCatalogDepartmentCubit>(
+                    create: (_) => TreatmentCatalogDepartmentCubit()
+                      ..fetchTreatmentCatalogDepartments(
+                          selectedTreatmentCatalog!.id),
+                    child: BlocBuilder<TreatmentCatalogDepartmentCubit,
+                        TreatmentCatalogDepartmentState>(
+                      builder: (context, state) {
+                        return ApiDropdown<
+                            TreatmentCatalogDepartmentModel,
+                            TreatmentCatalogDepartmentCubit,
+                            TreatmentCatalogDepartmentState>(
+                          selected: selectedTreatmentCatalogDepartment,
+                          onChanged: (item) {
+                            selectedTreatmentCatalogDepartment = item;
+                          },
+                          itemAsString: (item) => item.name ?? "",
+                          isLoading: (state) =>
+                              state is TreatmentCatalogLoading,
+                          isError: (state) => state is TreatmentCatalogError,
+                          getErrorMessage: (state) =>
+                              state is TreatmentCatalogDepartmentError
+                                  ? state.message
+                                  : '',
+                          getItems: (state) =>
+                              state is TreatmentCatalogDepartmentLoaded
+                                  ? state.list
+                                  : [],
+                          hintText: "Phòng khám",
+                          onSearch: (filter) async {
+                            await context
+                                .read<TreatmentCatalogDepartmentCubit>()
+                                .fetchTreatmentCatalogDepartments(
+                                    selectedTreatmentCatalog!.id);
+                            final st = context
+                                .read<TreatmentCatalogDepartmentCubit>()
+                                .state;
+                            if (st is TreatmentCatalogDepartmentLoaded)
+                              return st.list;
+                            return [];
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ],
 
                 const SizedBox(height: 14),
                 const Text(
@@ -394,7 +457,7 @@ class _BookingRegistrationScreenState extends State<BookingRegistrationScreen> {
                   ),
                 ],
 
-                const SizedBox(height: 14),
+                const SizedBox(height: 18),
 
                 InkWell(
                   onTap: _pickScheduledAt,
@@ -414,45 +477,7 @@ class _BookingRegistrationScreenState extends State<BookingRegistrationScreen> {
                 ),
 
                 const SizedBox(height: 14),
-                const Text(
-                  'Phòng khám *',
-                  style: TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 6),
-                CustomDropdown<ClinicRoom>(
-                  label: 'Phòng khám',
-                  items: clinicRoomsForExamType,
-                  selectedItem: selectedRoom,
-                  itemLabel: (room) => '${room.code} - ${room.name}',
-                  onChanged: (room) {
-                    setState(() {
-                      selectedRoom = room;
-                    });
-                  },
-                  filterFn: (item, filter) {
-                    final filterLower = filter.toLowerCase();
-                    if (item is ClinicRoom) {
-                      return item.name.toLowerCase().contains(filterLower);
-                    }
-                    return false;
-                  },
-                ),
 
-                if (selectedRoom == null)
-                  Container(
-                    margin: const EdgeInsets.only(top: 8, bottom: 14),
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.yellow.shade100,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Text(
-                      'Cần chọn phòng khám để hoàn thành đăng ký',
-                      style: TextStyle(fontSize: 14, color: Colors.black87),
-                    ),
-                  ),
-
-                const SizedBox(height: 14),
                 const Text(
                   'Lý do đến khám *',
                   style: TextStyle(fontSize: 16),

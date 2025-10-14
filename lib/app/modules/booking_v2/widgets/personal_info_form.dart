@@ -69,6 +69,7 @@ class PersonalInfoForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text('Vui lòng kiểm tra kỹ lại các thông tin khi quét'),
 
@@ -135,7 +136,14 @@ class PersonalInfoForm extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 14),
+        Text(
+          "Nơi cấp CCCD",
+          style: TextStyle(fontSize: 16),
+        ),
 
+        SizedBox(
+          height: 4,
+        ),
         // ID Issue Place Dropdown
         BlocProvider<CityCubit>(
           create: (context) => CityCubit()..fetchCity({}),
@@ -201,10 +209,16 @@ class PersonalInfoForm extends StatelessWidget {
           onChanged: (v) => v != null ? onGenderChanged(v) : null,
         ),
         const SizedBox(height: 14),
-
+        Text(
+          "Nghề nghiệp",
+          style: TextStyle(fontSize: 16),
+        ),
+        SizedBox(
+          height: 4,
+        ),
         // Job Dropdown
         BlocProvider<JobCubit>(
-          create: (_) => JobCubit()..fetchJobs(''),
+          create: (_) => JobCubit()..fetchJobs(),
           child: BlocBuilder<JobCubit, JobState>(
             builder: (context, state) {
               return ApiDropdown<Job, JobCubit, JobState>(
@@ -218,7 +232,7 @@ class PersonalInfoForm extends StatelessWidget {
                 getItems: (state) => state is JobLoaded ? state.list : [],
                 hintText: "Chọn nghề nghiệp *",
                 onSearch: (filter) async {
-                  await context.read<JobCubit>().fetchJobs(filter);
+                  await context.read<JobCubit>().fetchJobs();
                   final st = context.read<JobCubit>().state;
                   if (st is JobLoaded) return st.list;
                   return [];

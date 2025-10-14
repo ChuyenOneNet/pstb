@@ -20,11 +20,11 @@ class CreateRequestModel {
   @JsonKey(name: 'dateOfBirth')
   final String birthDate;
 
+  @JsonKey(name: 'jobName')
+  final String? jobName; //k truyền tạo
+
   @JsonKey(name: 'jobId')
   final String job;
-
-  @JsonKey(name: 'addressId')
-  final String address;
 
   @JsonKey(name: 'addressDetail')
   final String addressDetail;
@@ -47,12 +47,27 @@ class CreateRequestModel {
   @JsonKey(name: 'nationalId')
   final String nationalId;
 
-  @JsonKey(name: 'nationality')
-  final String? nationality; // k truyền lên
-
   @JsonKey(name: 'ethnicId')
   final String ethnic;
 
+  @JsonKey(name: 'provinceId')
+  final String provinceId;
+
+  @JsonKey(name: 'communeWardId')
+  final String communeWardId;
+  //k truyền
+  @JsonKey(name: 'nationalName')
+  final String? nationalName;
+
+  @JsonKey(name: 'ethnicName')
+  final String? ethnicName;
+
+  @JsonKey(name: 'provinceName')
+  final String? provinceName;
+
+  @JsonKey(name: 'communeWardName')
+  final String? communeWardName;
+  //
   // Màn 2
   @JsonKey(name: 'examTypeId')
   final String examTypeId;
@@ -84,6 +99,9 @@ class CreateRequestModel {
   @JsonKey(name: 'pathPdf')
   final String? pathPdf;
 
+  @JsonKey(name: 'price')
+  final String? price;
+
   CreateRequestModel({
     required this.name,
     required this.cccd,
@@ -91,16 +109,21 @@ class CreateRequestModel {
     required this.gender,
     required this.birthDate,
     required this.job,
-    required this.address,
     required this.addressDetail,
     required this.phone,
     required this.fatherName,
     required this.motherName,
     required this.idIssueDate,
     this.idIssuePlace,
-    this.nationality,
     this.examTypeName,
     required this.nationalId,
+    required this.provinceId,
+    required this.communeWardId,
+    this.jobName,
+    this.nationalName,
+    this.ethnicName,
+    this.provinceName,
+    this.communeWardName,
     required this.scheduledAt,
     required this.ethnic,
     required this.examTypeId,
@@ -111,6 +134,7 @@ class CreateRequestModel {
     required this.arrivalMethod,
     this.hasInsurance = false,
     this.pathPdf,
+    this.price,
   });
 
   factory CreateRequestModel.fromJson(Map<String, dynamic> json) =>

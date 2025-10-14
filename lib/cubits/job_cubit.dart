@@ -27,10 +27,10 @@ class JobCubit extends Cubit<JobState> {
 
   JobCubit() : super(JobInitial());
 
-  Future<void> fetchJobs(String filter) async {
+  Future<void> fetchJobs() async {
     try {
       emit(JobLoading());
-      final list = await repo.fetchJobs(filter);
+      final list = await repo.fetchJobs();
       print(list);
       final allJobs = [
         Job(id: '1', name: 'Bác sĩ'),

@@ -46,54 +46,52 @@ class _DropdownService implements DropdownService {
   }
 
   @override
-  Future<BaseListResponse<Job>> getJobs(keyword) async {
+  Future<List<Job>> getJobs() async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'keyword': keyword};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseListResponse<Job>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Job>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/job-catalog',
+              '/api/Register/GetAllCareer',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseListResponse<Job>.fromJson(
-      _result.data!,
-      (json) => Job.fromJson(json as Map<String, dynamic>),
-    );
+    var value = _result.data!
+        .map((dynamic i) => Job.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
   @override
-  Future<BaseListResponse<Ethnic>> getEthnics(keyword) async {
+  Future<List<Ethnic>> getEthnics() async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'keyword': keyword};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseListResponse<Ethnic>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Ethnic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/nation-catalog',
+              '/api/Register/GetAllEthnic',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseListResponse<Ethnic>.fromJson(
-      _result.data!,
-      (json) => Ethnic.fromJson(json as Map<String, dynamic>),
-    );
+    var value = _result.data!
+        .map((dynamic i) => Ethnic.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -148,6 +146,59 @@ class _DropdownService implements DropdownService {
       _result.data!,
       (json) => Address.fromJson(json as Map<String, dynamic>),
     );
+    return value;
+  }
+
+  @override
+  Future<List<TreatmentCatalogModel>> fetchTreatmentCatalogs() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<TreatmentCatalogModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/Register/GetAllTreatmentCatalog',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) =>
+            TreatmentCatalogModel.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<List<TreatmentCatalogDepartmentModel>>
+      fetchfetchTreatmentCatalogDepartments(id) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<TreatmentCatalogDepartmentModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/Register/GetTreatmentCatalogDepartmentByTreatmentCatalogId/${id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) =>
+            TreatmentCatalogDepartmentModel.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

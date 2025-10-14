@@ -19,29 +19,28 @@ class _BookingService implements BookingService {
   String? baseUrl;
 
   @override
-  Future<BaseResponse<CreateRequestModel>> createRequest(model) async {
+  Future<CreateRequestModel?> createRequest(model) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(model.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponse<CreateRequestModel>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>?>(
+        _setStreamType<CreateRequestModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/app/register-medical',
+              '/api/Register/register-medical',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseResponse<CreateRequestModel>.fromJson(
-      _result.data!,
-      (json) => CreateRequestModel.fromJson(json as Map<String, dynamic>),
-    );
+    final value = _result.data == null
+        ? null
+        : CreateRequestModel.fromJson(_result.data!);
     return value;
   }
 

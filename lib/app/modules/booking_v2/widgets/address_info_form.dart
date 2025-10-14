@@ -51,7 +51,15 @@ class _AddressInfoFormState extends State<AddressInfoForm> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(
+          "Quốc gia",
+          style: TextStyle(fontSize: 16),
+        ),
+        SizedBox(
+          height: 4,
+        ),
         // Quốc tịch (mặc định Việt Nam, không cho đổi)
         IgnorePointer(
           ignoring: false, // disable toàn bộ thao tác
@@ -79,7 +87,13 @@ class _AddressInfoFormState extends State<AddressInfoForm> {
           ),
         ),
         const SizedBox(height: 14),
-
+        Text(
+          "Thành phố",
+          style: TextStyle(fontSize: 16),
+        ),
+        SizedBox(
+          height: 4,
+        ),
         // City Dropdown
         BlocProvider<CityCubit>(
           create: (context) => CityCubit()
@@ -112,7 +126,13 @@ class _AddressInfoFormState extends State<AddressInfoForm> {
           ),
         ),
         const SizedBox(height: 14),
-
+        Text(
+          "Xã/phường",
+          style: TextStyle(fontSize: 16),
+        ),
+        SizedBox(
+          height: 4,
+        ),
         // Address Dropdown (phụ thuộc City)
         BlocProvider<AddressCubit>(
           create: (context) => AddressCubit()
@@ -145,7 +165,13 @@ class _AddressInfoFormState extends State<AddressInfoForm> {
           ),
         ),
         const SizedBox(height: 14),
-
+        Text(
+          "Địa chỉ chi tiết",
+          style: TextStyle(fontSize: 16),
+        ),
+        SizedBox(
+          height: 4,
+        ),
         InputTextField(
           textController: widget.addressDetailController,
           label: 'Địa chỉ chi tiết (thôn/ngõ/ngách/số nhà)',
@@ -155,10 +181,16 @@ class _AddressInfoFormState extends State<AddressInfoForm> {
           textAlign: TextAlign.start,
         ),
         const SizedBox(height: 14),
-
+        Text(
+          "Dân tộc",
+          style: TextStyle(fontSize: 16),
+        ),
+        SizedBox(
+          height: 4,
+        ),
         // Ethnic Dropdown
         BlocProvider<EthnicCubit>(
-          create: (_) => EthnicCubit()..fetchEthnics('Kinh'),
+          create: (_) => EthnicCubit()..fetchEthnics(),
           child: BlocBuilder<EthnicCubit, EthnicState>(
             builder: (context, state) {
               return ApiDropdown<Ethnic, EthnicCubit, EthnicState>(
@@ -172,7 +204,7 @@ class _AddressInfoFormState extends State<AddressInfoForm> {
                 getItems: (state) => state is EthnicLoaded ? state.list : [],
                 hintText: "Chọn dân tộc *",
                 onSearch: (filter) async {
-                  await context.read<EthnicCubit>().fetchEthnics(filter);
+                  await context.read<EthnicCubit>().fetchEthnics();
                   final st = context.read<EthnicCubit>().state;
                   if (st is EthnicLoaded) return st.list;
                   return [];

@@ -51,7 +51,8 @@ class _BookingPatientScreenState extends State<BookingPatientScreen> {
   Job? selectedJob;
   Nationality selectedNationality =
       Nationality(id: 'c341e4b6-3426-4e40-ac06-6c0212f180b9', name: 'Việt Nam');
-  Ethnic selectedEthnic = Ethnic(id: '1', name: 'Kinh');
+  Ethnic selectedEthnic =
+      Ethnic(id: '19bdf08a-e3ca-48ec-b77d-b1a500aa9526', name: 'Kinh');
   Address? selectedAddressModel;
   Address? selectedIdIssuePlace;
   Address? selectedCity;
@@ -224,8 +225,8 @@ class _BookingPatientScreenState extends State<BookingPatientScreen> {
             'age': ageCtrl.text.trim(),
             'gender': gender,
             'birthDate': birthDateCtrl.text.trim(),
-            'job': selectedJob!.id,
-            'address': selectedAddressModel?.id,
+            'job': selectedJob?.id,
+            'jobName': selectedJob?.name,
             'addressDetail': addressDetailCtrl.text.trim(),
             'phone': phoneCtrl.text.trim(),
             'fatherName': fatherNameCtrl.text.trim(),
@@ -234,6 +235,12 @@ class _BookingPatientScreenState extends State<BookingPatientScreen> {
             'idIssuePlace': selectedIdIssuePlace?.id ?? null,
             'nationalId': selectedNationality.id,
             'ethnic': selectedEthnic.id,
+            'provinceId': selectedCity?.id ?? null,
+            'communeWardId': selectedAddressModel?.id ?? null,
+            'nationalName': selectedNationality.name,
+            'ethnicName': selectedEthnic.name,
+            'provinceName': selectedCity?.name ?? null,
+            'communeWardName': selectedAddressModel?.name ?? null,
           },
         ),
       ),

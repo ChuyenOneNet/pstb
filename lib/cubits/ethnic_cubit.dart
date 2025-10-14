@@ -27,10 +27,10 @@ class EthnicCubit extends Cubit<EthnicState> {
 
   EthnicCubit() : super(EthnicInitial());
 
-  Future<void> fetchEthnics(String filter) async {
+  Future<void> fetchEthnics() async {
     try {
       emit(EthnicLoading());
-      final list = await repo.fetchEthnics(filter);
+      final list = await repo.fetchEthnics();
       print(list);
       // final allEthnics = [
       //   Ethnic(id: '1', name: 'Kinh'),
