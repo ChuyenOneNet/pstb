@@ -17,6 +17,8 @@ import 'package:pstb/widgets/stateless/app_dialog_confirm.dart';
 import 'package:pstb/widgets/stateless/stateless_widget.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+import '../../forgot_password_v2/presentation/forgot_password_screen_v2.dart';
+
 class FormInputWidget extends StatefulWidget {
   const FormInputWidget(
       {Key? key,
@@ -170,7 +172,13 @@ class _FormInputWidgetState extends State<FormInputWidget> {
                                 .copyWith(color: AppColors.primary),
                           ),
                           onTap: () {
-                            Modular.to.pushNamed(AppRoutes.forgotPage);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ForgotPasswordScreenV2(),
+                                ));
+                            //    Modular.to.pushNamed(AppRoutes.forgotPage);
                           }
 
                           // _store.enableForgotOTP

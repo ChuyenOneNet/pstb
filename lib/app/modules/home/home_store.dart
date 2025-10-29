@@ -369,7 +369,7 @@ abstract class HomeStoreBase with Store {
   @action
   Future<void> loadConfigMedicalUnit() async {
     var cfgHelper = ConfigHelper.instance;
-    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
     await cfgHelper.loadData(medicalUnitId);
 
     /// unit-config
@@ -466,7 +466,7 @@ abstract class HomeStoreBase with Store {
   Future<void> getPromotionNews() async {
     loadingPromotion = true;
     promotionNews.clear();
-    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
     try {
       final response = await _apiBaseHelper.get(
         ApiUrl.promotion,
@@ -539,7 +539,7 @@ abstract class HomeStoreBase with Store {
     try {
       reload = true;
       listPackageGroup.clear();
-      medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+      medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
       final response = await _apiBaseHelper.get(
         ApiUrl.packageGroup,
         {"MedicalUnitId": medicalUnitId},
@@ -586,7 +586,7 @@ abstract class HomeStoreBase with Store {
     try {
       EasyLoading.show();
       listProminentDoctor.clear();
-      medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+      medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
       final response = await _apiBaseHelper.get(
         ApiUrl.prominentDoctor,
         {"medicalUnitId": medicalUnitId},
@@ -608,7 +608,7 @@ abstract class HomeStoreBase with Store {
     try {
       EasyLoading.show();
       listProminentDoctor.clear();
-      medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+      medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
       final response = await _apiBaseHelper.get(
         ApiUrl.prominentDoctor,
         {"medicalUnitId": medicalUnitId},

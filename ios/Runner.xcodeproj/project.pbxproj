@@ -11,6 +11,34 @@
 		31796CAD0B17C5114268181B /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E6E27FDF4CD9CF6E6DCFB7 /* Pods_RunnerTests.framework */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		5F647B3E2EA88EBC0038E9D2 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B312EA88EBB0038E9D2 /* RxAlamofire.framework */; };
+		5F647B3F2EA88EBC0038E9D2 /* RxAlamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B312EA88EBB0038E9D2 /* RxAlamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B402EA88EBC0038E9D2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B322EA88EBB0038E9D2 /* RxSwift.framework */; };
+		5F647B412EA88EBC0038E9D2 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B322EA88EBB0038E9D2 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B422EA88EBC0038E9D2 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B332EA88EBB0038E9D2 /* ObjectMapper.framework */; };
+		5F647B432EA88EBC0038E9D2 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B332EA88EBB0038E9D2 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B442EA88EBC0038E9D2 /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B342EA88EBC0038E9D2 /* JWTDecode.framework */; };
+		5F647B452EA88EBC0038E9D2 /* JWTDecode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B342EA88EBC0038E9D2 /* JWTDecode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B462EA88EBC0038E9D2 /* eContractSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B352EA88EBC0038E9D2 /* eContractSDK.framework */; };
+		5F647B472EA88EBC0038E9D2 /* eContractSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B352EA88EBC0038E9D2 /* eContractSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B482EA88EBC0038E9D2 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B362EA88EBC0038E9D2 /* NVActivityIndicatorView.framework */; };
+		5F647B492EA88EBC0038E9D2 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B362EA88EBC0038E9D2 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B4A2EA88EBC0038E9D2 /* eKYCLib.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B372EA88EBC0038E9D2 /* eKYCLib.xcframework */; };
+		5F647B4B2EA88EBC0038E9D2 /* eKYCLib.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B372EA88EBC0038E9D2 /* eKYCLib.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B4C2EA88EBC0038E9D2 /* SignaturePad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B382EA88EBC0038E9D2 /* SignaturePad.framework */; };
+		5F647B4D2EA88EBC0038E9D2 /* SignaturePad.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B382EA88EBC0038E9D2 /* SignaturePad.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B4E2EA88EBC0038E9D2 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B392EA88EBC0038E9D2 /* RxRelay.framework */; };
+		5F647B4F2EA88EBC0038E9D2 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B392EA88EBC0038E9D2 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B502EA88EBC0038E9D2 /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3A2EA88EBC0038E9D2 /* Moya.framework */; };
+		5F647B512EA88EBC0038E9D2 /* Moya.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3A2EA88EBC0038E9D2 /* Moya.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B522EA88EBC0038E9D2 /* ICSdkEKYC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3B2EA88EBC0038E9D2 /* ICSdkEKYC.xcframework */; };
+		5F647B532EA88EBC0038E9D2 /* ICSdkEKYC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3B2EA88EBC0038E9D2 /* ICSdkEKYC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B542EA88EBC0038E9D2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3C2EA88EBC0038E9D2 /* Alamofire.framework */; };
+		5F647B552EA88EBC0038E9D2 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3C2EA88EBC0038E9D2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B562EA88EBC0038E9D2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3D2EA88EBC0038E9D2 /* RxCocoa.framework */; };
+		5F647B572EA88EBC0038E9D2 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3D2EA88EBC0038E9D2 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F647B592EA88ED30038E9D2 /* SmartCASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B582EA88ED30038E9D2 /* SmartCASDK.framework */; };
+		5F647B5A2EA88ED30038E9D2 /* SmartCASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B582EA88ED30038E9D2 /* SmartCASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		705ADEF7875A443EB1B3DD42 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9254437E6069A532189D0327 /* GoogleService-Info.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		83E21105F06D1310179470DE /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8FC719E1F776EFA56ADEE04 /* Pods_Runner.framework */; };
@@ -36,6 +64,20 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				5F647B452EA88EBC0038E9D2 /* JWTDecode.framework in Embed Frameworks */,
+				5F647B532EA88EBC0038E9D2 /* ICSdkEKYC.xcframework in Embed Frameworks */,
+				5F647B572EA88EBC0038E9D2 /* RxCocoa.framework in Embed Frameworks */,
+				5F647B4D2EA88EBC0038E9D2 /* SignaturePad.framework in Embed Frameworks */,
+				5F647B4F2EA88EBC0038E9D2 /* RxRelay.framework in Embed Frameworks */,
+				5F647B5A2EA88ED30038E9D2 /* SmartCASDK.framework in Embed Frameworks */,
+				5F647B472EA88EBC0038E9D2 /* eContractSDK.framework in Embed Frameworks */,
+				5F647B4B2EA88EBC0038E9D2 /* eKYCLib.xcframework in Embed Frameworks */,
+				5F647B492EA88EBC0038E9D2 /* NVActivityIndicatorView.framework in Embed Frameworks */,
+				5F647B552EA88EBC0038E9D2 /* Alamofire.framework in Embed Frameworks */,
+				5F647B512EA88EBC0038E9D2 /* Moya.framework in Embed Frameworks */,
+				5F647B432EA88EBC0038E9D2 /* ObjectMapper.framework in Embed Frameworks */,
+				5F647B412EA88EBC0038E9D2 /* RxSwift.framework in Embed Frameworks */,
+				5F647B3F2EA88EBC0038E9D2 /* RxAlamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +93,20 @@
 		33E6E27FDF4CD9CF6E6DCFB7 /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		3FC9D4A1DA63A591740761F7 /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
+		5F647B312EA88EBB0038E9D2 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = "Runner/SDK_iOS/eContract-eKYC/RxAlamofire.framework"; sourceTree = "<group>"; };
+		5F647B322EA88EBB0038E9D2 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Runner/SDK_iOS/eContract-eKYC/RxSwift.framework"; sourceTree = "<group>"; };
+		5F647B332EA88EBB0038E9D2 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "Runner/SDK_iOS/eContract-eKYC/ObjectMapper.framework"; sourceTree = "<group>"; };
+		5F647B342EA88EBC0038E9D2 /* JWTDecode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWTDecode.framework; path = "Runner/SDK_iOS/eContract-eKYC/JWTDecode.framework"; sourceTree = "<group>"; };
+		5F647B352EA88EBC0038E9D2 /* eContractSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = eContractSDK.framework; path = "Runner/SDK_iOS/eContract-eKYC/eContractSDK.framework"; sourceTree = "<group>"; };
+		5F647B362EA88EBC0038E9D2 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = "Runner/SDK_iOS/eContract-eKYC/NVActivityIndicatorView.framework"; sourceTree = "<group>"; };
+		5F647B372EA88EBC0038E9D2 /* eKYCLib.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = eKYCLib.xcframework; path = "Runner/SDK_iOS/eContract-eKYC/eKYCLib.xcframework"; sourceTree = "<group>"; };
+		5F647B382EA88EBC0038E9D2 /* SignaturePad.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SignaturePad.framework; path = "Runner/SDK_iOS/eContract-eKYC/SignaturePad.framework"; sourceTree = "<group>"; };
+		5F647B392EA88EBC0038E9D2 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = "Runner/SDK_iOS/eContract-eKYC/RxRelay.framework"; sourceTree = "<group>"; };
+		5F647B3A2EA88EBC0038E9D2 /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = "Runner/SDK_iOS/eContract-eKYC/Moya.framework"; sourceTree = "<group>"; };
+		5F647B3B2EA88EBC0038E9D2 /* ICSdkEKYC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ICSdkEKYC.xcframework; path = "Runner/SDK_iOS/eContract-eKYC/ICSdkEKYC.xcframework"; sourceTree = "<group>"; };
+		5F647B3C2EA88EBC0038E9D2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Runner/SDK_iOS/eContract-eKYC/Alamofire.framework"; sourceTree = "<group>"; };
+		5F647B3D2EA88EBC0038E9D2 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Runner/SDK_iOS/eContract-eKYC/RxCocoa.framework"; sourceTree = "<group>"; };
+		5F647B582EA88ED30038E9D2 /* SmartCASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SmartCASDK.framework; path = Runner/SDK_iOS/SmartCASDK.framework; sourceTree = "<group>"; };
 		6EE53760190A0A1CE6527409 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +139,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				83E21105F06D1310179470DE /* Pods_Runner.framework in Frameworks */,
+				5F647B482EA88EBC0038E9D2 /* NVActivityIndicatorView.framework in Frameworks */,
+				5F647B562EA88EBC0038E9D2 /* RxCocoa.framework in Frameworks */,
+				5F647B542EA88EBC0038E9D2 /* Alamofire.framework in Frameworks */,
+				5F647B522EA88EBC0038E9D2 /* ICSdkEKYC.xcframework in Frameworks */,
+				5F647B462EA88EBC0038E9D2 /* eContractSDK.framework in Frameworks */,
+				5F647B502EA88EBC0038E9D2 /* Moya.framework in Frameworks */,
+				5F647B4C2EA88EBC0038E9D2 /* SignaturePad.framework in Frameworks */,
+				5F647B4E2EA88EBC0038E9D2 /* RxRelay.framework in Frameworks */,
+				5F647B3E2EA88EBC0038E9D2 /* RxAlamofire.framework in Frameworks */,
+				5F647B442EA88EBC0038E9D2 /* JWTDecode.framework in Frameworks */,
+				5F647B4A2EA88EBC0038E9D2 /* eKYCLib.xcframework in Frameworks */,
+				5F647B422EA88EBC0038E9D2 /* ObjectMapper.framework in Frameworks */,
+				5F647B402EA88EBC0038E9D2 /* RxSwift.framework in Frameworks */,
+				5F647B592EA88ED30038E9D2 /* SmartCASDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +170,20 @@
 		44CA38124054BAE5A20C7962 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F647B582EA88ED30038E9D2 /* SmartCASDK.framework */,
+				5F647B3C2EA88EBC0038E9D2 /* Alamofire.framework */,
+				5F647B352EA88EBC0038E9D2 /* eContractSDK.framework */,
+				5F647B372EA88EBC0038E9D2 /* eKYCLib.xcframework */,
+				5F647B3B2EA88EBC0038E9D2 /* ICSdkEKYC.xcframework */,
+				5F647B342EA88EBC0038E9D2 /* JWTDecode.framework */,
+				5F647B3A2EA88EBC0038E9D2 /* Moya.framework */,
+				5F647B362EA88EBC0038E9D2 /* NVActivityIndicatorView.framework */,
+				5F647B332EA88EBB0038E9D2 /* ObjectMapper.framework */,
+				5F647B312EA88EBB0038E9D2 /* RxAlamofire.framework */,
+				5F647B3D2EA88EBC0038E9D2 /* RxCocoa.framework */,
+				5F647B392EA88EBC0038E9D2 /* RxRelay.framework */,
+				5F647B322EA88EBB0038E9D2 /* RxSwift.framework */,
+				5F647B382EA88EBC0038E9D2 /* SignaturePad.framework */,
 				E8FC719E1F776EFA56ADEE04 /* Pods_Runner.framework */,
 				33E6E27FDF4CD9CF6E6DCFB7 /* Pods_RunnerTests.framework */,
 			);
@@ -116,7 +200,6 @@
 				CF66E9EBCE0F9B9EBAA431CE /* Pods-RunnerTests.release.xcconfig */,
 				3FC9D4A1DA63A591740761F7 /* Pods-RunnerTests.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -495,12 +578,17 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = R3K72K7THX;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/SDK_iOS/eContract-eKYC",
+					"$(PROJECT_DIR)/Runner/SDK_iOS",
+				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pstb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onenet.tbps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -517,7 +605,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pstb.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onenet.tbps.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -535,7 +623,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pstb.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onenet.tbps.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
@@ -551,7 +639,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pstb.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onenet.tbps.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
@@ -678,12 +766,17 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = R3K72K7THX;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/SDK_iOS/eContract-eKYC",
+					"$(PROJECT_DIR)/Runner/SDK_iOS",
+				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pstb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onenet.tbps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -701,12 +794,17 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = R3K72K7THX;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/SDK_iOS/eContract-eKYC",
+					"$(PROJECT_DIR)/Runner/SDK_iOS",
+				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pstb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onenet.tbps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

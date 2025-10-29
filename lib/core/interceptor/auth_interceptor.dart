@@ -61,7 +61,7 @@ class TokenInterceptor extends InterceptorsWrapper {
         handler.reject(err);
       } else {
         final apiException = await err.toApiException();
-        err.error = apiException;
+
         handler.next(err);
       }
     } catch (e) {

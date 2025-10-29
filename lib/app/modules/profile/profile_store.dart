@@ -5,7 +5,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:in_app_review/in_app_review.dart';
+//import 'package:in_app_review/in_app_review.dart';
 import 'package:pstb/app/user_app_store.dart';
 import 'package:pstb/utils/gender_utils.dart';
 import 'package:pstb/utils/time_util.dart';
@@ -55,13 +55,13 @@ abstract class _ProfileStoreBase with Store {
 
   @action
   Future<void> rateApp() async {
-    final InAppReview inAppReview = InAppReview.instance;
-    final SharedPreferences prefs = await _prefs;
-
-    if (await inAppReview.isAvailable()) {
-      inAppReview.openStoreListing(appStoreId: "1622549993").whenComplete(
-          () => {prefs.setBool('rated', false), _appStore.rateApp = false});
-    }
+    // final InAppReview inAppReview = InAppReview.instance;
+    // final SharedPreferences prefs = await _prefs;
+    //
+    // if (await inAppReview.isAvailable()) {
+    //   inAppReview.openStoreListing(appStoreId: "1622549993").whenComplete(
+    //       () => {prefs.setBool('rated', false), _appStore.rateApp = false});
+    // }
   }
 
   @observable

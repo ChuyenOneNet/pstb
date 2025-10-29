@@ -55,7 +55,7 @@ abstract class _SelectDoctorStoreBase with Store {
   Future<void> onGetListDoctor(String packageDoctorsName) async {
     try {
       EasyLoading.show();
-      medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+      medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
       await _getDoctors(pageIndex, pageSize, medicalUnitId);
     } catch (e) {
       print(e);

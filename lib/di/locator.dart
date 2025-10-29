@@ -6,6 +6,7 @@ import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import '../app/modules/booking_v2/sqlite_dao/request_history_dao.dart';
+import '../core/repositories/booking_repository.dart';
 import '../core/repositories/dropdown_repository.dart';
 import '../core/repositories/request_repository.dart';
 import '../core/services/booking_service.dart';
@@ -13,6 +14,9 @@ import '../cubits/address_cubit.dart';
 import '../cubits/ethnic_cubit.dart';
 import '../cubits/job_cubit.dart';
 import '../cubits/nationality_cubit.dart';
+import '../feature/booking/datasources/local/history_local_ds.dart';
+import '../feature/booking/datasources/remote/catalog_service.dart';
+import '../feature/booking/datasources/remote/crm_booking_service.dart';
 import '../utils/http_services.dart';
 import '../utils/navigation_service.dart';
 import '../utils/shared_preferences_manager.dart';
@@ -63,4 +67,29 @@ Future<void> setupLocator() async {
       serviceLocator<RequestHistoryDao>(),
     ),
   );
+
+  final crmDio = await setupDio(
+      baseUrl: "https://crm.phusanthaibinh.vn", isHaveToken: false);
+  final catalogDio = await setupDio(
+      baseUrl: "https://crm.phusanthaibinh.vn", isHaveToken: false);
+
+  // Services
+  serviceLocator.registerLazySingleton<CrmBookingService>(
+      () => CrmBookingService(crmDio));
+  serviceLocator
+      .registerLazySingleton<CatalogService>(() => CatalogService(catalogDio));
+
+  // Local
+  serviceLocator.registerLazySingleton<HistoryLocalSqliteDs>(
+      () => HistoryLocalSqliteDs());
+
+  // Repository
+  serviceLocator
+      .registerLazySingleton<BookingRepository>(() => BookingRepositoryImpl(
+            bookingService: serviceLocator(),
+            catalogService: serviceLocator(),
+            historyLocal: serviceLocator(),
+            accessKey: 'TXEjpPNBINpFYD70', // <-- access key CRM
+            inputSource: 'APP MOBILE',
+          ));
 }

@@ -87,7 +87,7 @@ class BookingHistoryItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Chuẩn đoán: ',
+                'Chẩn đoán: ',
                 style: Styles.content.copyWith(
                   fontWeight: FontWeight.w600,
                   fontSize: 14,

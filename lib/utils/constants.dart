@@ -268,8 +268,10 @@ class Reges {
       caseSensitive: false, multiLine: false);
   static RegExp regIsPassword2 = RegExp(
       r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$'); // more than 8 characters, and has 1 lowercase, 1 uppercase, 1 number ,1 special character
-  static RegExp regIsPassword = RegExp(
-      r'^(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?& ]{8,}$'); // more than 8 characters, and has special character
+  // static RegExp regIsPassword = RegExp(
+  //     r'^(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?& ]{8,}$'); // more than 8 characters, and has special character
+  static final RegExp regIsPassword = RegExp(r'^(?=.*[^A-Za-z0-9\s])\S{8,}$');
+
   static RegExp regIsNumber =
       RegExp(r'^(\d+\.\d+)$|^(\d+)$'); // float number, and >0
   static RegExp name = RegExp(r'[^A-Za-z\s]+');

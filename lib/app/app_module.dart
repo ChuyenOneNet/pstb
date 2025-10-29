@@ -63,8 +63,6 @@ import 'package:pstb/app/modules/profile/pages/edit_profile_page/edit_profile_st
 import 'package:pstb/app/modules/profile/pages/setting/setting_store.dart';
 import 'package:pstb/app/modules/profile/pages/steps_foot/steps_foot_store.dart';
 import 'package:pstb/app/modules/profile/profile_module.dart';
-import 'package:pstb/app/modules/schedule/schedule_module.dart';
-import 'package:pstb/app/modules/schedule_detail/schedule_detail_module.dart';
 import 'package:pstb/app/modules/signup/signup_info.dart';
 import 'package:pstb/app/modules/signup/signup_module.dart';
 import 'package:pstb/app/modules/signup/signup_otp_v2.dart';
@@ -85,7 +83,6 @@ import 'package:pstb/utils/image_picker_helper.dart';
 import 'package:pstb/utils/routes.dart';
 import 'package:pstb/widgets/theme_data_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'models/perform_medicine/medicine_usage_model.dart';
 import 'modules/business/business_module.dart';
 import 'modules/business/business_page.dart';
 import 'modules/business/business_store.dart';
@@ -115,10 +112,6 @@ import 'modules/nurse_page/nurse_searching_store.dart';
 import 'modules/nurse_page/qr_scanner/qr_scanner_page.dart';
 import 'modules/nurse_page/therapy_information/detail_therapy/health_care_patient/health_care_page.dart';
 //import 'modules/nurse_page_new/electronic_signature/example_sign_page.dart';
-import 'modules/perform_medicine/medicine_usage/medicine_usage_page.dart';
-import 'modules/perform_medicine/perform_medicine_module.dart';
-import 'modules/perform_medicine/perform_medicine_order/perform_medicine_order.dart';
-import 'modules/perform_medicine/perform_medicine_page.dart';
 import 'modules/profile/pages/comming_soon/comming_soon_page.dart';
 
 class AppModule extends Module {
@@ -223,14 +216,14 @@ class AppModule extends Module {
     ChildRoute(AppRoutes.noti, child: (_, args) => NotificationModule()),
 
     /// TherapyPage
-    ChildRoute(
-      AppRoutes.takeCare,
-      child: (_, args) => const HealthCarePage(),
-    ),
-    ChildRoute(
-      AppRoutes.createHealthCare,
-      child: (_, args) => const CreateHealthCarePage(),
-    ),
+    // ChildRoute(
+    //   AppRoutes.takeCare,
+    //   child: (_, args) => const HealthCarePage(),
+    // ),
+    // ChildRoute(
+    //   AppRoutes.createHealthCare,
+    //   child: (_, args) => const CreateHealthCarePage(),
+    // ),
     ChildRoute(
       AppRoutes.therapyInformation,
       child: (_, args) => const TherapyInformationPage(),
@@ -283,7 +276,6 @@ class AppModule extends Module {
     ChildRoute(AppRoutes.inputPatient, child: (_, __) => const InputPatient()),
     ChildRoute(AppRoutes.inforPage, child: (_, __) => InformationNursePage()),
     //ChildRoute(AppRoutes.qrCode, child: (_, __) => const QRScannerPage()),
-    ChildRoute(AppRoutes.recordingPage, child: (_, __) => RecordingPage()),
     // ChildRoute(AppRoutes.nursePage,
     //     child: (_, args) => const NurseSearchingPage()),
     ChildRoute(
@@ -296,8 +288,8 @@ class AppModule extends Module {
       AppRoutes.command,
       child: (_, args) => const CommandPage(),
     ),
-    ChildRoute(AppRoutes.inputHeathycare,
-        child: (_, __) => const InputHealthyCare()),
+    // ChildRoute(AppRoutes.inputHeathycare,
+    //     child: (_, __) => const InputHealthyCare()),
 
     /// ForgotPage
     ModuleRoute(AppRoutes.forgot, module: ForgotModule()),
@@ -308,21 +300,12 @@ class AppModule extends Module {
 
     /// SignUp
     ModuleRoute(AppRoutes.signup, module: SignupModule()),
-    ChildRoute(AppRoutes.signupOTP, child: (_, __) => const SignupOtpV2()),
     ChildRoute(AppRoutes.signupInfo, child: (_, __) => const SignupInfo()),
     ChildRoute(AppRoutes.signupSuccess,
         child: (_, __) => const SignupSuccess()),
 
     /// SchedulePage
-    ModuleRoute(AppRoutes.calendar, module: ScheduleModule()),
-    ModuleRoute(AppRoutes.scheduleDetail, module: ScheduleDetailModule()),
 
-    /// ChangePassword
-    ModuleRoute(AppRoutes.changePassword, module: ChangePasswordModule()),
-    ChildRoute(
-      AppRoutes.changePasswordOtp,
-      child: (_, args) => const ChangePasswordOtpScreen(),
-    ),
     ChildRoute(
       AppRoutes.changePasswordSuccessPage,
       child: (_, args) => const ChangePasswordPageSuccess(),
@@ -399,12 +382,6 @@ class AppModule extends Module {
       module: SelectionHospitalModule(),
     ),
     ChildRoute(
-      AppRoutes.detailHospitalPage,
-      child: (_, args) => DetailHospitalPage(
-        hospitalModel: args.data['hospitalModel'],
-      ),
-    ),
-    ChildRoute(
       AppRoutes.searchHospitalPage,
       child: (_, args) => SearchHospitalPage(),
     ),
@@ -414,38 +391,6 @@ class AppModule extends Module {
     ),
 
     /// Doctor appointment
-    ModuleRoute(
-      AppRoutes.doctorAppointmentModule,
-      module: DoctorAppointmentModule(),
-    ),
-
-    ModuleRoute(
-      AppRoutes.perFormMedicineModule,
-      module: PerformMedicineModule(),
-    ),
-    ChildRoute(
-      AppRoutes.perFormMedicinePage,
-      child: (_, args) => PerformMedicinePage(),
-    ),
-    ChildRoute(
-      AppRoutes.perFormMedicineOrderPage,
-      child: (_, args) => PerformMedicineOrdersPage(
-        executionDate: args.data['executionDate'],
-        patientCode: args.data['patientCode'],
-        patientInfo: args.data['patientInfo'],
-      ),
-    ),
-    ChildRoute(
-      AppRoutes.performMedicineConfigPage,
-      child: (_, args) => PerformMedicineConfigPage(
-        executionDate: args.data['executionDate'] as String,
-        patientCode: args.data['patientCode'] as String,
-        patientInfo: args.data['patientInfo'] as String,
-        userName: args.data['userName'] as String,
-        initialData: (args.data['initialData'] as List<dynamic>)
-            .cast<MedicineUsageModel>(),
-      ),
-    ),
 
     ModuleRoute(
       AppRoutes.businessModule,

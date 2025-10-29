@@ -38,7 +38,7 @@ class GlobalErrorHandle {
         final apiException = error;
         return apiException.message ?? "";
       }
-      return (exception as DioError).message;
+      return (exception as DioError).message ?? "";
     }
     return exception.toString();
   }

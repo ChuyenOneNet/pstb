@@ -485,7 +485,7 @@ abstract class EHRStoreBase with Store {
           {'id': medicalIndicationId, 'code': code},
           const Duration(seconds: 20));
       if (response != null) {
-        int medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+        int medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
         urlPdf = response['url'];
         // fix đổi 2025 thành 3025 để xem cận lâm sàng
         if (!urlPdf.contains('http://') &&

@@ -52,6 +52,7 @@ class FireBaseRemoteConfigService {
       Constants.versionApp = remoteConfig.getString('version_app');
       print('version: ${Constants.versionApp.toString()}');
       final cfgModel = FireBaseConfigModel.fromJson(jsonDecode(jsonConfig));
+      print('baseUrl: ${cfgModel.baseUrl}');
       final idUnit = cfgModel.idUnit ?? 0;
       await SessionPrefs.setMedicalUnitId(idUnit);
       await prefs.setString(

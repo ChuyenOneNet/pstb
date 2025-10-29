@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:map_launcher/map_launcher.dart';
+//import 'package:map_launcher/map_launcher.dart';
 import 'package:pstb/widgets/stateless/app_snack_bar.dart';
 import '../../app/modules/home/home_store.dart';
 import '../../utils/colors.dart';

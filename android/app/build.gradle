@@ -15,9 +15,17 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace = "com.example.pstb"
+    namespace = "com.onenet.tbps"
     compileSdk = 35
-    ndkVersion = flutter.ndkVersion
+    ndkVersion "28.0.12433566"
+            //flutter.ndkVersion
+
+    packagingOptions {
+        pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/x86_64/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -31,7 +39,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.pstb"
+        applicationId = "com.onenet.tbps"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = 24
@@ -39,6 +47,14 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         multiDexEnabled true
+
+        proguardFiles getDefaultProguardFile(
+                'proguard-android-optimize.txt'),
+                'proguard-rules.pro'
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+//            debugSymbolLevel 'FULL'
+        }
     }
     signingConfigs {
         release {
@@ -56,54 +72,100 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true       // loại bỏ code không dùng
-            shrinkResources true
+//            minifyEnabled true       // loại bỏ code không dùng
+//            shrinkResources true
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             //signingConfig signingConfigs.debug
+            ndk {
+//                abiFilters 'armeabi-v7a', 'arm64-v8a','x86_64'
+                abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            }
         }
         debug {
             signingConfig signingConfigs.debug
         }
+    }
+
+    aaptOptions {
+        noCompress "bic"
     }
 }
 
 flutter {
     source = "../.."
 }
-dependencies {
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
-    //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.google.firebase:firebase-messaging:23.0.4'
-//    implementation 'com.facebook.android:facebook-login:latest.release'
 
-    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
-    implementation 'com.madgag.spongycastle:core:1.58.0.0'
-    implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
-    implementation 'androidx.test.uiautomator:uiautomator:2.2.0'
-    implementation 'log4j:log4j:1.2.17'
-    implementation 'de.mindpipe.android:android-logging-log4j:1.0.3'
-    implementation "com.google.android.gms:play-services-auth:17.0.0"
-    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:17.0.0'
-    implementation 'com.google.android.gms:play-services-auth:20.0.1'
+dependencies {
+    // JDK desugaring
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
+
+    // Local JARs (tránh quét AAR 2 lần)
+    implementation fileTree(dir: 'libs', include: ['*.jar'], exclude: [])
+
+    // --- SmartCA AARs ---
+    implementation files('libs/ekyc_sdk-release-v3.2.7.aar')
+    implementation files('libs/vnpt_smartca_sdk_lib-release-v1.0.aar')
+    implementation files('libs/eContract-v3.6.12.aar')
+
+    // --- Google / Firebase ---
+    implementation 'com.google.firebase:firebase-messaging:23.0.4'
+    implementation 'com.google.android.gms:play-services-auth:20.0.1'           // giữ 1 bản, bỏ 17.0.0
     implementation 'com.google.android.gms:play-services-auth-api-phone:18.0.1'
     implementation 'com.google.android.gms:play-services-base:18.0.1'
     implementation 'com.google.android.gms:play-services-identity:18.0.1'
-    implementation 'org.jboss.aerogear:aerogear-android-core:2.1.0'
+    // ML Kit qua Play Services (legacy – nếu còn dùng)
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:17.0.0'
+
+    implementation platform('com.google.firebase:firebase-bom:33.5.1')
+    implementation 'com.google.firebase:firebase-messaging'
+
+    // --- Crypto / Security ---
+    implementation 'com.madgag.spongycastle:core:1.58.0.0'
+    implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
+    implementation 'androidx.security:security-crypto:1.0.0-rc02'
     implementation 'com.nimbusds:nimbus-jose-jwt:9.25.6'
+
+    // --- Networking & JSON ---
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.10.1' // đồng bộ 1 phiên bản
+
+    // --- UI base ---
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    implementation 'androidx.security:security-crypto:1.0.0-rc02'
+
+    // --- Scanner ---
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.0'
+
+    // --- AeroGear (giữ 4.0.0, bỏ 2.1.0) ---
+    api 'org.jboss.aerogear:aerogear-android-core:4.0.0'
     api('org.jboss.aerogear:aerogear-android-pipe:4.0.0') {
         exclude group: 'com.android.support', module: "support-v4"
     }
-    androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testImplementation 'junit:junit:4.12'
-    api 'org.jboss.aerogear:aerogear-android-core:4.0.0'
-    api 'com.google.code.gson:gson:2.8.1'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    //implementation 'com.budiyev.android:code-scanner:2.1.0'
-    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.0'
-    implementation 'androidx.security:security-crypto:1.0.0-rc02'
-    implementation 'androidx.multidex:multidex:2.0.1'
+
+    // --- Logging (giữ nguyên – cân nhắc bỏ do CVE nếu không bắt buộc) ---
+    implementation 'log4j:log4j:1.2.17'
+    implementation 'de.mindpipe.android:android-logging-log4j:1.0.3'
+
+    // --- Test (AndroidX) ---
+//    testImplementation 'junit:junit:4.13.2'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+//    androidTestImplementation 'androidx.test.uiautomator:2.2.0'
+//    androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
+    implementation("com.karumi:dexter:6.2.3")
+    implementation("androidx.test.espresso:espresso-idling-resource:3.5.1")
+
+    implementation 'com.auth0.android:jwtdecode:2.0.2'
+    implementation 'com.github.gcacace:signature-pad:1.3.1'
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
 }

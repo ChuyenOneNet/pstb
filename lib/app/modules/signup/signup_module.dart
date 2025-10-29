@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pstb/app/modules/signup/signup_all_in_one.dart';
 import 'package:pstb/app/modules/signup/signup_info.dart';
 import 'package:pstb/app/modules/signup/signup_otp.dart';
 import 'package:pstb/app/modules/signup/signup_store.dart';
@@ -14,7 +15,8 @@ class SignupModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute, child: (_, args) => const SignupForm()),
+    ChildRoute(Modular.initialRoute,
+        child: (_, args) => const SignupAllInOne()),
     ChildRoute(AppRoutes.signupOTP, child: (_, args) => const SignupOtp()),
     ChildRoute(AppRoutes.signupInfo, child: (_, args) => const SignupInfo()),
     ChildRoute(AppRoutes.signupSuccess,

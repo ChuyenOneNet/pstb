@@ -27,5 +27,5 @@ Future initApi() async {
   } catch (e) {
     ApiUrl.baseUrl = defaultUrl;
   }
-  ApiUrl.baseUrl = defaultUrl;
+  //ApiUrl.baseUrl = defaultUrl;
 }

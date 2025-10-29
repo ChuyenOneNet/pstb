@@ -29,27 +29,6 @@ mixin _$SignupStore on SignupStoreBase, Store {
       (_$hadBirthdayComputed ??= Computed<bool>(() => super.hadBirthday,
               name: 'SignupStoreBase.hadBirthday'))
           .value;
-  Computed<String?>? _$validateFullNameComputed;
-
-  @override
-  String? get validateFullName => (_$validateFullNameComputed ??=
-          Computed<String?>(() => super.validateFullName,
-              name: 'SignupStoreBase.validateFullName'))
-      .value;
-  Computed<String?>? _$validateBirthdayComputed;
-
-  @override
-  String? get validateBirthday => (_$validateBirthdayComputed ??=
-          Computed<String?>(() => super.validateBirthday,
-              name: 'SignupStoreBase.validateBirthday'))
-      .value;
-  Computed<String?>? _$validateEmailComputed;
-
-  @override
-  String? get validateEmail =>
-      (_$validateEmailComputed ??= Computed<String?>(() => super.validateEmail,
-              name: 'SignupStoreBase.validateEmail'))
-          .value;
   Computed<String>? _$getGenderComputed;
 
   @override
@@ -78,70 +57,34 @@ mixin _$SignupStore on SignupStoreBase, Store {
           Computed<String?>(() => super.validateConfirmPass,
               name: 'SignupStoreBase.validateConfirmPass'))
       .value;
-
-  late final _$fullNameAtom =
-      Atom(name: 'SignupStoreBase.fullName', context: context);
+  Computed<String?>? _$validateFullNameComputed;
 
   @override
-  String get fullName {
-    _$fullNameAtom.reportRead();
-    return super.fullName;
-  }
+  String? get validateFullName => (_$validateFullNameComputed ??=
+          Computed<String?>(() => super.validateFullName,
+              name: 'SignupStoreBase.validateFullName'))
+      .value;
+  Computed<String?>? _$validateBirthdayComputed;
 
   @override
-  set fullName(String value) {
-    _$fullNameAtom.reportWrite(value, super.fullName, () {
-      super.fullName = value;
-    });
-  }
-
-  late final _$birthdayAtom =
-      Atom(name: 'SignupStoreBase.birthday', context: context);
+  String? get validateBirthday => (_$validateBirthdayComputed ??=
+          Computed<String?>(() => super.validateBirthday,
+              name: 'SignupStoreBase.validateBirthday'))
+      .value;
+  Computed<String?>? _$validateEmailComputed;
 
   @override
-  String get birthday {
-    _$birthdayAtom.reportRead();
-    return super.birthday;
-  }
+  String? get validateEmail =>
+      (_$validateEmailComputed ??= Computed<String?>(() => super.validateEmail,
+              name: 'SignupStoreBase.validateEmail'))
+          .value;
+  Computed<String?>? _$validatePersonalIdComputed;
 
   @override
-  set birthday(String value) {
-    _$birthdayAtom.reportWrite(value, super.birthday, () {
-      super.birthday = value;
-    });
-  }
-
-  late final _$emailAtom =
-      Atom(name: 'SignupStoreBase.email', context: context);
-
-  @override
-  String get email {
-    _$emailAtom.reportRead();
-    return super.email;
-  }
-
-  @override
-  set email(String value) {
-    _$emailAtom.reportWrite(value, super.email, () {
-      super.email = value;
-    });
-  }
-
-  late final _$genderAtom =
-      Atom(name: 'SignupStoreBase.gender', context: context);
-
-  @override
-  Gender get gender {
-    _$genderAtom.reportRead();
-    return super.gender;
-  }
-
-  @override
-  set gender(Gender value) {
-    _$genderAtom.reportWrite(value, super.gender, () {
-      super.gender = value;
-    });
-  }
+  String? get validatePersonalId => (_$validatePersonalIdComputed ??=
+          Computed<String?>(() => super.validatePersonalId,
+              name: 'SignupStoreBase.validatePersonalId'))
+      .value;
 
   late final _$phoneNumberAtom =
       Atom(name: 'SignupStoreBase.phoneNumber', context: context);
@@ -207,6 +150,95 @@ mixin _$SignupStore on SignupStoreBase, Store {
     });
   }
 
+  late final _$fullNameAtom =
+      Atom(name: 'SignupStoreBase.fullName', context: context);
+
+  @override
+  String get fullName {
+    _$fullNameAtom.reportRead();
+    return super.fullName;
+  }
+
+  @override
+  set fullName(String value) {
+    _$fullNameAtom.reportWrite(value, super.fullName, () {
+      super.fullName = value;
+    });
+  }
+
+  late final _$birthdayAtom =
+      Atom(name: 'SignupStoreBase.birthday', context: context);
+
+  @override
+  String get birthday {
+    _$birthdayAtom.reportRead();
+    return super.birthday;
+  }
+
+  @override
+  set birthday(String value) {
+    _$birthdayAtom.reportWrite(value, super.birthday, () {
+      super.birthday = value;
+    });
+  }
+
+  late final _$emailAtom =
+      Atom(name: 'SignupStoreBase.email', context: context);
+
+  @override
+  String get email {
+    _$emailAtom.reportRead();
+    return super.email;
+  }
+
+  @override
+  set email(String value) {
+    _$emailAtom.reportWrite(value, super.email, () {
+      super.email = value;
+    });
+  }
+
+  late final _$genderAtom =
+      Atom(name: 'SignupStoreBase.gender', context: context);
+
+  @override
+  Gender get gender {
+    _$genderAtom.reportRead();
+    return super.gender;
+  }
+
+  @override
+  set gender(Gender value) {
+    _$genderAtom.reportWrite(value, super.gender, () {
+      super.gender = value;
+    });
+  }
+
+  late final _$personalIdAtom =
+      Atom(name: 'SignupStoreBase.personalId', context: context);
+
+  @override
+  String get personalId {
+    _$personalIdAtom.reportRead();
+    return super.personalId;
+  }
+
+  @override
+  set personalId(String value) {
+    _$personalIdAtom.reportWrite(value, super.personalId, () {
+      super.personalId = value;
+    });
+  }
+
+  late final _$registerAndUpdateAllAsyncAction =
+      AsyncAction('SignupStoreBase.registerAndUpdateAll', context: context);
+
+  @override
+  Future<void> registerAndUpdateAll() {
+    return _$registerAndUpdateAllAsyncAction
+        .run(() => super.registerAndUpdateAll());
+  }
+
   late final _$onCheckUniqueAsyncAction =
       AsyncAction('SignupStoreBase.onCheckUnique', context: context);
 
@@ -259,6 +291,50 @@ mixin _$SignupStore on SignupStoreBase, Store {
       ActionController(name: 'SignupStoreBase', context: context);
 
   @override
+  void changeBuildContext(BuildContext newContext) {
+    final _$actionInfo = _$SignupStoreBaseActionController.startAction(
+        name: 'SignupStoreBase.changeBuildContext');
+    try {
+      return super.changeBuildContext(newContext);
+    } finally {
+      _$SignupStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changePhoneNumber(dynamic data) {
+    final _$actionInfo = _$SignupStoreBaseActionController.startAction(
+        name: 'SignupStoreBase.changePhoneNumber');
+    try {
+      return super.changePhoneNumber(data);
+    } finally {
+      _$SignupStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changePassword(dynamic data) {
+    final _$actionInfo = _$SignupStoreBaseActionController.startAction(
+        name: 'SignupStoreBase.changePassword');
+    try {
+      return super.changePassword(data);
+    } finally {
+      _$SignupStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeConfirmPass(dynamic data) {
+    final _$actionInfo = _$SignupStoreBaseActionController.startAction(
+        name: 'SignupStoreBase.changeConfirmPass');
+    try {
+      return super.changeConfirmPass(data);
+    } finally {
+      _$SignupStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void onChangeFullName(String text) {
     final _$actionInfo = _$SignupStoreBaseActionController.startAction(
         name: 'SignupStoreBase.onChangeFullName');
@@ -292,6 +368,17 @@ mixin _$SignupStore on SignupStoreBase, Store {
   }
 
   @override
+  void onChangePersonalId(String text) {
+    final _$actionInfo = _$SignupStoreBaseActionController.startAction(
+        name: 'SignupStoreBase.onChangePersonalId');
+    try {
+      return super.onChangePersonalId(text);
+    } finally {
+      _$SignupStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void onSelectGenderFemale() {
     final _$actionInfo = _$SignupStoreBaseActionController.startAction(
         name: 'SignupStoreBase.onSelectGenderFemale');
@@ -314,17 +401,6 @@ mixin _$SignupStore on SignupStoreBase, Store {
   }
 
   @override
-  void changePhoneNumber(dynamic data) {
-    final _$actionInfo = _$SignupStoreBaseActionController.startAction(
-        name: 'SignupStoreBase.changePhoneNumber');
-    try {
-      return super.changePhoneNumber(data);
-    } finally {
-      _$SignupStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void _changePhoneValidResponse(String? msg) {
     final _$actionInfo = _$SignupStoreBaseActionController.startAction(
         name: 'SignupStoreBase._changePhoneValidResponse');
@@ -336,59 +412,28 @@ mixin _$SignupStore on SignupStoreBase, Store {
   }
 
   @override
-  void changePassword(dynamic data) {
-    final _$actionInfo = _$SignupStoreBaseActionController.startAction(
-        name: 'SignupStoreBase.changePassword');
-    try {
-      return super.changePassword(data);
-    } finally {
-      _$SignupStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeConfirmPass(dynamic data) {
-    final _$actionInfo = _$SignupStoreBaseActionController.startAction(
-        name: 'SignupStoreBase.changeConfirmPass');
-    try {
-      return super.changeConfirmPass(data);
-    } finally {
-      _$SignupStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeBuildContext(BuildContext newContext) {
-    final _$actionInfo = _$SignupStoreBaseActionController.startAction(
-        name: 'SignupStoreBase.changeBuildContext');
-    try {
-      return super.changeBuildContext(newContext);
-    } finally {
-      _$SignupStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
-fullName: ${fullName},
-birthday: ${birthday},
-email: ${email},
-gender: ${gender},
 phoneNumber: ${phoneNumber},
 password: ${password},
 confirmPass: ${confirmPass},
 phoneValidResponse: ${phoneValidResponse},
+fullName: ${fullName},
+birthday: ${birthday},
+email: ${email},
+gender: ${gender},
+personalId: ${personalId},
 isFemale: ${isFemale},
 isMale: ${isMale},
 hadBirthday: ${hadBirthday},
-validateFullName: ${validateFullName},
-validateBirthday: ${validateBirthday},
-validateEmail: ${validateEmail},
 getGender: ${getGender},
 validatePhoneNumber: ${validatePhoneNumber},
 validatePassword: ${validatePassword},
-validateConfirmPass: ${validateConfirmPass}
+validateConfirmPass: ${validateConfirmPass},
+validateFullName: ${validateFullName},
+validateBirthday: ${validateBirthday},
+validateEmail: ${validateEmail},
+validatePersonalId: ${validatePersonalId}
     ''';
   }
 }

@@ -67,7 +67,7 @@
 //   static Future<Map<String, String>> getHeaderWithMedicalUnitId() async {
 //     var clonedHeader = Map<String, String>.from(headers);
 //     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-//     clonedHeader.addAll({"medical_unit_id": medicalUnitId?.toString() ?? "0"});
+//     clonedHeader.addAll({"medical_unit_id": medicalUnitId?.toString() ?? "9"});
 //     return clonedHeader;
 //   }
 //
@@ -87,7 +87,7 @@
 //     var orgHeader = headersParam ?? headers;
 //     var clonedHeader = Map<String, String>.from(orgHeader);
 //     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-//     clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//     clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //     print(uri);
 //     print(clonedHeader);
 //     print(queryParams);
@@ -117,7 +117,7 @@
 //     var orgHeader = headersParam ?? headers;
 //     var clonedHeader = Map<String, String>.from(orgHeader);
 //     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-//     //clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//     //clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //     try {
 //       debugPrint('$clonedHeader');
 //       final response = await http.get(uri, headers: clonedHeader).timeout(
@@ -145,7 +145,7 @@
 //       var clonedHeader = Map<String, String>.from(orgHeader);
 //       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
 //       clonedHeader
-//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //       print('medicalUnitId ${medicalUnitId?.toString()}');
 //       print(uri);
 //       final response =
@@ -170,7 +170,7 @@
 //     var orgHeader = headersParam ?? headers;
 //     var clonedHeader = Map<String, String>.from(orgHeader);
 //     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-//     clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//     clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //     try {
 //       debugPrint('$clonedHeader');
 //       final response = await http.get(uri, headers: clonedHeader).timeout(
@@ -199,7 +199,7 @@
 //       var clonedHeader = Map<String, String>.from(orgHeader);
 //       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
 //       clonedHeader
-//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //       print(uri);
 //       print(clonedHeader);
 //       print(body);
@@ -227,7 +227,7 @@
 //       var clonedHeader = Map<String, String>.from(orgHeader);
 //       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
 //       clonedHeader
-//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //       print('medicalUnitId ${medicalUnitId?.toString()}');
 //       String? requestBody;
 //       if (body != null) {
@@ -265,7 +265,7 @@
 //     var clonedHeader = Map<String, String>.from(orgHeader);
 //     clonedHeader.addAll({"Authorization": "$type $token"});
 //     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-//     clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//     clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //
 //     try {
 //       final response =
@@ -290,7 +290,7 @@
 //       var clonedHeader = Map<String, String>.from(orgHeader);
 //       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
 //       clonedHeader
-//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //
 //       final httpResponse = await http
 //           .put(uri, headers: head ?? clonedHeader, body: body)
@@ -311,7 +311,7 @@
 //     var orgHeader = headers;
 //     var clonedHeader = Map<String, String>.from(orgHeader);
 //     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-//     clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//     clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //     try {
 //       final httpResponse =
 //           await http.patch(uri, headers: clonedHeader, body: body).timeout(
@@ -436,7 +436,7 @@
 //     var orgHeader = headers;
 //     var clonedHeader = Map<String, String>.from(orgHeader);
 //     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-//     clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//     clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //     try {
 //       debugPrint('$uri');
 //       final response = await http.delete(uri, headers: clonedHeader).timeout(
@@ -538,7 +538,7 @@
 //     var responseJson;
 //     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
 //     _dio.options.headers
-//         .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//         .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //     try {
 //       Dio.FormData formData = Dio.FormData.fromMap({
 //         'file': await Dio.MultipartFile.fromFile(photoFile!.path,
@@ -585,7 +585,7 @@
 //       });
 //       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
 //       _dio.options.headers
-//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //       print(resource);
 //       print('${formData.length}');
 //       print('$queryParams');
@@ -638,7 +638,7 @@
 //       });
 //       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
 //       _dio.options.headers
-//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //       print(resource);
 //       print('${formData.length}');
 //       print('$queryParams');
@@ -689,7 +689,7 @@
 //       });
 //       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
 //       _dio.options.headers
-//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+//           .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 //       Dio.Response response = await _dio.patch(
 //         resource,
 //         queryParameters: queryParams,
@@ -843,8 +843,8 @@ class ApiBaseHelper {
     _log('🏥 Getting header with medical unit ID');
     var clonedHeader = Map<String, String>.from(headers);
     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-    clonedHeader.addAll({"medical_unit_id": medicalUnitId?.toString() ?? "0"});
-    _log('🏥 MedicalUnitId added: ${medicalUnitId?.toString() ?? "0"}');
+    clonedHeader.addAll({"medical_unit_id": medicalUnitId?.toString() ?? "9"});
+    _log('🏥 MedicalUnitId added: ${medicalUnitId?.toString() ?? "9"}');
     return clonedHeader;
   }
 
@@ -871,8 +871,8 @@ class ApiBaseHelper {
     var orgHeader = headersParam ?? headers;
     var clonedHeader = Map<String, String>.from(orgHeader);
     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-    clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
-    _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "0"}');
+    clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
+    _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "9"}');
 
     print(uri);
     print(clonedHeader);
@@ -922,9 +922,9 @@ class ApiBaseHelper {
     var orgHeader = headersParam ?? headers;
     var clonedHeader = Map<String, String>.from(orgHeader);
     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-    //clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+    //clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
     _log(
-        '🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "0"} (not added to header)');
+        '🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "9"} (not added to header)');
 
     try {
       _log('📝 GET_BASE Headers: ${clonedHeader}');
@@ -971,7 +971,7 @@ class ApiBaseHelper {
       var clonedHeader = Map<String, String>.from(orgHeader);
       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
       clonedHeader
-          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
       _log('🏥 MedicalUnitId: ${medicalUnitId?.toString()}');
       _log('📝 POST_BASE Headers: ${clonedHeader}');
       _log('📦 POST_BASE Body: $body');
@@ -1017,8 +1017,8 @@ class ApiBaseHelper {
     var orgHeader = headersParam ?? headers;
     var clonedHeader = Map<String, String>.from(orgHeader);
     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-    clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
-    _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "0"}');
+    clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
+    _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "9"}');
 
     try {
       _log('📝 GET_DOCS Headers: ${clonedHeader}');
@@ -1067,7 +1067,7 @@ class ApiBaseHelper {
       var clonedHeader = Map<String, String>.from(orgHeader);
       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
       clonedHeader
-          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
       _log('🏥 MedicalUnitId: ${medicalUnitId?.toString()}');
       _log('📝 POST Headers: ${clonedHeader}');
       _log('📦 POST Body: $body');
@@ -1116,7 +1116,7 @@ class ApiBaseHelper {
       var clonedHeader = Map<String, String>.from(orgHeader);
       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
       clonedHeader
-          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
       _log('🏥 MedicalUnitId: ${medicalUnitId?.toString()}');
       _log('📝 POST_DOCS Headers: ${clonedHeader}');
 
@@ -1187,10 +1187,10 @@ class ApiBaseHelper {
     var clonedHeader = Map<String, String>.from(orgHeader);
     clonedHeader.addAll({"Authorization": "$type $token"});
     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-    clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+    clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
 
     _log('🔐 Custom Authorization: $type ${token?.substring(0, 20)}...');
-    _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "0"}');
+    _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "9"}');
     _log('📝 POST_AUTH Headers: ${clonedHeader}');
     _log('📦 POST_AUTH Body: $body');
 
@@ -1235,8 +1235,8 @@ class ApiBaseHelper {
       var clonedHeader = Map<String, String>.from(orgHeader);
       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
       clonedHeader
-          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
-      _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "0"}');
+          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
+      _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "9"}');
       _log('📝 PUT Headers: ${head ?? clonedHeader}');
 
       final stopwatch = Stopwatch()..start();
@@ -1274,8 +1274,8 @@ class ApiBaseHelper {
     var orgHeader = headers;
     var clonedHeader = Map<String, String>.from(orgHeader);
     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-    clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
-    _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "0"}');
+    clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
+    _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "9"}');
     _log('📝 PATCH Headers: ${clonedHeader}');
     _log('📦 PATCH Body: $body');
 
@@ -1476,8 +1476,8 @@ class ApiBaseHelper {
     var orgHeader = headers;
     var clonedHeader = Map<String, String>.from(orgHeader);
     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-    clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
-    _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "0"}');
+    clonedHeader.addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
+    _log('🏥 MedicalUnitId: ${medicalUnitId?.toString() ?? "9"}');
     _log('📝 DELETE Headers: ${clonedHeader}');
 
     try {
@@ -1608,8 +1608,8 @@ class ApiBaseHelper {
   static final Dio.Dio _dio = Dio.Dio(
     Dio.BaseOptions(
       baseUrl: ApiUrl.baseUrl,
-      connectTimeout: 100000,
-      receiveTimeout: 10000,
+      connectTimeout: Duration(milliseconds: 100000),
+      receiveTimeout: Duration(milliseconds: 10000),
       headers: {
         ...headers,
         "Content-Type": "multipart/form-data",
@@ -1653,8 +1653,8 @@ class ApiBaseHelper {
     var responseJson;
     var medicalUnitId = await SessionPrefs.getMedicalUnitId();
     _dio.options.headers
-        .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
-    _log('🏥 Upload MedicalUnitId: ${medicalUnitId?.toString() ?? "0"}');
+        .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
+    _log('🏥 Upload MedicalUnitId: ${medicalUnitId?.toString() ?? "9"}');
 
     try {
       _log('📦 Creating FormData for upload');
@@ -1742,8 +1742,8 @@ class ApiBaseHelper {
 
       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
       _dio.options.headers
-          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
-      _log('🏥 Avatar MedicalUnitId: ${medicalUnitId?.toString() ?? "0"}');
+          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
+      _log('🏥 Avatar MedicalUnitId: ${medicalUnitId?.toString() ?? "9"}');
 
       print(resource);
       print('${formData.length}');
@@ -1840,9 +1840,9 @@ class ApiBaseHelper {
 
       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
       _dio.options.headers
-          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
+          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
       _log(
-          '🏥 Document image MedicalUnitId: ${medicalUnitId?.toString() ?? "0"}');
+          '🏥 Document image MedicalUnitId: ${medicalUnitId?.toString() ?? "9"}');
 
       print(resource);
       print('${formData.length}');
@@ -1929,8 +1929,8 @@ class ApiBaseHelper {
 
       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
       _dio.options.headers
-          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "0"});
-      _log('🏥 Document MedicalUnitId: ${medicalUnitId?.toString() ?? "0"}');
+          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
+      _log('🏥 Document MedicalUnitId: ${medicalUnitId?.toString() ?? "9"}');
 
       final stopwatch = Stopwatch()..start();
       Dio.Response response = await _dio.patch(

@@ -7,7 +7,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+//import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get_it/get_it.dart';
 import 'package:local_auth/local_auth.dart';
@@ -30,7 +30,7 @@ import 'package:pstb/utils/shared_preferences_manager.dart';
 import 'package:pstb/widgets/stateless/app_snack_bar.dart';
 import 'package:pstb/widgets/stateless/stateless_widget.dart';
 import 'package:mobx/mobx.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+//import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../../../constant/config.dart';
 import '../../../utils/utils.dart';
 import '../../models/login_model.dart';
@@ -174,13 +174,13 @@ abstract class LoginStoreBase with Store {
 
   @action
   Future<void> loginFacebook() async {
-    final result = await FacebookAuth.instance.login();
-    final token = result.accessToken?.token;
-    if (token != null) {
-      // final facebookAuthCredential = FacebookAuthProvider.credential(token);
-      // await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-      //final user = await FacebookAuth.instance.getUserData();
-    }
+    // final result = await FacebookAuth.instance.login();
+    // final token = result.accessToken?.token;
+    // if (token != null) {
+    //   // final facebookAuthCredential = FacebookAuthProvider.credential(token);
+    //   // await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    //   //final user = await FacebookAuth.instance.getUserData();
+    // }
     // Once signed in, return the UserCredential
   }
 
@@ -255,6 +255,42 @@ abstract class LoginStoreBase with Store {
     // }
   }
 
+  // @action
+  // Future<void> onLogin() async {
+  //   EasyLoading.show();
+  //   try {
+  //     final response = await _apiBaseHelper.post(
+  //       ApiUrl.token,
+  //       LoginModel(
+  //               username:
+  //                   phoneNumberCache.isEmpty ? phoneNumber : phoneNumberCache,
+  //               password: password,
+  //               fireBaseToken: _appStore.fireBaseToken)
+  //           .toRawJson(),
+  //     );
+  //     final authenticationResult = AuthenticationResult.fromJson(response);
+  //     await _logInSuccess(authenticationResult);
+  //     EasyLoading.dismiss();
+  //     Modular.get<CommunityPageStore>().isLogin = true;
+  //     _homeStore.isLogin = true;
+  //     GetIt.instance<SharedPreferencesManager>()
+  //         .putString(AppConfig.SL_USERNAME, phoneNumber);
+  //     SessionPrefs.setPhoneNumber(
+  //         value: phoneNumberCache.isEmpty ? phoneNumber : phoneNumberCache);
+  //     FlutterSecure().writeKeyStorage(
+  //         key: phoneNumberCache.isEmpty ? phoneNumber : phoneNumberCache,
+  //         value: password);
+  //     _bottomNav.currentIndex = 4;
+  //     Modular.to.popAndPushNamed(AppRoutes.main);
+  //   } on AppException catch (e) {
+  //     EasyLoading.dismiss().then((value) => AppSnackBar.show(mContext,
+  //         AppSnackBarType.Error, e));
+  //   } catch (e) {
+  //     EasyLoading.dismiss().then((value) =>
+  //         AppSnackBar.show(mContext, AppSnackBarType.Error, e.toString()));
+  //   }
+  // }
+
   @action
   Future<void> onLogin() async {
     EasyLoading.show();
@@ -262,32 +298,71 @@ abstract class LoginStoreBase with Store {
       final response = await _apiBaseHelper.post(
         ApiUrl.token,
         LoginModel(
-                username:
-                    phoneNumberCache.isEmpty ? phoneNumber : phoneNumberCache,
-                password: password,
-                fireBaseToken: _appStore.fireBaseToken)
-            .toRawJson(),
+          username: phoneNumberCache.isEmpty ? phoneNumber : phoneNumberCache,
+          password: password,
+          fireBaseToken: _appStore.fireBaseToken,
+        ).toRawJson(),
       );
+
+      // --- Xử lý khi server trả status=false ---
+      if (response is Map && response['status'] == false) {
+        final List errs = (response['errors'] as List?) ?? const [];
+        final dynamic first = errs.isNotEmpty ? errs.first : null;
+        final String code = first?['code']?.toString() ?? '';
+        final String msg = (first?['message'] ?? '').toString();
+
+        final bool wrongCreds =
+            code == '500' || msg.toLowerCase().contains('Có lỗi xảy ra');
+
+        EasyLoading.dismiss();
+        AppSnackBar.show(
+          mContext,
+          AppSnackBarType.Error,
+          wrongCreds
+              ? 'Tài khoản hoặc mật khẩu không chính xác'
+              : 'Có lỗi xảy ra',
+        );
+        return;
+      }
+
+      // --- Thành công ---
       final authenticationResult = AuthenticationResult.fromJson(response);
       await _logInSuccess(authenticationResult);
-      EasyLoading.dismiss();
+
       Modular.get<CommunityPageStore>().isLogin = true;
       _homeStore.isLogin = true;
+
       GetIt.instance<SharedPreferencesManager>()
           .putString(AppConfig.SL_USERNAME, phoneNumber);
+      GetIt.instance<SharedPreferencesManager>()
+          .putString(AppConfig.SL_PASSWORD, password);
       SessionPrefs.setPhoneNumber(
-          value: phoneNumberCache.isEmpty ? phoneNumber : phoneNumberCache);
-      FlutterSecure().writeKeyStorage(
-          key: phoneNumberCache.isEmpty ? phoneNumber : phoneNumberCache,
-          value: password);
+        value: phoneNumberCache.isEmpty ? phoneNumber : phoneNumberCache,
+      );
+
+      await FlutterSecure().writeKeyStorage(
+        key: phoneNumberCache.isEmpty ? phoneNumber : phoneNumberCache,
+        value: password,
+      );
+
+      EasyLoading.dismiss();
       _bottomNav.currentIndex = 4;
       Modular.to.popAndPushNamed(AppRoutes.main);
     } on AppException catch (e) {
-      EasyLoading.dismiss().then((value) =>
-          AppSnackBar.show(mContext, AppSnackBarType.Error, e.getMessage()));
+      final code = e.apiError?.code?.toString() ?? '';
+      final msg = e.apiError?.message?.toString() ?? '';
+      final wrongCreds =
+          code == '500' || msg.toLowerCase().contains('có lỗi xảy ra');
+      AppSnackBar.show(
+          mContext,
+          AppSnackBarType.Error,
+          wrongCreds
+              ? 'Tài khoản hoặc mật khẩu không chính xác'
+              : (msg.isNotEmpty ? msg : 'Có lỗi xảy ra'));
+      EasyLoading.dismiss();
     } catch (e) {
-      EasyLoading.dismiss().then((value) =>
-          AppSnackBar.show(mContext, AppSnackBarType.Error, e.toString()));
+      EasyLoading.dismiss();
+      AppSnackBar.show(mContext, AppSnackBarType.Error, e.toString());
     }
   }
 }

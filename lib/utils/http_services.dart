@@ -23,8 +23,8 @@ class HttpService {
 
   Dio build() {
     final options = BaseOptions(
-      connectTimeout: 120000,
-      receiveTimeout: 120000,
+      connectTimeout: Duration(milliseconds: 120000),
+      receiveTimeout: Duration(milliseconds: 120000),
       responseType: ResponseType.json,
       baseUrl: baseUrl,
     );
@@ -42,7 +42,7 @@ class HttpService {
               requestHeader: true,
               requestBody: true,
               responseBody:
-                  false, // Có 1 API response bị lỗi hiện thị nên bị crash response nên disable đi.
+                  true, // Có 1 API response bị lỗi hiện thị nên bị crash response nên disable đi.
             ),
       );
     }

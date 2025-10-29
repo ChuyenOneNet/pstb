@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:get_it/get_it.dart';
 import 'package:pstb/app/modules/home/home_store.dart';
 import 'package:pstb/app/modules/medical_appointment/medical_appointment_store.dart';
 import 'package:pstb/app/user_app_store.dart';
@@ -8,8 +11,12 @@ import 'package:pstb/utils/helper.dart';
 import 'package:pstb/utils/icons.dart';
 import 'package:pstb/utils/l10n.dart';
 import 'package:pstb/utils/routes.dart';
+import 'package:pstb/widgets/stateless/app_snack_bar.dart';
 import 'package:pstb/widgets/stateless/circle_with_icon.dart';
 
+import '../../../../constant/config.dart';
+import '../../../../feature/booking/presentation/pages/booking_page.dart';
+import '../../../../utils/shared_preferences_manager.dart';
 import '../../booking_v2/booking_home_page.dart';
 
 class ShortcutMenuCustomer extends StatelessWidget {
@@ -76,8 +83,13 @@ class FirstShortcutCustomer extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BookingPatientScreen(),
+                      builder: (context) => BookingPage(),
                     ));
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //       builder: (context) => BookingPatientScreen(),
+                //     ));
               } else {
                 Modular.to.pushNamed(AppRoutes.authGuardPage, arguments: {
                   "isNotFromBottomNav": true,
@@ -166,6 +178,41 @@ class SecondShortcutCustomer extends StatelessWidget {
   }) : super(key: key);
   final double iconSize;
   final HomeStore controller;
+  static const platform = MethodChannel("com.vnpt.flutter/partner");
+  Future<void> toMainPage(
+      BuildContext context, String customerPhone, String personalId) async {
+    // Toast dạng SnackBar tự tắt sau 0.5s
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('Đang mở SmartCA...'),
+        duration: const Duration(milliseconds: 500),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+      ),
+    );
+
+    try {
+      final prefs = GetIt.I<SharedPreferencesManager>();
+      final password = prefs.getString(AppConfig.SL_PASSWORD) ?? "";
+
+      // native vẫn chạy song song, SnackBar tự biến mất sau 0.5s
+      await platform.invokeMethod('getMainInfo', {
+        'customerId': personalId,
+        'customerPhone': customerPhone,
+        'password': password,
+      });
+    } on PlatformException catch (e) {
+      debugPrint("❌ Error calling getMainInfo: ${e.message}");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Lỗi tải chứng thư số'),
+          duration: const Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -201,6 +248,33 @@ class SecondShortcutCustomer extends StatelessWidget {
             onTap: () {
               controller.navigateToPage(
                   routerName: AppRoutes.emergency, arguments: false);
+            },
+          ),
+        ),
+        Expanded(
+          child: CircleWithIcon(
+            boxSize: iconSize,
+            iconSize: iconSize,
+            icon: IconEnums.certificate, // dùng icon certificate như bạn đã có
+            title: 'Chứng thư số',
+            colorIcon: AppColors.primary,
+            onTap: () async {
+              if (controller.isLogin) {
+                final user = Modular.get<UserAppStore>().user;
+                final customerPhone = user.phone ?? "";
+                final personalId = user.personalId ?? "";
+                print(customerPhone);
+                print(personalId);
+                await toMainPage(context, customerPhone, personalId);
+              } else {
+                Modular.to.pushNamed(
+                  AppRoutes.authGuardPage,
+                  arguments: {
+                    "isNotFromBottomNav": true,
+                    "title": 'Chứng thư số',
+                  },
+                );
+              }
             },
           ),
         ),

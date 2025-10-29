@@ -13,11 +13,11 @@ import 'package:pstb/app/modules/home/home_page.dart';
 import 'package:pstb/app/modules/medical_unit/selection_hospital_module.dart';
 import 'package:pstb/app/modules/notification/pages/notification_page.dart';
 import 'package:pstb/app/modules/profile/profile_module.dart';
-import 'package:pstb/app/modules/schedule/schedule_module.dart';
 import 'package:pstb/utils/icon_tabbar.dart';
 import 'package:pstb/utils/main.dart';
 
 import '../../../constant/config.dart';
+import '../../../feature/booking/presentation/pages/booking_history_screen.dart';
 import '../../../utils/shared_preferences_manager.dart';
 import '../../../widgets/stateless/app_dialog_confirm.dart';
 import '../booking_v2/screens/history_screen.dart';
@@ -60,7 +60,8 @@ class _BottomNavPageState extends ModularState<BottomNavPage, BottomNavStore> {
                 DetailHospitalTest(),
                 CommunityPageModule(),
                 //ScheduleModule(),
-                RequestHistoryScreen(userPhone: userPhone ?? ""),
+                BookingHistoryScreen(),
+                //RequestHistoryScreen(userPhone: userPhone ?? ""),
                 ProfileModule(),
                 const HomePage(),
                 const NotificationPage(),

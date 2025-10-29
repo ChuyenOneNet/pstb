@@ -183,8 +183,6 @@ class _AppInputState extends State<AppInput> {
             autocorrect: false,
             enableSuggestions: false,
             maxLength: widget.maxLength,
-            textCapitalization:
-                widget.textCapitalization ?? TextCapitalization.none,
             enableInteractiveSelection:
                 widget.enableInteractiveSelection ?? true,
             enabled: widget.enabled,
@@ -234,7 +232,7 @@ class _AppInputState extends State<AppInput> {
                 borderRadius: BorderRadius.all(
                   Radius.circular(ViewConstants.defaultBorderRadiusBtn),
                 ),
-                borderSide: BorderSide(color: AppColors.dodgerBlue),
+                borderSide: BorderSide(color: AppColors.primary),
               ),
               errorText: widget.errorText,
               errorBorder: const OutlineInputBorder(
@@ -276,7 +274,7 @@ class _AppInputState extends State<AppInput> {
                 widget.onChangeValue!(value);
               }
             },
-            inputFormatters: widget.listFormat,
+            // inputFormatters: widget.listFormat,
             onSaved: (value) {
               if (widget.onSavedValue != null) {
                 widget.onSavedValue!(value!);

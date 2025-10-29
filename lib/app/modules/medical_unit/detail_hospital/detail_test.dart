@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
-import 'package:map_launcher/map_launcher.dart';
+//import 'package:map_launcher/map_launcher.dart';
 import 'package:pstb/app/models/medical_unit/hospital_unit_model.dart';
 import 'package:pstb/app/modules/bottom_nav/bottom_nav_page.dart';
 import 'package:pstb/app/modules/bottom_nav/bottom_nav_store.dart';

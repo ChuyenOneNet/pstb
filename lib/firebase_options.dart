@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBe6oEe4FY-s27bL4lwxi1fh0qOeo3zPzE',
-    appId: '1:445511638301:android:8216af9a7615ba15c055f4',
+    appId: '1:445511638301:android:92987cfe0f6f3c85c055f4',
     messagingSenderId: '445511638301',
     projectId: 'pstb-dbab8',
     storageBucket: 'pstb-dbab8.firebasestorage.app',
@@ -59,11 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBvgt-XD4tJZIOGmsvmM9Hj7jQW0mZ_XQ0',
-    appId: '1:445511638301:ios:aeabb3f069ffefcec055f4',
+    appId: '1:445511638301:ios:ca1c565b43298b82c055f4',
     messagingSenderId: '445511638301',
     projectId: 'pstb-dbab8',
     storageBucket: 'pstb-dbab8.firebasestorage.app',
-    iosBundleId: 'com.example.pstb',
+    iosBundleId: 'com.onenet.tbps',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -83,4 +83,5 @@ class DefaultFirebaseOptions {
     authDomain: 'pstb-dbab8.firebaseapp.com',
     storageBucket: 'pstb-dbab8.firebasestorage.app',
   );
+
 }

@@ -149,7 +149,7 @@ abstract class MedicalPackageStoreBase with Store {
     }
     Map<String, dynamic> params = {};
     // params.addAll(searchObj.toJson());
-    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
     params.addAll({
       'pageSize': '10',
       'pageIndex': 0,
@@ -210,7 +210,7 @@ abstract class MedicalPackageStoreBase with Store {
     }
     Map<String, dynamic> params = {};
     // params.addAll(searchObj.toJson());
-    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
     params.addAll({
       'pageSize': '10',
       'pageIndex': pageIndex,
@@ -247,7 +247,7 @@ abstract class MedicalPackageStoreBase with Store {
     await Future.delayed(const Duration(seconds: 1)); // Simulate delay
 
     Map<String, dynamic> params = {};
-    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
     params.addAll({
       'slug': value,
       'pageSize': '10',
@@ -290,7 +290,7 @@ abstract class MedicalPackageStoreBase with Store {
     loadingPackage = true;
     pageIndexSearch++;
     Map<String, dynamic> params = {};
-    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+    medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
     params.addAll({
       'slug': value,
       'pageSize': '10',
@@ -436,7 +436,7 @@ abstract class MedicalPackageStoreBase with Store {
   @action
   Future<void> getListCategory() async {
     try {
-      medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 0;
+      medicalUnitId = await SessionPrefs.getMedicalUnitId() ?? 9;
       final response = await _apiBaseHelper.get(
         ApiUrl.category,
         {"MedicalUnitId": medicalUnitId},
