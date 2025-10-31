@@ -40,7 +40,11 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
         if (store.isLoadingDetail) {
           const Center(child: CircularProgressIndicator());
         }
+
         final detail = store.businessDetail;
+        if (detail == null) {
+          Navigator.pop(context);
+        }
         return detail == null
             ? const Center(child: CircularProgressIndicator())
             : (() {

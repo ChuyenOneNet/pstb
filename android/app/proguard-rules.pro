@@ -196,6 +196,33 @@
 -keep class kotlin.** { *; }
 -keep class kotlinx.** { *; }
 
+
+# --- Giữ lại toàn bộ lớp EContract ---
+-keep class vnpt.it3.econtract.ui.main.econtract.** { *; }
+-keep class vnpt.it3.econtract.data.model.** { *; }
+-keep class vnpt.it3.econtract.data.** { *; }
+# Giữ lớp SDKEnum và các thành phần của nó
+-keep class com.vnptit.idg.sdk.utils.SDKEnum$TypeValidateDocument { *; }
+
+
+# --- VNPT IDG SDK ---
+-keep class com.vnptit.idg.sdk.** { *; }
+-dontwarn com.vnptit.idg.sdk.**
+
+# --- Kotlin Companion Objects ---
+-keepclassmembers class * {
+    companion object;
+}
+
+# --- Google Play Services Location internal classes ---
+-dontwarn com.google.android.gms.internal.location.**
+-keep class com.google.android.gms.internal.location.** { *; }
+
+
+# --- Không cảnh báo ---
+-dontwarn vnpt.it3.econtract.**
+-dontwarn com.vnpt.smartca.**
+
 ##############################################
 # ✅ Kết thúc file
 ##############################################

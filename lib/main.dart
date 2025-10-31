@@ -10,11 +10,10 @@ import 'package:pstb/utils/colors.dart';
 import 'package:vnpt_smartca_module/main.dart';
 import 'app/app_module.dart';
 import 'app/app_widget.dart';
-import 'package:camera/camera.dart';
 
 import 'di/locator.dart';
 
-List<CameraDescription> cameras = [];
+//List<CameraDescription> cameras = [];
 
 // void downloadCallback(String id, DownloadTaskStatus status, int progress) {
 //   debugPrint(
@@ -49,7 +48,7 @@ Future<void> main() async {
   await setupLocator();
   await GetStorage.init();
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
-  cameras = await availableCameras();
+  //cameras = await availableCameras();
   runApp(ModularApp(module: AppModule(), child: const AppWidget()));
   configLoading();
 }

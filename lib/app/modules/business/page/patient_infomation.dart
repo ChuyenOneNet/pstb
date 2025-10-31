@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:pstb/app/modules/business/page/business_login_page.dart';
 import 'package:pstb/utils/main.dart';
 import 'package:intl/intl.dart';
 
@@ -27,12 +29,16 @@ class PatientInformation extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              'Thông tin người bệnh',
+              style: Styles.titleItem
+                  .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+
+            // 🔹 Hai nút bên phải
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Expanded(
-                  child:
-                      Text('I. Thông tin người bệnh', style: Styles.titleItem),
-                ),
                 TextButton.icon(
                   onPressed: () {
                     Modular.to.pushNamed(AppRoutes.changePasswordBusiness);
@@ -41,6 +47,29 @@ class PatientInformation extends StatelessWidget {
                   label: const Text('Đổi mật khẩu'),
                   style: TextButton.styleFrom(
                     foregroundColor: AppColors.primary,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 4.0),
+                    textStyle: const TextStyle(fontSize: 14),
+                  ),
+                ),
+                Spacer(),
+                TextButton.icon(
+                  onPressed: () async {
+                    const secure = FlutterSecureStorage();
+                    await secure.delete(key: "passwordBusiness");
+                    ;
+                    Modular.to.pushNamedAndRemoveUntil(
+                      AppRoutes.businessModule,
+                      (route) => false, // Xóa hết stack
+                    );
+                  },
+                  icon: const Icon(Icons.logout, size: 18),
+                  label: const Text('Đăng xuất'),
+                  style: TextButton.styleFrom(
+                    foregroundColor: AppColors.error500,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 4.0),
+                    textStyle: const TextStyle(fontSize: 14),
                   ),
                 ),
               ],
@@ -77,23 +106,16 @@ class PatientInformation extends StatelessWidget {
   Widget _renderValueInformation(
       String title, String value, BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              constraints: BoxConstraints(
-                  minWidth: MediaQuery.of(context).size.width / 3),
-              child: Text(title, style: Styles.content),
-            ),
-            Flexible(
-              child: Text(
-                value,
-                textAlign: TextAlign.end,
-                style: Styles.titleItem,
-              ),
-            )
-          ],
-        ));
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Row(
+        children: [
+          Expanded(flex: 2, child: Text(title, style: Styles.content)),
+          Expanded(
+              flex: 3,
+              child: Text(value,
+                  textAlign: TextAlign.end, style: Styles.titleItem)),
+        ],
+      ),
+    );
   }
 }

@@ -361,13 +361,13 @@ class AppModule extends Module {
     /// DocumentPatientPage
     ModuleRoute(AppRoutes.documentPatientModule,
         module: DocumentPatientModule()),
-    ChildRoute(
-      AppRoutes.pdfDocumentPatient,
-      child: (_, args) => PdfDocumentPage(
-        documentModel: args.data['documentModel'],
-        index: args.data['index'],
-      ),
-    ),
+    // ChildRoute(
+    //   AppRoutes.pdfDocumentPatient,
+    //   child: (_, args) => PdfDocumentPage(
+    //     documentModel: args.data['documentModel'],
+    //     index: args.data['index'],
+    //   ),
+    // ),
     ChildRoute(
       AppRoutes.otpdocumentPatient,
       child: (_, args) => OtpDocumentPage(

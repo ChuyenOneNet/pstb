@@ -1,43 +1,35 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'kham_chua_benh_model.dart';
 
 part 'business_model.g.dart';
 
 @JsonSerializable()
 class BusinessModel {
   final String id;
-  final String? key;
-  final String? dangKyId;
   final String? benhNhanId;
-  final int? xuTriType; // 🔄 nullable
-  final String? xuTriContent;
+  final String? malk;
+  final String? lyDoVaoVien;
+  final int? phanLoai;
   final String? thoiGianVao;
   final String? vao;
   final String? thoiGianRa;
   final String? ra;
-  final String? icdId;
-  final String? moTaIcd;
-  final String? chanDoanPhanBiet;
-  final String? benhKemTheo;
-  final int? loai; // 🔄 nullable
-  final dynamic sinhHieuChamSocDto;
+  final String? dateModified;
+  @JsonKey(name: 'khamChuaBenhs')
+  final List<KhamChuaBenhModel> khamChuaBenhs; // New field for nested data
 
   BusinessModel({
     required this.id,
-    this.key,
-    this.dangKyId,
+    this.malk,
+    this.lyDoVaoVien,
+    this.phanLoai,
+    this.dateModified,
     this.benhNhanId,
-    this.xuTriType,
-    this.xuTriContent,
     this.thoiGianVao,
     this.vao,
     this.thoiGianRa,
     this.ra,
-    this.icdId,
-    this.moTaIcd,
-    this.chanDoanPhanBiet,
-    this.benhKemTheo,
-    this.loai,
-    this.sinhHieuChamSocDto,
+    this.khamChuaBenhs = const [], // Default empty list if null
   });
 
   factory BusinessModel.fromJson(Map<String, dynamic> json) =>

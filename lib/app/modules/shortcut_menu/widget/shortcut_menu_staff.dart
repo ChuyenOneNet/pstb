@@ -104,20 +104,20 @@ class SecondShortcutStaff extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Expanded(child: SizedBox.shrink()),
-        // Expanded(
-        //     child: CircleWithIcon(
-        //       colorIcon: AppColors.primary,
-        //       boxSize: iconSize,
-        //       iconSize: iconSize,
-        //       icon: IconEnums.signDoctorIcon,
-        //       title: 'Ký NVYT',
-        //       titleColor: AppColors.black,
-        //       onTap: () {
-        //         Modular.to.pushNamed(AppRoutes.electronicSignature,
-        //             arguments: {'userName': null, 'rollCode': null});
-        //       },
-        //     ),
-        //     flex: 2),
+        Expanded(
+            child: CircleWithIcon(
+              colorIcon: AppColors.primary,
+              boxSize: iconSize,
+              iconSize: iconSize,
+              icon: IconEnums.signDoctorIcon,
+              title: 'Ký NVYT',
+              titleColor: AppColors.black,
+              onTap: () {
+                Modular.to.pushNamed(AppRoutes.electronicSignature,
+                    arguments: {'userName': null, 'rollCode': null});
+              },
+            ),
+            flex: 2),
 
         Expanded(
           flex: 2,

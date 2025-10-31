@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:pstb/widgets/stateless/app_snack_bar.dart';
 import '../../../../utils/routes.dart';
 import '../../../../utils/styles.dart';
 import '../../../../utils/colors.dart';
-import '../../../models/business_model.dart';
+import '../../../models/kham_chua_benh_model.dart';
+import '../page/business_detail_screen.dart';
 
 class BookingHistoryItem extends StatelessWidget {
-  final BusinessModel business;
+  final KhamChuaBenhModel khamChuaBenhs;
 
   const BookingHistoryItem({
     Key? key,
-    required this.business,
+    required this.khamChuaBenhs,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final examDate = business.thoiGianRa != null &&
-            business.thoiGianRa!.isNotEmpty
-        ? DateFormat('dd/MM/yyyy').format(DateTime.parse(business.thoiGianRa!))
-        : '';
+    final examDate =
+        khamChuaBenhs.thoiGianRa != null && khamChuaBenhs.thoiGianRa!.isNotEmpty
+            ? DateFormat('dd/MM/yyyy')
+                .format(DateTime.parse(khamChuaBenhs.thoiGianRa!))
+            : '';
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
@@ -56,11 +59,20 @@ class BookingHistoryItem extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
+                  print(khamChuaBenhs.toJson());
                   // Xử lý xem kết quả
-                  Modular.to
-                      .pushNamed(AppRoutes.detailBusinessPage, arguments: {
-                    'idBusiness': business.id,
-                  });
+                  if (khamChuaBenhs.dangKyId != null) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BusinessDetailScreen(
+                            idBusiness: khamChuaBenhs.dangKyId!,
+                          ),
+                        ));
+                  } else {
+                    AppSnackBar.show(
+                        context, AppSnackBarType.Error, "Không có dữ liệu");
+                  }
                 },
                 child: Container(
                   padding:
@@ -96,7 +108,7 @@ class BookingHistoryItem extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  business.moTaIcd ?? 'Không có chẩn đoán',
+                  khamChuaBenhs.moTaIcd ?? 'Không có chẩn đoán',
                   style: Styles.content.copyWith(
                     fontSize: 14,
                     color: Colors.black87,

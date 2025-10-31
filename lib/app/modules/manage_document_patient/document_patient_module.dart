@@ -7,7 +7,6 @@ import '../../../utils/routes.dart';
 import 'document_patient_store.dart';
 
 class DocumentPatientModule extends Module {
-
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => DocumentPatientStore()),
@@ -20,13 +19,13 @@ class DocumentPatientModule extends Module {
       child: (_, __) => DocumentPatientPage(),
     ),
 
-    ChildRoute(
-      AppRoutes.pdfDocumentPatient,
-      child: (_, args) => PdfDocumentPage(
-        documentModel: args.data['documentModel'],
-        index: args.data['index'],
-      ),
-    ),
+    // ChildRoute(
+    //   AppRoutes.pdfDocumentPatient,
+    //   child: (_, args) => PdfDocumentPage(
+    //     documentModel: args.data['documentModel'],
+    //     index: args.data['index'],
+    //   ),
+    // ),
     ChildRoute(
       AppRoutes.otpdocumentPatient,
       child: (_, args) => OtpDocumentPage(

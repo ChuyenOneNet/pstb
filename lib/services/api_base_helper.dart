@@ -767,7 +767,6 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io' as Io;
-import 'package:camera/camera.dart';
 import 'package:dio/dio.dart' as Dio;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
@@ -775,6 +774,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pstb/app/models/upload_model.dart';
 import 'package:pstb/services/api_response.dart';
 import 'package:pstb/utils/main.dart';
@@ -832,8 +832,7 @@ class ApiBaseHelper {
       GetIt.instance
           .get<SharedPreferencesManager>()
           .putString(AppConfig.accessTokenKey, token.token ?? "");
-      _log(
-          '🔑 Token set: ${token.tokenType} ${token.token?.substring(0, 20)}...');
+      _log('🔑 Token set: ${token.tokenType} ${token.token}');
     } else {
       _log('⚠️ No userData provided - skipping token setup');
     }
@@ -1066,8 +1065,10 @@ class ApiBaseHelper {
       var orgHeader = headers;
       var clonedHeader = Map<String, String>.from(orgHeader);
       var medicalUnitId = await SessionPrefs.getMedicalUnitId();
-      clonedHeader
-          .addAll({'medical_unit_id': medicalUnitId?.toString() ?? "9"});
+      clonedHeader.addAll({
+        'medical_unit_id':
+            medicalUnitId != null ? (medicalUnitId?.toString() ?? "9") : "9"
+      });
       _log('🏥 MedicalUnitId: ${medicalUnitId?.toString()}');
       _log('📝 POST Headers: ${clonedHeader}');
       _log('📦 POST Body: $body');
@@ -1454,7 +1455,7 @@ class ApiBaseHelper {
     if (apiResponse != null || apiResponse?.status != null) {
       _log('🏗️ Base Response valid - Status: ${apiResponse?.status}');
       if (apiResponse?.status != 200 || nullReturnStatus == true) return true;
-      _log('🏗️ Base Data returned: ${apiResponse?.data?.runtimeType}');
+      _log('🏗️ Base Data returned: ${apiResponse?.data}');
       return apiResponse?.data;
     }
 

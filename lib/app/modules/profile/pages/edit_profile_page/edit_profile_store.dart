@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pstb/app/models/user_info_model.dart' as user;
 import 'package:pstb/services/api_base_helper.dart';
 import 'package:pstb/services/api_exception.dart';

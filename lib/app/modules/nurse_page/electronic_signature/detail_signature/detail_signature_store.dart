@@ -32,8 +32,8 @@ abstract class _DetailSignatureStoreBase with Store {
       required int indexSelected}) async {
     documentItem = documentModelSelected;
     index = indexSelected;
-    linkPdf =
-        '${ApiUrl.baseUrl}${ApiUrl.getPDFDocuments}/${documentItem.id}';
+
+    linkPdf = '${ApiUrl.baseUrl}${ApiUrl.getPDFDocuments}/${documentItem.id}';
 
     if (documentItem.signingStatus == 1) {
       nameStatus = 'Thu hồi ký';
@@ -53,8 +53,7 @@ abstract class _DetailSignatureStoreBase with Store {
 
   @action
   Future<void> onRefresh() async {
-    linkPdf =
-        '${ApiUrl.baseUrl}${ApiUrl.getPDFDocuments}/${documentItem.id}';
+    linkPdf = '${ApiUrl.baseUrl}${ApiUrl.getPDFDocuments}/${documentItem.id}';
     try {
       // documentItem.signingStatus = DocumentModel.fromJson(
       //         await Modular.get<ApiBaseHelper>()
@@ -114,8 +113,7 @@ abstract class _DetailSignatureStoreBase with Store {
       //   statusSuccess = 'Ký thất bại';
       // }
     } catch (e) {
-      linkPdf =
-      '${ApiUrl.baseUrl}${ApiUrl.getPDFDocuments}/${documentItem.id}';
+      linkPdf = '${ApiUrl.baseUrl}${ApiUrl.getPDFDocuments}/${documentItem.id}';
       statusSuccess = 'Ký thành công';
       nameStatus = 'Thu hồi ký';
       _electricSignatureController.isLoading = true;

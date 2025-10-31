@@ -166,7 +166,8 @@ class _BusinessListBookingState extends State<BusinessListBooking> {
 
           // Danh sách lịch sử
           Observer(builder: (_) {
-            if (store.listBusiness.isEmpty) {
+            if (store.listBusiness.isEmpty ||
+                store.listBusiness.first.khamChuaBenhs.isEmpty) {
               return const Center(
                 child: Padding(
                   padding: EdgeInsets.all(16.0),
@@ -176,12 +177,12 @@ class _BusinessListBookingState extends State<BusinessListBooking> {
             }
 
             return ListView.builder(
-              itemCount: store.listBusiness.length,
+              itemCount: store.listBusiness.first.khamChuaBenhs.length,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                final exam = store.listBusiness[index];
-                return BookingHistoryItem(business: exam);
+                final exam = store.listBusiness.first.khamChuaBenhs[index];
+                return BookingHistoryItem(khamChuaBenhs: exam);
               },
             );
           }),
