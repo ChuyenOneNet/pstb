@@ -63,21 +63,21 @@ class _BusinessLoginPageState extends State<BusinessLoginPage> {
     Fluttertoast.showToast(msg: 'Đã xoá tài khoản đã lưu');
   }
 
-  Future<void> _login(
-      {required String maYte,
-      required String password,
-      bool auto = false}) async {
+  Future<void> _login({
+    required String maYte,
+    required String password,
+    bool auto = false,
+  }) async {
     if (_isBusy) return;
     setState(() => _isBusy = true);
 
     try {
-      await store.getUserBusiness(maYte: maYte, password: password);
+      final success =
+          await store.getUserBusiness(maYte: maYte, password: password);
 
-      // ✅ Lưu sau khi đăng nhập thành công
+      if (!success) throw Exception('Sai tài khoản hoặc mật khẩu');
+
       await _saveCredentials(maYte, password);
-
-      // (tuỳ bạn) load dữ liệu tiếp theo
-      // await store.loadHistoryRecord();
 
       if (!mounted) return;
       if (!auto) Fluttertoast.showToast(msg: 'Đăng nhập thành công');

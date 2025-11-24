@@ -27,10 +27,15 @@ class HttpService {
       receiveTimeout: Duration(milliseconds: 120000),
       responseType: ResponseType.json,
       baseUrl: baseUrl,
+      headers: {
+        Headers.contentTypeHeader: Headers.jsonContentType,
+        "Accept": "application/json", // <- thêm Accept header
+      },
     );
     final Dio dio = Dio(options);
 
     dio.options.headers[Headers.contentTypeHeader] = contentType;
+    dio.interceptors.add(JsonDecodeInterceptor());
 
     if (kDebugMode) {
       // dio.interceptors.add(

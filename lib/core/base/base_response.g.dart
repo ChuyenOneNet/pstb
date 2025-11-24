@@ -59,3 +59,67 @@ Map<String, dynamic> _$BaseListResponseToJson<T>(
       'IsError': instance.isError,
       'message': instance.message,
     };
+
+StatusDataResponse<T> _$StatusDataResponseFromJson<T>(
+  Map<String, dynamic> json,
+  T Function(Object? json) fromJsonT,
+) =>
+    StatusDataResponse<T>(
+      status: json['status'] as bool?,
+      data: _$nullableGenericFromJson(json['data'], fromJsonT),
+      errors: (json['errors'] as List<dynamic>?)
+          ?.map((e) => ApiError.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$StatusDataResponseToJson<T>(
+  StatusDataResponse<T> instance,
+  Object? Function(T value) toJsonT,
+) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'data': _$nullableGenericToJson(instance.data, toJsonT),
+      'errors': instance.errors,
+    };
+
+StatusListResponse<T> _$StatusListResponseFromJson<T>(
+  Map<String, dynamic> json,
+  T Function(Object? json) fromJsonT,
+) =>
+    StatusListResponse<T>(
+      status: json['status'] as bool?,
+      data: (json['data'] as List<dynamic>?)?.map(fromJsonT).toList(),
+      errors: (json['errors'] as List<dynamic>?)
+          ?.map((e) => ApiError.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$StatusListResponseToJson<T>(
+  StatusListResponse<T> instance,
+  Object? Function(T value) toJsonT,
+) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'data': instance.data?.map(toJsonT).toList(),
+      'errors': instance.errors?.map((e) => e.toJson()).toList(),
+    };
+
+StatusListResponseV2<T> _$StatusListResponseV2FromJson<T>(
+  Map<String, dynamic> json,
+  T Function(Object? json) fromJsonT,
+) =>
+    StatusListResponseV2<T>(
+      status: (json['status'] as num?)?.toInt(),
+      data: (json['data'] as List<dynamic>?)?.map(fromJsonT).toList(),
+      errors: json['errors'] as String?,
+    );
+
+Map<String, dynamic> _$StatusListResponseV2ToJson<T>(
+  StatusListResponseV2<T> instance,
+  Object? Function(T value) toJsonT,
+) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'data': instance.data?.map(toJsonT).toList(),
+      'errors': instance.errors,
+    };

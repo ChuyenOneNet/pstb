@@ -1378,16 +1378,21 @@ class _ResetPasswordScreenV2State extends State<ResetPasswordScreenV2> {
     final prefs = await SharedPreferences.getInstance();
     final now = DateTime.now();
 
-    // Check attempt limit
+    print("=== SEND OTP START ===");
+    print("Phone: ${widget.phone}");
+    print("Attempts today: $_otpAttempts");
+    print("Last OTP time: $_lastOtpTime");
+
     if (_otpAttempts >= 3) {
+      print("STOP: Too many attempts");
       _snack(AppSnackBarType.Error, 'Đã vượt quá 3 lần gửi OTP trong ngày');
       return null;
     }
 
-    // Check cooldown
     if (_lastOtpTime != null && now.difference(_lastOtpTime!).inSeconds < 90) {
-      _snack(AppSnackBarType.Error,
-          'Vui lòng đợi ${_countdownNotifier.value}s trước khi gửi lại OTP');
+      final remain = 90 - now.difference(_lastOtpTime!).inSeconds;
+      print("STOP: Cooldown remaining $remain sec");
+      _snack(AppSnackBarType.Error, 'Vui lòng đợi ${remain}s để gửi lại OTP');
       return null;
     }
 
@@ -1395,28 +1400,48 @@ class _ResetPasswordScreenV2State extends State<ResetPasswordScreenV2> {
       final formattedPhone = widget.phone.startsWith('+')
           ? widget.phone.substring(1)
           : widget.phone;
+
+      print("Request → POST /send-sms");
+      print({"Phone": formattedPhone});
+
       final response = await http.post(
         Uri.parse('https://113.160.200.31:6443/api/User/send-sms'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'Phone': formattedPhone}),
       );
+
+      print("Response Status: ${response.statusCode}");
+      print("Response Body: ${response.body}");
+
       if (response.statusCode == 200) {
-        final otpCode = response.body.trim();
+        final bodyJson = jsonDecode(response.body);
+
+        final otpCode = bodyJson['data']?.toString().trim() ?? '';
+
+        print("OTP RECEIVED: $otpCode"); // LOG: OTP thật (DEBUG)
+
         setState(() {
           _otpAttempts++;
           _lastOtpTime = now;
-          _countdownNotifier.value = 90; // Cập nhật ValueNotifier
+          _countdownNotifier.value = 90;
           _lastOtpCode = otpCode;
         });
+
         await prefs.setInt('otp_attempts', _otpAttempts);
+
+        print("Updated attempts: $_otpAttempts");
+        print("=== SEND OTP END ===");
+
         _startCountdown();
         return otpCode;
       } else {
+        print("OTP Error: ${response.statusCode}");
         _snack(
             AppSnackBarType.Error, 'Gửi OTP thất bại: ${response.statusCode}');
         return null;
       }
     } catch (e) {
+      print("SEND OTP EXCEPTION: $e");
       _snack(AppSnackBarType.Error, 'Gửi OTP thất bại: $e');
       return null;
     }
@@ -1441,29 +1466,46 @@ class _ResetPasswordScreenV2State extends State<ResetPasswordScreenV2> {
     required String newPassword,
     required String otpCode,
   }) async {
+    print("=== VERIFY OTP START ===");
+    print("User entered OTP: $otpCode");
+    print("Server OTP: $_lastOtpCode");
+
     if (otpCode != _lastOtpCode) {
+      print("OTP MISMATCH → FAIL");
       _snack(AppSnackBarType.Error, 'Mã OTP không đúng');
       return;
     }
+
+    print("OTP VERIFIED → Calling API...");
 
     try {
       final formattedUsername = widget.phone.startsWith('+84')
           ? '0${widget.phone.substring(3)}'
           : widget.phone;
+
       final body = ForgotPasswordModel(
         username: formattedUsername,
         newPassword: newPassword,
         confirmPassword: newPassword,
         key: ApiConstance.changePasswordKey,
       ).toRawJson();
+
+      print("Reset Password → PUT ${ApiUrl.forgotPassword}");
+      print("Body: $body");
+
       await ApiBaseHelper().put(ApiUrl.forgotPassword, body);
+
+      print("RESET PASSWORD SUCCESS");
+
       _snack(AppSnackBarType.Success, 'Đổi mật khẩu thành công');
-      if (mounted) {
-        Navigator.of(context).popUntil((r) => r.isFirst);
-      }
+
+      if (mounted) Navigator.of(context).popUntil((r) => r.isFirst);
     } catch (e) {
+      print("RESET PASSWORD ERROR: $e");
       _snack(AppSnackBarType.Error, 'Đổi mật khẩu thất bại: $e');
     }
+
+    print("=== VERIFY END ===");
   }
 
   Future<void> _sendOtpAndOpenSheet() async {
@@ -1489,6 +1531,7 @@ class _ResetPasswordScreenV2State extends State<ResetPasswordScreenV2> {
           countdownNotifier: _countdownNotifier, // Truyền ValueNotifier
         ),
       );
+      print("User entered OTP from sheet: $enteredCode");
 
       if (!mounted) return;
 
@@ -1942,6 +1985,8 @@ class _OtpSheetState extends State<_OtpSheet> {
   }
 
   void _onCodeChanged(int index, String value) {
+    print("OTP Input [$index]: $value");
+
     if (value.isNotEmpty && index < 5) {
       _focusNodes[index + 1].requestFocus();
     }
@@ -1955,6 +2000,8 @@ class _OtpSheetState extends State<_OtpSheet> {
 
   void _submitCode() {
     final code = _controllers.map((c) => c.text).join();
+    print("Submitting OTP code: $code");
+
     if (code.length == 6) {
       Navigator.pop(context, code);
     }

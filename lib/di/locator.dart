@@ -1,11 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pstb/app/modules/booking_v2/cubit/create_request_cubit.dart';
+import 'package:pstb/app/modules/nurse_page/electronic_signature_v2/data/remote/e_signature_role_api.dart';
 import 'package:pstb/core/services/dropdown_service.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import '../app/modules/booking_v2/sqlite_dao/request_history_dao.dart';
+import '../app/modules/nurse_page/electronic_signature_v2/data/remote/e_signature_api.dart';
+import '../app/modules/nurse_page/electronic_signature_v2/data/repositories/signature_repository.dart';
+import '../app/modules/nurse_page/electronic_signature_v2/data/repositories/signature_repository_impl.dart';
+import '../app/modules/nurse_page/electronic_signature_v2/presentation/cubits/departments_cubit/departments_cubit.dart';
 import '../core/repositories/booking_repository.dart';
 import '../core/repositories/dropdown_repository.dart';
 import '../core/repositories/request_repository.dart';
@@ -87,9 +92,29 @@ Future<void> setupLocator() async {
   serviceLocator
       .registerLazySingleton<BookingRepository>(() => BookingRepositoryImpl(
             bookingService: serviceLocator(),
-            catalogService: serviceLocator(),
+            catalogService: serviceLocator<CatalogService>(),
             historyLocal: serviceLocator(),
             accessKey: 'TXEjpPNBINpFYD70', // <-- access key CRM
             inputSource: 'APP MOBILE',
           ));
+  final Dio dioSign =
+      await setupDio(baseUrl: "http://116.97.240.210:5105", isHaveToken: true);
+  // --- Ký số (V1) ---
+  serviceLocator.registerLazySingleton<ESignatureApi>(
+    () => ESignatureApi(dioSign),
+  );
+  final Dio dioSignRoleByUserNameAndDocument =
+      await setupDio(baseUrl: "https://113.160.200.31:6443", isHaveToken: true);
+  // --- Ký số (V1) ---
+  serviceLocator.registerLazySingleton<ESignatureRoleApi>(
+    () => ESignatureRoleApi(dioSignRoleByUserNameAndDocument),
+  );
+  serviceLocator.registerLazySingleton<SignatureRepository>(
+    () => SignatureRepositoryImpl(
+      serviceLocator<ESignatureApi>(),
+      serviceLocator<ESignatureRoleApi>(),
+    ),
+  );
+  serviceLocator
+      .registerLazySingleton<DepartmentsCubit>(() => DepartmentsCubit());
 }

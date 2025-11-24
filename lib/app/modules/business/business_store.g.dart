@@ -89,16 +89,6 @@ mixin _$BusinessStore on BusinessStoreBase, Store {
     });
   }
 
-  late final _$getUserBusinessAsyncAction =
-      AsyncAction('BusinessStoreBase.getUserBusiness', context: context);
-
-  @override
-  Future<void> getUserBusiness(
-      {required String maYte, required String password}) {
-    return _$getUserBusinessAsyncAction
-        .run(() => super.getUserBusiness(maYte: maYte, password: password));
-  }
-
   late final _$loadHistoryRecordAsyncAction =
       AsyncAction('BusinessStoreBase.loadHistoryRecord', context: context);
 

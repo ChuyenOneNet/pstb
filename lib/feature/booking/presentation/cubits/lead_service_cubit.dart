@@ -12,15 +12,8 @@ class LeadServiceCubit extends Cubit<LeadServiceState> {
   Future<void> fetchLeadServices(Map<String, dynamic> body) async {
     emit(LeadServiceLoading());
     try {
-      //final list = await repo.getLeadServices(body);
+      final list = await repo.getLeadServices(body);
       await Future.delayed(const Duration(milliseconds: 400));
-      final list = <LeadService>[
-        LeadService(code: 'GEN_CHECK', name: 'Khám tổng quát'),
-        LeadService(code: 'DENTAL', name: 'Nha khoa tổng quát'),
-        LeadService(code: 'PED', name: 'Khám nhi'),
-        LeadService(code: 'CARD', name: 'Tim mạch'),
-        LeadService(code: 'ENT', name: 'Tai Mũi Họng'),
-      ];
       emit(LeadServiceLoaded(list));
     } catch (e) {
       emit(LeadServiceError(e.toString()));

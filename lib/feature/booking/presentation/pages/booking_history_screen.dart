@@ -108,6 +108,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       child: Scaffold(
         backgroundColor: BookingColors.lightGray,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text(
             'Lịch sử hẹn khám',
             style: TextStyle(

@@ -11,34 +11,34 @@
 		31796CAD0B17C5114268181B /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E6E27FDF4CD9CF6E6DCFB7 /* Pods_RunnerTests.framework */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
-		5F647B3E2EA88EBC0038E9D2 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B312EA88EBB0038E9D2 /* RxAlamofire.framework */; };
-		5F647B3F2EA88EBC0038E9D2 /* RxAlamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B312EA88EBB0038E9D2 /* RxAlamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B402EA88EBC0038E9D2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B322EA88EBB0038E9D2 /* RxSwift.framework */; };
-		5F647B412EA88EBC0038E9D2 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B322EA88EBB0038E9D2 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B422EA88EBC0038E9D2 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B332EA88EBB0038E9D2 /* ObjectMapper.framework */; };
-		5F647B432EA88EBC0038E9D2 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B332EA88EBB0038E9D2 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B442EA88EBC0038E9D2 /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B342EA88EBC0038E9D2 /* JWTDecode.framework */; };
-		5F647B452EA88EBC0038E9D2 /* JWTDecode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B342EA88EBC0038E9D2 /* JWTDecode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B462EA88EBC0038E9D2 /* eContractSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B352EA88EBC0038E9D2 /* eContractSDK.framework */; };
-		5F647B472EA88EBC0038E9D2 /* eContractSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B352EA88EBC0038E9D2 /* eContractSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B482EA88EBC0038E9D2 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B362EA88EBC0038E9D2 /* NVActivityIndicatorView.framework */; };
-		5F647B492EA88EBC0038E9D2 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B362EA88EBC0038E9D2 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B4A2EA88EBC0038E9D2 /* eKYCLib.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B372EA88EBC0038E9D2 /* eKYCLib.xcframework */; };
-		5F647B4B2EA88EBC0038E9D2 /* eKYCLib.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B372EA88EBC0038E9D2 /* eKYCLib.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B4C2EA88EBC0038E9D2 /* SignaturePad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B382EA88EBC0038E9D2 /* SignaturePad.framework */; };
-		5F647B4D2EA88EBC0038E9D2 /* SignaturePad.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B382EA88EBC0038E9D2 /* SignaturePad.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B4E2EA88EBC0038E9D2 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B392EA88EBC0038E9D2 /* RxRelay.framework */; };
-		5F647B4F2EA88EBC0038E9D2 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B392EA88EBC0038E9D2 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B502EA88EBC0038E9D2 /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3A2EA88EBC0038E9D2 /* Moya.framework */; };
-		5F647B512EA88EBC0038E9D2 /* Moya.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3A2EA88EBC0038E9D2 /* Moya.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B522EA88EBC0038E9D2 /* ICSdkEKYC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3B2EA88EBC0038E9D2 /* ICSdkEKYC.xcframework */; };
-		5F647B532EA88EBC0038E9D2 /* ICSdkEKYC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3B2EA88EBC0038E9D2 /* ICSdkEKYC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B542EA88EBC0038E9D2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3C2EA88EBC0038E9D2 /* Alamofire.framework */; };
-		5F647B552EA88EBC0038E9D2 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3C2EA88EBC0038E9D2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B562EA88EBC0038E9D2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3D2EA88EBC0038E9D2 /* RxCocoa.framework */; };
-		5F647B572EA88EBC0038E9D2 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3D2EA88EBC0038E9D2 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F647B592EA88ED30038E9D2 /* SmartCASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B582EA88ED30038E9D2 /* SmartCASDK.framework */; };
-		5F647B5A2EA88ED30038E9D2 /* SmartCASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B582EA88ED30038E9D2 /* SmartCASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744BD2EBB63740052BCD4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3C2EA88EBC0038E9D2 /* Alamofire.framework */; };
+		5F9744BE2EBB63740052BCD4 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3C2EA88EBC0038E9D2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744BF2EBB63740052BCD4 /* eContractSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B352EA88EBC0038E9D2 /* eContractSDK.framework */; };
+		5F9744C02EBB63740052BCD4 /* eContractSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B352EA88EBC0038E9D2 /* eContractSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744C12EBB63740052BCD4 /* eKYCLib.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F97446C2EBB2BC10052BCD4 /* eKYCLib.xcframework */; };
+		5F9744C22EBB63740052BCD4 /* eKYCLib.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F97446C2EBB2BC10052BCD4 /* eKYCLib.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744C32EBB63740052BCD4 /* ICSdkEKYC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3B2EA88EBC0038E9D2 /* ICSdkEKYC.xcframework */; };
+		5F9744C42EBB63740052BCD4 /* ICSdkEKYC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3B2EA88EBC0038E9D2 /* ICSdkEKYC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744C52EBB63740052BCD4 /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B342EA88EBC0038E9D2 /* JWTDecode.framework */; };
+		5F9744C62EBB63740052BCD4 /* JWTDecode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B342EA88EBC0038E9D2 /* JWTDecode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744C72EBB63740052BCD4 /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3A2EA88EBC0038E9D2 /* Moya.framework */; };
+		5F9744C82EBB63740052BCD4 /* Moya.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3A2EA88EBC0038E9D2 /* Moya.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744C92EBB63740052BCD4 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B362EA88EBC0038E9D2 /* NVActivityIndicatorView.framework */; };
+		5F9744CA2EBB63740052BCD4 /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B362EA88EBC0038E9D2 /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744CB2EBB63740052BCD4 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B332EA88EBB0038E9D2 /* ObjectMapper.framework */; };
+		5F9744CC2EBB63740052BCD4 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B332EA88EBB0038E9D2 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744CD2EBB63740052BCD4 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B312EA88EBB0038E9D2 /* RxAlamofire.framework */; };
+		5F9744CE2EBB63740052BCD4 /* RxAlamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B312EA88EBB0038E9D2 /* RxAlamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744CF2EBB63740052BCD4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3D2EA88EBC0038E9D2 /* RxCocoa.framework */; };
+		5F9744D02EBB63750052BCD4 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B3D2EA88EBC0038E9D2 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744D12EBB63750052BCD4 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B392EA88EBC0038E9D2 /* RxRelay.framework */; };
+		5F9744D22EBB63750052BCD4 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B392EA88EBC0038E9D2 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744D32EBB63750052BCD4 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B322EA88EBB0038E9D2 /* RxSwift.framework */; };
+		5F9744D42EBB63750052BCD4 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B322EA88EBB0038E9D2 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744D52EBB63750052BCD4 /* SignaturePad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B382EA88EBC0038E9D2 /* SignaturePad.framework */; };
+		5F9744D62EBB63750052BCD4 /* SignaturePad.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B382EA88EBC0038E9D2 /* SignaturePad.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F9744D82EBB63800052BCD4 /* SmartCASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B582EA88ED30038E9D2 /* SmartCASDK.framework */; };
+		5F9744D92EBB63800052BCD4 /* SmartCASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F647B582EA88ED30038E9D2 /* SmartCASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		705ADEF7875A443EB1B3DD42 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9254437E6069A532189D0327 /* GoogleService-Info.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		83E21105F06D1310179470DE /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8FC719E1F776EFA56ADEE04 /* Pods_Runner.framework */; };
@@ -58,26 +58,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
+		5F9744D72EBB63750052BCD4 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5F647B452EA88EBC0038E9D2 /* JWTDecode.framework in Embed Frameworks */,
-				5F647B532EA88EBC0038E9D2 /* ICSdkEKYC.xcframework in Embed Frameworks */,
-				5F647B572EA88EBC0038E9D2 /* RxCocoa.framework in Embed Frameworks */,
-				5F647B4D2EA88EBC0038E9D2 /* SignaturePad.framework in Embed Frameworks */,
-				5F647B4F2EA88EBC0038E9D2 /* RxRelay.framework in Embed Frameworks */,
-				5F647B5A2EA88ED30038E9D2 /* SmartCASDK.framework in Embed Frameworks */,
-				5F647B472EA88EBC0038E9D2 /* eContractSDK.framework in Embed Frameworks */,
-				5F647B4B2EA88EBC0038E9D2 /* eKYCLib.xcframework in Embed Frameworks */,
-				5F647B492EA88EBC0038E9D2 /* NVActivityIndicatorView.framework in Embed Frameworks */,
-				5F647B552EA88EBC0038E9D2 /* Alamofire.framework in Embed Frameworks */,
-				5F647B512EA88EBC0038E9D2 /* Moya.framework in Embed Frameworks */,
-				5F647B432EA88EBC0038E9D2 /* ObjectMapper.framework in Embed Frameworks */,
-				5F647B412EA88EBC0038E9D2 /* RxSwift.framework in Embed Frameworks */,
-				5F647B3F2EA88EBC0038E9D2 /* RxAlamofire.framework in Embed Frameworks */,
+				5F9744C22EBB63740052BCD4 /* eKYCLib.xcframework in Embed Frameworks */,
+				5F9744CA2EBB63740052BCD4 /* NVActivityIndicatorView.framework in Embed Frameworks */,
+				5F9744BE2EBB63740052BCD4 /* Alamofire.framework in Embed Frameworks */,
+				5F9744C62EBB63740052BCD4 /* JWTDecode.framework in Embed Frameworks */,
+				5F9744C42EBB63740052BCD4 /* ICSdkEKYC.xcframework in Embed Frameworks */,
+				5F9744D92EBB63800052BCD4 /* SmartCASDK.framework in Embed Frameworks */,
+				5F9744C82EBB63740052BCD4 /* Moya.framework in Embed Frameworks */,
+				5F9744CC2EBB63740052BCD4 /* ObjectMapper.framework in Embed Frameworks */,
+				5F9744D62EBB63750052BCD4 /* SignaturePad.framework in Embed Frameworks */,
+				5F9744C02EBB63740052BCD4 /* eContractSDK.framework in Embed Frameworks */,
+				5F9744D42EBB63750052BCD4 /* RxSwift.framework in Embed Frameworks */,
+				5F9744D02EBB63750052BCD4 /* RxCocoa.framework in Embed Frameworks */,
+				5F9744CE2EBB63740052BCD4 /* RxAlamofire.framework in Embed Frameworks */,
+				5F9744D22EBB63750052BCD4 /* RxRelay.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,6 +107,32 @@
 		5F647B3C2EA88EBC0038E9D2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Runner/SDK_iOS/eContract-eKYC/Alamofire.framework"; sourceTree = "<group>"; };
 		5F647B3D2EA88EBC0038E9D2 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Runner/SDK_iOS/eContract-eKYC/RxCocoa.framework"; sourceTree = "<group>"; };
 		5F647B582EA88ED30038E9D2 /* SmartCASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SmartCASDK.framework; path = Runner/SDK_iOS/SmartCASDK.framework; sourceTree = "<group>"; };
+		5F97446A2EBB2BC10052BCD4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		5F97446B2EBB2BC10052BCD4 /* eContractSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = eContractSDK.framework; sourceTree = "<group>"; };
+		5F97446C2EBB2BC10052BCD4 /* eKYCLib.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = eKYCLib.xcframework; sourceTree = "<group>"; };
+		5F97446D2EBB2BC10052BCD4 /* ICSdkEKYC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ICSdkEKYC.xcframework; sourceTree = "<group>"; };
+		5F97446E2EBB2BC10052BCD4 /* JWTDecode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWTDecode.framework; sourceTree = "<group>"; };
+		5F97446F2EBB2BC10052BCD4 /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Moya.framework; sourceTree = "<group>"; };
+		5F9744702EBB2BC10052BCD4 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		5F9744712EBB2BC10052BCD4 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
+		5F9744722EBB2BC10052BCD4 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxAlamofire.framework; sourceTree = "<group>"; };
+		5F9744732EBB2BC10052BCD4 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = "<group>"; };
+		5F9744742EBB2BC10052BCD4 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxRelay.framework; sourceTree = "<group>"; };
+		5F9744752EBB2BC10052BCD4 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxSwift.framework; sourceTree = "<group>"; };
+		5F9744762EBB2BC10052BCD4 /* SignaturePad.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SignaturePad.framework; sourceTree = "<group>"; };
+		5F9744952EBB38CF0052BCD4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		5F9744962EBB38CF0052BCD4 /* eContractSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = eContractSDK.framework; sourceTree = "<group>"; };
+		5F9744972EBB38CF0052BCD4 /* eKYCLib.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = eKYCLib.xcframework; sourceTree = "<group>"; };
+		5F9744982EBB38CF0052BCD4 /* ICSdkEKYC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ICSdkEKYC.xcframework; sourceTree = "<group>"; };
+		5F9744992EBB38CF0052BCD4 /* JWTDecode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWTDecode.framework; sourceTree = "<group>"; };
+		5F97449A2EBB38CF0052BCD4 /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Moya.framework; sourceTree = "<group>"; };
+		5F97449B2EBB38CF0052BCD4 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		5F97449C2EBB38CF0052BCD4 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
+		5F97449D2EBB38CF0052BCD4 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxAlamofire.framework; sourceTree = "<group>"; };
+		5F97449E2EBB38CF0052BCD4 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = "<group>"; };
+		5F97449F2EBB38CF0052BCD4 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxRelay.framework; sourceTree = "<group>"; };
+		5F9744A02EBB38CF0052BCD4 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxSwift.framework; sourceTree = "<group>"; };
+		5F9744A12EBB38CF0052BCD4 /* SignaturePad.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SignaturePad.framework; sourceTree = "<group>"; };
 		6EE53760190A0A1CE6527409 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,21 +164,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F9744CB2EBB63740052BCD4 /* ObjectMapper.framework in Frameworks */,
+				5F9744CD2EBB63740052BCD4 /* RxAlamofire.framework in Frameworks */,
+				5F9744C52EBB63740052BCD4 /* JWTDecode.framework in Frameworks */,
+				5F9744C72EBB63740052BCD4 /* Moya.framework in Frameworks */,
+				5F9744C92EBB63740052BCD4 /* NVActivityIndicatorView.framework in Frameworks */,
 				83E21105F06D1310179470DE /* Pods_Runner.framework in Frameworks */,
-				5F647B482EA88EBC0038E9D2 /* NVActivityIndicatorView.framework in Frameworks */,
-				5F647B562EA88EBC0038E9D2 /* RxCocoa.framework in Frameworks */,
-				5F647B542EA88EBC0038E9D2 /* Alamofire.framework in Frameworks */,
-				5F647B522EA88EBC0038E9D2 /* ICSdkEKYC.xcframework in Frameworks */,
-				5F647B462EA88EBC0038E9D2 /* eContractSDK.framework in Frameworks */,
-				5F647B502EA88EBC0038E9D2 /* Moya.framework in Frameworks */,
-				5F647B4C2EA88EBC0038E9D2 /* SignaturePad.framework in Frameworks */,
-				5F647B4E2EA88EBC0038E9D2 /* RxRelay.framework in Frameworks */,
-				5F647B3E2EA88EBC0038E9D2 /* RxAlamofire.framework in Frameworks */,
-				5F647B442EA88EBC0038E9D2 /* JWTDecode.framework in Frameworks */,
-				5F647B4A2EA88EBC0038E9D2 /* eKYCLib.xcframework in Frameworks */,
-				5F647B422EA88EBC0038E9D2 /* ObjectMapper.framework in Frameworks */,
-				5F647B402EA88EBC0038E9D2 /* RxSwift.framework in Frameworks */,
-				5F647B592EA88ED30038E9D2 /* SmartCASDK.framework in Frameworks */,
+				5F9744D32EBB63750052BCD4 /* RxSwift.framework in Frameworks */,
+				5F9744C12EBB63740052BCD4 /* eKYCLib.xcframework in Frameworks */,
+				5F9744BF2EBB63740052BCD4 /* eContractSDK.framework in Frameworks */,
+				5F9744D12EBB63750052BCD4 /* RxRelay.framework in Frameworks */,
+				5F9744BD2EBB63740052BCD4 /* Alamofire.framework in Frameworks */,
+				5F9744CF2EBB63740052BCD4 /* RxCocoa.framework in Frameworks */,
+				5F9744C32EBB63740052BCD4 /* ICSdkEKYC.xcframework in Frameworks */,
+				5F9744D52EBB63750052BCD4 /* SignaturePad.framework in Frameworks */,
+				5F9744D82EBB63800052BCD4 /* SmartCASDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +196,8 @@
 		44CA38124054BAE5A20C7962 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F9744772EBB2BC10052BCD4 /* eContract-eKYC */,
+				5F9744A22EBB38CF0052BCD4 /* eContract-eKYC */,
 				5F647B582EA88ED30038E9D2 /* SmartCASDK.framework */,
 				5F647B3C2EA88EBC0038E9D2 /* Alamofire.framework */,
 				5F647B352EA88EBC0038E9D2 /* eContractSDK.framework */,
@@ -188,6 +216,48 @@
 				33E6E27FDF4CD9CF6E6DCFB7 /* Pods_RunnerTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5F9744772EBB2BC10052BCD4 /* eContract-eKYC */ = {
+			isa = PBXGroup;
+			children = (
+				5F97446A2EBB2BC10052BCD4 /* Alamofire.framework */,
+				5F97446B2EBB2BC10052BCD4 /* eContractSDK.framework */,
+				5F97446C2EBB2BC10052BCD4 /* eKYCLib.xcframework */,
+				5F97446D2EBB2BC10052BCD4 /* ICSdkEKYC.xcframework */,
+				5F97446E2EBB2BC10052BCD4 /* JWTDecode.framework */,
+				5F97446F2EBB2BC10052BCD4 /* Moya.framework */,
+				5F9744702EBB2BC10052BCD4 /* NVActivityIndicatorView.framework */,
+				5F9744712EBB2BC10052BCD4 /* ObjectMapper.framework */,
+				5F9744722EBB2BC10052BCD4 /* RxAlamofire.framework */,
+				5F9744732EBB2BC10052BCD4 /* RxCocoa.framework */,
+				5F9744742EBB2BC10052BCD4 /* RxRelay.framework */,
+				5F9744752EBB2BC10052BCD4 /* RxSwift.framework */,
+				5F9744762EBB2BC10052BCD4 /* SignaturePad.framework */,
+			);
+			name = "eContract-eKYC";
+			path = "Runner/SDK_iOS/eContract-eKYC";
+			sourceTree = "<group>";
+		};
+		5F9744A22EBB38CF0052BCD4 /* eContract-eKYC */ = {
+			isa = PBXGroup;
+			children = (
+				5F9744952EBB38CF0052BCD4 /* Alamofire.framework */,
+				5F9744962EBB38CF0052BCD4 /* eContractSDK.framework */,
+				5F9744972EBB38CF0052BCD4 /* eKYCLib.xcframework */,
+				5F9744982EBB38CF0052BCD4 /* ICSdkEKYC.xcframework */,
+				5F9744992EBB38CF0052BCD4 /* JWTDecode.framework */,
+				5F97449A2EBB38CF0052BCD4 /* Moya.framework */,
+				5F97449B2EBB38CF0052BCD4 /* NVActivityIndicatorView.framework */,
+				5F97449C2EBB38CF0052BCD4 /* ObjectMapper.framework */,
+				5F97449D2EBB38CF0052BCD4 /* RxAlamofire.framework */,
+				5F97449E2EBB38CF0052BCD4 /* RxCocoa.framework */,
+				5F97449F2EBB38CF0052BCD4 /* RxRelay.framework */,
+				5F9744A02EBB38CF0052BCD4 /* RxSwift.framework */,
+				5F9744A12EBB38CF0052BCD4 /* SignaturePad.framework */,
+			);
+			name = "eContract-eKYC";
+			path = "Runner/SDK_iOS/eContract-eKYC";
 			sourceTree = "<group>";
 		};
 		7974C27087DE5CDDA8E9E435 /* Pods */ = {
@@ -282,10 +352,10 @@
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
-				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				119774AB8E5EF24574DBC4B7 /* [CP] Embed Pods Frameworks */,
 				50E8B67C2AF1B7F0D729EC86 /* [CP] Copy Pods Resources */,
+				5F9744D72EBB63750052BCD4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

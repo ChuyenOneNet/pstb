@@ -40,35 +40,39 @@ abstract class BusinessStoreBase with Store {
   @observable
   bool isLoadingDetail = false;
 
-  @action
-  Future<void> getUserBusiness({
+  Future<bool> getUserBusiness({
     required String maYte,
     required String password,
   }) async {
     try {
       final response = await _apiBaseHelper.postBase(
-          ApiUrl.getUserBusiness,
-          jsonEncode({
-            "UserName": maYte,
-            "Password": password,
-          }));
+        ApiUrl.getUserBusiness,
+        jsonEncode({
+          "UserName": maYte,
+          "Password": password,
+        }),
+      );
+      print("response111 $response");
+
+      final status = response;
+      if (status is bool && status != true) {
+        return false;
+      }
+
       userBusiness = UserBusinessModel.fromJson(response);
-      print("✅ business: $userBusiness");
 
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('maYte', maYte);
       await prefs.setString('passwordBusiness', password);
       await loadHistoryRecord();
 
-      Modular.to.pushReplacementNamed(AppRoutes.businessPage);
+      return true;
     } on NetworkException catch (e, stack) {
-      Fluttertoast.showToast(msg: 'Lỗi đăng nhập, vui lòng thử lại');
       print("❌ NetworkException in getUserBusiness: $e");
-      print("📌 StackTrace: $stack");
+      return false;
     } catch (e, stack) {
-      Fluttertoast.showToast(msg: 'Lỗi đăng nhập, vui lòng thử lại');
       print("❌ Error in getUserBusiness: $e");
-      print("📌 StackTrace: $stack");
+      return false;
     }
   }
 

@@ -185,7 +185,7 @@ class SecondShortcutCustomer extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: const Text('Đang mở SmartCA...'),
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 800),
         behavior: SnackBarBehavior.floating,
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       ),

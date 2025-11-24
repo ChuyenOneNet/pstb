@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pstb/app/user_app_store.dart'; // đổi path nếu file store ở nơi khác
 import 'package:pstb/utils/app_extensions.dart';
@@ -15,7 +18,6 @@ import '../../utils/crm_message_parser.dart';
 
 abstract class BookingRepository {
   Future<List<LeadService>> getLeadServices(Map<String, dynamic> body);
-  Future<List<TimeSlot>> getTimeSlots(Map<String, dynamic> body);
   Future<CrmBookingResponse> createBooking(BookingRequest request);
 
   Future<void> addHistory(HistoryEntry e);
@@ -39,25 +41,34 @@ class BookingRepositoryImpl implements BookingRepository {
 
   @override
   Future<List<LeadService>> getLeadServices(Map<String, dynamic> body) async {
-    final res = await catalogService.fetchLeadServices(body);
-    return res.data ?? [];
-  }
+    final authRes =
+        await catalogService.auth("it.crm", "278bac897ff389ef3af754c6cf34df96");
+    final token = authRes.access_token;
+    print("token $token");
+    // 2. Lấy danh sách services
+    final res = await catalogService.getServices(
+      token,
+      "Services",
+      "modifiedtime",
+      "DESC",
+      0,
+      5,
+    );
 
-  @override
-  Future<List<TimeSlot>> getTimeSlots(Map<String, dynamic> body) async {
-    final res = await catalogService.fetchTimeSlots(body);
-    return res.data ?? [];
+    final list = res.entry_list ?? [];
+
+    return list;
   }
 
   @override
   Future<CrmBookingResponse> createBooking(BookingRequest request) async {
     final rsp = await bookingService.createBooking(request);
-
+    print(rsp.message);
     // Parse Booking/Customer IDs từ message: "Saved Customer ID: 52575 - Booking ID: 52590"
     final ids = parseCrmIds(rsp.message);
     final bookingIdPref = ids.bookingId ?? rsp.id;
     final generatedOrParsedId = bookingIdPref ?? const Uuid().v4();
-
+    print("ok");
     // Lưu lịch sử local theo sđt user
     final data = request.data;
     final entry = HistoryEntry(
@@ -66,7 +77,7 @@ class BookingRepositoryImpl implements BookingRepository {
       phone: data.mobile,
       serviceName: data.leads_interest_service,
       visitDateIso: _isoFromDdMmDash(data.start_day),
-      visitTimeIso: _isoFromViTime(data.start_day, data.start_time.first),
+      visitTimeIso: _isoFromDdMmDash(data.start_day),
       branch: data.branch,
       status: rsp.success == true ? 'Xác nhận' : (rsp.message ?? 'Chờ'),
       createdAtIso: DateTime.now().toViTimeLabel(),

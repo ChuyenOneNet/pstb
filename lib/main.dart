@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:pstb/utils/colors.dart';
 import 'package:vnpt_smartca_module/main.dart';
 import 'app/app_module.dart';
@@ -44,6 +45,8 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('sign_cache');
   await Firebase.initializeApp();
   await setupLocator();
   await GetStorage.init();

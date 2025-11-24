@@ -49,12 +49,56 @@ abstract class _FilterSignatureStoreBase with Store {
   DepartmentModel? departmentModelSelected;
   @observable
   PatientModel? patientModelSelected;
+  @observable
+  String _localTypeDocQuery = '';
+  @observable
+  List<TypeDocumentModel> filteredTypeDocuments = [];
   String? documentTypeCode;
   String? _keywordTypeDocument;
   String? _keywordDepartment;
   String? _keywordPatient;
   String? searchValue;
   String resultError = '';
+  String _normalize(String? s) {
+    if (s == null) return '';
+    final lower = s.toLowerCase();
+    // Loại bỏ dấu tiếng Việt
+    const withDiacritics =
+        'àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ';
+    const withoutDiacritics =
+        'aaaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuyyyyyd';
+    final map = <int, int>{};
+    for (int i = 0; i < withDiacritics.length; i++) {
+      map[withDiacritics.codeUnitAt(i)] = withoutDiacritics.codeUnitAt(i);
+    }
+    final sb = StringBuffer();
+    for (final code in lower.codeUnits) {
+      sb.writeCharCode(map[code] ?? code);
+    }
+    // Loại bỏ khoảng trắng dư
+    return sb.toString().replaceAll(RegExp(r'\s+'), ' ').trim();
+  }
+
+  void _applyLocalFilter() {
+    print(pagingTypeDocument.items?.length);
+    final q = _localTypeDocQuery;
+    final src = pagingTypeDocument.items ?? <TypeDocumentModel>[];
+    if (q.isEmpty) {
+      filteredTypeDocuments = src;
+      print(q.length);
+    } else {
+      filteredTypeDocuments = src
+          .where((e) => e.name!.toLowerCase().contains(q.toLowerCase()))
+          .toList(growable: false);
+    }
+  }
+
+  @action
+  void onQueryTypeDocumentLocal(String query) {
+    _localTypeDocQuery = query;
+    _applyLocalFilter();
+  }
+
   @action
   void initState() {
     toDate = fromDate = nameSigningStatus = roleCode = typeDocument =
@@ -108,8 +152,10 @@ abstract class _FilterSignatureStoreBase with Store {
     try {
       pagingTypeDocument = await _filterSignatureService.getTypeDocument(
           value: _keywordTypeDocument);
+      _applyLocalFilter();
     } catch (e) {
-      pagingTypeDocument.items = null;
+      pagingTypeDocument.items = <TypeDocumentModel>[];
+      filteredTypeDocuments = <TypeDocumentModel>[];
     }
   }
 
@@ -214,8 +260,10 @@ abstract class _FilterSignatureStoreBase with Store {
       pagingTypeDocument.items!
           .addAll(List.from(response.items!, growable: true));
       isLoading = false;
+      _applyLocalFilter();
     } catch (e) {
-      pagingTypeDocument.items = null;
+      isLoading = false;
+      //pagingTypeDocument.items = null;
     }
   }
 

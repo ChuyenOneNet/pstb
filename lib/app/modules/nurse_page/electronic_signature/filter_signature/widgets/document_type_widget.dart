@@ -60,52 +60,57 @@ class _DocumentTypeWidgetState extends State<DocumentTypeWidget> {
                   CupertinoSearchTextField(
                     placeholder: 'Tìm kiếm loại tài liệu',
                     autofocus: true,
-                    onSubmitted: (value) async {
-                      EasyLoading.show();
-                      await _controller.onSearchDepartment(keyword: value);
-                      EasyLoading.dismiss();
+                    onChanged: (value) {
+                      // LỌC CỤC BỘ FE, không gọi API
+                      _controller.onQueryTypeDocumentLocal(value);
                     },
+                    // onSubmitted: (value) async {
+                    //   EasyLoading.show();
+                    //   await _controller.onSearchDepartment(keyword: value);
+                    //   EasyLoading.dismiss();
+                    // },
                   ),
-                  if (_controller.pagingTypeDocument.items == null)
-                    const Text('Lỗi dữ liệu'),
-                  if (_controller.pagingTypeDocument.items != null &&
-                      _controller.pagingTypeDocument.items!.isEmpty)
-                    const Text('Không có kết quả'),
-                  if (_controller.pagingTypeDocument.items != null &&
-                      _controller.pagingTypeDocument.items!.isNotEmpty)
-                    Observer(builder: (context) {
-                      if (_controller.isLoading) {
-                        return const AppCircleLoading();
-                      }
-                      return Expanded(
-                        child: Scrollbar(
-                          controller: _scrollController,
-                          child: ListView.separated(
-                            controller: _scrollController,
-                            padding: const EdgeInsets.all(8),
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            itemBuilder: (_, index) {
-                              final typeDocument =
-                                  _controller.pagingTypeDocument.items![index];
-                              return InkWell(
-                                  onTap: () {
-                                    _controller.onSelectedTypeDocument(
-                                        typeDocumentModelSelected:
-                                            typeDocument);
-                                    Modular.to.pop();
-                                  },
-                                  child: Text(typeDocument.name ?? ''));
-                            },
-                            separatorBuilder: (_, index) {
-                              return const Divider();
-                            },
-                            itemCount:
-                                _controller.pagingTypeDocument.items!.length,
-                            shrinkWrap: true,
-                          ),
-                        ),
+                  Observer(builder: (context) {
+                    final src = _controller.pagingTypeDocument.items;
+                    if (src == null) return const Text('Lỗi dữ liệu');
+
+                    final filtered = _controller.filteredTypeDocuments;
+                    if (_controller.isLoading && (src.isEmpty)) {
+                      return const AppCircleLoading();
+                    }
+                    if (filtered.isEmpty) {
+                      return const Padding(
+                        padding: EdgeInsets.only(top: 16),
+                        child: Text('Không có kết quả'),
                       );
-                    })
+                    }
+
+                    return Expanded(
+                      child: Scrollbar(
+                        controller: _scrollController,
+                        child: ListView.separated(
+                          controller: _scrollController,
+                          padding: const EdgeInsets.all(8),
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          itemBuilder: (_, index) {
+                            final typeDocument = filtered[index];
+                            return InkWell(
+                              onTap: () {
+                                _controller.onSelectedTypeDocument(
+                                  typeDocumentModelSelected: typeDocument,
+                                );
+                                Modular.to.pop();
+                              },
+                              child: Text(typeDocument.name ?? ''),
+                            );
+                          },
+                          separatorBuilder: (_, __) => const Divider(),
+                          itemCount: filtered.length,
+                          shrinkWrap: true,
+                        ),
+                      ),
+                    );
+                  }),
                 ],
               ),
             );

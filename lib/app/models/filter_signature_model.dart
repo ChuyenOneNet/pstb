@@ -110,6 +110,7 @@
 //
 //   Map<String, dynamic> toJson() => _$FilterSignatureModelToJson(this);
 // }
+
 class FilterSignatureModel {
   String? userName;
   int? idSigningStatus;
@@ -149,3 +150,75 @@ class FilterSignatureModel {
     };
   }
 }
+
+// import 'package:json_annotation/json_annotation.dart';
+//
+// part 'filter_signature_model.g.dart';
+//
+// @JsonSerializable(explicitToJson: true)
+// class FilterSignatureModel {
+//   String? userName;
+//
+//   /// 0/1/2. Gửi lên BE dưới key 'signingStatus'
+//   @JsonKey(name: 'signingStatus')
+//   int? signingStatusCode;
+//
+//   String? roleCode;
+//
+//   /// BE nhận 'keyword'
+//   @JsonKey(name: 'keyword')
+//   String? searchValue;
+//
+//   String? fromDate; // yyyy-MM-dd
+//   String? toDate; // yyyy-MM-dd
+//   String? departmentCode;
+//   String? patientCode;
+//   String? documentTypeCode;
+//   int? pageIndex;
+//
+//   FilterSignatureModel({
+//     this.userName,
+//     this.signingStatusCode,
+//     this.roleCode,
+//     this.searchValue,
+//     this.fromDate,
+//     this.toDate,
+//     this.departmentCode,
+//     this.documentTypeCode,
+//     this.pageIndex,
+//     this.patientCode,
+//   });
+//
+//   factory FilterSignatureModel.fromJson(Map<String, dynamic> json) =>
+//       _$FilterSignatureModelFromJson(json);
+//   Map<String, dynamic> toJson() => _$FilterSignatureModelToJson(this);
+//
+//   // tiện ích nếu UI dùng key 'pending'/'signed'/'revoked'
+//   FilterSignatureModel withUIStatus(String? uiKey) => FilterSignatureModel(
+//         userName: userName,
+//         signingStatusCode: _mapStatusKeyToInt(uiKey),
+//         roleCode: roleCode,
+//         searchValue: searchValue,
+//         fromDate: fromDate,
+//         toDate: toDate,
+//         departmentCode: departmentCode,
+//         documentTypeCode: documentTypeCode,
+//         pageIndex: pageIndex,
+//         patientCode: patientCode,
+//       );
+//
+//   static int? _mapStatusKeyToInt(String? key) {
+//     if (key == null) return null;
+//     switch (key) {
+//       case 'pending':
+//       case 'unsigned':
+//         return 0;
+//       case 'signed':
+//         return 1;
+//       case 'revoked':
+//         return 2;
+//       default:
+//         return null;
+//     }
+//   }
+// }

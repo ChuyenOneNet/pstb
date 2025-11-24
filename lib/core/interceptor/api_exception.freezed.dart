@@ -131,7 +131,9 @@ mixin _$ApiException {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApiExceptionCopyWith<ApiException> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -155,6 +157,8 @@ class _$ApiExceptionCopyWithImpl<$Res, $Val extends ApiException>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -208,6 +212,8 @@ class __$$BadRequestImplCopyWithImpl<$Res>
       _$BadRequestImpl _value, $Res Function(_$BadRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -282,7 +288,9 @@ class _$BadRequestImpl implements BadRequest {
   int get hashCode =>
       Object.hash(runtimeType, path, message, code, statusCode, errorKey);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BadRequestImplCopyWith<_$BadRequestImpl> get copyWith =>
@@ -440,8 +448,11 @@ abstract class BadRequest implements ApiException {
   int? get statusCode;
   @override
   String? get errorKey;
+
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BadRequestImplCopyWith<_$BadRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -470,6 +481,8 @@ class __$$UnauthorizedImplCopyWithImpl<$Res>
       _$UnauthorizedImpl _value, $Res Function(_$UnauthorizedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -544,7 +557,9 @@ class _$UnauthorizedImpl implements Unauthorized {
   int get hashCode =>
       Object.hash(runtimeType, path, message, code, statusCode, errorKey);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UnauthorizedImplCopyWith<_$UnauthorizedImpl> get copyWith =>
@@ -702,8 +717,11 @@ abstract class Unauthorized implements ApiException {
   int? get statusCode;
   @override
   String? get errorKey;
+
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnauthorizedImplCopyWith<_$UnauthorizedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -732,6 +750,8 @@ class __$$ForbiddenImplCopyWithImpl<$Res>
       _$ForbiddenImpl _value, $Res Function(_$ForbiddenImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -806,7 +826,9 @@ class _$ForbiddenImpl implements Forbidden {
   int get hashCode =>
       Object.hash(runtimeType, path, message, code, statusCode, errorKey);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ForbiddenImplCopyWith<_$ForbiddenImpl> get copyWith =>
@@ -964,8 +986,11 @@ abstract class Forbidden implements ApiException {
   int? get statusCode;
   @override
   String? get errorKey;
+
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ForbiddenImplCopyWith<_$ForbiddenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -994,6 +1019,8 @@ class __$$NotFoundImplCopyWithImpl<$Res>
       _$NotFoundImpl _value, $Res Function(_$NotFoundImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1068,7 +1095,9 @@ class _$NotFoundImpl implements NotFound {
   int get hashCode =>
       Object.hash(runtimeType, path, message, code, statusCode, errorKey);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NotFoundImplCopyWith<_$NotFoundImpl> get copyWith =>
@@ -1226,8 +1255,11 @@ abstract class NotFound implements ApiException {
   int? get statusCode;
   @override
   String? get errorKey;
+
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NotFoundImplCopyWith<_$NotFoundImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1256,6 +1288,8 @@ class __$$InternalServerErrorImplCopyWithImpl<$Res>
       $Res Function(_$InternalServerErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1330,7 +1364,9 @@ class _$InternalServerErrorImpl implements InternalServerError {
   int get hashCode =>
       Object.hash(runtimeType, path, message, code, statusCode, errorKey);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InternalServerErrorImplCopyWith<_$InternalServerErrorImpl> get copyWith =>
@@ -1489,8 +1525,11 @@ abstract class InternalServerError implements ApiException {
   int? get statusCode;
   @override
   String? get errorKey;
+
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InternalServerErrorImplCopyWith<_$InternalServerErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1519,6 +1558,8 @@ class __$$NoConnectionImplCopyWithImpl<$Res>
       _$NoConnectionImpl _value, $Res Function(_$NoConnectionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1593,7 +1634,9 @@ class _$NoConnectionImpl implements NoConnection {
   int get hashCode =>
       Object.hash(runtimeType, path, message, code, statusCode, errorKey);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NoConnectionImplCopyWith<_$NoConnectionImpl> get copyWith =>
@@ -1751,8 +1794,11 @@ abstract class NoConnection implements ApiException {
   int? get statusCode;
   @override
   String? get errorKey;
+
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NoConnectionImplCopyWith<_$NoConnectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1776,6 +1822,8 @@ class __$$OtherImplCopyWithImpl<$Res>
       _$OtherImpl _value, $Res Function(_$OtherImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1841,7 +1889,9 @@ class _$OtherImpl implements Other {
   int get hashCode =>
       Object.hash(runtimeType, message, code, statusCode, errorKey);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OtherImplCopyWith<_$OtherImpl> get copyWith =>
@@ -1994,8 +2044,11 @@ abstract class Other implements ApiException {
   int? get statusCode;
   @override
   String? get errorKey;
+
+  /// Create a copy of ApiException
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OtherImplCopyWith<_$OtherImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -17,12 +17,13 @@ class ShortcutMenuWidget extends StatefulWidget {
 }
 
 class _ShortcutMenuWidgetState extends State<ShortcutMenuWidget> {
-  final controller = Modular.get<HomeStore>();
+  final controller = Modular.get<UserAppStore>();
 
   @override
   Widget build(BuildContext context) {
+    print("controller.isStaff ${controller.isCodeNursing}");
     return Observer(builder: (context) {
-      if (controller.isStaff) {
+      if (controller.isCodeNursing) {
         return Column(
           children: [
             Container(
@@ -41,7 +42,9 @@ class _ShortcutMenuWidgetState extends State<ShortcutMenuWidget> {
               height: 16.0,
             ),
             Container(
-                padding: const EdgeInsets.only(top: 16.0,),
+                padding: const EdgeInsets.only(
+                  top: 16.0,
+                ),
                 margin: const EdgeInsets.only(
                   left: 16.0,
                   right: 16.0,
@@ -55,7 +58,9 @@ class _ShortcutMenuWidgetState extends State<ShortcutMenuWidget> {
         );
       } else {
         return Container(
-            padding: const EdgeInsets.only(top: 16.0,),
+            padding: const EdgeInsets.only(
+              top: 16.0,
+            ),
             margin: const EdgeInsets.only(
               left: 16.0,
               right: 16.0,

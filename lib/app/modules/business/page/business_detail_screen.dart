@@ -4,12 +4,15 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pstb/app/models/business_detail_model.dart';
 import 'package:intl/intl.dart';
+import 'package:pstb/app/modules/business/detail/thuoc_result_screen.dart';
+import 'package:pstb/app/modules/business/detail/vien_phi_pdf_screen.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import '../../../../utils/colors.dart';
 import '../../../../utils/routes.dart';
 import '../../../../widgets/stateless/app_bar.dart';
 import '../../../models/user_business_model.dart';
 import '../business_store.dart';
+import '../detail/xet_nghiem_result_screen.dart';
 
 class BusinessDetailScreen extends StatefulWidget {
   final String idBusiness;
@@ -161,6 +164,9 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                                   const SizedBox(
                                     height: 16,
                                   ),
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
                                 ]
                               ]
                             : detail.urlDataInfos!.asMap().entries.map((entry) {
@@ -270,60 +276,84 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                                           : ''),
                                       GestureDetector(
                                         onTap: () async {
-                                          showDialog(
-                                            context: context,
-                                            barrierDismissible: false,
-                                            builder: (_) => const Center(
-                                                child:
-                                                    CircularProgressIndicator()),
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    VienPhiPdfScreen(
+                                                      ngayPhatHanh: e.value
+                                                                  .thoiGian !=
+                                                              null
+                                                          ? DateFormat(
+                                                                  'dd/MM/yyyy')
+                                                              .format(DateTime
+                                                                  .parse(e.value
+                                                                      .thoiGian!))
+                                                          : '',
+                                                      fetchPdfCallback: (id) =>
+                                                          store
+                                                              .fetchVienPhiPdfBase64(
+                                                                  e.value.id ??
+                                                                      ''),
+                                                      maGiaoDich:
+                                                          e.value.maGiaoDich ??
+                                                              "",
+                                                    )),
                                           );
-
-                                          final pdfBase64 =
-                                              await store.fetchVienPhiPdfBase64(
-                                                  e.value.id ?? '');
-
-                                          Navigator.pop(context);
-
-                                          if (pdfBase64 != null &&
-                                              pdfBase64.isNotEmpty) {
-                                            try {
-                                              final bytes =
-                                                  base64Decode(pdfBase64);
-                                              showDialog(
-                                                context: context,
-                                                builder: (_) => Dialog(
-                                                  child: SizedBox(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.9,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.85,
-                                                    child: SfPdfViewer.memory(
-                                                        bytes),
-                                                  ),
-                                                ),
-                                              );
-                                            } catch (e) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                const SnackBar(
-                                                    content: Text(
-                                                        'Lỗi giải mã PDF')),
-                                              );
-                                            }
-                                          } else {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              const SnackBar(
-                                                  content: Text(
-                                                      'Không có dữ liệu PDF')),
-                                            );
-                                          }
+                                          // showDialog(
+                                          //   context: context,
+                                          //   barrierDismissible: false,
+                                          //   builder: (_) => const Center(
+                                          //       child:
+                                          //           CircularProgressIndicator()),
+                                          // );
+                                          //
+                                          // final pdfBase64 =
+                                          //     await store.fetchVienPhiPdfBase64(
+                                          //         e.value.id ?? '');
+                                          //
+                                          // Navigator.pop(context);
+                                          //
+                                          // if (pdfBase64 != null &&
+                                          //     pdfBase64.isNotEmpty) {
+                                          //   try {
+                                          //     final bytes =
+                                          //         base64Decode(pdfBase64);
+                                          //     showDialog(
+                                          //       context: context,
+                                          //       builder: (_) => Dialog(
+                                          //         child: SizedBox(
+                                          //           width:
+                                          //               MediaQuery.of(context)
+                                          //                       .size
+                                          //                       .width *
+                                          //                   0.9,
+                                          //           height:
+                                          //               MediaQuery.of(context)
+                                          //                       .size
+                                          //                       .height *
+                                          //                   0.85,
+                                          //           child: SfPdfViewer.memory(
+                                          //               bytes),
+                                          //         ),
+                                          //       ),
+                                          //     );
+                                          //   } catch (e) {
+                                          //     ScaffoldMessenger.of(context)
+                                          //         .showSnackBar(
+                                          //       const SnackBar(
+                                          //           content: Text(
+                                          //               'Lỗi giải mã PDF')),
+                                          //     );
+                                          //   }
+                                          // } else {
+                                          //   ScaffoldMessenger.of(context)
+                                          //       .showSnackBar(
+                                          //     const SnackBar(
+                                          //         content: Text(
+                                          //             'Không có dữ liệu PDF')),
+                                          //   );
+                                          // }
                                         },
                                         child: const Text(
                                           'Xem KQ',
@@ -346,115 +376,123 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
     String loai,
     List<ToaThuocInfo> danhSach,
   ) {
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: Colors.white,
-        title: Text('Danh sách thuốc - Loại: $loai'),
-        content: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.95,
-          height: MediaQuery.of(context).size.height * 0.6,
-          child: SingleChildScrollView(
-            // Cuộn dọc
-            scrollDirection: Axis.vertical,
-            child: SingleChildScrollView(
-              // Cuộn ngang
-              scrollDirection: Axis.horizontal,
-              child: Table(
-                border: TableBorder.all(color: Colors.grey.shade400),
-                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                columnWidths: const {
-                  0: FixedColumnWidth(40), // STT
-                  1: FixedColumnWidth(200), // Tên thuốc
-                  2: FixedColumnWidth(100), // Số lượng
-                  3: FixedColumnWidth(100), // Đơn vị// Liều dùng (ví dụ thêm)
-                  4: FixedColumnWidth(200), // Cách dùng (ví dụ thêm)
-                },
-                children: [
-                  // Header
-                  TableRow(
-                    decoration: const BoxDecoration(color: AppColors.primary),
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('STT',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Tên thuốc',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Số lượng',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Đơn vị',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Cách dùng',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                    ],
-                  ),
-                  // Dữ liệu
-                  ...danhSach.asMap().entries.map((entry) {
-                    final index = entry.key;
-                    final thuoc = entry.value;
-
-                    return TableRow(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text('${index + 1}'),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(thuoc.tenHang ?? 'Không rõ'),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(thuoc.soLuong ?? '-'),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(thuoc.donViTinh ?? '-'),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(thuoc.cachDung ?? '-'), // ví dụ thêm
-                        ),
-                      ],
-                    );
-                  }).toList(),
-                ],
-              ),
-            ),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Đóng'),
-          )
-        ],
-      ),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => ThuocResultScreen(
+                loai: loai,
+                danhSach: danhSach,
+              )),
     );
+    // showDialog(
+    //   context: context,
+    //   builder: (_) => AlertDialog(
+    //     backgroundColor: Colors.white,
+    //     title: Text('Danh sách thuốc - Loại: $loai'),
+    //     content: SizedBox(
+    //       width: MediaQuery.of(context).size.width * 0.95,
+    //       height: MediaQuery.of(context).size.height * 0.6,
+    //       child: SingleChildScrollView(
+    //         // Cuộn dọc
+    //         scrollDirection: Axis.vertical,
+    //         child: SingleChildScrollView(
+    //           // Cuộn ngang
+    //           scrollDirection: Axis.horizontal,
+    //           child: Table(
+    //             border: TableBorder.all(color: Colors.grey.shade400),
+    //             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+    //             columnWidths: const {
+    //               0: FixedColumnWidth(40), // STT
+    //               1: FixedColumnWidth(200), // Tên thuốc
+    //               2: FixedColumnWidth(100), // Số lượng
+    //               3: FixedColumnWidth(100), // Đơn vị// Liều dùng (ví dụ thêm)
+    //               4: FixedColumnWidth(200), // Cách dùng (ví dụ thêm)
+    //             },
+    //             children: [
+    //               // Header
+    //               TableRow(
+    //                 decoration: const BoxDecoration(color: AppColors.primary),
+    //                 children: const [
+    //                   Padding(
+    //                     padding: EdgeInsets.all(8.0),
+    //                     child: Text('STT',
+    //                         style: TextStyle(
+    //                             color: Colors.white,
+    //                             fontWeight: FontWeight.bold)),
+    //                   ),
+    //                   Padding(
+    //                     padding: EdgeInsets.all(8.0),
+    //                     child: Text('Tên thuốc',
+    //                         style: TextStyle(
+    //                             color: Colors.white,
+    //                             fontWeight: FontWeight.bold)),
+    //                   ),
+    //                   Padding(
+    //                     padding: EdgeInsets.all(8.0),
+    //                     child: Text('Số lượng',
+    //                         style: TextStyle(
+    //                             color: Colors.white,
+    //                             fontWeight: FontWeight.bold)),
+    //                   ),
+    //                   Padding(
+    //                     padding: EdgeInsets.all(8.0),
+    //                     child: Text('Đơn vị',
+    //                         style: TextStyle(
+    //                             color: Colors.white,
+    //                             fontWeight: FontWeight.bold)),
+    //                   ),
+    //                   Padding(
+    //                     padding: EdgeInsets.all(8.0),
+    //                     child: Text('Cách dùng',
+    //                         style: TextStyle(
+    //                             color: Colors.white,
+    //                             fontWeight: FontWeight.bold)),
+    //                   ),
+    //                 ],
+    //               ),
+    //               // Dữ liệu
+    //               ...danhSach.asMap().entries.map((entry) {
+    //                 final index = entry.key;
+    //                 final thuoc = entry.value;
+    //
+    //                 return TableRow(
+    //                   children: [
+    //                     Padding(
+    //                       padding: const EdgeInsets.all(8.0),
+    //                       child: Text('${index + 1}'),
+    //                     ),
+    //                     Padding(
+    //                       padding: const EdgeInsets.all(8.0),
+    //                       child: Text(thuoc.tenHang ?? 'Không rõ'),
+    //                     ),
+    //                     Padding(
+    //                       padding: const EdgeInsets.all(8.0),
+    //                       child: Text(thuoc.soLuong ?? '-'),
+    //                     ),
+    //                     Padding(
+    //                       padding: const EdgeInsets.all(8.0),
+    //                       child: Text(thuoc.donViTinh ?? '-'),
+    //                     ),
+    //                     Padding(
+    //                       padding: const EdgeInsets.all(8.0),
+    //                       child: Text(thuoc.cachDung ?? '-'), // ví dụ thêm
+    //                     ),
+    //                   ],
+    //                 );
+    //               }).toList(),
+    //             ],
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //     actions: [
+    //       TextButton(
+    //         onPressed: () => Navigator.pop(context),
+    //         child: const Text('Đóng'),
+    //       )
+    //     ],
+    //   ),
+    // );
   }
 
   void _showKetQuaXetNghiemDialog(
@@ -462,108 +500,117 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
     String tenLoai,
     List<XetNghiemInfo> danhSach,
   ) {
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: Colors.white,
-        title: Text('Kết quả xét nghiệm - $tenLoai'),
-        content: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.95,
-          height: MediaQuery.of(context).size.height * 0.7,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8),
-                  padding: const EdgeInsets.all(8),
-                  color: AppColors.primary,
-                  width: double.infinity,
-                  child: Text(danhSach.first.tenDichVu ?? "-",
-                      style:
-                          const TextStyle(color: Colors.white, fontSize: 15)),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Table(
-                    border: TableBorder.all(color: Colors.grey.shade400),
-                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                    columnWidths: const {
-                      0: FixedColumnWidth(200),
-                      1: FixedColumnWidth(100),
-                      2: FixedColumnWidth(100),
-                      3: FixedColumnWidth(80),
-                    },
-                    children: [
-                      TableRow(
-                        decoration:
-                            const BoxDecoration(color: AppColors.primary),
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text('Chỉ số',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text('Kết quả',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text('Tham chiếu',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text('Đơn vị',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      ),
-                      ...danhSach.map((xn) => TableRow(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(xn.tenChiSo ?? ''),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(xn.giaTri ?? ''),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(xn.normalRange ?? ''),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(xn.donViTinh ?? ''),
-                              ),
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => XetNghiemResultScreen(
+          tenLoai: tenLoai,
+          danhSach: danhSach, // Your test results data
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Đóng'),
-          ),
-        ],
       ),
     );
+    // showDialog(
+    //   context: context,
+    //   builder: (_) => AlertDialog(
+    //     backgroundColor: Colors.white,
+    //     title: Text('Kết quả xét nghiệm - $tenLoai'),
+    //     content: SizedBox(
+    //       width: MediaQuery.of(context).size.width * 0.95,
+    //       height: MediaQuery.of(context).size.height * 0.7,
+    //       child: SingleChildScrollView(
+    //         scrollDirection: Axis.vertical,
+    //         child: Column(
+    //           children: [
+    //             Container(
+    //               margin: const EdgeInsets.symmetric(vertical: 8),
+    //               padding: const EdgeInsets.all(8),
+    //               color: AppColors.primary,
+    //               width: double.infinity,
+    //               child: Text(danhSach.first.tenDichVu ?? "-",
+    //                   style:
+    //                       const TextStyle(color: Colors.white, fontSize: 15)),
+    //             ),
+    //             SingleChildScrollView(
+    //               scrollDirection: Axis.horizontal,
+    //               child: Table(
+    //                 border: TableBorder.all(color: Colors.grey.shade400),
+    //                 defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+    //                 columnWidths: const {
+    //                   0: FixedColumnWidth(200),
+    //                   1: FixedColumnWidth(100),
+    //                   2: FixedColumnWidth(100),
+    //                   3: FixedColumnWidth(80),
+    //                 },
+    //                 children: [
+    //                   TableRow(
+    //                     decoration:
+    //                         const BoxDecoration(color: AppColors.primary),
+    //                     children: const [
+    //                       Padding(
+    //                         padding: EdgeInsets.all(8.0),
+    //                         child: Text('Chỉ số',
+    //                             style: TextStyle(
+    //                                 color: Colors.white,
+    //                                 fontWeight: FontWeight.bold)),
+    //                       ),
+    //                       Padding(
+    //                         padding: EdgeInsets.all(8.0),
+    //                         child: Text('Kết quả',
+    //                             style: TextStyle(
+    //                                 color: Colors.white,
+    //                                 fontWeight: FontWeight.bold)),
+    //                       ),
+    //                       Padding(
+    //                         padding: EdgeInsets.all(8.0),
+    //                         child: Text('Tham chiếu',
+    //                             style: TextStyle(
+    //                                 color: Colors.white,
+    //                                 fontWeight: FontWeight.bold)),
+    //                       ),
+    //                       Padding(
+    //                         padding: EdgeInsets.all(8.0),
+    //                         child: Text('Đơn vị',
+    //                             style: TextStyle(
+    //                                 color: Colors.white,
+    //                                 fontWeight: FontWeight.bold)),
+    //                       ),
+    //                     ],
+    //                   ),
+    //                   ...danhSach.map((xn) => TableRow(
+    //                         children: [
+    //                           Padding(
+    //                             padding: const EdgeInsets.all(8.0),
+    //                             child: Text(xn.tenChiSo ?? ''),
+    //                           ),
+    //                           Padding(
+    //                             padding: const EdgeInsets.all(8.0),
+    //                             child: Text(xn.giaTri ?? ''),
+    //                           ),
+    //                           Padding(
+    //                             padding: const EdgeInsets.all(8.0),
+    //                             child: Text(xn.normalRange ?? ''),
+    //                           ),
+    //                           Padding(
+    //                             padding: const EdgeInsets.all(8.0),
+    //                             child: Text(xn.donViTinh ?? ''),
+    //                           ),
+    //                         ],
+    //                       )),
+    //                 ],
+    //               ),
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //     actions: [
+    //       TextButton(
+    //         onPressed: () => Navigator.pop(context),
+    //         child: const Text('Đóng'),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 
   // void _showInvoiceJsonDialog(BuildContext context, String jsonText) {

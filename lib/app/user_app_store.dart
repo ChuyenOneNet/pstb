@@ -192,7 +192,7 @@ abstract class UserAppStoreBase with Store {
     await SessionPrefs.isStaff(false);
     ApiBaseHelper.removeHeader();
     FireBaseMessageSrv.instance.disable();
-    final prefs = GetIt.I<SharedPreferencesManager>();
+    final prefs = await GetIt.I<SharedPreferencesManager>();
     prefs.clear();
     await FirebaseAuth.instance.signOut();
     await _profileService.removeCodeNursing();

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get_it/get_it.dart';
 import 'package:pstb/app/models/nurse_model.dart';
 import 'package:pstb/app/models/staff_model.dart';
 import 'package:pstb/app/modules/ehr_page/ehr_store.dart';
@@ -11,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app/models/user_his_model.dart';
 import '../utils/sessions/local_secure.dart';
+import '../utils/shared_preferences_manager.dart';
 
 class ProfilePersonalService {
   final ApiBaseHelper baseHelper;
@@ -55,6 +57,8 @@ class ProfilePersonalService {
 
   Future<void> saveCodeNursing({required String code}) async {
     final getShared = await sharedPreferences;
+    final share = await GetIt.instance<SharedPreferencesManager>();
+    share.putString(Constants.codeNursing, code);
     await getShared.setString(Constants.codeNursing, code);
     final userId = await getUserHisId(code: code);
     await getShared.setInt(Constants.idNursing, userId ?? -1);

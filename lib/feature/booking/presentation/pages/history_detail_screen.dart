@@ -198,11 +198,11 @@ class HistoryDetailScreen extends StatelessWidget {
                   label: 'Ngày khám',
                   value: _formatIsoDate(entry.visitDateIso),
                 ),
-                _DetailRow(
-                  icon: Icons.access_time,
-                  label: 'Giờ khám',
-                  value: _formatIsoTime(entry.visitTimeIso),
-                ),
+                // _DetailRow(
+                //   icon: Icons.access_time,
+                //   label: 'Giờ khám',
+                //   value: _formatIsoTime(entry.visitTimeIso),
+                // ),
                 _DetailRow(
                   icon: Icons.location_on,
                   label: 'Cơ sở',

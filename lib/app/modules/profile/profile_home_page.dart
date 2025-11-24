@@ -58,6 +58,7 @@ class _ProfileHomePageState
 
   @override
   Widget build(BuildContext context) {
+    print("_userAppStore.isCodeNursing ${_userAppStore.isCodeNursing}");
     return Observer(
       builder: (_) {
         if (controller.isLogin == UserStatus.Checking) {

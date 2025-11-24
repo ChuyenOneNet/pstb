@@ -30,18 +30,37 @@ class TokenInterceptor extends InterceptorsWrapper {
     }
   }
 
+  String get medicalUnitId =>
+      GetIt.instance
+          .get<SharedPreferencesManager>()
+          .getString('medical_unit_id') ??
+      '9';
   @override
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     final accessToken = getAccessToken();
-    if (accessToken == null) {
+    if (accessToken == null || accessToken.isEmpty) {
       return super.onRequest(options, handler);
     }
     options.headers["Authorization"] = "Bearer $accessToken";
+    options.headers["authorization"] = "Bearer $accessToken";
+    options.headers["medical_unit_id"] = medicalUnitId;
     // options.headers["Authorization"] =
     //     "Bearer 4gFl9lE8m66/vQ2usDqbGmz1oTDwE93yDopx+AvAQPJHaiBid32w+kiy0hRROlT9BrzOns71dvMfoARemCxP2RSzjO4Qu4XiLq+5gn9qvsA=";
     options.headers["Accept-Language"] = await _getAppLanguage();
     return super.onRequest(options, handler);
+  }
+
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    if (response.data is String) {
+      try {
+        response.data = json.decode(response.data);
+      } catch (e) {
+        // nếu không decode được thì giữ nguyên
+      }
+    }
+    super.onResponse(response, handler);
   }
 
   @override
@@ -136,5 +155,19 @@ class IDTokenInterceptor extends TokenInterceptor {
         .get<SharedPreferencesManager>()
         .getString(AppConfig.idTokenKey);
     return idTokenKey;
+  }
+}
+
+class JsonDecodeInterceptor extends InterceptorsWrapper {
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    if (response.data is String) {
+      try {
+        response.data = json.decode(response.data);
+      } catch (e) {
+        // nếu không decode được thì giữ nguyên
+      }
+    }
+    super.onResponse(response, handler);
   }
 }

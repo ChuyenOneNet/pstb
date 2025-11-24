@@ -236,6 +236,40 @@ mixin _$FilterSignatureStore on _FilterSignatureStoreBase, Store {
     });
   }
 
+  late final _$_localTypeDocQueryAtom = Atom(
+      name: '_FilterSignatureStoreBase._localTypeDocQuery', context: context);
+
+  @override
+  String get _localTypeDocQuery {
+    _$_localTypeDocQueryAtom.reportRead();
+    return super._localTypeDocQuery;
+  }
+
+  @override
+  set _localTypeDocQuery(String value) {
+    _$_localTypeDocQueryAtom.reportWrite(value, super._localTypeDocQuery, () {
+      super._localTypeDocQuery = value;
+    });
+  }
+
+  late final _$filteredTypeDocumentsAtom = Atom(
+      name: '_FilterSignatureStoreBase.filteredTypeDocuments',
+      context: context);
+
+  @override
+  List<TypeDocumentModel> get filteredTypeDocuments {
+    _$filteredTypeDocumentsAtom.reportRead();
+    return super.filteredTypeDocuments;
+  }
+
+  @override
+  set filteredTypeDocuments(List<TypeDocumentModel> value) {
+    _$filteredTypeDocumentsAtom.reportWrite(value, super.filteredTypeDocuments,
+        () {
+      super.filteredTypeDocuments = value;
+    });
+  }
+
   late final _$onSearchDepartmentAsyncAction = AsyncAction(
       '_FilterSignatureStoreBase.onSearchDepartment',
       context: context);
@@ -317,6 +351,18 @@ mixin _$FilterSignatureStore on _FilterSignatureStoreBase, Store {
 
   late final _$_FilterSignatureStoreBaseActionController =
       ActionController(name: '_FilterSignatureStoreBase', context: context);
+
+  @override
+  void onQueryTypeDocumentLocal(String query) {
+    final _$actionInfo =
+        _$_FilterSignatureStoreBaseActionController.startAction(
+            name: '_FilterSignatureStoreBase.onQueryTypeDocumentLocal');
+    try {
+      return super.onQueryTypeDocumentLocal(query);
+    } finally {
+      _$_FilterSignatureStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void initState() {
@@ -447,7 +493,8 @@ pagingPatient: ${pagingPatient},
 pagingTypeDocument: ${pagingTypeDocument},
 typeDocument: ${typeDocument},
 departmentModelSelected: ${departmentModelSelected},
-patientModelSelected: ${patientModelSelected}
+patientModelSelected: ${patientModelSelected},
+filteredTypeDocuments: ${filteredTypeDocuments}
     ''';
   }
 }

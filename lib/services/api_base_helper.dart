@@ -1454,7 +1454,7 @@ class ApiBaseHelper {
 
     if (apiResponse != null || apiResponse?.status != null) {
       _log('🏗️ Base Response valid - Status: ${apiResponse?.status}');
-      if (apiResponse?.status != 200 || nullReturnStatus == true) return true;
+      if (apiResponse?.status != 200 || nullReturnStatus == true) return false;
       _log('🏗️ Base Data returned: ${apiResponse?.data}');
       return apiResponse?.data;
     }

@@ -117,6 +117,9 @@ abstract class LoginStoreBase with Store {
 
   Future<void> _logInSuccess(AuthenticationResult tokenData) async {
     await SessionPrefs.signedIn(tokenData);
+    final sharedPrefer = GetIt.instance<SharedPreferencesManager>();
+    await sharedPrefer.putString(
+        AppConfig.accessTokenKey, tokenData.token ?? "");
     String user = json.encode(tokenData);
     ApiBaseHelper.setHeader(user);
     await _appStore.loadBiometricSetting();
