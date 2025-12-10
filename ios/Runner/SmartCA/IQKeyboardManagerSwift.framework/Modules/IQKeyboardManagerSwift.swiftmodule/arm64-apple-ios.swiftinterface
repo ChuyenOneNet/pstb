@@ -1,0 +1,484 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name IQKeyboardManagerSwift
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import CoreGraphics
+import Foundation
+@_exported import IQKeyboardManagerSwift
+import QuartzCore
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_inheritsConvenienceInitializers @available(iOSApplicationExtension, unavailable)
+@objc @_Concurrency.MainActor @preconcurrency open class IQBarButtonItem : UIKit.UIBarButtonItem {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init()
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var tintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open func setTarget(_ target: Swift.AnyObject?, action: ObjectiveC.Selector?)
+  @objc @_Concurrency.MainActor @preconcurrency open var invocation: IQKeyboardManagerSwift.IQInvocation? {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@available(iOSApplicationExtension, unavailable)
+@objc final public class IQInvocation : ObjectiveC.NSObject {
+  @objc weak final public var target: Swift.AnyObject?
+  @objc final public var action: ObjectiveC.Selector
+  @objc public init(_ target: Swift.AnyObject, _ action: ObjectiveC.Selector)
+  @objc final public func invoke(from: Any)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOSApplicationExtension, unavailable)
+@objc final public class IQKeyboardManager : ObjectiveC.NSObject {
+  @objc public static let shared: IQKeyboardManagerSwift.IQKeyboardManager
+  @objc final public var enable: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc final public var keyboardDistanceFromTextField: CoreFoundation.CGFloat
+  @objc final public var enableAutoToolbar: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc final public var toolbarManageBehaviour: IQKeyboardManagerSwift.IQAutoToolbarManageBehaviour
+  @objc final public var shouldToolbarUsesTextFieldTintColor: Swift.Bool
+  @objc final public var toolbarTintColor: UIKit.UIColor?
+  @objc final public var toolbarBarTintColor: UIKit.UIColor?
+  @objc final public var previousNextDisplayMode: IQKeyboardManagerSwift.IQPreviousNextDisplayMode
+  @objc final public var toolbarPreviousBarButtonItemImage: UIKit.UIImage?
+  @objc final public var toolbarNextBarButtonItemImage: UIKit.UIImage?
+  @objc final public var toolbarDoneBarButtonItemImage: UIKit.UIImage?
+  @objc final public var toolbarPreviousBarButtonItemText: Swift.String?
+  @objc final public var toolbarPreviousBarButtonItemAccessibilityLabel: Swift.String?
+  @objc final public var toolbarNextBarButtonItemText: Swift.String?
+  @objc final public var toolbarNextBarButtonItemAccessibilityLabel: Swift.String?
+  @objc final public var toolbarDoneBarButtonItemText: Swift.String?
+  @objc final public var toolbarDoneBarButtonItemAccessibilityLabel: Swift.String?
+  @objc final public var toolbarTitlBarButtonItemAccessibilityLabel: Swift.String?
+  @objc final public var shouldShowToolbarPlaceholder: Swift.Bool
+  @objc final public var placeholderFont: UIKit.UIFont?
+  @objc final public var placeholderColor: UIKit.UIColor?
+  @objc final public var placeholderButtonColor: UIKit.UIColor?
+  @objc final public var overrideKeyboardAppearance: Swift.Bool
+  @objc final public var keyboardAppearance: UIKit.UIKeyboardAppearance
+  @objc final public var shouldResignOnTouchOutside: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc final public var resignFirstResponderGesture: UIKit.UITapGestureRecognizer {
+    @objc get
+    @objc set
+  }
+  @discardableResult
+  @objc final public func resignFirstResponder() -> Swift.Bool
+  @objc final public var shouldPlayInputClicks: Swift.Bool
+  @objc final public var layoutIfNeededOnUpdate: Swift.Bool
+  @objc final public var disabledDistanceHandlingClasses: [UIKit.UIViewController.Type]
+  @objc final public var enabledDistanceHandlingClasses: [UIKit.UIViewController.Type]
+  @objc final public var disabledToolbarClasses: [UIKit.UIViewController.Type]
+  @objc final public var enabledToolbarClasses: [UIKit.UIViewController.Type]
+  @objc final public var toolbarPreviousNextAllowedClasses: [UIKit.UIView.Type]
+  @objc final public var disabledTouchResignedClasses: [UIKit.UIViewController.Type]
+  @objc final public var enabledTouchResignedClasses: [UIKit.UIViewController.Type]
+  @objc final public var touchResignedGestureIgnoreClasses: [UIKit.UIView.Type]
+  @objc final public func registerTextFieldViewClass(_ aClass: UIKit.UIView.Type, didBeginEditingNotificationName: Swift.String, didEndEditingNotificationName: Swift.String)
+  @objc final public func unregisterTextFieldViewClass(_ aClass: UIKit.UIView.Type, didBeginEditingNotificationName: Swift.String, didEndEditingNotificationName: Swift.String)
+  @objc deinit
+  @objc final public func reloadLayoutIfNeeded()
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQKeyboardManager : UIKit.UIGestureRecognizerDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc final public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIKit.UIGestureRecognizer) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc final public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQKeyboardManager {
+  @objc final public var enableDebugging: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc final public func registerAllNotifications()
+  @objc final public func unregisterAllNotifications()
+  public struct Static {
+  }
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQKeyboardManager {
+  @objc final public var movedDistance: CoreFoundation.CGFloat {
+    @objc get
+  }
+  @objc final public var movedDistanceChanged: ((CoreFoundation.CGFloat) -> Swift.Void)? {
+    @objc get
+    @objc set(newValue)
+  }
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQKeyboardManager {
+  @objc final public func reloadInputViews()
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQKeyboardManager {
+  @objc final public var canGoPrevious: Swift.Bool {
+    @objc get
+  }
+  @objc final public var canGoNext: Swift.Bool {
+    @objc get
+  }
+  @discardableResult
+  @objc final public func goPrevious() -> Swift.Bool
+  @discardableResult
+  @objc final public func goNext() -> Swift.Bool
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQKeyboardManager {
+  public typealias SizeBlock = (_ size: CoreFoundation.CGSize) -> Swift.Void
+  @objc final public func registerKeyboardSizeChange(identifier: Swift.AnyHashable, sizeHandler: @escaping IQKeyboardManagerSwift.IQKeyboardManager.SizeBlock)
+  @objc final public func unregisterKeyboardSizeChange(identifier: Swift.AnyHashable)
+  @objc final public var keyboardShowing: Swift.Bool {
+    @objc get
+  }
+  @objc final public var keyboardFrame: CoreFoundation.CGRect {
+    @objc get
+  }
+}
+@available(iOSApplicationExtension, unavailable)
+@objc public enum IQAutoToolbarManageBehaviour : Swift.Int {
+  case bySubviews
+  case byTag
+  case byPosition
+  public init?(rawValue: Swift.Int)
+  @available(iOSApplicationExtension, unavailable)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@available(iOSApplicationExtension, unavailable)
+@objc public enum IQPreviousNextDisplayMode : Swift.Int {
+  case `default`
+  case alwaysHide
+  case alwaysShow
+  public init?(rawValue: Swift.Int)
+  @available(iOSApplicationExtension, unavailable)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@available(iOSApplicationExtension, unavailable)
+@objc public enum IQEnableMode : Swift.Int {
+  case `default`
+  case enabled
+  case disabled
+  public init?(rawValue: Swift.Int)
+  @available(iOSApplicationExtension, unavailable)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @available(iOSApplicationExtension, unavailable)
+@objc final public class IQKeyboardReturnKeyHandler : ObjectiveC.NSObject {
+  @objc weak final public var delegate: (any UIKit.UITextFieldDelegate & UIKit.UITextViewDelegate)?
+  @objc final public var lastTextFieldReturnKeyType: UIKit.UIReturnKeyType {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic public init()
+  @objc public init(controller: UIKit.UIViewController)
+  @objc deinit
+  @objc final public func addTextFieldView(_ view: UIKit.UIView)
+  @objc final public func removeTextFieldView(_ view: UIKit.UIView)
+  @objc final public func addResponderFromView(_ view: UIKit.UIView)
+  @objc final public func removeResponderFromView(_ view: UIKit.UIView)
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQKeyboardReturnKeyHandler : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc final public func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc final public func textFieldShouldEndEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc final public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor @preconcurrency @objc final public func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor @preconcurrency @objc final public func textFieldDidEndEditing(_ textField: UIKit.UITextField, reason: UIKit.UITextField.DidEndEditingReason)
+  @_Concurrency.MainActor @preconcurrency @objc final public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc final public func textFieldShouldClear(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc final public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQKeyboardReturnKeyHandler : UIKit.UITextViewDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc final public func textViewShouldBeginEditing(_ textView: UIKit.UITextView) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc final public func textViewShouldEndEditing(_ textView: UIKit.UITextView) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc final public func textViewDidBeginEditing(_ textView: UIKit.UITextView)
+  @_Concurrency.MainActor @preconcurrency @objc final public func textViewDidEndEditing(_ textView: UIKit.UITextView)
+  @_Concurrency.MainActor @preconcurrency @objc final public func textView(_ textView: UIKit.UITextView, shouldChangeTextIn range: Foundation.NSRange, replacementText text: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc final public func textViewDidChange(_ textView: UIKit.UITextView)
+  @_Concurrency.MainActor @preconcurrency @objc final public func textViewDidChangeSelection(_ textView: UIKit.UITextView)
+  @_Concurrency.MainActor @preconcurrency @objc final public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: Foundation.NSRange, interaction: UIKit.UITextItemInteraction) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc final public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith textAttachment: UIKit.NSTextAttachment, in characterRange: Foundation.NSRange, interaction: UIKit.UITextItemInteraction) -> Swift.Bool
+  @available(iOS, deprecated: 10.0)
+  @_Concurrency.MainActor @preconcurrency @objc final public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: Foundation.NSRange) -> Swift.Bool
+  @available(iOS, deprecated: 10.0)
+  @_Concurrency.MainActor @preconcurrency @objc final public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith textAttachment: UIKit.NSTextAttachment, in characterRange: Foundation.NSRange) -> Swift.Bool
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQKeyboardReturnKeyHandler {
+  @available(iOS 16.0, *)
+  @objc final public func textView(_ aTextView: UIKit.UITextView, editMenuForTextIn range: Foundation.NSRange, suggestedActions: [UIKit.UIMenuElement]) -> UIKit.UIMenu?
+  @available(iOS 16.0, *)
+  @objc final public func textView(_ aTextView: UIKit.UITextView, willPresentEditMenuWith animator: any UIKit.UIEditMenuInteractionAnimating)
+  @available(iOS 16.0, *)
+  @objc final public func textView(_ aTextView: UIKit.UITextView, willDismissEditMenuWith animator: any UIKit.UIEditMenuInteractionAnimating)
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQKeyboardReturnKeyHandler {
+  @available(iOS 17.0, *)
+  @objc final public func textView(_ aTextView: UIKit.UITextView, primaryActionFor textItem: UIKit.UITextItem, defaultAction: UIKit.UIAction) -> UIKit.UIAction?
+  @available(iOS 17.0, *)
+  @objc final public func textView(_ aTextView: UIKit.UITextView, menuConfigurationFor textItem: UIKit.UITextItem, defaultMenu: UIKit.UIMenu) -> UIKit.UITextItem.MenuConfiguration?
+  @available(iOS 17.0, *)
+  @objc final public func textView(_ textView: UIKit.UITextView, textItemMenuWillDisplayFor textItem: UIKit.UITextItem, animator: any UIKit.UIContextMenuInteractionAnimating)
+  @available(iOS 17.0, *)
+  @objc final public func textView(_ textView: UIKit.UITextView, textItemMenuWillEndFor textItem: UIKit.UITextItem, animator: any UIKit.UIContextMenuInteractionAnimating)
+}
+@available(iOSApplicationExtension, unavailable)
+public protocol IQPlaceholderable : AnyObject {
+  var placeholder: Swift.String? { get set }
+  var attributedPlaceholder: Foundation.NSAttributedString? { get set }
+}
+@available(iOSApplicationExtension, unavailable)
+extension UIKit.UITextField : IQKeyboardManagerSwift.IQPlaceholderable {
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQTextView : IQKeyboardManagerSwift.IQPlaceholderable {
+}
+@_inheritsConvenienceInitializers @available(iOSApplicationExtension, unavailable)
+@objc @_Concurrency.MainActor @preconcurrency open class IQPreviousNextView : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @available(iOSApplicationExtension, unavailable)
+@objc @_Concurrency.MainActor @preconcurrency open class IQTextView : UIKit.UITextView {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect, textContainer: UIKit.NSTextContainer?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func awakeFromNib()
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency open var placeholderTextColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency open var placeholder: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency open var attributedPlaceholder: Foundation.NSAttributedString? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var text: Swift.String! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var attributedText: Foundation.NSAttributedString! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var font: UIKit.UIFont? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var textAlignment: UIKit.NSTextAlignment {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override weak dynamic open var delegate: (any UIKit.UITextViewDelegate)? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOSApplicationExtension, unavailable)
+@objc @_Concurrency.MainActor @preconcurrency open class IQTitleBarButtonItem : IQKeyboardManagerSwift.IQBarButtonItem {
+  @objc @_Concurrency.MainActor @preconcurrency open var titleFont: UIKit.UIFont? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var title: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var titleColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var selectableTitleColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency convenience public init(title: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOSApplicationExtension, unavailable)
+@objc @_Concurrency.MainActor @preconcurrency open class IQToolbar : UIKit.UIToolbar, UIKit.UIInputViewAudioFeedback {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc @_Concurrency.MainActor @preconcurrency open var previousBarButton: IQKeyboardManagerSwift.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var nextBarButton: IQKeyboardManagerSwift.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var titleBarButton: IQKeyboardManagerSwift.IQTitleBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var doneBarButton: IQKeyboardManagerSwift.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var fixedSpaceBarButton: IQKeyboardManagerSwift.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func sizeThatFits(_ size: CoreFoundation.CGSize) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var tintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc open var enableInputClicksWhenVisible: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+@available(iOSApplicationExtension, unavailable)
+@objc extension UIKit.UIScrollView {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var shouldIgnoreScrollingAdjustment: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var shouldIgnoreContentInsetAdjustment: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var shouldRestoreScrollViewContentOffset: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+}
+@available(iOSApplicationExtension, unavailable)
+public let kIQUseDefaultKeyboardDistance: CoreFoundation.CGFloat
+@available(iOSApplicationExtension, unavailable)
+@objc extension UIKit.UIView {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var keyboardDistanceFromTextField: CoreFoundation.CGFloat {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var ignoreSwitchingByNextPrevious: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var enableMode: IQKeyboardManagerSwift.IQEnableMode {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var shouldResignOnTouchOutsideMode: IQKeyboardManagerSwift.IQEnableMode {
+    @objc get
+    @objc set(newValue)
+  }
+}
+@available(iOSApplicationExtension, unavailable)
+@objc extension UIKit.UIView {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func viewContainingController() -> UIKit.UIViewController?
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func topMostController() -> UIKit.UIViewController?
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func parentContainerViewController() -> UIKit.UIViewController?
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func superviewOfClassType(_ classType: UIKit.UIView.Type, belowView: UIKit.UIView? = nil) -> UIKit.UIView?
+}
+@available(iOSApplicationExtension, unavailable)
+@objc final public class IQBarButtonItemConfiguration : ObjectiveC.NSObject {
+  @objc public init(barButtonSystemItem: UIKit.UIBarButtonItem.SystemItem, action: ObjectiveC.Selector)
+  @objc public init(image: UIKit.UIImage, action: ObjectiveC.Selector)
+  @objc public init(title: Swift.String, action: ObjectiveC.Selector)
+  final public let barButtonSystemItem: UIKit.UIBarButtonItem.SystemItem?
+  @objc final public let image: UIKit.UIImage?
+  @objc final public let title: Swift.String?
+  @objc final public let action: ObjectiveC.Selector?
+  @objc deinit
+}
+@available(iOSApplicationExtension, unavailable)
+@objc extension UIKit.UIImage {
+  @objc public static func keyboardPreviousImage() -> UIKit.UIImage?
+  @objc public static func keyboardNextImage() -> UIKit.UIImage?
+}
+@available(iOSApplicationExtension, unavailable)
+@objc extension UIKit.UIView {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var keyboardToolbar: IQKeyboardManagerSwift.IQToolbar {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var shouldHideToolbarPlaceholder: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var toolbarPlaceholder: Swift.String? {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var drawingToolbarPlaceholder: Swift.String? {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addKeyboardToolbarWithTarget(target: Swift.AnyObject?, titleText: Swift.String?, titleAccessibilityLabel: Swift.String? = nil, rightBarButtonConfiguration: IQKeyboardManagerSwift.IQBarButtonItemConfiguration?, previousBarButtonConfiguration: IQKeyboardManagerSwift.IQBarButtonItemConfiguration? = nil, nextBarButtonConfiguration: IQKeyboardManagerSwift.IQBarButtonItemConfiguration? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, action: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, action: ObjectiveC.Selector, titleText: Swift.String?, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightButtonOnKeyboardWithImage(_ image: UIKit.UIImage, target: Swift.AnyObject?, action: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightButtonOnKeyboardWithImage(_ image: UIKit.UIImage, target: Swift.AnyObject?, action: ObjectiveC.Selector, titleText: Swift.String?, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightButtonOnKeyboardWithText(_ text: Swift.String, target: Swift.AnyObject?, action: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightButtonOnKeyboardWithText(_ text: Swift.String, target: Swift.AnyObject?, action: ObjectiveC.Selector, titleText: Swift.String?, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addCancelDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, cancelAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonTitle: Swift.String, rightButtonTitle: Swift.String, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonImage: UIKit.UIImage, rightButtonImage: UIKit.UIImage, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addCancelDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, cancelAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, titleText: Swift.String?, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonTitle: Swift.String, rightButtonTitle: Swift.String, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonImage: UIKit.UIImage, rightButtonImage: UIKit.UIImage, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonImage: UIKit.UIImage, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonTitle: Swift.String, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, titleText: Swift.String?, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonImage: UIKit.UIImage, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?, titleAccessibilityLabel: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonTitle: Swift.String, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?, titleAccessibilityLabel: Swift.String? = nil)
+}
+@available(iOSApplicationExtension, unavailable)
+@objc extension UIKit.UIViewController {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open func parentIQContainerViewController() -> UIKit.UIViewController?
+  @objc @available(*, deprecated, message: "Due to change in core-logic of handling distance between textField and keyboard distance, this layout contraint tweak is no longer needed and things will just work out of the box regardless of constraint pinned with safeArea/layoutGuide/superview.")
+  @IBOutlet @_Concurrency.MainActor @preconcurrency dynamic public var IQLayoutGuideConstraint: UIKit.NSLayoutConstraint? {
+    @objc get
+    @objc set(newValue)
+  }
+}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQAutoToolbarManageBehaviour : Swift.Equatable {}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQAutoToolbarManageBehaviour : Swift.Hashable {}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQAutoToolbarManageBehaviour : Swift.RawRepresentable {}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQPreviousNextDisplayMode : Swift.Equatable {}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQPreviousNextDisplayMode : Swift.Hashable {}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQPreviousNextDisplayMode : Swift.RawRepresentable {}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQEnableMode : Swift.Equatable {}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQEnableMode : Swift.Hashable {}
+@available(iOSApplicationExtension, unavailable)
+extension IQKeyboardManagerSwift.IQEnableMode : Swift.RawRepresentable {}

@@ -1,0 +1,3853 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "DPOTPView",
+    "printedName": "DPOTPView",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "DPOTPView",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "DPOTPViewDelegate",
+        "printedName": "DPOTPViewDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "dpOTPViewAddText",
+            "printedName": "dpOTPViewAddText(_:at:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9DPOTPView0A8DelegateP16dpOTPViewAddText_2atySS_SitF",
+            "mangledName": "$s9DPOTPView0A8DelegateP16dpOTPViewAddText_2atySS_SitF",
+            "moduleName": "DPOTPView",
+            "genericSig": "<τ_0_0 where τ_0_0 : DPOTPView.DPOTPViewDelegate>",
+            "sugared_genericSig": "<Self where Self : DPOTPView.DPOTPViewDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "dpOTPViewRemoveText",
+            "printedName": "dpOTPViewRemoveText(_:at:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9DPOTPView0A8DelegateP19dpOTPViewRemoveText_2atySS_SitF",
+            "mangledName": "$s9DPOTPView0A8DelegateP19dpOTPViewRemoveText_2atySS_SitF",
+            "moduleName": "DPOTPView",
+            "genericSig": "<τ_0_0 where τ_0_0 : DPOTPView.DPOTPViewDelegate>",
+            "sugared_genericSig": "<Self where Self : DPOTPView.DPOTPViewDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "dpOTPViewChangePositionAt",
+            "printedName": "dpOTPViewChangePositionAt(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9DPOTPView0A8DelegateP25dpOTPViewChangePositionAtyySiF",
+            "mangledName": "$s9DPOTPView0A8DelegateP25dpOTPViewChangePositionAtyySiF",
+            "moduleName": "DPOTPView",
+            "genericSig": "<τ_0_0 where τ_0_0 : DPOTPView.DPOTPViewDelegate>",
+            "sugared_genericSig": "<Self where Self : DPOTPView.DPOTPViewDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "dpOTPViewBecomeFirstResponder",
+            "printedName": "dpOTPViewBecomeFirstResponder()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9DPOTPView0A8DelegateP29dpOTPViewBecomeFirstResponderyyF",
+            "mangledName": "$s9DPOTPView0A8DelegateP29dpOTPViewBecomeFirstResponderyyF",
+            "moduleName": "DPOTPView",
+            "genericSig": "<τ_0_0 where τ_0_0 : DPOTPView.DPOTPViewDelegate>",
+            "sugared_genericSig": "<Self where Self : DPOTPView.DPOTPViewDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "dpOTPViewResignFirstResponder",
+            "printedName": "dpOTPViewResignFirstResponder()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9DPOTPView0A8DelegateP29dpOTPViewResignFirstResponderyyF",
+            "mangledName": "$s9DPOTPView0A8DelegateP29dpOTPViewResignFirstResponderyyF",
+            "moduleName": "DPOTPView",
+            "genericSig": "<τ_0_0 where τ_0_0 : DPOTPView.DPOTPViewDelegate>",
+            "sugared_genericSig": "<Self where Self : DPOTPView.DPOTPViewDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:9DPOTPView0A8DelegateP",
+        "mangledName": "$s9DPOTPView0A8DelegateP",
+        "moduleName": "DPOTPView",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "DPOTPView",
+        "printedName": "DPOTPView",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "count",
+            "printedName": "count",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)count",
+            "mangledName": "$s9DPOTPViewAAC5countSivp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)count",
+                "mangledName": "$s9DPOTPViewAAC5countSivg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setCount:",
+                "mangledName": "$s9DPOTPViewAAC5countSivs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "spacing",
+            "printedName": "spacing",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)spacing",
+            "mangledName": "$s9DPOTPViewAAC7spacing12CoreGraphics7CGFloatVvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)spacing",
+                "mangledName": "$s9DPOTPViewAAC7spacing12CoreGraphics7CGFloatVvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setSpacing:",
+                "mangledName": "$s9DPOTPViewAAC7spacing12CoreGraphics7CGFloatVvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "textColorTextField",
+            "printedName": "textColorTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)textColorTextField",
+            "mangledName": "$s9DPOTPViewAAC18textColorTextFieldSo7UIColorCvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)textColorTextField",
+                "mangledName": "$s9DPOTPViewAAC18textColorTextFieldSo7UIColorCvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setTextColorTextField:",
+                "mangledName": "$s9DPOTPViewAAC18textColorTextFieldSo7UIColorCvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fontTextField",
+            "printedName": "fontTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIFont",
+                "printedName": "UIKit.UIFont",
+                "usr": "c:objc(cs)UIFont"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)fontTextField",
+            "mangledName": "$s9DPOTPViewAAC13fontTextFieldSo6UIFontCvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIFont",
+                    "printedName": "UIKit.UIFont",
+                    "usr": "c:objc(cs)UIFont"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)fontTextField",
+                "mangledName": "$s9DPOTPViewAAC13fontTextFieldSo6UIFontCvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIFont",
+                    "printedName": "UIKit.UIFont",
+                    "usr": "c:objc(cs)UIFont"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setFontTextField:",
+                "mangledName": "$s9DPOTPViewAAC13fontTextFieldSo6UIFontCvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "placeholder",
+            "printedName": "placeholder",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)placeholder",
+            "mangledName": "$s9DPOTPViewAAC11placeholderSSvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)placeholder",
+                "mangledName": "$s9DPOTPViewAAC11placeholderSSvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setPlaceholder:",
+                "mangledName": "$s9DPOTPViewAAC11placeholderSSvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "placeholderTextColor",
+            "printedName": "placeholderTextColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)placeholderTextColor",
+            "mangledName": "$s9DPOTPViewAAC20placeholderTextColorSo7UIColorCvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)placeholderTextColor",
+                "mangledName": "$s9DPOTPViewAAC20placeholderTextColorSo7UIColorCvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setPlaceholderTextColor:",
+                "mangledName": "$s9DPOTPViewAAC20placeholderTextColorSo7UIColorCvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isCircleTextField",
+            "printedName": "isCircleTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)isCircleTextField",
+            "mangledName": "$s9DPOTPViewAAC17isCircleTextFieldSbvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)isCircleTextField",
+                "mangledName": "$s9DPOTPViewAAC17isCircleTextFieldSbvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setIsCircleTextField:",
+                "mangledName": "$s9DPOTPViewAAC17isCircleTextFieldSbvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isBottomLineTextField",
+            "printedName": "isBottomLineTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)isBottomLineTextField",
+            "mangledName": "$s9DPOTPViewAAC21isBottomLineTextFieldSbvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)isBottomLineTextField",
+                "mangledName": "$s9DPOTPViewAAC21isBottomLineTextFieldSbvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setIsBottomLineTextField:",
+                "mangledName": "$s9DPOTPViewAAC21isBottomLineTextFieldSbvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "backGroundImageTextField",
+            "printedName": "backGroundImageTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)backGroundImageTextField",
+            "mangledName": "$s9DPOTPViewAAC24backGroundImageTextFieldSo7UIImageCSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)backGroundImageTextField",
+                "mangledName": "$s9DPOTPViewAAC24backGroundImageTextFieldSo7UIImageCSgvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setBackGroundImageTextField:",
+                "mangledName": "$s9DPOTPViewAAC24backGroundImageTextFieldSo7UIImageCSgvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "backGroundColorTextField",
+            "printedName": "backGroundColorTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)backGroundColorTextField",
+            "mangledName": "$s9DPOTPViewAAC24backGroundColorTextFieldSo7UIColorCvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)backGroundColorTextField",
+                "mangledName": "$s9DPOTPViewAAC24backGroundColorTextFieldSo7UIColorCvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setBackGroundColorTextField:",
+                "mangledName": "$s9DPOTPViewAAC24backGroundColorTextFieldSo7UIColorCvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "backGroundColorFilledTextField",
+            "printedName": "backGroundColorFilledTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)backGroundColorFilledTextField",
+            "mangledName": "$s9DPOTPViewAAC30backGroundColorFilledTextFieldSo7UIColorCSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)backGroundColorFilledTextField",
+                "mangledName": "$s9DPOTPViewAAC30backGroundColorFilledTextFieldSo7UIColorCSgvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setBackGroundColorFilledTextField:",
+                "mangledName": "$s9DPOTPViewAAC30backGroundColorFilledTextFieldSo7UIColorCSgvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "borderColorTextField",
+            "printedName": "borderColorTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)borderColorTextField",
+            "mangledName": "$s9DPOTPViewAAC20borderColorTextFieldSo7UIColorCSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)borderColorTextField",
+                "mangledName": "$s9DPOTPViewAAC20borderColorTextFieldSo7UIColorCSgvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setBorderColorTextField:",
+                "mangledName": "$s9DPOTPViewAAC20borderColorTextFieldSo7UIColorCSgvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectedBorderColorTextField",
+            "printedName": "selectedBorderColorTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)selectedBorderColorTextField",
+            "mangledName": "$s9DPOTPViewAAC28selectedBorderColorTextFieldSo7UIColorCSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)selectedBorderColorTextField",
+                "mangledName": "$s9DPOTPViewAAC28selectedBorderColorTextFieldSo7UIColorCSgvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setSelectedBorderColorTextField:",
+                "mangledName": "$s9DPOTPViewAAC28selectedBorderColorTextFieldSo7UIColorCSgvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "borderWidthTextField",
+            "printedName": "borderWidthTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)borderWidthTextField",
+            "mangledName": "$s9DPOTPViewAAC20borderWidthTextField12CoreGraphics7CGFloatVvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)borderWidthTextField",
+                "mangledName": "$s9DPOTPViewAAC20borderWidthTextField12CoreGraphics7CGFloatVvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setBorderWidthTextField:",
+                "mangledName": "$s9DPOTPViewAAC20borderWidthTextField12CoreGraphics7CGFloatVvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectedBorderWidthTextField",
+            "printedName": "selectedBorderWidthTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)selectedBorderWidthTextField",
+            "mangledName": "$s9DPOTPViewAAC28selectedBorderWidthTextField12CoreGraphics7CGFloatVvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)selectedBorderWidthTextField",
+                "mangledName": "$s9DPOTPViewAAC28selectedBorderWidthTextField12CoreGraphics7CGFloatVvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setSelectedBorderWidthTextField:",
+                "mangledName": "$s9DPOTPViewAAC28selectedBorderWidthTextField12CoreGraphics7CGFloatVvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "cornerRadiusTextField",
+            "printedName": "cornerRadiusTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)cornerRadiusTextField",
+            "mangledName": "$s9DPOTPViewAAC21cornerRadiusTextField12CoreGraphics7CGFloatVvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)cornerRadiusTextField",
+                "mangledName": "$s9DPOTPViewAAC21cornerRadiusTextField12CoreGraphics7CGFloatVvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setCornerRadiusTextField:",
+                "mangledName": "$s9DPOTPViewAAC21cornerRadiusTextField12CoreGraphics7CGFloatVvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "tintColorTextField",
+            "printedName": "tintColorTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)tintColorTextField",
+            "mangledName": "$s9DPOTPViewAAC18tintColorTextFieldSo7UIColorCvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)tintColorTextField",
+                "mangledName": "$s9DPOTPViewAAC18tintColorTextFieldSo7UIColorCvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setTintColorTextField:",
+                "mangledName": "$s9DPOTPViewAAC18tintColorTextFieldSo7UIColorCvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "shadowRadiusTextField",
+            "printedName": "shadowRadiusTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)shadowRadiusTextField",
+            "mangledName": "$s9DPOTPViewAAC21shadowRadiusTextField12CoreGraphics7CGFloatVvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)shadowRadiusTextField",
+                "mangledName": "$s9DPOTPViewAAC21shadowRadiusTextField12CoreGraphics7CGFloatVvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setShadowRadiusTextField:",
+                "mangledName": "$s9DPOTPViewAAC21shadowRadiusTextField12CoreGraphics7CGFloatVvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "shadowOpacityTextField",
+            "printedName": "shadowOpacityTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)shadowOpacityTextField",
+            "mangledName": "$s9DPOTPViewAAC22shadowOpacityTextFieldSfvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)shadowOpacityTextField",
+                "mangledName": "$s9DPOTPViewAAC22shadowOpacityTextFieldSfvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setShadowOpacityTextField:",
+                "mangledName": "$s9DPOTPViewAAC22shadowOpacityTextFieldSfvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "shadowOffsetSizeTextField",
+            "printedName": "shadowOffsetSizeTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGSize",
+                "printedName": "CoreFoundation.CGSize",
+                "usr": "c:@S@CGSize"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)shadowOffsetSizeTextField",
+            "mangledName": "$s9DPOTPViewAAC25shadowOffsetSizeTextFieldSo6CGSizeVvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGSize",
+                    "printedName": "CoreFoundation.CGSize",
+                    "usr": "c:@S@CGSize"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)shadowOffsetSizeTextField",
+                "mangledName": "$s9DPOTPViewAAC25shadowOffsetSizeTextFieldSo6CGSizeVvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGSize",
+                    "printedName": "CoreFoundation.CGSize",
+                    "usr": "c:@S@CGSize"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setShadowOffsetSizeTextField:",
+                "mangledName": "$s9DPOTPViewAAC25shadowOffsetSizeTextFieldSo6CGSizeVvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "shadowColorTextField",
+            "printedName": "shadowColorTextField",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)shadowColorTextField",
+            "mangledName": "$s9DPOTPViewAAC20shadowColorTextFieldSo7UIColorCSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)shadowColorTextField",
+                "mangledName": "$s9DPOTPViewAAC20shadowColorTextFieldSo7UIColorCSgvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setShadowColorTextField:",
+                "mangledName": "$s9DPOTPViewAAC20shadowColorTextFieldSo7UIColorCSgvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "dismissOnLastEntry",
+            "printedName": "dismissOnLastEntry",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)dismissOnLastEntry",
+            "mangledName": "$s9DPOTPViewAAC18dismissOnLastEntrySbvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)dismissOnLastEntry",
+                "mangledName": "$s9DPOTPViewAAC18dismissOnLastEntrySbvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setDismissOnLastEntry:",
+                "mangledName": "$s9DPOTPViewAAC18dismissOnLastEntrySbvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isSecureTextEntry",
+            "printedName": "isSecureTextEntry",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)isSecureTextEntry",
+            "mangledName": "$s9DPOTPViewAAC17isSecureTextEntrySbvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)isSecureTextEntry",
+                "mangledName": "$s9DPOTPViewAAC17isSecureTextEntrySbvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setIsSecureTextEntry:",
+                "mangledName": "$s9DPOTPViewAAC17isSecureTextEntrySbvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isCursorHidden",
+            "printedName": "isCursorHidden",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)isCursorHidden",
+            "mangledName": "$s9DPOTPViewAAC14isCursorHiddenSbvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)isCursorHidden",
+                "mangledName": "$s9DPOTPViewAAC14isCursorHiddenSbvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setIsCursorHidden:",
+                "mangledName": "$s9DPOTPViewAAC14isCursorHiddenSbvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isDarkKeyboard",
+            "printedName": "isDarkKeyboard",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(py)isDarkKeyboard",
+            "mangledName": "$s9DPOTPViewAAC14isDarkKeyboardSbvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)isDarkKeyboard",
+                "mangledName": "$s9DPOTPViewAAC14isDarkKeyboardSbvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)setIsDarkKeyboard:",
+                "mangledName": "$s9DPOTPViewAAC14isDarkKeyboardSbvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "textEdgeInsets",
+            "printedName": "textEdgeInsets",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIEdgeInsets?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIEdgeInsets",
+                    "printedName": "UIKit.UIEdgeInsets",
+                    "usr": "c:@S@UIEdgeInsets"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9DPOTPViewAAC14textEdgeInsetsSo06UIEdgeD0VSgvp",
+            "mangledName": "$s9DPOTPViewAAC14textEdgeInsetsSo06UIEdgeD0VSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIEdgeInsets?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIEdgeInsets",
+                        "printedName": "UIKit.UIEdgeInsets",
+                        "usr": "c:@S@UIEdgeInsets"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC14textEdgeInsetsSo06UIEdgeD0VSgvg",
+                "mangledName": "$s9DPOTPViewAAC14textEdgeInsetsSo06UIEdgeD0VSgvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIEdgeInsets?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIEdgeInsets",
+                        "printedName": "UIKit.UIEdgeInsets",
+                        "usr": "c:@S@UIEdgeInsets"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC14textEdgeInsetsSo06UIEdgeD0VSgvs",
+                "mangledName": "$s9DPOTPViewAAC14textEdgeInsetsSo06UIEdgeD0VSgvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC14textEdgeInsetsSo06UIEdgeD0VSgvM",
+                "mangledName": "$s9DPOTPViewAAC14textEdgeInsetsSo06UIEdgeD0VSgvM",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "editingTextEdgeInsets",
+            "printedName": "editingTextEdgeInsets",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIEdgeInsets?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIEdgeInsets",
+                    "printedName": "UIKit.UIEdgeInsets",
+                    "usr": "c:@S@UIEdgeInsets"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9DPOTPViewAAC21editingTextEdgeInsetsSo06UIEdgeE0VSgvp",
+            "mangledName": "$s9DPOTPViewAAC21editingTextEdgeInsetsSo06UIEdgeE0VSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIEdgeInsets?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIEdgeInsets",
+                        "printedName": "UIKit.UIEdgeInsets",
+                        "usr": "c:@S@UIEdgeInsets"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC21editingTextEdgeInsetsSo06UIEdgeE0VSgvg",
+                "mangledName": "$s9DPOTPViewAAC21editingTextEdgeInsetsSo06UIEdgeE0VSgvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIEdgeInsets?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIEdgeInsets",
+                        "printedName": "UIKit.UIEdgeInsets",
+                        "usr": "c:@S@UIEdgeInsets"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC21editingTextEdgeInsetsSo06UIEdgeE0VSgvs",
+                "mangledName": "$s9DPOTPViewAAC21editingTextEdgeInsetsSo06UIEdgeE0VSgvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC21editingTextEdgeInsetsSo06UIEdgeE0VSgvM",
+                "mangledName": "$s9DPOTPViewAAC21editingTextEdgeInsetsSo06UIEdgeE0VSgvM",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "inputViewForAll",
+            "printedName": "inputViewForAll",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIView",
+                    "printedName": "UIKit.UIView",
+                    "usr": "c:objc(cs)UIView"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9DPOTPViewAAC15inputViewForAllSo6UIViewCSgvp",
+            "mangledName": "$s9DPOTPViewAAC15inputViewForAllSo6UIViewCSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIView?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIView",
+                        "printedName": "UIKit.UIView",
+                        "usr": "c:objc(cs)UIView"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC15inputViewForAllSo6UIViewCSgvg",
+                "mangledName": "$s9DPOTPViewAAC15inputViewForAllSo6UIViewCSgvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIView?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIView",
+                        "printedName": "UIKit.UIView",
+                        "usr": "c:objc(cs)UIView"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC15inputViewForAllSo6UIViewCSgvs",
+                "mangledName": "$s9DPOTPViewAAC15inputViewForAllSo6UIViewCSgvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC15inputViewForAllSo6UIViewCSgvM",
+                "mangledName": "$s9DPOTPViewAAC15inputViewForAllSo6UIViewCSgvM",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "inputAccessoryViewForAll",
+            "printedName": "inputAccessoryViewForAll",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIView",
+                    "printedName": "UIKit.UIView",
+                    "usr": "c:objc(cs)UIView"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9DPOTPViewAAC24inputAccessoryViewForAllSo6UIViewCSgvp",
+            "mangledName": "$s9DPOTPViewAAC24inputAccessoryViewForAllSo6UIViewCSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIView?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIView",
+                        "printedName": "UIKit.UIView",
+                        "usr": "c:objc(cs)UIView"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC24inputAccessoryViewForAllSo6UIViewCSgvg",
+                "mangledName": "$s9DPOTPViewAAC24inputAccessoryViewForAllSo6UIViewCSgvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIView?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIView",
+                        "printedName": "UIKit.UIView",
+                        "usr": "c:objc(cs)UIView"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC24inputAccessoryViewForAllSo6UIViewCSgvs",
+                "mangledName": "$s9DPOTPViewAAC24inputAccessoryViewForAllSo6UIViewCSgvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC24inputAccessoryViewForAllSo6UIViewCSgvM",
+                "mangledName": "$s9DPOTPViewAAC24inputAccessoryViewForAllSo6UIViewCSgvM",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "dpOTPViewDelegate",
+            "printedName": "dpOTPViewDelegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any DPOTPView.DPOTPViewDelegate)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DPOTPViewDelegate",
+                    "printedName": "any DPOTPView.DPOTPViewDelegate",
+                    "usr": "s:9DPOTPView0A8DelegateP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9DPOTPViewAAC17dpOTPViewDelegateAA0aD0_pSgvp",
+            "mangledName": "$s9DPOTPViewAAC17dpOTPViewDelegateAA0aD0_pSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any DPOTPView.DPOTPViewDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DPOTPViewDelegate",
+                        "printedName": "any DPOTPView.DPOTPViewDelegate",
+                        "usr": "s:9DPOTPView0A8DelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC17dpOTPViewDelegateAA0aD0_pSgvg",
+                "mangledName": "$s9DPOTPViewAAC17dpOTPViewDelegateAA0aD0_pSgvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any DPOTPView.DPOTPViewDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DPOTPViewDelegate",
+                        "printedName": "any DPOTPView.DPOTPViewDelegate",
+                        "usr": "s:9DPOTPView0A8DelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC17dpOTPViewDelegateAA0aD0_pSgvs",
+                "mangledName": "$s9DPOTPViewAAC17dpOTPViewDelegateAA0aD0_pSgvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC17dpOTPViewDelegateAA0aD0_pSgvM",
+                "mangledName": "$s9DPOTPViewAAC17dpOTPViewDelegateAA0aD0_pSgvM",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "keyboardType",
+            "printedName": "keyboardType",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIKeyboardType",
+                "printedName": "UIKit.UIKeyboardType",
+                "usr": "c:@E@UIKeyboardType"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9DPOTPViewAAC12keyboardTypeSo010UIKeyboardC0Vvp",
+            "mangledName": "$s9DPOTPViewAAC12keyboardTypeSo010UIKeyboardC0Vvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Preconcurrency",
+              "Custom",
+              "HasStorage",
+              "Dynamic",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIKeyboardType",
+                    "printedName": "UIKit.UIKeyboardType",
+                    "usr": "c:@E@UIKeyboardType"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC12keyboardTypeSo010UIKeyboardC0Vvg",
+                "mangledName": "$s9DPOTPViewAAC12keyboardTypeSo010UIKeyboardC0Vvg",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIKeyboardType",
+                    "printedName": "UIKit.UIKeyboardType",
+                    "usr": "c:@E@UIKeyboardType"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC12keyboardTypeSo010UIKeyboardC0Vvs",
+                "mangledName": "$s9DPOTPViewAAC12keyboardTypeSo010UIKeyboardC0Vvs",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC12keyboardTypeSo010UIKeyboardC0VvM",
+                "mangledName": "$s9DPOTPViewAAC12keyboardTypeSo010UIKeyboardC0VvM",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "text",
+            "printedName": "text",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9DPOTPViewAAC4textSSSgvp",
+            "mangledName": "$s9DPOTPViewAAC4textSSSgvp",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "Dynamic",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC4textSSSgvg",
+                "mangledName": "$s9DPOTPViewAAC4textSSSgvg",
+                "moduleName": "DPOTPView",
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC4textSSSgvs",
+                "mangledName": "$s9DPOTPViewAAC4textSSSgvs",
+                "moduleName": "DPOTPView",
+                "isOpen": true,
+                "declAttributes": [
+                  "Dynamic"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9DPOTPViewAAC4textSSSgvM",
+                "mangledName": "$s9DPOTPViewAAC4textSSSgvM",
+                "moduleName": "DPOTPView",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "DPOTPView.DPOTPView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DPOTPView",
+                    "printedName": "DPOTPView.DPOTPView",
+                    "usr": "c:@M@DPOTPView@objc(cs)DPOTPView"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)initWithCoder:",
+            "mangledName": "$s9DPOTPViewAAC5coderABSgSo7NSCoderC_tcfc",
+            "moduleName": "DPOTPView",
+            "overriding": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Required",
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(frame:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "DPOTPView",
+                "printedName": "DPOTPView.DPOTPView",
+                "usr": "c:@M@DPOTPView@objc(cs)DPOTPView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)initWithFrame:",
+            "mangledName": "$s9DPOTPViewAAC5frameABSo6CGRectV_tcfc",
+            "moduleName": "DPOTPView",
+            "overriding": true,
+            "objc_name": "initWithFrame:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "layoutSubviews",
+            "printedName": "layoutSubviews()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)layoutSubviews",
+            "mangledName": "$s9DPOTPViewAAC14layoutSubviewsyyF",
+            "moduleName": "DPOTPView",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "layoutSubviews",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "prepareForInterfaceBuilder",
+            "printedName": "prepareForInterfaceBuilder()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)prepareForInterfaceBuilder",
+            "mangledName": "$s9DPOTPViewAAC26prepareForInterfaceBuilderyyF",
+            "moduleName": "DPOTPView",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "prepareForInterfaceBuilder",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "becomeFirstResponder",
+            "printedName": "becomeFirstResponder()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)becomeFirstResponder",
+            "mangledName": "$s9DPOTPViewAAC20becomeFirstResponderSbyF",
+            "moduleName": "DPOTPView",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "becomeFirstResponder",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "DiscardableResult",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "resignFirstResponder",
+            "printedName": "resignFirstResponder()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@DPOTPView@objc(cs)DPOTPView(im)resignFirstResponder",
+            "mangledName": "$s9DPOTPViewAAC20resignFirstResponderSbyF",
+            "moduleName": "DPOTPView",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "resignFirstResponder",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "DiscardableResult"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "validate",
+            "printedName": "validate()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9DPOTPViewAAC8validateSbyF",
+            "mangledName": "$s9DPOTPViewAAC8validateSbyF",
+            "moduleName": "DPOTPView",
+            "isOpen": true,
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "textFieldDidBeginEditing",
+            "printedName": "textFieldDidBeginEditing(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UITextField",
+                "printedName": "UIKit.UITextField",
+                "usr": "c:objc(cs)UITextField"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@DPOTPView@objc(cs)DPOTPView(im)textFieldDidBeginEditing:",
+            "mangledName": "$s9DPOTPViewAAC24textFieldDidBeginEditingyySo06UITextC0CF",
+            "moduleName": "DPOTPView",
+            "objc_name": "textFieldDidBeginEditing:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "textField",
+            "printedName": "textField(_:shouldChangeCharactersIn:replacementString:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UITextField",
+                "printedName": "UIKit.UITextField",
+                "usr": "c:objc(cs)UITextField"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "_NSRange",
+                "printedName": "Foundation._NSRange",
+                "usr": "c:@S@_NSRange"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@DPOTPView@objc(cs)DPOTPView(im)textField:shouldChangeCharactersInRange:replacementString:",
+            "mangledName": "$s9DPOTPViewAAC9textField_24shouldChangeCharactersIn17replacementStringSbSo06UITextC0C_So8_NSRangeVSStF",
+            "moduleName": "DPOTPView",
+            "objc_name": "textField:shouldChangeCharactersInRange:replacementString:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@DPOTPView@objc(cs)DPOTPView",
+        "mangledName": "$s9DPOTPViewAAC",
+        "moduleName": "DPOTPView",
+        "isOpen": true,
+        "declAttributes": [
+          "Preconcurrency",
+          "Custom",
+          "AccessControl",
+          "IBDesignable",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)UIView",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIView",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "__DefaultCustomPlaygroundQuickLookable",
+            "printedName": "__DefaultCustomPlaygroundQuickLookable",
+            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
+            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 675,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 601,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1054,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1311,
+      "length": 2,
+      "value": "25"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "StringLiteral",
+      "offset": 1401,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1637,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1766,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2519,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2646,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2767,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "FloatLiteral",
+      "offset": 3025,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "FloatLiteral",
+      "offset": 3146,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3516,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3617,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3709,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3803,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "Array",
+      "offset": 4787,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4821,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11919,
+      "length": 4,
+      "value": "1000"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11985,
+      "length": 4,
+      "value": "1000"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11992,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11995,
+      "length": 4,
+      "value": "1000"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "StringLiteral",
+      "offset": 12043,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "StringLiteral",
+      "offset": 12145,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 12162,
+      "length": 4,
+      "value": "1000"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 12169,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/haphan\/Documents\/github\/it.kv3.econtract.ios.sdk\/Pods\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView\/DPOTPView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12511,
+      "length": 4,
+      "value": "true"
+    }
+  ]
+}
