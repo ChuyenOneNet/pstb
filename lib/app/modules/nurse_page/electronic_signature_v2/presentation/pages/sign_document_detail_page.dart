@@ -705,87 +705,210 @@ class _SignDocumentDetailPageState extends State<SignDocumentDetailPage>
 
       // ===== BUTTON KÝ / THU HỒI =====
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
       floatingActionButton:
           BlocBuilder<DocumentDetailCubit, DocumentDetailState>(
         builder: (context, st) {
           final isSigned = st.isSigned;
 
-          return SizedBox(
-            width: MediaQuery.of(context).size.width * 0.9,
-            child: FloatingActionButton.extended(
-              heroTag: "sign_detail_$_docId",
-              backgroundColor:
-                  isSigned ? Colors.redAccent : AppColors.primaryColor,
-              icon: Icon(
-                isSigned ? Icons.cancel_outlined : Icons.edit,
-                color: Colors.white,
+          return Padding(
+            padding: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              bottom: 16,
+            ), // cách cạnh màn hình 16px
+            child: Align(
+              alignment:
+                  isSigned ? Alignment.bottomLeft : Alignment.bottomRight,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.35, // 20% màn hình
+                child: FloatingActionButton.extended(
+                  heroTag: "sign_detail_$_docId",
+                  backgroundColor:
+                      isSigned ? Colors.redAccent : AppColors.primaryColor,
+                  icon: Icon(
+                    isSigned ? Icons.cancel_outlined : Icons.edit,
+                    color: Colors.white,
+                  ),
+                  // ✅ Dùng FittedBox để tránh tràn text khi width nhỏ
+                  label: st.acting
+                      ? const SizedBox(
+                          height: 18,
+                          width: 18,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor: AlwaysStoppedAnimation(Colors.white),
+                          ),
+                        )
+                      : FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            isSigned ? 'Thu hồi ký' : 'Thực hiện ký',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                  onPressed: st.acting
+                      ? null
+                      : () async {
+                          final cubit = context.read<DocumentDetailCubit>();
+
+                          if (!isSigned) {
+                            if (_roleCode == null) {
+                              context.showSnackBarFail(
+                                text: "Hãy chọn vai trò ký cho tài liệu này.",
+                              );
+                              return;
+                            }
+
+                            final ok = await cubit.sign(
+                              userName: widget.userName,
+                              roleCode: _roleCode!,
+                              docId: _docId,
+                            );
+
+                            final msg = cubit.state.toast ??
+                                (ok ? 'Ký thành công' : 'Ký thất bại');
+
+                            if (ok && mounted) Navigator.pop(context, true);
+                            if (ok) {
+                              await context.showSnackBarSuccess(text: msg);
+                            } else {
+                              context.showSnackBarFail(text: msg);
+                            }
+                          } else {
+                            // Popup xác nhận huỷ ký
+                            final confirm = await showDialog<bool>(
+                              context: context,
+                              builder: (ctx) => AlertDialog(
+                                title: const Text('Xác nhận huỷ ký'),
+                                content: const Text(
+                                  'Bạn có chắc chắn muốn huỷ ký tài liệu này?',
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.of(ctx).pop(false),
+                                    child: const Text('Không'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.of(ctx).pop(true),
+                                    child: const Text('Đồng ý'),
+                                  ),
+                                ],
+                              ),
+                            );
+
+                            if (confirm != true) return;
+
+                            final ok = await cubit.revoke(
+                              userName: widget.userName,
+                              docId: _docId,
+                            );
+
+                            final msg = cubit.state.toast ??
+                                (ok ? 'Huỷ ký thành công' : 'Huỷ ký thất bại');
+
+                            if (ok && mounted) Navigator.pop(context, true);
+                            if (ok) {
+                              await context.showSnackBarSuccess(text: msg);
+                            } else {
+                              context.showSnackBarFail(text: msg);
+                            }
+                          }
+                        },
+                ),
               ),
-              label: st.acting
-                  ? const SizedBox(
-                      height: 18,
-                      width: 18,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        valueColor: AlwaysStoppedAnimation(Colors.white),
-                      ),
-                    )
-                  : Text(
-                      isSigned ? 'Thu hồi ký' : 'Thực hiện ký',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-              onPressed: st.acting
-                  ? null
-                  : () async {
-                      final cubit = context.read<DocumentDetailCubit>();
-
-                      if (!isSigned) {
-                        // 🔵 SỬA – phải có roleCode đã chọn theo tài liệu
-                        if (_roleCode == null) {
-                          context.showSnackBarFail(
-                            text: "Hãy chọn vai trò ký cho tài liệu này.",
-                          );
-                          return;
-                        }
-
-                        final ok = await cubit.sign(
-                          userName: widget.userName,
-                          roleCode: _roleCode!,
-                          docId: _docId,
-                        );
-
-                        final msg = cubit.state.toast ??
-                            (ok ? 'Ký thành công' : 'Ký thất bại');
-
-                        if (ok && mounted) Navigator.pop(context, true);
-                        if (ok) {
-                          await context.showSnackBarSuccess(text: msg);
-                        } else {
-                          context.showSnackBarFail(text: msg);
-                        }
-                      } else {
-                        final ok = await cubit.revoke(
-                          userName: widget.userName,
-                          docId: _docId,
-                        );
-
-                        final msg = cubit.state.toast ??
-                            (ok ? 'Huỷ ký thành công' : 'Huỷ ký thất bại');
-
-                        if (ok && mounted) Navigator.pop(context, true);
-                        if (ok) {
-                          await context.showSnackBarSuccess(text: msg);
-                        } else {
-                          context.showSnackBarFail(text: msg);
-                        }
-                      }
-                    },
             ),
           );
         },
       ),
+
+      // floatingActionButton:
+      //     BlocBuilder<DocumentDetailCubit, DocumentDetailState>(
+      //   builder: (context, st) {
+      //     final isSigned = st.isSigned;
+      //
+      //     return SizedBox(
+      //       width: MediaQuery.of(context).size.width * 0.9,
+      //       child: FloatingActionButton.extended(
+      //         heroTag: "sign_detail_$_docId",
+      //         backgroundColor:
+      //             isSigned ? Colors.redAccent : AppColors.primaryColor,
+      //         icon: Icon(
+      //           isSigned ? Icons.cancel_outlined : Icons.edit,
+      //           color: Colors.white,
+      //         ),
+      //         label: st.acting
+      //             ? const SizedBox(
+      //                 height: 18,
+      //                 width: 18,
+      //                 child: CircularProgressIndicator(
+      //                   strokeWidth: 2,
+      //                   valueColor: AlwaysStoppedAnimation(Colors.white),
+      //                 ),
+      //               )
+      //             : Text(
+      //                 isSigned ? 'Thu hồi ký' : 'Thực hiện ký',
+      //                 style: const TextStyle(
+      //                   color: Colors.white,
+      //                   fontWeight: FontWeight.w700,
+      //                 ),
+      //               ),
+      //         onPressed: st.acting
+      //             ? null
+      //             : () async {
+      //                 final cubit = context.read<DocumentDetailCubit>();
+      //
+      //                 if (!isSigned) {
+      //                   // 🔵 SỬA – phải có roleCode đã chọn theo tài liệu
+      //                   if (_roleCode == null) {
+      //                     context.showSnackBarFail(
+      //                       text: "Hãy chọn vai trò ký cho tài liệu này.",
+      //                     );
+      //                     return;
+      //                   }
+      //
+      //                   final ok = await cubit.sign(
+      //                     userName: widget.userName,
+      //                     roleCode: _roleCode!,
+      //                     docId: _docId,
+      //                   );
+      //
+      //                   final msg = cubit.state.toast ??
+      //                       (ok ? 'Ký thành công' : 'Ký thất bại');
+      //
+      //                   if (ok && mounted) Navigator.pop(context, true);
+      //                   if (ok) {
+      //                     await context.showSnackBarSuccess(text: msg);
+      //                   } else {
+      //                     context.showSnackBarFail(text: msg);
+      //                   }
+      //                 } else {
+      //                   final ok = await cubit.revoke(
+      //                     userName: widget.userName,
+      //                     docId: _docId,
+      //                   );
+      //
+      //                   final msg = cubit.state.toast ??
+      //                       (ok ? 'Huỷ ký thành công' : 'Huỷ ký thất bại');
+      //
+      //                   if (ok && mounted) Navigator.pop(context, true);
+      //                   if (ok) {
+      //                     await context.showSnackBarSuccess(text: msg);
+      //                   } else {
+      //                     context.showSnackBarFail(text: msg);
+      //                   }
+      //                 }
+      //               },
+      //       ),
+      //     );
+      //   },
+      // ),
     );
   }
 }

@@ -137,7 +137,7 @@ class _BottomNavPageState extends ModularState<BottomNavPage, BottomNavStore> {
             items: [
               FABBottomAppBarItem(
                   iconData: Icons.cabin,
-                  text: 'Thông tín',
+                  text: 'Thông tin',
                   assets: TabIcon.medicalUnit),
               FABBottomAppBarItem(
                   iconData: Icons.layers,

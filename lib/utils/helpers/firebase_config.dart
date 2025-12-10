@@ -53,7 +53,9 @@ class FireBaseRemoteConfigService {
       print('version: ${Constants.versionApp.toString()}');
       final cfgModel = FireBaseConfigModel.fromJson(jsonDecode(jsonConfig));
       print('baseUrl: ${cfgModel.baseUrl}');
-      final idUnit = cfgModel.idUnit ?? 9;
+      final idUnit =
+          //6;
+          cfgModel.idUnit ?? 9;
       await SessionPrefs.setMedicalUnitId(idUnit);
       await prefs.setString(
           "vduhUrl", cfgModel.vduhUrl ?? "https://116.97.240.210:6443/");

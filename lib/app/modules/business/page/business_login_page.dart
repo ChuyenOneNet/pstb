@@ -1,3 +1,329 @@
+// import 'package:flutter/material.dart';
+// import 'package:flutter_modular/flutter_modular.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+//
+// import 'package:pstb/app/modules/business/business_store.dart';
+// import 'package:pstb/app/user_app_store.dart';
+// import 'package:pstb/di/locator.dart';
+//
+// import '../../../../utils/colors.dart';
+// import '../../../../utils/images.dart';
+// import '../../../../utils/routes.dart';
+// import '../../../../widgets/stateless/app_bar.dart';
+//
+// // TODO: chỉnh lại path cho đúng với project của bạn
+// import 'package:pstb/feature/relatives/data/models/relative_model.dart';
+// import 'package:pstb/feature/relatives/presentation/cubit/relative_list_cubit.dart';
+//
+// class BusinessLoginPage extends StatefulWidget {
+//   const BusinessLoginPage({Key? key});
+//
+//   @override
+//   State<BusinessLoginPage> createState() => _BusinessLoginPageState();
+// }
+//
+// class _BusinessLoginPageState extends State<BusinessLoginPage> {
+//   final BusinessStore store = Modular.get<BusinessStore>();
+//   final UserAppStore _userAppStore = Modular.get<UserAppStore>();
+//
+//   late final RelativeListCubit _relativeCubit;
+//
+//   bool _isBusy = false;
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//     _relativeCubit = serviceLocator<RelativeListCubit>();
+//     _loadRelatives();
+//   }
+//
+//   Future<void> _loadRelatives() async {
+//     final mainCccd = "037200009029";
+//     //_userAppStore.user.personalId ?? '';
+//     if (mainCccd.isEmpty) {
+//       Fluttertoast.showToast(
+//         msg: 'Không tìm thấy CCCD của tài khoản chính',
+//       );
+//       return;
+//     }
+//     await _relativeCubit.load(mainCccd);
+//   }
+//
+//   Future<void> _loginWithPatientCode(String patientCode) async {
+//     if (_isBusy) return;
+//     if (patientCode.isEmpty) {
+//       Fluttertoast.showToast(msg: 'Người này chưa có mã bệnh nhân');
+//       return;
+//     }
+//
+//     setState(() => _isBusy = true);
+//     try {
+//       final ok = await store.getUserBusiness(
+//         maYte: patientCode,
+//         password: patientCode,
+//       );
+//       if (!ok) {
+//         Fluttertoast.showToast(msg: 'Đăng nhập thất bại');
+//         return;
+//       }
+//       if (!mounted) return;
+//       Fluttertoast.showToast(msg: 'Đăng nhập thành công');
+//       Modular.to.pushReplacementNamed(AppRoutes.businessPage);
+//     } catch (_) {
+//       Fluttertoast.showToast(msg: 'Đăng nhập thất bại');
+//     } finally {
+//       if (mounted) setState(() => _isBusy = false);
+//     }
+//   }
+//
+//   @override
+//   void dispose() {
+//     _relativeCubit.close();
+//     super.dispose();
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocProvider.value(
+//       value: _relativeCubit,
+//       child: Scaffold(
+//         appBar: CustomAppBar(
+//           title: 'Hồ sơ sức khỏe',
+//           isBack: true,
+//         ),
+//         backgroundColor: Colors.white,
+//         body: Column(
+//           children: [
+//             if (_isBusy)
+//               const LinearProgressIndicator(
+//                 minHeight: 2,
+//               ),
+//             Expanded(
+//               child: SingleChildScrollView(
+//                 padding: const EdgeInsets.symmetric(horizontal: 24),
+//                 child: Column(
+//                   mainAxisAlignment: MainAxisAlignment.start,
+//                   children: [
+//                     const SizedBox(height: 10),
+//                     SizedBox(
+//                       height: 110,
+//                       width: 110,
+//                       child: Image.asset(ImageEnum.logopstbColor),
+//                     ),
+//                     const SizedBox(height: 12),
+//                     const Text(
+//                       'CỔNG TRA CỨU Y BẠ ĐIỆN TỬ\nBỆNH VIỆN Phụ Sản Thái Bình',
+//                       textAlign: TextAlign.center,
+//                       style: TextStyle(
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 15,
+//                         color: AppColors.primary,
+//                       ),
+//                     ),
+//                     const SizedBox(height: 24),
+//                     _buildPatientSelector(),
+//                     const SizedBox(height: 24),
+//                     const Text(
+//                       'Phát triển bởi Công ty cổ phần Onenet\n'
+//                       'Địa chỉ: Số 2 Nguyễn Hoàng, Nam Từ Liêm, Hà Nội\n',
+//                       //'Hotline: 0363.832.057 ',
+//                       textAlign: TextAlign.center,
+//                       style: TextStyle(fontSize: 12, color: Colors.black87),
+//                     ),
+//                     const SizedBox(height: 24),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+//
+//   // ================== DANH SÁCH BẢN THÂN + NGƯỜI THÂN ==================
+//
+//   Widget _buildPatientSelector() {
+//     return BlocBuilder<RelativeListCubit, RelativeListState>(
+//       builder: (context, state) {
+//         if (state.loading && state.items.isEmpty) {
+//           return _buildLoadingList();
+//         }
+//
+//         if (state.items.isEmpty) {
+//           return Column(
+//             children: const [
+//               Icon(Icons.group_off_outlined, size: 64, color: Colors.grey),
+//               SizedBox(height: 8),
+//               Text(
+//                 'Chưa có thông tin bản thân / người thân\nđể tra cứu hồ sơ bệnh án.',
+//                 textAlign: TextAlign.center,
+//                 style: TextStyle(fontSize: 13),
+//               ),
+//             ],
+//           );
+//         }
+//
+//         final items = state.items;
+//
+//         return Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             const Text(
+//               'Chọn người để xem hồ sơ bệnh án',
+//               style: TextStyle(
+//                 fontWeight: FontWeight.w600,
+//                 fontSize: 14,
+//               ),
+//             ),
+//             const SizedBox(height: 8),
+//             ListView.separated(
+//               shrinkWrap: true,
+//               physics: const NeverScrollableScrollPhysics(),
+//               itemCount: items.length,
+//               separatorBuilder: (_, __) => const SizedBox(height: 8),
+//               itemBuilder: (context, index) {
+//                 final r = items[index];
+//                 final isSelf = index == 0; // phần tử đầu tiên là bản thân
+//                 return _buildPatientCard(r, isSelf);
+//               },
+//             ),
+//           ],
+//         );
+//       },
+//     );
+//   }
+//
+//   Widget _buildLoadingList() {
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         const Text(
+//           'Chọn người để xem hồ sơ bệnh án',
+//           style: TextStyle(
+//             fontWeight: FontWeight.w600,
+//             fontSize: 14,
+//           ),
+//         ),
+//         const SizedBox(height: 8),
+//         Column(
+//           children: List.generate(
+//             3,
+//             (index) => Container(
+//               margin: const EdgeInsets.only(bottom: 8),
+//               height: 72,
+//               decoration: BoxDecoration(
+//                 color: Colors.grey[200],
+//                 borderRadius: BorderRadius.circular(16),
+//               ),
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+//
+//   Widget _buildPatientCard(RelativeModel r, bool isSelf) {
+//     final pc = r.patientCode;
+//     final title = isSelf ? 'Bản thân' : r.fullName;
+//     final subtitle =
+//         isSelf ? 'Mã BN: ${r.patientCode}' : 'Mã BN: ${r.patientCode}';
+//
+//     return GestureDetector(
+//       onTap: _isBusy ? null : () => _loginWithPatientCode("25042411"),
+//       //_loginWithPatientCode(pc),
+//       child: Container(
+//         padding: const EdgeInsets.all(12),
+//         decoration: BoxDecoration(
+//           color: Colors.white,
+//           borderRadius: BorderRadius.circular(16),
+//           border: Border.all(
+//             color: isSelf ? AppColors.primary : Colors.grey[300]!,
+//           ),
+//           boxShadow: [
+//             BoxShadow(
+//               color: Colors.black.withOpacity(0.04),
+//               blurRadius: 8,
+//               offset: const Offset(0, 2),
+//             ),
+//           ],
+//         ),
+//         child: Row(
+//           children: [
+//             CircleAvatar(
+//               radius: 22,
+//               backgroundColor: AppColors.primary.withOpacity(0.08),
+//               child: Icon(
+//                 isSelf ? Icons.person : Icons.family_restroom,
+//                 size: 22,
+//                 color: AppColors.primary,
+//               ),
+//             ),
+//             const SizedBox(width: 12),
+//             Expanded(
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Row(
+//                     children: [
+//                       Expanded(
+//                         child: Text(
+//                           title,
+//                           maxLines: 1,
+//                           overflow: TextOverflow.ellipsis,
+//                           style: TextStyle(
+//                             fontWeight:
+//                                 isSelf ? FontWeight.w700 : FontWeight.w600,
+//                             fontSize: 14,
+//                           ),
+//                         ),
+//                       ),
+//                       if (isSelf)
+//                         Container(
+//                           padding: const EdgeInsets.symmetric(
+//                             horizontal: 8,
+//                             vertical: 2,
+//                           ),
+//                           decoration: BoxDecoration(
+//                             color: AppColors.primary.withOpacity(0.08),
+//                             borderRadius: BorderRadius.circular(999),
+//                           ),
+//                           child: Text(
+//                             'Tài khoản chính',
+//                             style: TextStyle(
+//                               fontSize: 11,
+//                               color: AppColors.primary,
+//                               fontWeight: FontWeight.w500,
+//                             ),
+//                           ),
+//                         ),
+//                     ],
+//                   ),
+//                   const SizedBox(height: 4),
+//                   Text(
+//                     subtitle,
+//                     maxLines: 1,
+//                     overflow: TextOverflow.ellipsis,
+//                     style: const TextStyle(fontSize: 12, color: Colors.black54),
+//                   ),
+//                   const SizedBox(height: 2),
+//                   const Text(
+//                     'Nhấn để đăng nhập và xem hồ sơ bệnh án',
+//                     style: TextStyle(fontSize: 11, color: Colors.black45),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             const SizedBox(width: 8),
+//             const Icon(Icons.chevron_right, color: Colors.black38),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -109,7 +435,7 @@ class _BusinessLoginPageState extends State<BusinessLoginPage> {
             ),
             const SizedBox(height: 12),
             const Text(
-              'CỔNG TRA CỨU Y BẠ ĐIỆN TỬ\nBỆNH VIỆN Phụ Sản Thái Bình',
+              'CỔNG TRA CỨU Y BẠ ĐIỆN TỬ\nBệnh Viện Phụ sản Thái Bình',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -196,9 +522,8 @@ class _BusinessLoginPageState extends State<BusinessLoginPage> {
 
             const SizedBox(height: 24),
             const Text(
-              '2025 © Bệnh Viện Phụ Sản Thái Bình\n'
-              'Địa chỉ: Số 530 đường Lý Bôn, Thái Bình, Việt Nam\n'
-              'Hotline: 0363.832.057 ',
+              'Phát triển bởi Công ty cổ phần Onenet\n'
+              'Địa chỉ: Số 2 Nguyễn Hoàng, Nam Từ Liêm, Hà Nội\n',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 12, color: Colors.black87),
             ),

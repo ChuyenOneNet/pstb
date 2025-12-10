@@ -6,6 +6,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pstb/app/app_module.dart';
 import 'package:pstb/app/modules/landing/landing_page.dart';
 import 'package:pstb/widgets/theme_data_widget.dart';
+import '../di/locator.dart';
+import '../feature/relatives/presentation/cubit/relative_list_cubit.dart';
 import 'app_store.dart';
 import 'modules/booking_v2/cubit/create_request_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -31,6 +33,9 @@ class AppWidgetState extends State<AppWidget> {
       providers: [
         BlocProvider(
           create: (context) => CreateRequestCubit(),
+        ),
+        BlocProvider(
+          create: (context) => serviceLocator<RelativeListCubit>(),
         )
       ],
       child: MaterialApp(

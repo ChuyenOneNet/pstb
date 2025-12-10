@@ -22,6 +22,17 @@ import '../cubits/nationality_cubit.dart';
 import '../feature/booking/datasources/local/history_local_ds.dart';
 import '../feature/booking/datasources/remote/catalog_service.dart';
 import '../feature/booking/datasources/remote/crm_booking_service.dart';
+import '../feature/relatives/data/datasources/relative_remote_ds.dart';
+import '../feature/relatives/data/repositories/fake_relative_repository.dart';
+import '../feature/relatives/data/repositories/relative_repo_impl.dart';
+import '../feature/relatives/domain/repositories/relative_repository.dart';
+import '../feature/relatives/domain/usecases/add_relative_usecase.dart';
+import '../feature/relatives/domain/usecases/delete_relative_usecase.dart';
+import '../feature/relatives/domain/usecases/get_relative_detail_usecase.dart';
+import '../feature/relatives/domain/usecases/get_relatives_usecase.dart';
+import '../feature/relatives/domain/usecases/update_relative_usecase.dart';
+import '../feature/relatives/presentation/cubit/relative_form_cubit.dart';
+import '../feature/relatives/presentation/cubit/relative_list_cubit.dart';
 import '../utils/http_services.dart';
 import '../utils/navigation_service.dart';
 import '../utils/shared_preferences_manager.dart';
@@ -117,4 +128,43 @@ Future<void> setupLocator() async {
   );
   serviceLocator
       .registerLazySingleton<DepartmentsCubit>(() => DepartmentsCubit());
+
+  serviceLocator.registerLazySingleton<RelativeRemoteDataSource>(
+    () => RelativeRemoteDataSource(dioSignRoleByUserNameAndDocument
+        // thay bằng baseUrl của bạn
+        ),
+  );
+
+  // serviceLocator.registerLazySingleton<RelativeRepository>(
+  //   () => RelativeRepositoryImpl(serviceLocator()),
+  // );
+  serviceLocator.registerLazySingleton<RelativeRepository>(
+    () => FakeRelativeRepository(),
+  );
+  // Usecases
+  serviceLocator
+      .registerLazySingleton(() => GetRelativesUseCase(serviceLocator()));
+  serviceLocator
+      .registerLazySingleton(() => GetRelativeDetailUseCase(serviceLocator()));
+  serviceLocator
+      .registerLazySingleton(() => AddRelativeUseCase(serviceLocator()));
+  serviceLocator
+      .registerLazySingleton(() => UpdateRelativeUseCase(serviceLocator()));
+  serviceLocator
+      .registerLazySingleton(() => DeleteRelativeUseCase(serviceLocator()));
+
+  // Cubits
+  serviceLocator.registerFactory(
+    () => RelativeListCubit(
+      getRelativesUseCase: serviceLocator(),
+      deleteRelativeUseCase: serviceLocator(),
+    ),
+  );
+  serviceLocator.registerFactory(
+    () => RelativeFormCubit(
+      addRelativeUseCase: serviceLocator(),
+      updateRelativeUseCase: serviceLocator(),
+      getDetailUseCase: serviceLocator(),
+    ),
+  );
 }

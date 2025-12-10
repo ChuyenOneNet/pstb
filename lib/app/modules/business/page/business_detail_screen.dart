@@ -59,7 +59,7 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                 final groupedXetNghiem = <String, List<XetNghiemInfo>>{};
 
                 for (final info in detail.xetNghiemInfos ?? []) {
-                  final loaiId = info.loaiXetNghiemId ?? 'unknown';
+                  final loaiId = info.tenLoaiXetNghiem ?? 'unknown';
                   if (!groupedXetNghiem.containsKey(loaiId)) {
                     groupedXetNghiem[loaiId] = [];
                   }
@@ -113,6 +113,11 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                       _buildSection('III. KẾT QUẢ KCB'),
                       _subTitle('III.1. KẾT QUẢ XÉT NGHIỆM'),
                       _buildTable(
+                        columnWidths: const {
+                          0: FixedColumnWidth(50),
+                          //1: FixedColumnWidth(250),
+                          2: FixedColumnWidth(80),
+                        },
                         headers: const ['STT', 'Tên loại xét nghiệm', 'Tác vụ'],
                         rows: groupedXetNghiem.entries
                             .toList()
@@ -120,18 +125,16 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                             .entries
                             .map((entry) {
                           final index = entry.key;
-                          final danhSachChiSo = entry.value.value;
-                          final tenLoai =
-                              danhSachChiSo.first.tenLoaiXetNghiem ??
-                                  'Không rõ';
+                          final danhSachChiSo = entry.value;
+                          final tenLoai = danhSachChiSo.key;
 
                           return [
-                            Text('${index + 1}'),
+                            Center(child: Text('${index + 1}')),
                             Text(tenLoai),
                             GestureDetector(
                               onTap: () {
                                 _showKetQuaXetNghiemDialog(
-                                    context, tenLoai, danhSachChiSo);
+                                    context, tenLoai, danhSachChiSo.value);
                               },
                               child: const Text(
                                 'Xem KQ',
@@ -736,17 +739,17 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
     );
   }
 
-  Widget _buildTable({
-    required List<String> headers,
-    required List<List<Widget>> rows,
-  }) {
+  Widget _buildTable(
+      {required List<String> headers,
+      required List<List<Widget>> rows,
+      Map<int, TableColumnWidth>? columnWidths}) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
       ),
       child: Table(
-        columnWidths: const {},
+        columnWidths: columnWidths,
         border: TableBorder.all(color: Colors.grey.shade400),
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         children: [

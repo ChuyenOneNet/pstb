@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pstb/app/modules/home/home_store.dart';
 import 'package:pstb/app/modules/medical_appointment/medical_appointment_store.dart';
 import 'package:pstb/app/user_app_store.dart';
+import 'package:pstb/di/locator.dart';
 import 'package:pstb/utils/colors.dart';
 import 'package:pstb/utils/helper.dart';
 import 'package:pstb/utils/icons.dart';
@@ -16,6 +18,10 @@ import 'package:pstb/widgets/stateless/circle_with_icon.dart';
 
 import '../../../../constant/config.dart';
 import '../../../../feature/booking/presentation/pages/booking_page.dart';
+import '../../../../feature/relatives/presentation/cubit/relative_form_cubit.dart';
+import '../../../../feature/relatives/presentation/cubit/relative_list_cubit.dart';
+import '../../../../feature/relatives/presentation/pages/relative_form_page.dart';
+import '../../../../feature/relatives/presentation/pages/relative_list_page.dart';
 import '../../../../utils/shared_preferences_manager.dart';
 import '../../booking_v2/booking_home_page.dart';
 
@@ -278,6 +284,47 @@ class SecondShortcutCustomer extends StatelessWidget {
             },
           ),
         ),
+        // Expanded(
+        //   child: CircleWithIcon(
+        //     boxSize: iconSize,
+        //     iconSize: iconSize,
+        //     icon: IconEnums.user_plus,
+        //     title: 'Người thân',
+        //     colorIcon: AppColors.primary,
+        //     onTap: () {
+        //       if (controller.isLogin) {
+        //         final user = _userAppStore.user;
+        //         final mainCccd = user.personalId ?? '';
+        //         if (mainCccd.isEmpty) {
+        //           ScaffoldMessenger.of(context).showSnackBar(
+        //             const SnackBar(
+        //               content: Text('Không tìm thấy CCCD tài khoản chính'),
+        //             ),
+        //           );
+        //           return;
+        //         }
+        //
+        //         Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //             builder: (_) => RelativeListPage(
+        //               mainCccd: "037200009029",
+        //               //mainCccd,
+        //             ),
+        //           ),
+        //         );
+        //       } else {
+        //         Modular.to.pushNamed(
+        //           AppRoutes.authGuardPage,
+        //           arguments: {
+        //             "isNotFromBottomNav": true,
+        //             "title": 'Quản lý người thân',
+        //           },
+        //         );
+        //       }
+        //     },
+        //   ),
+        // ),
         // Expanded(
         //   child: CircleWithIcon(
         //     boxSize: iconSize,

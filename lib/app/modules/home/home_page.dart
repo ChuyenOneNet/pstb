@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                       const ProminentDoctorWidget(),
                       //SliderHome(),
                       PromotionNewsSection(),
-                      const SectionHealthNew(),
+                      //const SectionHealthNew(),
                     ],
                   ),
                 ],

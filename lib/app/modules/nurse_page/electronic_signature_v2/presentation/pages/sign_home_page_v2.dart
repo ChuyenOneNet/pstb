@@ -55,17 +55,17 @@ class _SignHomePageV2State extends State<SignHomePageV2>
     final box = Hive.box('sign_cache');
     final key = _cacheKey(_fromDate!, _toDate!);
     final cached = box.get(key);
-
-    if (cached is Map &&
-        cached['time'] is DateTime &&
-        DateTime.now().difference(cached['time'] as DateTime).inHours < 0.5) {
-      // ✅ Đọc payload JSON-friendly
-      context
-          .read<FiltersCubitV2>()
-          .hydrateFromCache(Map<String, dynamic>.from(cached));
-    } else {
-      _loadData();
-    }
+    _loadData();
+    // if (cached is Map &&
+    //     cached['time'] is DateTime &&
+    //     DateTime.now().difference(cached['time'] as DateTime).inHours < 0.5) {
+    //   // ✅ Đọc payload JSON-friendly
+    //   context
+    //       .read<FiltersCubitV2>()
+    //       .hydrateFromCache(Map<String, dynamic>.from(cached));
+    // } else {
+    //   _loadData();
+    // }
     serviceLocator<DepartmentsCubit>().load();
     _scheduleMidnightRefresh();
   }

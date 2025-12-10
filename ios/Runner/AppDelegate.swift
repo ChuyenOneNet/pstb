@@ -115,6 +115,7 @@ import SmartCASDK
             colorPrimaryBtn: "#4788FF",
             featuresLink: "https://www.google.com/?hl=vi",
             customerPhone: customerPhone,
+            customerEmail: "",
             packageDefault: "",
             password: password,
             logoCustom: "",
