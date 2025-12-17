@@ -113,6 +113,7 @@ abstract class BusinessStoreBase with Store {
   @action
   Future<void> loadBusinessDetail(String id) async {
     isLoadingDetail = true;
+    businessDetail = null;
     try {
       final response = await _apiBaseHelper.getBase(
         ApiUrl.getBusinessDetail,
@@ -133,8 +134,9 @@ abstract class BusinessStoreBase with Store {
       businessDetail = null;
       print("❌ Error in loadBusinessDetail: $e");
       print("📌 StackTrace: $stack");
+    } finally {
+      isLoadingDetail = false;
     }
-    isLoadingDetail = false;
   }
 
   @action
@@ -232,5 +234,14 @@ abstract class BusinessStoreBase with Store {
       print("📌 StackTrace: $stack");
       return false;
     }
+  }
+
+  @action
+  void clearSession() {
+    userBusiness = UserBusinessModel();
+    listBusiness = ObservableList<BusinessModel>.of([]);
+    businessDetail = null;
+    loading = false;
+    isLoadingDetail = false;
   }
 }

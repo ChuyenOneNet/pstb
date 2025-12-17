@@ -113,20 +113,26 @@ class UrlDataInfo {
 @JsonSerializable()
 class ToaThuocInfo {
   final String? id;
-  final String? loai;
-  final String? soLuong;
-  final String? donViTinh;
-  final String? cachDung;
-  final String? tenHang;
+  final String? dangKyId;
+  final String? toaThuocId;
+  final String? bacSi;
+
+  final String? loai; // "Đơn mua ngoài"
+  final String? soLuong; // "7.000"
+  final String? donViTinh; // "Viên"
+  final String? cachDung; // "Đặt âm đạo..."
+  final String? tenHang; // "Demoxen"
   final String? hoatChat;
   final String? duongDung;
-  final String? thoiGian;
-  final String? toaThuoc_ID;
-  final String? dangKy_ID;
-  final String? bacSi;
+
+  final DateTime? thoiGian;
+  final DateTime? dateModified;
 
   ToaThuocInfo({
     this.id,
+    this.dangKyId,
+    this.toaThuocId,
+    this.bacSi,
     this.loai,
     this.soLuong,
     this.donViTinh,
@@ -135,9 +141,7 @@ class ToaThuocInfo {
     this.hoatChat,
     this.duongDung,
     this.thoiGian,
-    this.toaThuoc_ID,
-    this.dangKy_ID,
-    this.bacSi,
+    this.dateModified,
   });
 
   factory ToaThuocInfo.fromJson(Map<String, dynamic> json) =>

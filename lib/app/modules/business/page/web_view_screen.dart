@@ -1,46 +1,81 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../../../widgets/stateless/app_bar.dart';
+import '../../../../constant/color.dart';
 
-class WebViewScreen extends StatefulWidget {
+class RadWebViewScreen extends StatefulWidget {
   final String url;
+  final String title;
 
-  const WebViewScreen({Key? key, required this.url}) : super(key: key);
+  const RadWebViewScreen({
+    super.key,
+    required this.url,
+    required this.title,
+  });
 
   @override
-  State<WebViewScreen> createState() => _WebViewScreenState();
+  State<RadWebViewScreen> createState() => _RadWebViewScreenState();
 }
 
-class _WebViewScreenState extends State<WebViewScreen> {
+class _RadWebViewScreenState extends State<RadWebViewScreen> {
   late final WebViewController _controller;
-  bool _isLoading = true;
+  int _progress = 0;
+  bool _hasError = false;
 
   @override
   void initState() {
     super.initState();
+
+    final uri = Uri.tryParse(widget.url);
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
         NavigationDelegate(
-          onPageStarted: (_) => setState(() => _isLoading = true),
-          onPageFinished: (_) => setState(() => _isLoading = false),
+          onProgress: (p) => setState(() => _progress = p),
+          onWebResourceError: (_) => setState(() => _hasError = true),
         ),
-      )
-      ..loadRequest(Uri.parse(widget.url));
+      );
+
+    if (uri != null) {
+      _controller.loadRequest(uri);
+    } else {
+      _hasError = true;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "Xem kết quả",
-        isBack: true,
+      appBar: AppBar(
+        title: Text(
+          widget.title,
+          style: TextStyle(
+              color: AppColors.whiteColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 18),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: AppColors.primaryColor,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: AppColors.whiteColor),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
-      body: Stack(
+      body: Column(
         children: [
-          WebViewWidget(controller: _controller),
-          if (_isLoading) const Center(child: CircularProgressIndicator()),
+          if (_progress < 100 && !_hasError)
+            LinearProgressIndicator(value: _progress / 100),
+          Expanded(
+            child: _hasError
+                ? Center(
+                    child: Text(
+                      'Không thể tải kết quả.\nVui lòng kiểm tra đường dẫn hoặc mạng nội bộ.',
+                      textAlign: TextAlign.center,
+                    ),
+                  )
+                : WebViewWidget(controller: _controller),
+          ),
         ],
       ),
     );

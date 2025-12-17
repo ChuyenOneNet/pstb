@@ -33,7 +33,8 @@ class BusinessModule extends Module {
     ),
     ChildRoute(AppRoutes.businessWebViewPdf, child: (_, args) {
       final url = args.data['url'];
-      return WebViewScreen(url: url);
+      final title = args.data['title'];
+      return RadWebViewScreen(url: url, title: title);
     }),
     ChildRoute(
       AppRoutes.resetPasswordBusiness,

@@ -139,6 +139,20 @@ mixin _$BusinessStore on BusinessStoreBase, Store {
         newPassword: newPassword));
   }
 
+  late final _$BusinessStoreBaseActionController =
+      ActionController(name: 'BusinessStoreBase', context: context);
+
+  @override
+  void clearSession() {
+    final _$actionInfo = _$BusinessStoreBaseActionController.startAction(
+        name: 'BusinessStoreBase.clearSession');
+    try {
+      return super.clearSession();
+    } finally {
+      _$BusinessStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

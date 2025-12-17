@@ -30,7 +30,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onBack,
     this.isBack = true,
     //leading active when [is back = false]
-    this.leading, this.titleSpacing,
+    this.leading,
+    this.titleSpacing,
   })  : preferredSize = const Size.fromHeight(50.0),
         super(key: key);
 
@@ -43,7 +44,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: backgroundColor ?? AppColors.background,
       elevation: 0,
       flexibleSpace: flexibleSpaceImage,
-      centerTitle: false,
+      centerTitle: true,
       leading: isBack ?? false
           ? TouchableOpacity(
               onTap: () {

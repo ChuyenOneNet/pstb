@@ -41,13 +41,11 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
       ),
       body: Observer(builder: (_) {
         if (store.isLoadingDetail) {
-          const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         final detail = store.businessDetail;
-        if (detail == null) {
-          Navigator.pop(context);
-        }
+
         return detail == null
             ? const Center(child: CircularProgressIndicator())
             : (() {
@@ -111,7 +109,7 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                         _item('Bệnh kèm theo', detail.sinhHieu?.benhKemTheo),
                       ], 2),
                       _buildSection('III. KẾT QUẢ KCB'),
-                      _subTitle('III.1. KẾT QUẢ XÉT NGHIỆM'),
+                      _subTitle('3.1. KẾT QUẢ XÉT NGHIỆM'),
                       _buildTable(
                         columnWidths: const {
                           0: FixedColumnWidth(50),
@@ -146,8 +144,14 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                       ),
 
                       _subTitle(
-                          'III.2. KẾT QUẢ CHẨN ĐOÁN HÌNH ẢNH - TDCN - CLS CHUNG'),
+                          '3.2. KẾT QUẢ CHẨN ĐOÁN HÌNH ẢNH - TDCN - CLS CHUNG'),
                       _buildTable(
+                        columnWidths: const {
+                          0: FixedColumnWidth(50),
+                          //1: FixedColumnWidth(250),
+                          2: FixedColumnWidth(100),
+                          3: FixedColumnWidth(80),
+                        },
                         headers: const [
                           'STT',
                           'Tên dịch vụ kỹ thuật',
@@ -159,7 +163,7 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                             ? [
                                 [
                                   const SizedBox(
-                                    height: 16,
+                                    height: 8,
                                   ),
                                   const SizedBox(
                                     height: 16,
@@ -176,31 +180,28 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                                 final index = entry.key;
                                 final data = entry.value;
                                 return [
-                                  Text('${index + 1}'), // STT
+                                  Center(child: Text('${index + 1}')), // STT
                                   Text(data.tenDichVu ?? ""),
-                                  Text(data.ketLuan ?? ""),
+                                  Text(data.ketLuan?.toLowerCase() ?? ""),
                                   GestureDetector(
                                     onTap: () {
-                                      final originalUrl = data.fileUrl ?? '';
-                                      final uri = Uri.tryParse(originalUrl);
-                                      final serviceID =
-                                          uri?.queryParameters['serviceID'];
-
-                                      if (serviceID != null &&
-                                          serviceID.isNotEmpty) {
-                                        final redirectUrl =
-                                            AppRoutes.businessRadPreview +
-                                                serviceID;
-                                        Modular.to.pushNamed(
-                                            AppRoutes.businessWebViewPdf,
-                                            arguments: {'url': redirectUrl});
-                                      } else {
+                                      final url = data.fileUrl ?? '';
+                                      if (url.isEmpty) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           const SnackBar(
-                                              content: Text('Lỗi xem kết quả')),
+                                              content: Text(
+                                                  'Không có đường dẫn kết quả')),
                                         );
+                                        return;
                                       }
+                                      Modular.to.pushNamed(
+                                          AppRoutes.businessWebViewPdf,
+                                          arguments: {
+                                            'url': url,
+                                            'title': data.tenDichVu ??
+                                                'Chẩn đoán hình ảnh',
+                                          });
                                     },
                                     child: const Text(
                                       'Xem KQ',
@@ -211,8 +212,13 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                               }).toList(),
                       ),
 
-                      _subTitle('III.3. ĐƠN THUỐC'),
+                      _subTitle('3.3. ĐƠN THUỐC'),
                       _buildTable(
+                        columnWidths: const {
+                          0: FixedColumnWidth(50),
+                          //1: FixedColumnWidth(250),
+                          2: FixedColumnWidth(80),
+                        },
                         headers: const ['STT', 'Loại đơn thuốc', 'Tác vụ'],
                         rows: groupedToaThuoc.entries
                             .toList()
@@ -224,7 +230,7 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                           final danhSachThuoc = entry.value.value;
 
                           return [
-                            Text('${index + 1}'),
+                            Center(child: Text('${index + 1}')),
                             Text(loai),
                             GestureDetector(
                               onTap: () {
@@ -239,9 +245,14 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                           ];
                         }).toList(),
                       ),
-
-                      _subTitle('III.4. CHI PHÍ KHÁM CHỮA BỆNH'),
+                      _buildSection('IV. CHI PHÍ KHÁM CHỮA BỆNH'),
                       _buildTable(
+                        columnWidths: const {
+                          0: FixedColumnWidth(50),
+                          //1: FixedColumnWidth(250),
+                          //2: FixedColumnWidth(80),
+                          3: FixedColumnWidth(80),
+                        },
                         headers: const [
                           'STT',
                           'Mã tra cứu',
@@ -270,7 +281,7 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                                 .asMap()
                                 .entries
                                 .map((e) => [
-                                      Text('${e.key + 1}'),
+                                      Center(child: Text('${e.key + 1}')),
                                       Text(e.value.maGiaoDich ?? ''),
                                       Text(e.value.thoiGian != null &&
                                               e.value.thoiGian!.isNotEmpty

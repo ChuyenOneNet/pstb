@@ -5,6 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:pstb/app/modules/business/page/business_login_page.dart';
 import 'package:pstb/utils/main.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../business_store.dart';
 
@@ -56,11 +57,24 @@ class PatientInformation extends StatelessWidget {
                 TextButton.icon(
                   onPressed: () async {
                     const secure = FlutterSecureStorage();
-                    await secure.delete(key: "passwordBusiness");
-                    ;
+                    final prefs = await SharedPreferences.getInstance();
+
+                    // xoá credential ở cả 2 nơi (vì trước đó bạn có lưu prefs trong store)
+                    await Future.wait([
+                      secure.delete(key: "passwordBusiness"),
+                      prefs.remove('maYte'),
+                      prefs.remove('passwordBusiness'), // nếu còn lưu ở prefs
+                    ]);
+
+                    // clear state trong store để UI không giữ dữ liệu cũ
+                    store.clearSession();
+
+                    if (!context.mounted) return;
+
+                    // điều hướng về trang login (khuyến nghị route login cụ thể)
                     Modular.to.pushNamedAndRemoveUntil(
-                      AppRoutes.businessModule,
-                      (route) => false, // Xóa hết stack
+                      AppRoutes.businessLoginPage, // <-- route login của bạn
+                      (route) => false,
                     );
                   },
                   icon: const Icon(Icons.logout, size: 18),

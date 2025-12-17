@@ -113,6 +113,9 @@ Map<String, dynamic> _$UrlDataInfoToJson(UrlDataInfo instance) =>
 
 ToaThuocInfo _$ToaThuocInfoFromJson(Map<String, dynamic> json) => ToaThuocInfo(
       id: json['id'] as String?,
+      dangKyId: json['dangKyId'] as String?,
+      toaThuocId: json['toaThuocId'] as String?,
+      bacSi: json['bacSi'] as String?,
       loai: json['loai'] as String?,
       soLuong: json['soLuong'] as String?,
       donViTinh: json['donViTinh'] as String?,
@@ -120,15 +123,20 @@ ToaThuocInfo _$ToaThuocInfoFromJson(Map<String, dynamic> json) => ToaThuocInfo(
       tenHang: json['tenHang'] as String?,
       hoatChat: json['hoatChat'] as String?,
       duongDung: json['duongDung'] as String?,
-      thoiGian: json['thoiGian'] as String?,
-      toaThuoc_ID: json['toaThuoc_ID'] as String?,
-      dangKy_ID: json['dangKy_ID'] as String?,
-      bacSi: json['bacSi'] as String?,
+      thoiGian: json['thoiGian'] == null
+          ? null
+          : DateTime.parse(json['thoiGian'] as String),
+      dateModified: json['dateModified'] == null
+          ? null
+          : DateTime.parse(json['dateModified'] as String),
     );
 
 Map<String, dynamic> _$ToaThuocInfoToJson(ToaThuocInfo instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'dangKyId': instance.dangKyId,
+      'toaThuocId': instance.toaThuocId,
+      'bacSi': instance.bacSi,
       'loai': instance.loai,
       'soLuong': instance.soLuong,
       'donViTinh': instance.donViTinh,
@@ -136,10 +144,8 @@ Map<String, dynamic> _$ToaThuocInfoToJson(ToaThuocInfo instance) =>
       'tenHang': instance.tenHang,
       'hoatChat': instance.hoatChat,
       'duongDung': instance.duongDung,
-      'thoiGian': instance.thoiGian,
-      'toaThuoc_ID': instance.toaThuoc_ID,
-      'dangKy_ID': instance.dangKy_ID,
-      'bacSi': instance.bacSi,
+      'thoiGian': instance.thoiGian?.toIso8601String(),
+      'dateModified': instance.dateModified?.toIso8601String(),
     };
 
 VienPhiInfo _$VienPhiInfoFromJson(Map<String, dynamic> json) => VienPhiInfo(
