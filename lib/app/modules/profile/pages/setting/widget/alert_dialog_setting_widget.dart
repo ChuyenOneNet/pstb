@@ -1,7 +1,7 @@
-import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:pstb/utils/colors.dart';
 import 'package:pstb/utils/styles.dart';
+import '../../../../../../utils/helpers/open_app_settings.dart';
 
 class AlertDialogSettingWidget extends StatelessWidget {
   const AlertDialogSettingWidget({Key? key}) : super(key: key);
@@ -14,14 +14,15 @@ class AlertDialogSettingWidget extends StatelessWidget {
       actions: <Widget>[
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text('Huỷ',
-              style: Styles.content.copyWith(color: AppColors.primary)),
+          child: Text(
+            'Huỷ',
+            style: Styles.content.copyWith(color: AppColors.primary),
+          ),
         ),
         TextButton(
           onPressed: () async {
             Navigator.pop(context);
-            // Use openAppSettings instead of openSecuritySettings
-            await AppSettings.openAppSettings(); // This opens the app settings
+            await openAppSettings(); // ✅ thay thế AppSettings
           },
           child: Text(
             'Tới cài đặt',

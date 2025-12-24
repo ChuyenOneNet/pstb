@@ -65,7 +65,10 @@ class PatientInformation extends StatelessWidget {
                       prefs.remove('maYte'),
                       prefs.remove('passwordBusiness'), // nếu còn lưu ở prefs
                     ]);
+                    await prefs.setBool('business_logged_in', false);
 
+// tuỳ chọn: nếu muốn logout là xoá luôn mã đã lưu
+                    await prefs.remove('saved_patient_code');
                     // clear state trong store để UI không giữ dữ liệu cũ
                     store.clearSession();
 
@@ -73,7 +76,7 @@ class PatientInformation extends StatelessWidget {
 
                     // điều hướng về trang login (khuyến nghị route login cụ thể)
                     Modular.to.pushNamedAndRemoveUntil(
-                      AppRoutes.businessLoginPage, // <-- route login của bạn
+                      AppRoutes.businessModule, // <-- route login của bạn
                       (route) => false,
                     );
                   },

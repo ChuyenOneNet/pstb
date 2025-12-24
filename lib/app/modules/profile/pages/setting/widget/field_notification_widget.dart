@@ -1,4 +1,3 @@
-import 'package:app_settings/app_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -9,6 +8,8 @@ import 'package:pstb/utils/colors.dart';
 import 'package:pstb/utils/icons.dart';
 import 'package:pstb/utils/l10n.dart';
 import 'package:pstb/utils/styles.dart';
+
+import '../../../../../../utils/helpers/open_app_settings.dart';
 
 class FieldNotificationWidget extends StatelessWidget {
   FieldNotificationWidget({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class FieldNotificationWidget extends StatelessWidget {
                 ),
                 onPressed: () async {
                   // Use openAppSettings if openNotificationSettings is not available
-                  await AppSettings.openAppSettings();
+                  await openAppSettings();
                 },
               ),
             )

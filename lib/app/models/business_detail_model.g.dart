@@ -97,6 +97,7 @@ UrlDataInfo _$UrlDataInfoFromJson(Map<String, dynamic> json) => UrlDataInfo(
       maDichVu: json['maDichVu'] as String?,
       tenDichVu: json['tenDichVu'] as String?,
       fileUrl: json['fileUrl'] as String?,
+      pdfBase64: json['pdfBase64'] as String?,
       ketLuan: json['ketLuan'] as String?,
     );
 
@@ -108,6 +109,7 @@ Map<String, dynamic> _$UrlDataInfoToJson(UrlDataInfo instance) =>
       'maDichVu': instance.maDichVu,
       'tenDichVu': instance.tenDichVu,
       'fileUrl': instance.fileUrl,
+      'pdfBase64': instance.pdfBase64,
       'ketLuan': instance.ketLuan,
     };
 

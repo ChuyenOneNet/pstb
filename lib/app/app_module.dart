@@ -419,6 +419,10 @@ class AppModule extends Module {
       AppRoutes.changePasswordBusiness,
       child: (_, args) => ChangePasswordBusinessScreen(),
     ),
+    ModuleRoute(
+      AppRoutes.changePassword,
+      module: ChangePasswordModule(),
+    ),
   ];
 }
 

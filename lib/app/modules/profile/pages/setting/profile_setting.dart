@@ -15,6 +15,8 @@ import 'package:pstb/widgets/stateless/stateless_widget.dart';
 import 'package:pstb/utils/sessions/local_setting_pref.dart';
 import 'package:pstb/app/modules/community/community_page_store.dart';
 
+import '../../../change_password/change_password_form.dart';
+
 class LifecycleEventHandler extends WidgetsBindingObserver {
   final AsyncCallback? resumeCallBack;
   final AsyncCallback? suspendingCallBack;
@@ -107,6 +109,11 @@ class _ProfileSettingState extends State<ProfileSetting> {
             FieldIconWidget(
               svgIcon: IconEnums.unlock,
               onTap: () {
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //       builder: (context) => ChangePasswordForm(),
+                //     ));
                 Modular.to.pushNamed(AppRoutes.changePassword);
               },
               title: l10n(context).profile_setting_change_pass,

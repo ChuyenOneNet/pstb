@@ -149,13 +149,15 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                         columnWidths: const {
                           0: FixedColumnWidth(50),
                           //1: FixedColumnWidth(250),
-                          2: FixedColumnWidth(100),
-                          3: FixedColumnWidth(80),
+                          2: FixedColumnWidth(80),
+                          3: FixedColumnWidth(60),
+                          4: FixedColumnWidth(60),
                         },
                         headers: const [
                           'STT',
                           'Tên dịch vụ kỹ thuật',
                           'Kết luận',
+                          'Pdf kết quả',
                           'Tác vụ',
                         ],
                         rows: detail.urlDataInfos == null ||
@@ -164,6 +166,9 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                                 [
                                   const SizedBox(
                                     height: 8,
+                                  ),
+                                  const SizedBox(
+                                    height: 16,
                                   ),
                                   const SizedBox(
                                     height: 16,
@@ -183,6 +188,28 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                                   Center(child: Text('${index + 1}')), // STT
                                   Text(data.tenDichVu ?? ""),
                                   Text(data.ketLuan?.toLowerCase() ?? ""),
+                                  GestureDetector(
+                                    onTap: () {
+                                      if (data.pdfBase64 != null &&
+                                          data.pdfBase64!.isNotEmpty) {
+                                        _showPdfBase64Dialog(
+                                            context, data.pdfBase64!);
+                                        return;
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                              content: Text(
+                                                  'Không có đường dẫn kết quả')),
+                                        );
+                                        return;
+                                      }
+                                    },
+                                    child: const Text(
+                                      'Xem KQ',
+                                      style: TextStyle(color: Colors.blue),
+                                    ),
+                                  ),
                                   GestureDetector(
                                     onTap: () {
                                       final url = data.fileUrl ?? '';
@@ -245,144 +272,166 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                           ];
                         }).toList(),
                       ),
-                      _buildSection('IV. CHI PHÍ KHÁM CHỮA BỆNH'),
-                      _buildTable(
-                        columnWidths: const {
-                          0: FixedColumnWidth(50),
-                          //1: FixedColumnWidth(250),
-                          //2: FixedColumnWidth(80),
-                          3: FixedColumnWidth(80),
-                        },
-                        headers: const [
-                          'STT',
-                          'Mã tra cứu',
-                          'Ngày phát hành',
-                          'Tác vụ'
-                        ],
-                        rows: (detail.vienPhiInfos == null ||
-                                detail.vienPhiInfos!.isEmpty)
-                            ? [
-                                [
-                                  const SizedBox(
-                                    height: 16,
-                                  ),
-                                  const SizedBox(
-                                    height: 16,
-                                  ),
-                                  const SizedBox(
-                                    height: 16,
-                                  ),
-                                  const SizedBox(
-                                    height: 16,
-                                  ),
-                                ]
-                              ]
-                            : detail.vienPhiInfos!
-                                .asMap()
-                                .entries
-                                .map((e) => [
-                                      Center(child: Text('${e.key + 1}')),
-                                      Text(e.value.maGiaoDich ?? ''),
-                                      Text(e.value.thoiGian != null &&
-                                              e.value.thoiGian!.isNotEmpty
-                                          ? DateFormat('dd/MM/yyyy').format(
-                                              DateTime.parse(e.value.thoiGian!))
-                                          : ''),
-                                      GestureDetector(
-                                        onTap: () async {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    VienPhiPdfScreen(
-                                                      ngayPhatHanh: e.value
-                                                                  .thoiGian !=
-                                                              null
-                                                          ? DateFormat(
-                                                                  'dd/MM/yyyy')
-                                                              .format(DateTime
-                                                                  .parse(e.value
-                                                                      .thoiGian!))
-                                                          : '',
-                                                      fetchPdfCallback: (id) =>
-                                                          store
-                                                              .fetchVienPhiPdfBase64(
-                                                                  e.value.id ??
-                                                                      ''),
-                                                      maGiaoDich:
-                                                          e.value.maGiaoDich ??
-                                                              "",
-                                                    )),
-                                          );
-                                          // showDialog(
-                                          //   context: context,
-                                          //   barrierDismissible: false,
-                                          //   builder: (_) => const Center(
-                                          //       child:
-                                          //           CircularProgressIndicator()),
-                                          // );
-                                          //
-                                          // final pdfBase64 =
-                                          //     await store.fetchVienPhiPdfBase64(
-                                          //         e.value.id ?? '');
-                                          //
-                                          // Navigator.pop(context);
-                                          //
-                                          // if (pdfBase64 != null &&
-                                          //     pdfBase64.isNotEmpty) {
-                                          //   try {
-                                          //     final bytes =
-                                          //         base64Decode(pdfBase64);
-                                          //     showDialog(
-                                          //       context: context,
-                                          //       builder: (_) => Dialog(
-                                          //         child: SizedBox(
-                                          //           width:
-                                          //               MediaQuery.of(context)
-                                          //                       .size
-                                          //                       .width *
-                                          //                   0.9,
-                                          //           height:
-                                          //               MediaQuery.of(context)
-                                          //                       .size
-                                          //                       .height *
-                                          //                   0.85,
-                                          //           child: SfPdfViewer.memory(
-                                          //               bytes),
-                                          //         ),
-                                          //       ),
-                                          //     );
-                                          //   } catch (e) {
-                                          //     ScaffoldMessenger.of(context)
-                                          //         .showSnackBar(
-                                          //       const SnackBar(
-                                          //           content: Text(
-                                          //               'Lỗi giải mã PDF')),
-                                          //     );
-                                          //   }
-                                          // } else {
-                                          //   ScaffoldMessenger.of(context)
-                                          //       .showSnackBar(
-                                          //     const SnackBar(
-                                          //         content: Text(
-                                          //             'Không có dữ liệu PDF')),
-                                          //   );
-                                          // }
-                                        },
-                                        child: const Text(
-                                          'Xem KQ',
-                                          style: TextStyle(color: Colors.blue),
-                                        ),
-                                      ),
-                                    ])
-                                .toList(),
-                      )
+                      // _buildSection('IV. CHI PHÍ KHÁM CHỮA BỆNH'),
+                      // _buildTable(
+                      //   columnWidths: const {
+                      //     0: FixedColumnWidth(50),
+                      //     //1: FixedColumnWidth(250),
+                      //     //2: FixedColumnWidth(80),
+                      //     3: FixedColumnWidth(80),
+                      //   },
+                      //   headers: const [
+                      //     'STT',
+                      //     'Mã tra cứu',
+                      //     'Ngày phát hành',
+                      //     'Tác vụ'
+                      //   ],
+                      //   rows: (detail.vienPhiInfos == null ||
+                      //           detail.vienPhiInfos!.isEmpty)
+                      //       ? [
+                      //           [
+                      //             const SizedBox(
+                      //               height: 16,
+                      //             ),
+                      //             const SizedBox(
+                      //               height: 16,
+                      //             ),
+                      //             const SizedBox(
+                      //               height: 16,
+                      //             ),
+                      //             const SizedBox(
+                      //               height: 16,
+                      //             ),
+                      //           ]
+                      //         ]
+                      //       : detail.vienPhiInfos!
+                      //           .asMap()
+                      //           .entries
+                      //           .map((e) => [
+                      //                 Center(child: Text('${e.key + 1}')),
+                      //                 Text(e.value.maGiaoDich ?? ''),
+                      //                 Text(e.value.thoiGian != null &&
+                      //                         e.value.thoiGian!.isNotEmpty
+                      //                     ? DateFormat('dd/MM/yyyy').format(
+                      //                         DateTime.parse(e.value.thoiGian!))
+                      //                     : ''),
+                      //                 GestureDetector(
+                      //                   onTap: () async {
+                      //                     Navigator.push(
+                      //                       context,
+                      //                       MaterialPageRoute(
+                      //                           builder: (context) =>
+                      //                               VienPhiPdfScreen(
+                      //                                 ngayPhatHanh: e.value
+                      //                                             .thoiGian !=
+                      //                                         null
+                      //                                     ? DateFormat(
+                      //                                             'dd/MM/yyyy')
+                      //                                         .format(DateTime
+                      //                                             .parse(e.value
+                      //                                                 .thoiGian!))
+                      //                                     : '',
+                      //                                 fetchPdfCallback: (id) =>
+                      //                                     store
+                      //                                         .fetchVienPhiPdfBase64(
+                      //                                             e.value.id ??
+                      //                                                 ''),
+                      //                                 maGiaoDich:
+                      //                                     e.value.maGiaoDich ??
+                      //                                         "",
+                      //                               )),
+                      //                     );
+                      //                     // showDialog(
+                      //                     //   context: context,
+                      //                     //   barrierDismissible: false,
+                      //                     //   builder: (_) => const Center(
+                      //                     //       child:
+                      //                     //           CircularProgressIndicator()),
+                      //                     // );
+                      //                     //
+                      //                     // final pdfBase64 =
+                      //                     //     await store.fetchVienPhiPdfBase64(
+                      //                     //         e.value.id ?? '');
+                      //                     //
+                      //                     // Navigator.pop(context);
+                      //                     //
+                      //                     // if (pdfBase64 != null &&
+                      //                     //     pdfBase64.isNotEmpty) {
+                      //                     //   try {
+                      //                     //     final bytes =
+                      //                     //         base64Decode(pdfBase64);
+                      //                     //     showDialog(
+                      //                     //       context: context,
+                      //                     //       builder: (_) => Dialog(
+                      //                     //         child: SizedBox(
+                      //                     //           width:
+                      //                     //               MediaQuery.of(context)
+                      //                     //                       .size
+                      //                     //                       .width *
+                      //                     //                   0.9,
+                      //                     //           height:
+                      //                     //               MediaQuery.of(context)
+                      //                     //                       .size
+                      //                     //                       .height *
+                      //                     //                   0.85,
+                      //                     //           child: SfPdfViewer.memory(
+                      //                     //               bytes),
+                      //                     //         ),
+                      //                     //       ),
+                      //                     //     );
+                      //                     //   } catch (e) {
+                      //                     //     ScaffoldMessenger.of(context)
+                      //                     //         .showSnackBar(
+                      //                     //       const SnackBar(
+                      //                     //           content: Text(
+                      //                     //               'Lỗi giải mã PDF')),
+                      //                     //     );
+                      //                     //   }
+                      //                     // } else {
+                      //                     //   ScaffoldMessenger.of(context)
+                      //                     //       .showSnackBar(
+                      //                     //     const SnackBar(
+                      //                     //         content: Text(
+                      //                     //             'Không có dữ liệu PDF')),
+                      //                     //   );
+                      //                     // }
+                      //                   },
+                      //                   child: const Text(
+                      //                     'Xem KQ',
+                      //                     style: TextStyle(color: Colors.blue),
+                      //                   ),
+                      //                 ),
+                      //               ])
+                      //           .toList(),
+                      // )
                     ],
                   ),
                 );
               })();
       }),
     );
+  }
+
+  void _showPdfBase64Dialog(BuildContext context, String base64Pdf) {
+    try {
+      final bytes = base64Decode(base64Pdf);
+
+      showDialog(
+        context: context,
+        builder: (_) => Dialog(
+          insetPadding: const EdgeInsets.all(12),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.95,
+            height: MediaQuery.of(context).size.height * 0.7,
+            child: SfPdfViewer.memory(bytes),
+          ),
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Lỗi hiển thị PDF')),
+      );
+    }
   }
 
   void _showDanhSachThuocDialog(

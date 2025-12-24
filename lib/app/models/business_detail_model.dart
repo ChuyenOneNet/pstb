@@ -92,6 +92,7 @@ class UrlDataInfo {
   final String? maDichVu;
   final String? tenDichVu;
   final String? fileUrl;
+  final String? pdfBase64;
   final String? ketLuan;
 
   UrlDataInfo({
@@ -101,6 +102,7 @@ class UrlDataInfo {
     this.maDichVu,
     this.tenDichVu,
     this.fileUrl,
+    this.pdfBase64,
     this.ketLuan,
   });
 
