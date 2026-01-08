@@ -3,13 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get_it/get_it.dart';
 import 'package:pstb/app/app_module.dart';
 import 'package:pstb/app/modules/landing/landing_page.dart';
 import 'package:pstb/widgets/theme_data_widget.dart';
 import '../di/locator.dart';
 import '../feature/relatives/presentation/cubit/relative_list_cubit.dart';
+import '../utils/navigation_service.dart';
+import '../utils/pending_navigation.dart';
 import 'app_store.dart';
-import 'modules/booking_v2/cubit/create_request_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppWidget extends StatefulWidget {
@@ -21,10 +23,19 @@ class AppWidget extends StatefulWidget {
 
 class AppWidgetState extends State<AppWidget> {
   final AppStore _appStore = Modular.get<AppStore>();
+  final navService = serviceLocator<NavigationService>();
   @override
   void initState() {
     super.initState();
     _appStore.getLanguage();
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   if (PendingNavigation.hasPending) {
+    //     final r = PendingNavigation.route!;
+    //     final args = PendingNavigation.arguments;
+    //     PendingNavigation.clear();
+    //     Modular.to.pushNamed(r, arguments: args);
+    //   }
+    // });
   }
 
   @override
@@ -32,13 +43,11 @@ class AppWidgetState extends State<AppWidget> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => CreateRequestCubit(),
-        ),
-        BlocProvider(
           create: (context) => serviceLocator<RelativeListCubit>(),
         )
       ],
       child: MaterialApp(
+        navigatorKey: navService.navigatorKey,
         builder: EasyLoading.init(),
         debugShowCheckedModeBanner: false,
         title: 'Bệnh Viện Phụ Sản Thái Bình',

@@ -22,7 +22,7 @@ import 'package:pstb/app/user_app_store.dart';
 import 'package:pstb/app/models/token_model.dart';
 import 'package:pstb/services/api_base_helper.dart';
 import 'package:pstb/services/api_exception.dart';
-import 'package:pstb/utils/helpers/local_auth_helper.dart';
+import 'package:pstb/services/fcm_service.dart';
 import 'package:pstb/utils/main.dart';
 import 'package:pstb/utils/sessions/local_secure.dart';
 import 'package:pstb/utils/sessions/session_prefs.dart';
@@ -32,6 +32,7 @@ import 'package:pstb/widgets/stateless/stateless_widget.dart';
 import 'package:mobx/mobx.dart';
 //import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../../../constant/config.dart';
+import '../../../di/locator.dart';
 import '../../../utils/utils.dart';
 import '../../models/login_model.dart';
 import '../../models/token_model_v2.dart';
@@ -45,8 +46,6 @@ abstract class LoginStoreBase with Store {
   //final FirebaseAuth _auth = FirebaseAuth.instance;
   final _secure = FlutterSecure();
   late BuildContext mContext;
-  final LocalAuthHelper _localAuthHelper =
-      LocalAuthHelper(auth: LocalAuthentication());
   final LocalAuthentication localAuth = LocalAuthentication();
   final AppStore _appStore = Modular.get<AppStore>();
   final UserAppStore _userAppStore = Modular.get<UserAppStore>();
@@ -90,31 +89,6 @@ abstract class LoginStoreBase with Store {
     password = "";
   }
 
-  @action
-  Future<void> biometricAuth(BuildContext context) async {
-    final checkBiometric = await _checkBiometricAuthSetting();
-    try {
-      if (!checkBiometric) return;
-      bool isAuthenticated = await _localAuthHelper.authenWithBiometrics();
-      if (!isAuthenticated) {
-        AppSnackBar.show(
-            context, AppSnackBarType.Warning, l10n(context).login_check_device);
-        return;
-      }
-      password = await _secure.readKeyStorage(key: phoneNumberCache) ?? '';
-      await onLogin();
-    } catch (e) {
-      return AppSnackBar.show(
-          mContext, AppSnackBarType.Error, "Bạn chưa cài đặt tính năng");
-    }
-  }
-
-  Future<bool> _checkBiometricAuthSetting() async {
-    final value = await _secure.readKeyStorage(key: phoneNumberCache);
-    if (value == null || value.isEmpty) return false;
-    return true;
-  }
-
   Future<void> _logInSuccess(AuthenticationResult tokenData) async {
     await SessionPrefs.signedIn(tokenData);
     final sharedPrefer = GetIt.instance<SharedPreferencesManager>();
@@ -124,9 +98,8 @@ abstract class LoginStoreBase with Store {
     ApiBaseHelper.setHeader(user);
     await _appStore.loadBiometricSetting();
     await checkLogin();
-    final fcmToken = Platform.isIOS
-        ? await FirebaseMessaging.instance.getAPNSToken()
-        : await FirebaseMessaging.instance.getToken();
+    final _fcmService = serviceLocator<FcmService>();
+    final String? fcmToken = await _fcmService.getFcmToken();
     print("fcm $fcmToken");
     _appStore.setFCMToken(fcmToken ?? "");
 

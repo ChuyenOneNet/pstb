@@ -5,6 +5,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../data/models/booking_request.dart';
 import '../../data/models/crm_booking_response.dart';
+import '../../data/models/location_item.dart';
 
 part 'crm_booking_service.g.dart';
 

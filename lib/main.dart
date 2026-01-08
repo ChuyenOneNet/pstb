@@ -7,6 +7,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:pstb/services/fcm_service.dart';
+import 'package:pstb/services/firebase_messaging_background_handler.dart';
+import 'package:pstb/services/notification_service.dart';
 import 'package:pstb/utils/colors.dart';
 import 'package:vnpt_smartca_module/main.dart';
 import 'app/app_module.dart';
@@ -37,11 +40,6 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
-  debugPrint('Handling a background message ${message.messageId}');
-}
-
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,6 +49,12 @@ Future<void> main() async {
   await setupLocator();
   await GetStorage.init();
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  await NotificationService.init();
+
+  // FCM service
+  final fcmService = FcmService(FirebaseMessaging.instance);
+  await fcmService.init();
+
   //cameras = await availableCameras();
   runApp(ModularApp(module: AppModule(), child: const AppWidget()));
   configLoading();

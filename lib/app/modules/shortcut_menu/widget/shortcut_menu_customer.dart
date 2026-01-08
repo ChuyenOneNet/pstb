@@ -23,7 +23,6 @@ import '../../../../feature/relatives/presentation/cubit/relative_list_cubit.dar
 import '../../../../feature/relatives/presentation/pages/relative_form_page.dart';
 import '../../../../feature/relatives/presentation/pages/relative_list_page.dart';
 import '../../../../utils/shared_preferences_manager.dart';
-import '../../booking_v2/booking_home_page.dart';
 
 class ShortcutMenuCustomer extends StatelessWidget {
   ShortcutMenuCustomer({Key? key}) : super(key: key);

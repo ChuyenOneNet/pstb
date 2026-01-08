@@ -8,7 +8,6 @@ import 'package:pstb/app/modules/home/home_store.dart';
 import 'package:pstb/app/modules/profile/pages/setting/setting_store.dart';
 import 'package:pstb/app/modules/profile/pages/setting/widget/field_icon_widget.dart';
 import 'package:pstb/app/modules/profile/pages/setting/widget/field_notification_widget.dart';
-import 'package:pstb/app/modules/profile/pages/setting/widget/finger_print_widget.dart';
 import 'package:pstb/app/user_app_store.dart';
 import 'package:pstb/utils/main.dart';
 import 'package:pstb/widgets/stateless/stateless_widget.dart';
@@ -131,10 +130,6 @@ class _ProfileSettingState extends State<ProfileSetting> {
             // const Divider(
             //   thickness: 1,
             // ),
-            FingerPrintWidget(),
-            const Divider(
-              thickness: 1,
-            ),
             FieldNotificationWidget(),
             const Divider(
               thickness: 1,

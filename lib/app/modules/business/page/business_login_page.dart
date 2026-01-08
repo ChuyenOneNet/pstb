@@ -788,7 +788,30 @@ class _BusinessLoginPageState extends State<BusinessLoginPage> {
       _lastOtpTime = now;
       _startCooldown(90);
 
-      final entered = await showModalBottomSheet<String>(
+      // final entered = await showModalBottomSheet<String>(
+      //   context: context,
+      //   isScrollControlled: true,
+      //   useSafeArea: true,
+      //   backgroundColor: Colors.white,
+      //   shape: const RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      //   ),
+      //   builder: (_) => _OtpSheet(
+      //     maskedPhone: _maskPhone(phone),
+      //     cooldown: _cooldown,
+      //     onResend:
+      //         _requestOtpFlow, // resend giữ nguyên flow (tự check cooldown/attempt)
+      //   ),
+      // );
+      //
+      // if (!mounted) return;
+      // if (entered == null || entered.trim().length != 6) return;
+      //
+      // if (entered.trim() != _serverOtp) {
+      //   Fluttertoast.showToast(msg: 'Mã OTP không đúng');
+      //   return;
+      // }
+      final result = await showModalBottomSheet<bool>(
         context: context,
         isScrollControlled: true,
         useSafeArea: true,
@@ -799,21 +822,18 @@ class _BusinessLoginPageState extends State<BusinessLoginPage> {
         builder: (_) => _OtpSheet(
           maskedPhone: _maskPhone(phone),
           cooldown: _cooldown,
-          onResend:
-              _requestOtpFlow, // resend giữ nguyên flow (tự check cooldown/attempt)
+          serverOtp: _serverOtp!, // 🔥 truyền OTP vào sheet
+          maxAttempts: 3,
+          onResend: _requestOtpFlow,
         ),
       );
 
-      if (!mounted) return;
-      if (entered == null || entered.trim().length != 6) return;
-
-      if (entered.trim() != _serverOtp) {
-        Fluttertoast.showToast(msg: 'Mã OTP không đúng');
-        return;
+      if (result == true) {
+        await _loginWithPatientCode(patientCode);
       }
 
       // OTP OK => login, ẩn password (password = patientCode)
-      await _loginWithPatientCode(patientCode);
+      //await _loginWithPatientCode(patientCode);
     } finally {
       if (mounted) setState(() => _isBusy = false);
     }
@@ -1059,11 +1079,15 @@ class _OtpSheet extends StatefulWidget {
   final String maskedPhone;
   final ValueNotifier<int> cooldown;
   final Future<void> Function()? onResend;
+  final String serverOtp;
+  final int maxAttempts;
 
   const _OtpSheet({
     required this.maskedPhone,
     required this.cooldown,
     this.onResend,
+    required this.serverOtp,
+    required this.maxAttempts,
   });
 
   @override
@@ -1074,6 +1098,8 @@ class _OtpSheetState extends State<_OtpSheet> {
   final _controllers = List.generate(6, (_) => TextEditingController());
   final _focusNodes = List.generate(6, (_) => FocusNode());
   bool _submitting = false;
+  int _failedAttempts = 0;
+  String? _errorText;
 
   @override
   void dispose() {
@@ -1096,9 +1122,36 @@ class _OtpSheetState extends State<_OtpSheet> {
     if (i == 5 && v.isNotEmpty) _submit();
   }
 
+  // void _submit() {
+  //   final code = _controllers.map((e) => e.text).join();
+  //   if (code.length == 6) Navigator.pop(context, code);
+  // }
   void _submit() {
     final code = _controllers.map((e) => e.text).join();
-    if (code.length == 6) Navigator.pop(context, code);
+    if (code.length != 6) return;
+
+    if (code != widget.serverOtp) {
+      setState(() {
+        _failedAttempts++;
+        _errorText =
+            'Mã OTP không đúng (${_failedAttempts}/${widget.maxAttempts})';
+      });
+
+      if (_failedAttempts >= widget.maxAttempts) {
+        Fluttertoast.showToast(
+          msg: 'Nhập sai quá ${widget.maxAttempts} lần. Vui lòng gửi OTP mới',
+        );
+        Navigator.pop(context, false);
+      }
+      for (final c in _controllers) {
+        c.clear();
+      }
+      _focusNodes.first.requestFocus();
+      return;
+    }
+
+    // ✅ OTP đúng
+    Navigator.pop(context, true);
   }
 
   @override
@@ -1168,6 +1221,13 @@ class _OtpSheetState extends State<_OtpSheet> {
                 );
               }),
             ),
+            if (_errorText != null) ...[
+              const SizedBox(height: 8),
+              Text(
+                _errorText!,
+                style: const TextStyle(color: Colors.red, fontSize: 13),
+              ),
+            ],
             const SizedBox(height: 16),
             SizedBox(
               width: double.infinity,
@@ -1202,8 +1262,10 @@ class _OtpSheetState extends State<_OtpSheet> {
             ValueListenableBuilder<int>(
               valueListenable: widget.cooldown,
               builder: (_, sec, __) {
-                final disabled =
-                    sec > 0 || widget.onResend == null || _submitting;
+                final disabled = sec > 0 ||
+                    widget.onResend == null ||
+                    _submitting ||
+                    _failedAttempts >= widget.maxAttempts;
                 return TextButton(
                   onPressed: disabled
                       ? null

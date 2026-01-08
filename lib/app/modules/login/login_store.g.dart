@@ -82,14 +82,6 @@ mixin _$LoginStore on LoginStoreBase, Store {
         .run(() => super.getInformationNumber());
   }
 
-  late final _$biometricAuthAsyncAction =
-      AsyncAction('LoginStoreBase.biometricAuth', context: context);
-
-  @override
-  Future<void> biometricAuth(BuildContext context) {
-    return _$biometricAuthAsyncAction.run(() => super.biometricAuth(context));
-  }
-
   late final _$checkLoginAsyncAction =
       AsyncAction('LoginStoreBase.checkLogin', context: context);
 

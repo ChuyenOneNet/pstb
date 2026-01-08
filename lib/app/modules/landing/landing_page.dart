@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +11,8 @@ import 'package:pstb/app/app_store.dart';
 import 'package:pstb/utils/sessions/session_prefs.dart';
 import 'package:pstb/services/api_base_helper.dart';
 import 'package:pstb/utils/main.dart';
+
+import '../../../utils/pending_navigation.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -43,9 +46,14 @@ class _LandingPageState extends ModularState<LandingPage, Object> {
     nextPage = AppRoutes.landingUnit;
     // }
     // nextPage = AppRoutes.onBoard;
-    Timer(const Duration(milliseconds: 1000),
-        () => Modular.to.navigate(nextPage));
+    // Timer(const Duration(milliseconds: 1000),
+    //     () => Modular.to.navigate(nextPage));
+    // 1) Vào app trước (đúng yêu cầu của bạn)
+    await Future.delayed(const Duration(milliseconds: 1000));
+    Modular.to.navigate(nextPage);
 
+    // 2) Sau khi đã vào app xong, nếu có pending từ notification thì mở Sign
+    _openPendingIfAny();
     FirebaseMessaging messaging = FirebaseMessaging.instance;
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
@@ -77,6 +85,19 @@ class _LandingPageState extends ModularState<LandingPage, Object> {
       badge: false,
       sound: true,
     );
+  }
+
+  void _openPendingIfAny() {
+    if (!PendingNavigation.hasPending) return;
+
+    final r = PendingNavigation.route!;
+    final args = PendingNavigation.arguments;
+    PendingNavigation.clear();
+
+    // Đợi frame kế tiếp để đảm bảo nextPage build xong rồi mới push
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Modular.to.pushNamed(r, arguments: args);
+    });
   }
 
   @override

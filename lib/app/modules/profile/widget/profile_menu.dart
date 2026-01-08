@@ -11,6 +11,7 @@ import 'package:pstb/widgets/stateless/divider_custom_widget.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+import '../../../../utils/call_hotline.dart';
 import '../pages/profile_page/widgets/login_his_widget.dart';
 
 class ProfileMenu extends StatelessWidget {
@@ -27,7 +28,7 @@ class ProfileMenu extends StatelessWidget {
         final icon = IconEnums.listIconPersonal[index];
         final title = Constants.listTitlePersonalScreen[index];
         return InkWell(
-          onTap: () {
+          onTap: () async {
             final _userStore = Modular.get<UserAppStore>();
             final _profileStore = Modular.get<ProfileStore>();
             if (index != 4 && index != 5 && index != 3) {
@@ -38,7 +39,7 @@ class ProfileMenu extends StatelessWidget {
               final phoneCall = ConfigHelper.instance
                   .getConfigByCodeSync(ConfigHelper.sosLine)
                   ?.value;
-              launchUrlString("tel://$phoneCall");
+              await callHotline();
               return;
             }
             // if (index == 6) {

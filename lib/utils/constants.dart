@@ -43,6 +43,9 @@ class Constants {
   static const String keyPASign = 'keyPASign';
   static const String keyEMSign = 'keyEMSign';
   static const String keyPinSign = 'keyPinSign';
+  static String facebookPageUrl = 'https://www.facebook.com/phusanthaibinh';
+  static String facebookChatUrl = 'https://m.me/phusanthaibinh';
+  static String zaloChatUrl = 'https://zalo.me/2250727147932354955';
   static const Map<int, String> signingStatus = {
     1: 'Chưa ký',
     2: "Đang ký",

@@ -14,7 +14,7 @@ class HotlinePhoneWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TouchableOpacity(
       onTap: () async {
-        await launchUrlString('tel://${_appstore.supportLinePhoneNumber}');
+        await launchUrlString('tel://19001932');
       },
       child: Stack(
         children: [

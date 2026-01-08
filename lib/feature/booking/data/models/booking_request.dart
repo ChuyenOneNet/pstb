@@ -33,18 +33,27 @@ class BookingData {
   final List<String> start_time; // ["HH:mm Sáng/Chiều"]
   final String note;
   final String source_description;
-  BookingData(
-      {required this.firstname,
-      required this.mobile,
-      required this.email,
-      required this.leads_interest_service,
-      required this.identification_number,
-      required this.identity_card_issue_date,
-      required this.branch,
-      required this.start_day,
-      required this.start_time,
-      required this.note,
-      required this.source_description});
+  final String cf_related_contact__identification_number;
+  final String mailingcity; // id tỉnh/tp
+  final String mailingstate; // id xã/phường (phụ thuộc city)
+  final String mailingstreet; // địa chỉ cụ thể người dùng nhập
+  BookingData({
+    required this.firstname,
+    required this.mobile,
+    required this.email,
+    required this.leads_interest_service,
+    required this.identification_number,
+    required this.identity_card_issue_date,
+    required this.branch,
+    required this.start_day,
+    required this.start_time,
+    required this.note,
+    required this.source_description,
+    required this.cf_related_contact__identification_number,
+    required this.mailingcity,
+    required this.mailingstate,
+    required this.mailingstreet,
+  });
 
   factory BookingData.fromJson(Map<String, dynamic> json) =>
       _$BookingDataFromJson(json);

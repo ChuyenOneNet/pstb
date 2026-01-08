@@ -174,18 +174,6 @@ mixin _$SettingStore on _SettingStoreBase, Store {
         .run(() => super.requestNotification());
   }
 
-  late final _$authenticateWithBiometricsAsyncAction = AsyncAction(
-      '_SettingStoreBase.authenticateWithBiometrics',
-      context: context);
-
-  @override
-  Future<void> authenticateWithBiometrics(String message,
-      {AndroidAuthMessages androidAuthMessages = const AndroidAuthMessages()}) {
-    return _$authenticateWithBiometricsAsyncAction.run(() => super
-        .authenticateWithBiometrics(message,
-            androidAuthMessages: androidAuthMessages));
-  }
-
   late final _$_SettingStoreBaseActionController =
       ActionController(name: '_SettingStoreBase', context: context);
 

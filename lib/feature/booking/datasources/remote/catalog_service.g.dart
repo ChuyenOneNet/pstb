@@ -110,6 +110,144 @@ class _CatalogService implements CatalogService {
     return _value;
   }
 
+  @override
+  Future<BaseListResponse<CrmBookingItem>> getBookings(
+    String token,
+    String module,
+    String sortColumn,
+    String sortOrder,
+    int offset,
+    int maxRows,
+    String filtersJson,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'module': module,
+      r'sort_column': sortColumn,
+      r'sort_order': sortOrder,
+      r'offset': offset,
+      r'max_rows': maxRows,
+      r'filters': filtersJson,
+    };
+    final _headers = <String, dynamic>{r'Access-Token': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<BaseListResponse<CrmBookingItem>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/MediCRM/list',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseListResponse<CrmBookingItem> _value;
+    try {
+      _value = BaseListResponse<CrmBookingItem>.fromJson(
+        _result.data!,
+        (json) => CrmBookingItem.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<PicklistCitiesResponse> getMailingCities(
+    String token,
+    String module,
+    String fieldName,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'module': module,
+      r'fieldName': fieldName,
+    };
+    final _headers = <String, dynamic>{r'Access-Token': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<PicklistCitiesResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/MediCRM/picklistvalues',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PicklistCitiesResponse _value;
+    try {
+      _value = PicklistCitiesResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<PicklistStatesResponse> getMailingStates(
+    String token,
+    String module,
+    String fieldName,
+    String parentFieldName,
+    String parentKey,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'module': module,
+      r'fieldName': fieldName,
+      r'parentFieldName': parentFieldName,
+      r'parentKey': parentKey,
+    };
+    final _headers = <String, dynamic>{r'Access-Token': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<PicklistStatesResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/MediCRM/picklistvalues',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PicklistStatesResponse _value;
+    try {
+      _value = PicklistStatesResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

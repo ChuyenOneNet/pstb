@@ -20,7 +20,6 @@ import '../../../constant/config.dart';
 import '../../../feature/booking/presentation/pages/booking_history_screen.dart';
 import '../../../utils/shared_preferences_manager.dart';
 import '../../../widgets/stateless/app_dialog_confirm.dart';
-import '../booking_v2/screens/history_screen.dart';
 import '../medical_unit/detail_hospital/detail_test.dart';
 import '../profile/pages/qr_code_personal/qr_code_personal_dialog.dart';
 import '../profile/profile_store.dart';
@@ -69,17 +68,25 @@ class _BottomNavPageState extends ModularState<BottomNavPage, BottomNavStore> {
             },
           ),
           floatingActionButton: FloatingActionButton(
+            backgroundColor: controller.currentIndex == 4
+                ? AppColors.primary
+                : AppColors.background,
             // backgroundColor: Colors.transparent,
             child: controller.currentIndex == 4
-                ? const Icon(
+                ? Icon(
                     Icons.qr_code_scanner,
                     size: 40,
+                    color: controller.currentIndex == 4
+                        ? AppColors.background
+                        : AppColors.primary,
                   )
                 : SvgPicture.asset(
                     IconEnums.home,
                     width: 30,
                     height: 30,
-                    color: AppColors.background,
+                    color: controller.currentIndex == 4
+                        ? AppColors.background
+                        : AppColors.primary,
                   ),
             onPressed: () async {
               await controller.checkLogin();

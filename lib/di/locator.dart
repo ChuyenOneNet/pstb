@@ -1,20 +1,17 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pstb/app/modules/booking_v2/cubit/create_request_cubit.dart';
-import 'package:pstb/app/modules/nurse_page/electronic_signature_v2/data/remote/e_signature_role_api.dart';
 import 'package:pstb/core/services/dropdown_service.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
-import '../app/modules/booking_v2/sqlite_dao/request_history_dao.dart';
-import '../app/modules/nurse_page/electronic_signature_v2/data/remote/e_signature_api.dart';
-import '../app/modules/nurse_page/electronic_signature_v2/data/repositories/signature_repository.dart';
-import '../app/modules/nurse_page/electronic_signature_v2/data/repositories/signature_repository_impl.dart';
-import '../app/modules/nurse_page/electronic_signature_v2/presentation/cubits/departments_cubit/departments_cubit.dart';
+import '../app/modules/electronic_signature_v2/data/remote/e_signature_api.dart';
+import '../app/modules/electronic_signature_v2/data/remote/e_signature_role_api.dart';
+import '../app/modules/electronic_signature_v2/data/repositories/signature_repository.dart';
+import '../app/modules/electronic_signature_v2/data/repositories/signature_repository_impl.dart';
+import '../app/modules/electronic_signature_v2/presentation/cubits/departments_cubit/departments_cubit.dart';
 import '../core/repositories/booking_repository.dart';
 import '../core/repositories/dropdown_repository.dart';
-import '../core/repositories/request_repository.dart';
-import '../core/services/booking_service.dart';
 import '../cubits/address_cubit.dart';
 import '../cubits/ethnic_cubit.dart';
 import '../cubits/job_cubit.dart';
@@ -33,6 +30,7 @@ import '../feature/relatives/domain/usecases/get_relatives_usecase.dart';
 import '../feature/relatives/domain/usecases/update_relative_usecase.dart';
 import '../feature/relatives/presentation/cubit/relative_form_cubit.dart';
 import '../feature/relatives/presentation/cubit/relative_list_cubit.dart';
+import '../services/fcm_service.dart';
 import '../utils/http_services.dart';
 import '../utils/navigation_service.dart';
 import '../utils/shared_preferences_manager.dart';
@@ -52,15 +50,6 @@ Future<void> setupLocator() async {
   final dbPath = await getDatabasesPath();
   final path = join(dbPath, 'request_history.db');
 
-  final db = await openDatabase(
-    path,
-    version: 1,
-    onCreate: (Database db, int version) async {
-      await RequestHistoryDao.createTable(db);
-    },
-  );
-  final requestHistoryDao = RequestHistoryDao(db);
-  serviceLocator.registerSingleton<RequestHistoryDao>(requestHistoryDao);
   serviceLocator.registerLazySingleton(() => JobCubit());
   serviceLocator.registerLazySingleton(() => AddressCubit());
   serviceLocator.registerLazySingleton(() => NationalityCubit());
@@ -71,18 +60,6 @@ Future<void> setupLocator() async {
 
   serviceLocator.registerFactory<DropdownRepository>(
       () => DropdownRepositoryImpl(serviceLocator<DropdownService>()));
-
-  serviceLocator.registerLazySingleton(() => CreateRequestCubit());
-  serviceLocator
-      .registerLazySingleton<BookingService>(() => BookingService(dio));
-//
-
-  serviceLocator.registerFactory<RequestRepository>(
-    () => RequestRepository(
-      serviceLocator<BookingService>(),
-      serviceLocator<RequestHistoryDao>(),
-    ),
-  );
 
   final crmDio = await setupDio(
       baseUrl: "https://crm.phusanthaibinh.vn", isHaveToken: false);
@@ -166,5 +143,9 @@ Future<void> setupLocator() async {
       updateRelativeUseCase: serviceLocator(),
       getDetailUseCase: serviceLocator(),
     ),
+  );
+
+  serviceLocator.registerSingleton<FcmService>(
+    FcmService(FirebaseMessaging.instance),
   );
 }

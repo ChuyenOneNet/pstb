@@ -5,6 +5,7 @@ import 'package:pstb/widgets/stateless/button_back.dart';
 import 'package:pstb/widgets/stateless/stateless_widget.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+import '../../../../utils/call_hotline.dart';
 import '../emergency_store.dart';
 
 class FactWidget extends StatelessWidget {
@@ -81,10 +82,9 @@ class FactWidget extends StatelessWidget {
                           ],
                         ),
                         child: AppButton(
-                          title: l10n(context).emergency_call.toUpperCase(),
+                          title: "GỌI HOTLINE",
                           onPressed: () async {
-                            await launchUrlString(
-                                "tel://${controller.sosPhoneNumber}");
+                            await callHotline();
                             // controller.navigateTo(AppRoutes.emergencyCall);
                           },
                           iconRight: IconEnums.phoneCallWhite,

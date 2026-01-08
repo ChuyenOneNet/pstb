@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pstb/app/modules/profile/pages/edit_profile_page/edit_profile_store.dart';
 import 'package:pstb/app/modules/profile/pages/new_edit_profile_page/new_edit_profile_page.dart';
-import 'package:pstb/app/modules/profile/pages/payment_method/payment_method_page.dart';
 import 'package:pstb/app/modules/profile/pages/profile_page/profile_page.dart';
 import 'package:pstb/app/modules/profile/pages/setting/profile_setting.dart';
 import 'package:pstb/app/modules/profile/pages/steps_foot/steps_foot_page.dart';
@@ -32,10 +31,6 @@ class ProfileModule extends WidgetModule {
     ChildRoute(
       AppRoutes.newEditProfile,
       child: (_, args) => const NewEditProfilePage(),
-    ),
-    ChildRoute(
-      AppRoutes.paymentMethodPage,
-      child: (_, args) => const PaymentMethodPage(),
     ),
     ChildRoute(
       AppRoutes.profileSettingPage,

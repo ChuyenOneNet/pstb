@@ -36,6 +36,11 @@ BookingData _$BookingDataFromJson(Map<String, dynamic> json) => BookingData(
           .toList(),
       note: json['note'] as String,
       source_description: json['source_description'] as String,
+      cf_related_contact__identification_number:
+          json['cf_related_contact__identification_number'] as String,
+      mailingcity: json['mailingcity'] as String,
+      mailingstate: json['mailingstate'] as String,
+      mailingstreet: json['mailingstreet'] as String,
     );
 
 Map<String, dynamic> _$BookingDataToJson(BookingData instance) =>
@@ -51,4 +56,9 @@ Map<String, dynamic> _$BookingDataToJson(BookingData instance) =>
       'start_time': instance.start_time,
       'note': instance.note,
       'source_description': instance.source_description,
+      'cf_related_contact__identification_number':
+          instance.cf_related_contact__identification_number,
+      'mailingcity': instance.mailingcity,
+      'mailingstate': instance.mailingstate,
+      'mailingstreet': instance.mailingstreet,
     };

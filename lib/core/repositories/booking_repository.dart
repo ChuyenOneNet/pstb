@@ -7,7 +7,11 @@ import 'package:pstb/utils/app_extensions.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../feature/booking/data/models/booking_request.dart';
+import '../../feature/booking/data/models/crm_booking_item.dart';
 import '../../feature/booking/data/models/crm_booking_response.dart';
+import '../../feature/booking/data/models/location_item.dart';
+import '../../feature/booking/data/models/picklist_cities_response.dart';
+import '../../feature/booking/data/models/picklist_states_response.dart';
 import '../../feature/booking/datasources/local/history_local_ds.dart';
 import '../../feature/booking/datasources/remote/crm_booking_service.dart';
 import '../../feature/booking/domain/entities/history_entry.dart';
@@ -22,6 +26,14 @@ abstract class BookingRepository {
 
   Future<void> addHistory(HistoryEntry e);
   Future<List<HistoryEntry>> getHistory();
+  Future<List<CrmBookingItem>> getHistoryRemote({
+    required DateTime from,
+    required DateTime to,
+    int offset,
+    int maxRows,
+  });
+  Future<List<MailingCityItem>> getCities();
+  Future<List<MailingStateItem>> getWardsByCity(String cityKey);
 }
 
 class BookingRepositoryImpl implements BookingRepository {
@@ -101,6 +113,64 @@ class BookingRepositoryImpl implements BookingRepository {
     return historyLocal.getAll(userPhone);
   }
 
+  @override
+  Future<List<CrmBookingItem>> getHistoryRemote({
+    required DateTime from,
+    required DateTime to,
+    int offset = 0,
+    int maxRows = 20,
+  }) async {
+    final authRes = await catalogService.auth(
+      "it.crm",
+      "278bac897ff389ef3af754c6cf34df96",
+    );
+    final token = authRes.access_token;
+
+    // Lấy CCCD từ app store
+    final store = Modular.get<UserAppStore>();
+    final cccd = (store.user.personalId ?? '')
+        .toString()
+        .trim(); // <-- bé đổi đúng getter thực tế
+
+    final filters = <Map<String, dynamic>>[
+      // {
+      //   "name": "start_day",
+      //   "value": "${_fmtYyyyMmDd(from)},${_fmtYyyyMmDd(to)}",
+      //   "operator": "bw",
+      // },
+    ];
+
+    // Nếu có CCCD thì mới filter, tránh làm rỗng kết quả
+    if (cccd.isNotEmpty) {
+      filters.add({
+        "name": "cf_related_contact__identification_number",
+        "value": cccd,
+        "operator": "e",
+      });
+    }
+
+    final filterJson = jsonEncode(filters);
+
+    final res = await catalogService.getBookings(
+      token,
+      "CPBooking",
+      "modifiedtime",
+      "DESC",
+      offset,
+      maxRows,
+      filterJson,
+    );
+
+    return res.entry_list ?? <CrmBookingItem>[];
+  }
+
+  String _fmtYyyyMmDd(DateTime d) {
+    final y = d.year.toString().padLeft(4, '0');
+    final m = d.month.toString().padLeft(2, '0');
+    final day = d.day.toString().padLeft(2, '0');
+    return '$y-$m-$day';
+  }
+
   // Helpers chuyển định dạng chuỗi CRM về ISO
   String _isoFromDdMmDash(String ddMMyyyyDash) {
     // "11-06-2025" -> "2025-06-11T00:00:00.000Z"
@@ -109,18 +179,37 @@ class BookingRepositoryImpl implements BookingRepository {
         .toIso8601String();
   }
 
-  String _isoFromViTime(String ddMMyyyyDash, String hmVi) {
-    // "10:00 Sáng" -> 10:00 ; "02:30 Chiều" -> 14:30
-    final parts = hmVi.split(' ');
-    final hm = parts[0];
-    final ampm = parts.length > 1 ? parts[1] : 'Sáng';
-    final hmp = hm.split(':');
-    var h = int.parse(hmp[0]);
-    final m = int.parse(hmp[1]);
-    if (ampm == 'Chiều' && h < 12) h += 12;
+  @override
+  Future<List<MailingCityItem>> getCities() async {
+    final authRes = await catalogService.auth(
+      "it.crm",
+      "278bac897ff389ef3af754c6cf34df96",
+    );
+    final token = authRes.access_token;
+    final res = await catalogService.getMailingCities(
+      token,
+      "Contacts",
+      "mailingcity",
+    );
+    if (!res.success) return <MailingCityItem>[];
+    return res.picklistOptions;
+  }
 
-    final d = ddMMyyyyDash.split('-'); // [dd, MM, yyyy]
-    return DateTime.utc(int.parse(d[2]), int.parse(d[1]), int.parse(d[0]), h, m)
-        .toIso8601String();
+  @override
+  Future<List<MailingStateItem>> getWardsByCity(String cityKey) async {
+    final authRes = await catalogService.auth(
+      "it.crm",
+      "278bac897ff389ef3af754c6cf34df96",
+    );
+    final token = authRes.access_token;
+    final res = await catalogService.getMailingStates(
+      token,
+      "Contacts",
+      "mailingstate",
+      "mailingcity",
+      cityKey, // parentKey = city.key
+    );
+    if (!res.success) return <MailingStateItem>[];
+    return res.picklistOptions;
   }
 }

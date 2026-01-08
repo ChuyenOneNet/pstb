@@ -10,7 +10,7 @@ class BusinessDetailModel {
   final String? ngayRaVien;
   final SinhHieu? sinhHieu;
   final List<UrlDataInfo>? urlDataInfos;
-  final List<dynamic>? docmments;
+  final List<DocmmentGroup>? docmments;
   final List<XetNghiemInfo>? xetNghiemInfos;
   final List<ToaThuocInfo>? toaThuocInfos;
   final List<VienPhiInfo>? vienPhiInfos;
@@ -110,6 +110,47 @@ class UrlDataInfo {
       _$UrlDataInfoFromJson(json);
 
   Map<String, dynamic> toJson() => _$UrlDataInfoToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class DocmmentGroup {
+  final String? title;
+
+  /// API trả key "docmment": [ ... ]
+  @JsonKey(name: 'docmment')
+  final List<DocmmentItem>? items;
+
+  DocmmentGroup({
+    this.title,
+    this.items,
+  });
+
+  factory DocmmentGroup.fromJson(Map<String, dynamic> json) =>
+      _$DocmmentGroupFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DocmmentGroupToJson(this);
+}
+
+@JsonSerializable()
+class DocmmentItem {
+  final String? id;
+  final String? name;
+  final String? groupName;
+
+  /// base64 PDF
+  final String? content;
+
+  DocmmentItem({
+    this.id,
+    this.name,
+    this.groupName,
+    this.content,
+  });
+
+  factory DocmmentItem.fromJson(Map<String, dynamic> json) =>
+      _$DocmmentItemFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DocmmentItemToJson(this);
 }
 
 @JsonSerializable()

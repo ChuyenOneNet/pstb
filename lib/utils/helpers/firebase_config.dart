@@ -34,6 +34,26 @@ class FireBaseConfigModel {
   }
 }
 
+class CommunityUrlConfig {
+  final String facebookPage;
+  final String facebookChat;
+  final String zaloChat;
+
+  CommunityUrlConfig({
+    required this.facebookPage,
+    required this.facebookChat,
+    required this.zaloChat,
+  });
+
+  factory CommunityUrlConfig.fromJson(Map<String, dynamic> json) {
+    return CommunityUrlConfig(
+      facebookPage: json['facebookPage'] ?? '',
+      facebookChat: json['facebookChat'] ?? '',
+      zaloChat: json['zaloChat'] ?? '',
+    );
+  }
+}
+
 class FireBaseRemoteConfigService {
   static Future<FireBaseConfigModel> getConfig() async {
     try {
@@ -51,6 +71,17 @@ class FireBaseRemoteConfigService {
       print("config:" + jsonConfig);
       Constants.versionApp = remoteConfig.getString('version_app');
       print('version: ${Constants.versionApp.toString()}');
+      final urlJson = remoteConfig.getString('url');
+
+      if (urlJson.isNotEmpty) {
+        final communityUrlConfig =
+            CommunityUrlConfig.fromJson(jsonDecode(urlJson));
+
+        Constants.facebookPageUrl = communityUrlConfig.facebookPage;
+        Constants.facebookChatUrl = communityUrlConfig.facebookChat;
+        Constants.zaloChatUrl = communityUrlConfig.zaloChat;
+      }
+
       final cfgModel = FireBaseConfigModel.fromJson(jsonDecode(jsonConfig));
       print('baseUrl: ${cfgModel.baseUrl}');
       final idUnit =

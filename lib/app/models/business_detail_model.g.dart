@@ -18,7 +18,9 @@ BusinessDetailModel _$BusinessDetailModelFromJson(Map<String, dynamic> json) =>
       urlDataInfos: (json['urlDataInfos'] as List<dynamic>?)
           ?.map((e) => UrlDataInfo.fromJson(e as Map<String, dynamic>))
           .toList(),
-      docmments: json['docmments'] as List<dynamic>?,
+      docmments: (json['docmments'] as List<dynamic>?)
+          ?.map((e) => DocmmentGroup.fromJson(e as Map<String, dynamic>))
+          .toList(),
       xetNghiemInfos: (json['xetNghiemInfos'] as List<dynamic>?)
           ?.map((e) => XetNghiemInfo.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -39,7 +41,7 @@ Map<String, dynamic> _$BusinessDetailModelToJson(
       'ngayRaVien': instance.ngayRaVien,
       'sinhHieu': instance.sinhHieu?.toJson(),
       'urlDataInfos': instance.urlDataInfos?.map((e) => e.toJson()).toList(),
-      'docmments': instance.docmments,
+      'docmments': instance.docmments?.map((e) => e.toJson()).toList(),
       'xetNghiemInfos':
           instance.xetNghiemInfos?.map((e) => e.toJson()).toList(),
       'toaThuocInfos': instance.toaThuocInfos?.map((e) => e.toJson()).toList(),
@@ -111,6 +113,35 @@ Map<String, dynamic> _$UrlDataInfoToJson(UrlDataInfo instance) =>
       'fileUrl': instance.fileUrl,
       'pdfBase64': instance.pdfBase64,
       'ketLuan': instance.ketLuan,
+    };
+
+DocmmentGroup _$DocmmentGroupFromJson(Map<String, dynamic> json) =>
+    DocmmentGroup(
+      title: json['title'] as String?,
+      items: (json['docmment'] as List<dynamic>?)
+          ?.map((e) => DocmmentItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$DocmmentGroupToJson(DocmmentGroup instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'docmment': instance.items?.map((e) => e.toJson()).toList(),
+    };
+
+DocmmentItem _$DocmmentItemFromJson(Map<String, dynamic> json) => DocmmentItem(
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      groupName: json['groupName'] as String?,
+      content: json['content'] as String?,
+    );
+
+Map<String, dynamic> _$DocmmentItemToJson(DocmmentItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'groupName': instance.groupName,
+      'content': instance.content,
     };
 
 ToaThuocInfo _$ToaThuocInfoFromJson(Map<String, dynamic> json) => ToaThuocInfo(

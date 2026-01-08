@@ -206,29 +206,29 @@ class _FormInputWidgetState extends State<FormInputWidget> {
             }
           },
           onBiometric: () async {
-            _settingStore.isActiveFinger = await SessionPrefs.getActiveFinger();
-            print('${_settingStore.isActiveFinger}');
-            if (_settingStore.isActiveFinger) {
-              await _loginStore.biometricAuth(context);
-              return;
-            }
-            showDialog(
-                context: context,
-                builder: (_) {
-                  return CupertinoAlertDialog(
-                    title: const Text("Lỗi đăng nhập"),
-                    content: const Text(
-                        "Bạn chưa cài đặt Touch ID/Face ID để sử dụng chức năng này. Vui lòng sử dụng mật khẩu để đăng nhập."),
-                    actions: <Widget>[
-                      CupertinoDialogAction(
-                        child: const Text("Ok"),
-                        onPressed: () {
-                          Navigator.pop(context, false);
-                        },
-                      ),
-                    ],
-                  );
-                });
+            // _settingStore.isActiveFinger = await SessionPrefs.getActiveFinger();
+            // print('${_settingStore.isActiveFinger}');
+            // if (_settingStore.isActiveFinger) {
+            //   await _loginStore.biometricAuth(context);
+            //   return;
+            // }
+            // showDialog(
+            //     context: context,
+            //     builder: (_) {
+            //       return CupertinoAlertDialog(
+            //         title: const Text("Lỗi đăng nhập"),
+            //         content: const Text(
+            //             "Bạn chưa cài đặt Touch ID/Face ID để sử dụng chức năng này. Vui lòng sử dụng mật khẩu để đăng nhập."),
+            //         actions: <Widget>[
+            //           CupertinoDialogAction(
+            //             child: const Text("Ok"),
+            //             onPressed: () {
+            //               Navigator.pop(context, false);
+            //             },
+            //           ),
+            //         ],
+            //       );
+            //     });
           },
         ),
         // if (Platform.isIOS)

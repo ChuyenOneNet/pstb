@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pstb/app/models/nurse_model.dart';
 import 'package:pstb/app/models/staff_model.dart';
-import 'package:pstb/app/modules/ehr_page/ehr_store.dart';
+
 import 'package:pstb/services/api_base_helper.dart';
 import 'package:pstb/services/api_exception.dart';
 import 'package:pstb/utils/main.dart';

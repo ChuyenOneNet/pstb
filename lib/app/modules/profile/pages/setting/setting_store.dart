@@ -7,7 +7,6 @@ import 'package:pstb/app/app_store.dart';
 import 'package:pstb/app/models/login_model.dart';
 import 'package:pstb/app/modules/home/home_store.dart';
 import 'package:pstb/services/api_base_helper.dart';
-import 'package:pstb/utils/helpers/local_auth_helper.dart';
 import 'package:pstb/utils/main.dart';
 import 'package:pstb/utils/sessions/local_secure.dart';
 import 'package:pstb/utils/sessions/session_prefs.dart';
@@ -22,7 +21,6 @@ class SettingStore = _SettingStoreBase with _$SettingStore;
 abstract class _SettingStoreBase with Store {
   final _homeStore = Modular.get<HomeStore>();
   final _apiBaseHelper = Modular.get<ApiBaseHelper>();
-  final _localAuthHelper = LocalAuthHelper(auth: LocalAuthentication());
   final _secure = FlutterSecure();
   final _box = GetStorage();
   final _appStore = Modular.get<AppStore>();
@@ -131,35 +129,5 @@ abstract class _SettingStoreBase with Store {
   Future<void> requestNotification() async {
     permissions = await NotificationPermissions.requestNotificationPermissions(
         openSettings: false);
-  }
-
-  @action
-  Future<void> authenticateWithBiometrics(String message,
-      {AndroidAuthMessages androidAuthMessages =
-          const AndroidAuthMessages()}) async {
-    try {
-      if (notAvailableBiometric) {
-        return;
-      }
-      if (isActiveFinger) {
-        final result = await _localAuthHelper.authenticateWithBiometrics(
-            message,
-            androidAuthMessages: androidAuthMessages);
-        if (result) {
-          _secure.deleteKeyStorage(
-            key: _homeStore.phoneNumberCache,
-          );
-          isActiveFinger = false;
-          await SessionPrefs.setActiveFinger(isActiveFinger);
-        }
-        return;
-      }
-    } on PlatformException catch (e) {
-      if (e.code == notAvailable) {
-        notAvailableBiometric = true;
-        return;
-      }
-      notAvailableBiometric = false;
-    }
   }
 }

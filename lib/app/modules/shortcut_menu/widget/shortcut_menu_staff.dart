@@ -4,9 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pstb/app/modules/home/home_store.dart';
-import 'package:pstb/app/modules/nurse_page/electronic_signature_v2/presentation/pages/sign_home_page.dart';
-import 'package:pstb/app/modules/nurse_page/electronic_signature_v2/presentation/pages/sign_home_page_v2.dart';
-import 'package:pstb/app/user_app_store.dart';
+
 import 'package:pstb/utils/colors.dart';
 import 'package:pstb/utils/helper.dart';
 import 'package:pstb/utils/icons.dart';
@@ -19,15 +17,13 @@ import 'package:pstb/widgets/stateless/circle_with_icon.dart';
 import '../../../../di/locator.dart';
 import '../../../../utils/constants.dart';
 import '../../../models/filter_signature_model.dart';
-import '../../nurse_page/electronic_signature_v2/data/filter_signature_model.dart';
-import '../../nurse_page/electronic_signature_v2/presentation/cubits/departments_cubit/departments_cubit.dart';
-import '../../nurse_page/electronic_signature_v2/presentation/cubits/documents_cubit/documents_cubit.dart';
-import '../../nurse_page/electronic_signature_v2/presentation/cubits/filters_cubit/filters_cubit.dart';
-import '../../nurse_page/electronic_signature_v2/presentation/cubits/filters_cubit/filters_cubit_v2.dart';
-import '../../nurse_page/electronic_signature_v2/presentation/cubits/patients_cubit/patients_cubit.dart';
-import '../../nurse_page/electronic_signature_v2/presentation/cubits/roles_cubit/roles_cubit.dart';
-import '../../nurse_page/electronic_signature_v2/presentation/cubits/sign_action_cubit/sign_action_cubit.dart';
-import '../../nurse_page/electronic_signature_v2/presentation/document_types_by_status_cubit/document_types_by_status_cubit.dart';
+import '../../electronic_signature_v2/presentation/cubits/departments_cubit/departments_cubit.dart';
+import '../../electronic_signature_v2/presentation/cubits/filters_cubit/filters_cubit_v2.dart';
+import '../../electronic_signature_v2/presentation/cubits/patients_cubit/patients_cubit.dart';
+import '../../electronic_signature_v2/presentation/cubits/roles_cubit/roles_cubit.dart';
+import '../../electronic_signature_v2/presentation/cubits/sign_action_cubit/sign_action_cubit.dart';
+import '../../electronic_signature_v2/presentation/document_types_by_status_cubit/document_types_by_status_cubit.dart';
+import '../../electronic_signature_v2/presentation/pages/sign_home_page_v2.dart';
 
 class ShortcutMenuStaff extends StatelessWidget {
   ShortcutMenuStaff({Key? key}) : super(key: key);

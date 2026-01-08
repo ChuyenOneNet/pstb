@@ -272,6 +272,10 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
                           ];
                         }).toList(),
                       ),
+                      _buildSection('IV. BẢNG KÊ TÀI LIỆU'),
+                      _subTitle(
+                          '4.1. DANH MỤC TÀI LIỆU (CHỈ ĐỊNH / CLS / BIÊN BẢN...)'),
+                      _buildDocmmentsTable(detail),
                       // _buildSection('IV. CHI PHÍ KHÁM CHỮA BỆNH'),
                       // _buildTable(
                       //   columnWidths: const {
@@ -836,5 +840,79 @@ class _BusinessDetailScreenState extends State<BusinessDetailScreen> {
         ],
       ),
     );
+  }
+
+  Widget _buildDocmmentsTable(BusinessDetailModel detail) {
+    // flatten: mỗi doc item = 1 row
+    final flat = <Map<String, dynamic>>[];
+
+    final groups = detail.docmments ?? [];
+    for (final g in groups) {
+      final title = (g.title ?? '').trim();
+      final items = g.items ?? [];
+      for (final it in items) {
+        flat.add({
+          'groupTitle': title,
+          'name': (it.name ?? '').trim(),
+          'base64': (it.content ?? '').trim(),
+        });
+      }
+    }
+
+    return _buildTable(
+      columnWidths: const {
+        0: FixedColumnWidth(50),
+        2: FixedColumnWidth(80),
+      },
+      headers: const ['STT', 'Danh mục / Tài liệu', 'Tác vụ'],
+      rows: flat.isEmpty
+          ? [
+              [
+                const SizedBox(height: 16),
+                const SizedBox(height: 16),
+                const SizedBox(height: 16),
+              ]
+            ]
+          : flat.asMap().entries.map((e) {
+              final idx = e.key;
+              final row = e.value;
+              final groupTitle = (row['groupTitle'] as String?) ?? '';
+              final name = (row['name'] as String?) ?? '';
+              final base64Pdf = (row['base64'] as String?) ?? '';
+
+              final label = [
+                //if (groupTitle.isNotEmpty) groupTitle,
+                if (name.isNotEmpty) name,
+              ].join('\n');
+
+              return [
+                Center(child: Text('${idx + 1}')),
+                Text(label.isEmpty ? '—' : label),
+                GestureDetector(
+                  onTap: () {
+                    if (base64Pdf.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Không có nội dung PDF')),
+                      );
+                      return;
+                    }
+                    _showPdfBase64Dialog(context, base64Pdf);
+                  },
+                  child: const Text(
+                    'Xem PDF',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                ),
+              ];
+            }).toList(),
+    );
+  }
+
+  /// base64 có thể kèm prefix "data:application/pdf;base64,"
+  String _stripBase64PrefixIfAny(String s) {
+    final raw = s.trim();
+    final i = raw.indexOf('base64,');
+    if (i >= 0) return raw.substring(i + 'base64,'.length).trim();
+    return raw;
   }
 }

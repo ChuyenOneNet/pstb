@@ -2,9 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-
-import '../../../../app/modules/booking_v2/qr_scanner_screen.dart';
 import '../../../../constant/color.dart';
+import '../../../../utils/qr_scanner_screen.dart';
 import '../../data/models/relative_model.dart';
 import '../cubit/relative_form_cubit.dart';
 
