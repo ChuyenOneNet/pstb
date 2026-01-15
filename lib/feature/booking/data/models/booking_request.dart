@@ -28,15 +28,21 @@ class BookingData {
   final String leads_interest_service; // code
   final String identification_number;
   final String identity_card_issue_date; // dd/MM/yyyy
+  final String identity_card_issue_place;
   final String branch; // text
   final String start_day; // dd-MM-yyyy
   final List<String> start_time; // ["HH:mm Sáng/Chiều"]
   final String note;
+  final String cpbooking_source;
   final String source_description;
   final String cf_related_contact__identification_number;
+  final String birthday; // dd/MM/yy
+  final String mailingcountry; // ID quốc gia
+  final String gender;
   final String mailingcity; // id tỉnh/tp
   final String mailingstate; // id xã/phường (phụ thuộc city)
   final String mailingstreet; // địa chỉ cụ thể người dùng nhập
+
   BookingData({
     required this.firstname,
     required this.mobile,
@@ -44,12 +50,17 @@ class BookingData {
     required this.leads_interest_service,
     required this.identification_number,
     required this.identity_card_issue_date,
+    required this.identity_card_issue_place,
     required this.branch,
     required this.start_day,
     required this.start_time,
     required this.note,
+    required this.cpbooking_source,
     required this.source_description,
     required this.cf_related_contact__identification_number,
+    required this.birthday,
+    required this.mailingcountry,
+    required this.gender,
     required this.mailingcity,
     required this.mailingstate,
     required this.mailingstreet,

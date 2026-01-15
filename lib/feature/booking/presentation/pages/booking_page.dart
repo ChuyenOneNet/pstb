@@ -70,6 +70,7 @@ class _BookingPageState extends State<BookingPage>
   final _birthDateController = TextEditingController();
   final _ageController = TextEditingController();
   final _idIssueDateController = TextEditingController();
+  final _idIssuePlaceController = TextEditingController();
 
   // Booking-specific
   final _noteController = TextEditingController();
@@ -202,6 +203,7 @@ class _BookingPageState extends State<BookingPage>
     _noteController.dispose();
     _branchController.dispose();
     _streetController.dispose();
+    _idIssuePlaceController.dispose();
 
     super.dispose();
   }
@@ -415,6 +417,8 @@ class _BookingPageState extends State<BookingPage>
     final nameOk = _nameController.text.trim().isNotEmpty;
     final phoneOk = RegExp(r'^\d{10}$').hasMatch(_phoneController.text.trim());
     final cccdOk = RegExp(r'^\d{12}$').hasMatch(_cccdController.text.trim());
+    final idIssuePlaceOk = _idIssuePlaceController.text.trim().isNotEmpty;
+
     final emailOk = _emailController.text.isEmpty ||
         RegExp(r'^\S+@\S+\.\S+$').hasMatch(_emailController.text.trim());
     final branchOk = _branchController.text.trim().isNotEmpty;
@@ -441,11 +445,14 @@ class _BookingPageState extends State<BookingPage>
       _showSnack('Vui lòng chọn Tỉnh/TP', isError: true);
     } else if (!wardOk) {
       _showSnack('Vui lòng chọn Xã/Phường', isError: true);
+    } else if (!idIssuePlaceOk) {
+      _showSnack('Vui lòng nhập nơi cấp CCCD', isError: true);
     }
 
     return nameOk &&
         phoneOk &&
         cccdOk &&
+        idIssuePlaceOk &&
         emailOk &&
         branchOk &&
         idIssueOk &&
@@ -555,6 +562,23 @@ class _BookingPageState extends State<BookingPage>
     );
   }
 
+  String _toDdMmYyyy(String ddMmYyyy) {
+    try {
+      final d = DateFormat('dd/MM/yyyy').parseLoose(ddMmYyyy.trim());
+      return DateFormat('dd/MM/yyyy').format(d);
+    } catch (_) {
+      // nếu user nhập sai format, fallback: trả nguyên văn (BE tự validate)
+      return ddMmYyyy.trim();
+    }
+  }
+
+  String _genderToId(String gender) {
+    // yêu cầu: 0=Nữ; 1=Nam
+    return (gender.toLowerCase() == 'nữ' || gender.toLowerCase() == 'nu')
+        ? 'Female'
+        : 'Male';
+  }
+
   Future<void> _confirmAndSubmit() async {
     _unfocusAll();
     if (!_validateFormBeforeSubmit()) return;
@@ -564,7 +588,9 @@ class _BookingPageState extends State<BookingPage>
     );
     final startDayStr = DateFormat('dd-MM-yyyy').format(_visitDate);
     final timeStrUi = DateFormat('dd/MM/yyyy').format(_visitDate);
-
+    final birthdayDdMmYy = _toDdMmYyyy(_birthDateController.text);
+    const countryIdDefault = "C341E4B6-3426-4E40-AC06-6C0212F180B9";
+    final genderId = _genderToId(_gender);
     final req = BookingRequest(
       access_key: widget.accessKey,
       simple_params: "0",
@@ -580,11 +606,17 @@ class _BookingPageState extends State<BookingPage>
         start_day: startDayStr,
         start_time: const [], // Không chọn giờ, để rỗng
         note: _noteController.text.trim(),
+        cpbooking_source: widget.inputSource,
         source_description: widget.inputSource,
-        cf_related_contact__identification_number: _cccdController.text.trim(),
+        cf_related_contact__identification_number:
+            _cccdController.text.trim(), // NEW
+        birthday: birthdayDdMmYy,
+        mailingcountry: countryIdDefault,
+        gender: genderId,
         mailingcity: _selectedCityId ?? '',
         mailingstate: _selectedWardId ?? '',
         mailingstreet: _streetController.text.trim(),
+        identity_card_issue_place: _idIssuePlaceController.text.trim(),
       ),
     );
 
@@ -1090,6 +1122,16 @@ class _BookingPageState extends State<BookingPage>
                                     Icons.calendar_today,
                                   ),
                                 ),
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+// ID Issue Date
+                            // ID Issue Place
+                            TextField(
+                              controller: _idIssuePlaceController,
+                              decoration: _buildInputDecoration(
+                                'Nơi cấp CCCD *',
+                                Icons.location_on,
                               ),
                             ),
                             const SizedBox(height: 16),

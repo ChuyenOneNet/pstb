@@ -22,6 +22,7 @@ import '../../../../feature/relatives/presentation/cubit/relative_form_cubit.dar
 import '../../../../feature/relatives/presentation/cubit/relative_list_cubit.dart';
 import '../../../../feature/relatives/presentation/pages/relative_form_page.dart';
 import '../../../../feature/relatives/presentation/pages/relative_list_page.dart';
+import '../../../../utils/call_hotline.dart';
 import '../../../../utils/shared_preferences_manager.dart';
 
 class ShortcutMenuCustomer extends StatelessWidget {
@@ -225,34 +226,35 @@ class SecondShortcutCustomer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Expanded(
-          child: CircleWithIcon(
-              boxSize: iconSize,
-              iconSize: iconSize,
-              icon: IconEnums.iconNurse,
-              colorIcon: AppColors.primary,
-              title: 'Tra cứu',
-              onTap: () {
-                // if (controller.isLogin) {
-                //   return Modular.to.pushNamed(AppRoutes.commingSoon);
-                // } else {
-                //    return Modular.to.pushNamed(AppRoutes.authGuardPage);
-                // }
-                _userAppStore.setVisibleSelectDoctor(false);
-                controller.navigateToPage(
-                    routerName: AppRoutes.specificPatient, arguments: false);
-              }),
-        ),
+        // Expanded(
+        //   child: CircleWithIcon(
+        //       boxSize: iconSize,
+        //       iconSize: iconSize,
+        //       icon: IconEnums.iconNurse,
+        //       colorIcon: AppColors.primary,
+        //       title: 'Tra cứu',
+        //       onTap: () {
+        //         // if (controller.isLogin) {
+        //         //   return Modular.to.pushNamed(AppRoutes.commingSoon);
+        //         // } else {
+        //         //    return Modular.to.pushNamed(AppRoutes.authGuardPage);
+        //         // }
+        //         _userAppStore.setVisibleSelectDoctor(false);
+        //         controller.navigateToPage(
+        //             routerName: AppRoutes.specificPatient, arguments: false);
+        //       }),
+        // ),
         Expanded(
           child: CircleWithIcon(
             boxSize: iconSize,
             iconSize: iconSize,
-            colorIcon: AppColors.error700,
-            icon: IconEnums.nSos2,
-            title: l10n(context).home_shortcut_emergency,
-            onTap: () {
-              controller.navigateToPage(
-                  routerName: AppRoutes.emergency, arguments: false);
+            colorIcon: AppColors.primary,
+            icon: IconEnums.phone,
+            title: l10n(context).hotline,
+            onTap: () async {
+              await callHotline();
+              // controller.navigateToPage(
+              //     routerName: AppRoutes.emergency, arguments: false);
             },
           ),
         ),
