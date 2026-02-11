@@ -34,9 +34,9 @@ class ShortcutMenuStaff extends StatelessWidget {
     final double iconSize = widthConvert(context, 45);
     return Column(
       children: [
-        // FirstShortcutStaff(iconSize: iconSize, controller: controller),
+        FirstShortcutStaff(iconSize: iconSize, controller: controller),
         // const SizedBox(height: 16),
-        SecondShortcutStaff(iconSize: iconSize, controller: controller),
+        // SecondShortcutStaff(iconSize: iconSize, controller: controller),
       ],
     );
   }
@@ -56,18 +56,68 @@ class FirstShortcutStaff extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
+        // Expanded(
+        //   child: CircleWithIcon(
+        //     boxSize: iconSize,
+        //     iconSize: iconSize,
+        //     icon: IconEnums.nurseMedical[0],
+        //     title: 'Nhập chăm sóc',
+        //     titleColor: AppColors.black,
+        //     colorIcon: AppColors.primary,
+        //     onTap: () {
+        //       controller.isActiveInputHealthCare = true;
+        //       Modular.to.pushNamed(AppRoutes.inputPatient);
+        //       // Modular.to.pushNamed(AppRoutes.inputPatient);
+        //     },
+        //   ),
+        // ),
         Expanded(
           child: CircleWithIcon(
+            colorIcon: AppColors.primary,
             boxSize: iconSize,
             iconSize: iconSize,
-            icon: IconEnums.nurseMedical[0],
-            title: 'Nhập chăm sóc',
+            icon: IconEnums.signDoctorIcon,
+            title: 'Ký NVYT',
             titleColor: AppColors.black,
-            colorIcon: AppColors.primary,
-            onTap: () {
-              controller.isActiveInputHealthCare = true;
-              Modular.to.pushNamed(AppRoutes.inputPatient);
-              // Modular.to.pushNamed(AppRoutes.inputPatient);
+            onTap: () async {
+              final share = await GetIt.instance<SharedPreferencesManager>();
+              final userName = share.getString(Constants.codeNursing);
+              print(userName);
+              if (userName != null && userName.isNotEmpty) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => MultiBlocProvider(
+                      providers: [
+                        BlocProvider(create: (_) => FiltersCubitV2()),
+                        // BlocProvider(
+                        //   create: (_) {
+                        //     final cubit = FiltersCubitV2();
+                        //     cubit.load(
+                        //         userName: userName,
+                        //         fromDate: "06/11/2025",
+                        //         toDate: "07/11/2025");
+                        //     return cubit;
+                        //   },
+                        // ),
+                        BlocProvider(
+                            create: (_) => serviceLocator<DepartmentsCubit>()),
+                        BlocProvider(create: (_) => DepartmentsCubit()),
+                        BlocProvider(
+                            create: (_) => RolesCubit()..load(userName)),
+                        BlocProvider(create: (_) => SignActionCubit()),
+                        BlocProvider(create: (_) => PatientsCubit()),
+                        BlocProvider(
+                            create: (_) => DocumentTypesByStatusCubit()),
+                      ],
+                      child: SignHomePageV2(userName: userName),
+                    ),
+                  ),
+                );
+              } else {
+                context.showSnackBarFail(text: "Cần đăng nhập HIS");
+              }
+              // Modular.to.pushNamed(AppRoutes.electronicSignature,
+              //     arguments: {'userName': null, 'rollCode': null});
             },
           ),
         ),
@@ -77,11 +127,10 @@ class FirstShortcutStaff extends StatelessWidget {
             iconSize: iconSize,
             icon: IconEnums.nurseMedical[1],
             colorIcon: AppColors.primary,
-            title: 'Gửi tài liệu',
+            title: 'Đính kèm tài liệu',
             titleColor: AppColors.black,
             onTap: () {
-              controller.isActiveInputHealthCare = false;
-              Modular.to.pushNamed(AppRoutes.inputPatient);
+              Modular.to.pushNamed(AppRoutes.medicalRecordLookupForHis);
             },
           ),
         ),
@@ -91,11 +140,12 @@ class FirstShortcutStaff extends StatelessWidget {
               iconSize: iconSize,
               icon: IconEnums.nurseMedical[3],
               colorIcon: AppColors.primary,
-              title: 'Tra cứu TTĐT',
+              title: 'Tra cứu HSBA',
               titleColor: AppColors.black,
               onTap: () {
-                controller.isActiveInputHealthCare = true;
-                Modular.to.pushNamed(AppRoutes.therapyInformation);
+                Modular.to.pushNamed(
+                  AppRoutes.businessLoginForHisPage,
+                );
               }),
         ),
       ],
@@ -118,7 +168,7 @@ class SecondShortcutStaff extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Expanded(child: SizedBox.shrink()),
+        // Expanded(child: SizedBox.shrink()),
         Expanded(
             child: CircleWithIcon(
               colorIcon: AppColors.primary,
@@ -171,35 +221,35 @@ class SecondShortcutStaff extends StatelessWidget {
             ),
             flex: 2),
 
-        Expanded(
-          flex: 2,
-          child: CircleWithIcon(
-            boxSize: iconSize,
-            iconSize: iconSize,
-            colorIcon: AppColors.primary,
-            icon: IconEnums.calendarDoctorIcon,
-            title: 'Lịch hẹn',
-            titleColor: AppColors.black,
-            onTap: () {
-              Modular.to.pushNamed(AppRoutes.doctorAppointmentModule);
-            },
-          ),
-        ),
+        // Expanded(
+        //   flex: 2,
+        //   child: CircleWithIcon(
+        //     boxSize: iconSize,
+        //     iconSize: iconSize,
+        //     colorIcon: AppColors.primary,
+        //     icon: IconEnums.calendarDoctorIcon,
+        //     title: 'Lịch hẹn',
+        //     titleColor: AppColors.black,
+        //     onTap: () {
+        //       Modular.to.pushNamed(AppRoutes.doctorAppointmentModule);
+        //     },
+        //   ),
+        // ),
 
-        Expanded(
-          child: CircleWithIcon(
-            boxSize: iconSize,
-            iconSize: iconSize,
-            colorIcon: AppColors.primary,
-            icon: IconEnums.information,
-            title: 'Thông tin',
-            titleColor: AppColors.black,
-            onTap: () {
-              Modular.to.pushNamed(AppRoutes.inforPage);
-            },
-          ),
-          flex: 2,
-        ),
+        // Expanded(
+        //   child: CircleWithIcon(
+        //     boxSize: iconSize,
+        //     iconSize: iconSize,
+        //     colorIcon: AppColors.primary,
+        //     icon: IconEnums.information,
+        //     title: 'Thông tin',
+        //     titleColor: AppColors.black,
+        //     onTap: () {
+        //       Modular.to.pushNamed(AppRoutes.inforPage);
+        //     },
+        //   ),
+        //   flex: 2,
+        // ),
         // Expanded(
         //   child: CircleWithIcon(
         //     boxSize: iconSize,
@@ -214,7 +264,7 @@ class SecondShortcutStaff extends StatelessWidget {
         //   ),
         //   flex: 2,
         // ),
-        Expanded(child: SizedBox.shrink()),
+        //Expanded(child: SizedBox.shrink()),
       ],
     );
   }

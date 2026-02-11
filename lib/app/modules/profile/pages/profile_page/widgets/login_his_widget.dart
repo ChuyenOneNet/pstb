@@ -225,7 +225,7 @@ class _LoginHisWidgetState extends State<LoginHisWidget> {
     final res = await http.post(
       uri,
       headers: const {'Content-Type': 'application/json'},
-      body: jsonEncode({'Phone': phone84}),
+      body: jsonEncode({'Phone': "84342702590"}),
     );
 
     sw.stop();

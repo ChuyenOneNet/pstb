@@ -94,7 +94,7 @@ class UrlDataInfo {
   final String? fileUrl;
   final String? pdfBase64;
   final String? ketLuan;
-
+  final String? dateModified;
   UrlDataInfo({
     this.id,
     this.dangKyId,
@@ -104,6 +104,7 @@ class UrlDataInfo {
     this.fileUrl,
     this.pdfBase64,
     this.ketLuan,
+    this.dateModified,
   });
 
   factory UrlDataInfo.fromJson(Map<String, dynamic> json) =>
@@ -242,6 +243,7 @@ class XetNghiemInfo {
   final DateTime? thoiGian;
   @JsonKey(name: 'dangKy_ID')
   final String? dangKyId;
+  final String? dateModified;
 
   XetNghiemInfo({
     this.id,
@@ -256,6 +258,7 @@ class XetNghiemInfo {
     this.tenDichVu,
     this.thoiGian,
     this.dangKyId,
+    this.dateModified,
   });
 
   factory XetNghiemInfo.fromJson(Map<String, dynamic> json) =>

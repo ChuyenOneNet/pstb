@@ -53,6 +53,8 @@ import 'package:pstb/utils/routes.dart';
 import 'package:pstb/widgets/theme_data_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../di/locator.dart';
+import 'modules/attach_document_his/medical_record_lookup_for_his_page.dart';
+import 'modules/attach_document_his/upload_medical_document_page.dart';
 import 'modules/business/business_module.dart';
 import 'modules/business/business_page.dart';
 import 'modules/business/business_store.dart';
@@ -60,6 +62,9 @@ import 'modules/business/page/business_detail_screen.dart';
 import 'modules/business/page/change_password_business_page.dart';
 import 'modules/business/page/reset_password_page.dart';
 import 'modules/business/page/web_view_screen.dart';
+import 'modules/business_for_his/business_detail_for_his_screen.dart';
+import 'modules/business_for_his/business_login_for_his_page.dart';
+import 'modules/business_for_his/business_page_for_his.dart';
 import 'modules/change_password/change_password_otp.dart';
 import 'modules/change_password/change_password_success.dart';
 import 'modules/community/community_page_module.dart';
@@ -253,11 +258,37 @@ class AppModule extends Module {
         idBusiness: args.data['idBusiness'],
       ),
     ),
+    ChildRoute(
+      AppRoutes.detailBusinessPageForHis,
+      child: (_, args) => BusinessDetailScreenForHis(
+        idBusiness: args.data['idBusiness'],
+      ),
+    ),
+    ChildRoute(
+      AppRoutes.medicalRecordLookupForHis,
+      child: (_, __) => const MedicalRecordLookupForHisPage(),
+    ),
+    ChildRoute(
+      AppRoutes.uploadMedicalDocument,
+      child: (_, args) => UploadMedicalDocumentPage(
+        dangKyId: args.data['dangKyId'],
+        benhNhanId: args.data['benhNhanId'],
+      ),
+    ),
+
     ChildRoute(AppRoutes.businessWebViewPdf, child: (_, args) {
       final url = args.data['url'];
       final title = args.data['title'];
       return RadWebViewScreen(url: url, title: title);
     }),
+    ChildRoute(
+      AppRoutes.businessLoginForHisPage,
+      child: (_, __) => const BusinessLoginForHisPage(),
+    ),
+    ChildRoute(
+      AppRoutes.businessPageForHis,
+      child: (_, args) => BusinessPageForHis(),
+    ),
     ChildRoute(
       AppRoutes.resetPasswordBusiness,
       child: (_, args) => ResetPasswordScreen(),

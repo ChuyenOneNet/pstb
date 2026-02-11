@@ -101,6 +101,7 @@ UrlDataInfo _$UrlDataInfoFromJson(Map<String, dynamic> json) => UrlDataInfo(
       fileUrl: json['fileUrl'] as String?,
       pdfBase64: json['pdfBase64'] as String?,
       ketLuan: json['ketLuan'] as String?,
+      dateModified: json['dateModified'] as String?,
     );
 
 Map<String, dynamic> _$UrlDataInfoToJson(UrlDataInfo instance) =>
@@ -113,6 +114,7 @@ Map<String, dynamic> _$UrlDataInfoToJson(UrlDataInfo instance) =>
       'fileUrl': instance.fileUrl,
       'pdfBase64': instance.pdfBase64,
       'ketLuan': instance.ketLuan,
+      'dateModified': instance.dateModified,
     };
 
 DocmmentGroup _$DocmmentGroupFromJson(Map<String, dynamic> json) =>
@@ -220,6 +222,7 @@ XetNghiemInfo _$XetNghiemInfoFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['thoiGian'] as String),
       dangKyId: json['dangKy_ID'] as String?,
+      dateModified: json['dateModified'] as String?,
     );
 
 Map<String, dynamic> _$XetNghiemInfoToJson(XetNghiemInfo instance) =>
@@ -236,4 +239,5 @@ Map<String, dynamic> _$XetNghiemInfoToJson(XetNghiemInfo instance) =>
       'tenDichVu': instance.tenDichVu,
       'thoiGian': instance.thoiGian?.toIso8601String(),
       'dangKy_ID': instance.dangKyId,
+      'dateModified': instance.dateModified,
     };

@@ -6,6 +6,11 @@ import 'package:pstb/app/modules/business/page/reset_password_page.dart';
 import 'package:pstb/app/modules/business/page/web_view_screen.dart';
 import 'package:pstb/utils/main.dart';
 
+import '../attach_document_his/medical_record_lookup_for_his_page.dart';
+import '../attach_document_his/upload_medical_document_page.dart';
+import '../business_for_his/business_detail_for_his_screen.dart';
+import '../business_for_his/business_login_for_his_page.dart';
+import '../business_for_his/business_page_for_his.dart';
 import 'business_page.dart';
 import 'business_store.dart';
 
@@ -26,11 +31,37 @@ class BusinessModule extends Module {
       child: (_, args) => BusinessPage(),
     ),
     ChildRoute(
+      AppRoutes.businessLoginForHisPage,
+      child: (_, __) => const BusinessLoginForHisPage(),
+    ),
+    ChildRoute(
+      AppRoutes.businessPageForHis,
+      child: (_, args) => BusinessPageForHis(),
+    ),
+    ChildRoute(
       AppRoutes.detailBusinessPage,
       child: (_, args) => BusinessDetailScreen(
         idBusiness: args.data['idBusiness'],
       ),
     ),
+    ChildRoute(
+      AppRoutes.detailBusinessPageForHis,
+      child: (_, args) => BusinessDetailScreenForHis(
+        idBusiness: args.data['idBusiness'],
+      ),
+    ),
+    ChildRoute(
+      AppRoutes.medicalRecordLookupForHis,
+      child: (_, __) => const MedicalRecordLookupForHisPage(),
+    ),
+    ChildRoute(
+      AppRoutes.uploadMedicalDocument,
+      child: (_, args) => UploadMedicalDocumentPage(
+        dangKyId: args.data['dangKyId'],
+        benhNhanId: args.data['benhNhanId'],
+      ),
+    ),
+
     ChildRoute(AppRoutes.businessWebViewPdf, child: (_, args) {
       final url = args.data['url'];
       final title = args.data['title'];

@@ -11,8 +11,8 @@ import '../business_store.dart';
 
 class PatientInformation extends StatelessWidget {
   final BusinessStore store = Modular.get<BusinessStore>();
-
-  PatientInformation({Key? key}) : super(key: key);
+  final isHis;
+  PatientInformation({Key? key, this.isHis = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,63 +37,65 @@ class PatientInformation extends StatelessWidget {
             ),
 
             // 🔹 Hai nút bên phải
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                TextButton.icon(
-                  onPressed: () {
-                    Modular.to.pushNamed(AppRoutes.changePasswordBusiness);
-                  },
-                  icon: const Icon(Icons.lock_outline, size: 18),
-                  label: const Text('Đổi mật khẩu'),
-                  style: TextButton.styleFrom(
-                    foregroundColor: AppColors.primary,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0, vertical: 4.0),
-                    textStyle: const TextStyle(fontSize: 14),
-                  ),
-                ),
-                Spacer(),
-                TextButton.icon(
-                  onPressed: () async {
-                    const secure = FlutterSecureStorage();
-                    final prefs = await SharedPreferences.getInstance();
-
-                    // xoá credential ở cả 2 nơi (vì trước đó bạn có lưu prefs trong store)
-                    await Future.wait([
-                      secure.delete(key: "passwordBusiness"),
-                      prefs.remove('maYte'),
-                      prefs.remove('passwordBusiness'), // nếu còn lưu ở prefs
-                    ]);
-                    await prefs.setBool('business_logged_in', false);
-
-// tuỳ chọn: nếu muốn logout là xoá luôn mã đã lưu
-                    await prefs.remove('saved_patient_code');
-                    // clear state trong store để UI không giữ dữ liệu cũ
-                    store.clearSession();
-
-                    if (!context.mounted) return;
-
-                    // điều hướng về trang login (khuyến nghị route login cụ thể)
-                    Modular.to.pushNamedAndRemoveUntil(
-                      AppRoutes.businessModule, // <-- route login của bạn
-                      (route) => false,
-                    );
-                  },
-                  icon: const Icon(Icons.logout, size: 18),
-                  label: const Text('Đăng xuất'),
-                  style: TextButton.styleFrom(
-                    foregroundColor: AppColors.error500,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0, vertical: 4.0),
-                    textStyle: const TextStyle(fontSize: 14),
-                  ),
-                ),
-              ],
-            ),
-            const Divider(
-              color: AppColors.primary,
-            ),
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.start,
+//               children: [
+//                 TextButton.icon(
+//                   onPressed: () {
+//                     Modular.to.pushNamed(AppRoutes.changePasswordBusiness);
+//                   },
+//                   icon: const Icon(Icons.lock_outline, size: 18),
+//                   label: const Text('Đổi mật khẩu'),
+//                   style: TextButton.styleFrom(
+//                     foregroundColor: AppColors.primary,
+//                     padding: const EdgeInsets.symmetric(
+//                         horizontal: 8.0, vertical: 4.0),
+//                     textStyle: const TextStyle(fontSize: 14),
+//                   ),
+//                 ),
+//                 Spacer(),
+//                 TextButton.icon(
+//                   onPressed: () async {
+//                     const secure = FlutterSecureStorage();
+//                     final prefs = await SharedPreferences.getInstance();
+//
+//                     // xoá credential ở cả 2 nơi (vì trước đó bạn có lưu prefs trong store)
+//                     await Future.wait([
+//                       secure.delete(key: "passwordBusiness"),
+//                       prefs.remove('maYte'),
+//                       prefs.remove('passwordBusiness'), // nếu còn lưu ở prefs
+//                     ]);
+//                     await prefs.setBool('business_logged_in', false);
+//
+// // tuỳ chọn: nếu muốn logout là xoá luôn mã đã lưu
+//                     await prefs.remove('saved_patient_code');
+//                     // clear state trong store để UI không giữ dữ liệu cũ
+//                     store.clearSession();
+//
+//                     if (!context.mounted) return;
+//
+//                     // điều hướng về trang login (khuyến nghị route login cụ thể)
+//                     Modular.to.pushNamedAndRemoveUntil(
+//                       isHis
+//                           ? AppRoutes.businessLoginForHisPage
+//                           : AppRoutes.businessModule, // <-- route login của bạn
+//                       (route) => false,
+//                     );
+//                   },
+//                   icon: const Icon(Icons.logout, size: 18),
+//                   label: const Text('Đăng xuất'),
+//                   style: TextButton.styleFrom(
+//                     foregroundColor: AppColors.error500,
+//                     padding: const EdgeInsets.symmetric(
+//                         horizontal: 8.0, vertical: 4.0),
+//                     textStyle: const TextStyle(fontSize: 14),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             const Divider(
+//               color: AppColors.primary,
+//             ),
             _renderValueInformation(
                 "Họ và tên: ", store.userBusiness.hoTen ?? '', context),
             _renderValueInformation(

@@ -257,4 +257,9 @@ class AppRoutes {
       "https://rad.vduh.org/ris/hisPreview?serviceID=";
   static String resetPasswordBusiness = "/resetPasswordBusiness";
   static String changePasswordBusiness = "/changePasswordBusiness";
+  static String businessLoginForHisPage = '/businessLoginForHisPage';
+  static String businessPageForHis = '/businessPageForHis';
+  static String detailBusinessPageForHis = "/ detailBusinessPageForHis";
+  static String medicalRecordLookupForHis = '/medical-record/lookup-for-his';
+  static String uploadMedicalDocument = '/medical-record/upload-document';
 }

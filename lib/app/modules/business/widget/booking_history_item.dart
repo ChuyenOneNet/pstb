@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:pstb/app/modules/business_for_his/business_detail_for_his_screen.dart';
 import 'package:pstb/widgets/stateless/app_snack_bar.dart';
 import '../../../../utils/routes.dart';
 import '../../../../utils/styles.dart';
@@ -10,10 +11,11 @@ import '../page/business_detail_screen.dart';
 
 class BookingHistoryItem extends StatelessWidget {
   final KhamChuaBenhModel khamChuaBenhs;
-
+  final isHis;
   const BookingHistoryItem({
     Key? key,
     required this.khamChuaBenhs,
+    this.isHis = false,
   }) : super(key: key);
 
   @override
@@ -65,9 +67,13 @@ class BookingHistoryItem extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => BusinessDetailScreen(
-                            idBusiness: khamChuaBenhs.dangKyId!,
-                          ),
+                          builder: (context) => isHis
+                              ? BusinessDetailScreenForHis(
+                                  idBusiness: khamChuaBenhs.dangKyId!,
+                                )
+                              : BusinessDetailScreen(
+                                  idBusiness: khamChuaBenhs.dangKyId!,
+                                ),
                         ));
                   } else {
                     AppSnackBar.show(
